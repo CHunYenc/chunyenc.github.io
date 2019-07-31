@@ -1,0 +1,8 @@
+body{
+  height: 1000px;
+  width: 500px;
+  margin: 0 auto;
+}
+.button , .pk , h1{
+  text-align: center;
+}

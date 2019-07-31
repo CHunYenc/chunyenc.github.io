@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ZH-Hans-TW">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      var rolling = 0;
+      function roll() {
+        setTimeout(function stoptoroll() { stop(); }, 1000);
+        rolling = setInterval(frame, 50);
+      }
+      function frame() {
+        var n1 = Math.floor(Math.random() * 6) + 1;
+        var n2 = Math.floor(Math.random() * 6) + 1;
+        var n3 = Math.floor(Math.random() * 6) + 1;
+        var n4 = Math.floor(Math.random() * 6) + 1;
+        document.getElementById("dice1").src = "img/dice" + n1 + ".png";
+        document.getElementById("dice2").src = "img/dice" + n2 + ".png";
+        document.getElementById("dice3").src = "img/dice" + n3 + ".png";
+        document.getElementById("dice4").src = "img/dice" + n4 + ".png";
+        var point_people = n1+n2;
+        var point_robot = n3+n4;
+        document.getElementById("point_people").innerHTML = "得分: " + point_people ;
+        document.getElementById("point_robot").innerHTML = "得分: " + point_robot ;
+        if (point_people == point_robot) {
+          document.getElementById("win").innerHTML = "平手";
+        } else if (point_people > point_robot) {
+          document.getElementById("win").innerHTML = "人類獲勝";
+        } else {
+          document.getElementById("win").innerHTML = "機器人獲勝";
+        }
+
+      }
+      function stop() {
+        clearInterval(rolling);
+      }
+    </script>
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+    <div class="name">
+      <h2 align="center">B10610020 陳雋諺 製作</h2>
+    </div >
+    <hr>
+    <div class="pk">
+      <div class="people">
+        <h3>人類</h3>
+        <img id = "dice1" src = "img/dice1.png"></img>
+        <img id = "dice2" src = "img/dice1.png" />
+        <br>
+        <h1 id="point_people"></h1>
+      </div>
+<hr>
+      <div class="robot">
+        <h3>機器人</h3>
+        <img id = "dice3" src = "img/dice1.png" />
+        <img id = "dice4" src = "img/dice1.png" /> <br/>
+        <h1 id="point_robot"></h1>
+      </div>
+    </div>
+    <div class="button">
+      <button onclick="roll()">Roll</button>
+    </div>
+    <div>
+      <h1 id="win"></h1>
+    </div>
+    <div class="button">
+      <input type="button" value="前往作品集" onclick="location.href='../../index/demo_menu.html'">
+    </div>
+  </body>
+</html>
