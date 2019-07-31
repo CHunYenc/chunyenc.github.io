@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-hands-tw">
+  <head>
+    <meta charset="utf-8">
+    <title>幸運的動物轉盤</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <!--製作者抬頭-->
+    <div class="name">
+      <h2>B10610020 陳雋諺 製作</h2>
+    </div>
+    <hr>
+    <!--第一步驟 輸入姓名-->
+    <h1>第一步：輸入你的名字</h1>
+    <div class="first">
+      <h3>輸入你的名字：
+        <input type="text" id="name_in" value="null">
+        <!-- 小小除錯 -->
+        <h5>※名字預設為"null", 若你沒更改名字會無法執行唷!</h5>
+      </h3>
+    </div>
+    <div class="second">
+      <hr>
+      <!-- 第二步驟 輪盤開始-->
+      <h1>第二步：抽你有緣的動物</h1>
+      <table border ="1" align="center">
+        <tr>
+          <td id="1"><img src="img/01.png"></td>
+          <td id="2"><img src="img/02.png"></td>
+          <td id="3"><img src="img/03.png"></td>
+          <td id="4"><img src="img/04.png"></td>
+        </tr>
+        <tr>
+          <td id="5"><img src="img/05.png"></td>
+          <td></td>
+          <td></td>
+          <td id="6"><img src="img/06.png"></td>
+        </tr>
+        <tr>
+          <td id="7"><img src="img/07.png"></td>
+          <td></td>
+          <td></td>
+          <td id="8"><img src="img/08.png"></td>
+        </tr>
+        <tr>
+          <td id="9"><img src="img/09.png"></td>
+          <td id="10"><img src="img/10.png"></td>
+          <td id="11"><img src="img/11.png"></td>
+          <td id="12"><img src="img/12.png"></td>
+        </tr>
+      </table>
+    </div>
+      <br>
+      <!-- 抽取按鈕 -->
+      <div class="roll">
+        <button onclick="spin()">開始抽</button>
+        <h1 id="in"></h1>
+      </div>
+      <hr>
+      <!-- 第一步如果有輸入姓名就可以啟用 -->
+      <h1>第三步：按下送出</h1>
+      <button type="button" onclick="show()">送出</button>
+      <h3 id="name_out"></h3>
+      <hr>
+    <!-- 最下面 -->
+      <div class="button">
+        <input type="button" value="回到第一個作業 - 圖片輪播" onclick="location.href='../hwk2-1/index.html'">
+        <input type="button" value="回到第二個作業 - 骰子" onclick="location.href='../hwk2-2/index.html'">
+        <input type="button" value="重新整理" onclick="location.href='../hwk2-4/index.html'">
+      </div>
+  </body>
+</html>
