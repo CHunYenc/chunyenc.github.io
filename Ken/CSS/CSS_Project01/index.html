@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>地球軌道</title>
+    <style>
+        html ,body{
+            height: 100%;
+            overflow: hidden; /*隱藏地球動的時候橫軸會動*/
+        }/*背景*/
+        #universe{
+            background: radial-gradient(#555,#000)
+        }
+        /*星星變暗變亮*/
+        @keyframes startflash{
+
+            from {opacity: 1;}
+            to {opacity: 0.1;}
+
+        }
+        /*星星*/
+        #stars{
+            background-image: url("start.png");
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            
+            animation: startflash 2s infinite alternate; /*星星變暗變亮*/
+        }
+        /*動態的太陽光*/
+        @keyframes SunLight{
+            from {box-shadow: 0 0 45px #f5c91a}
+            to {box-shadow: 0 0 150px #f5c91a}
+        }
+
+        /*太陽的顏色與形狀、光暉 */
+        #sun{
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(#f5c313,#ec7e08);
+            box-shadow: 0 0 50px #f5c91a;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -10px; 
+            margin-left: -10px;
+
+            border-radius: 100px;
+            animation: SunLight 3s infinite alternate;
+            
+        }
+        /*地球軌道*/
+        #earthbit{
+            height: 400px;
+            width: 400px;
+            border-radius: 100%;
+            /*軌道線*/
+            /*border: 1px solid red;*/
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -155px;
+            margin-left: -160px;
+            animation: spin 30s linear infinite;
+        }
+        /*地球轉動*/
+        @keyframes spin{
+            from { transform: rotate(0);}
+            to {transform:  rotate(360deg);}
+        }
+        /*地球的大小*/
+        #earth{
+            position: absolute;
+            margin-top: -30px;
+            margin-left: -25px;
+            top: 50%;
+             
+            animation: spin 5s linear infinite;
+        }
+        /*月亮軌道*/
+        #moonbit{
+            position: relative;
+            width: 70px;
+            height: 70px;
+            
+            /*軌道線*/
+            /*border: red solid 1px;*/
+            
+            border-radius: 100%;
+            top: 40%;
+            left: -9%;
+            /*margin-top: 50px;
+            margin-left: -35px;*/
+            animation: spin 3s linear infinite;
+        }
+        #moon{
+            position: relative;
+            margin-left: -11px;
+            margin-top:20px;
+            animation: spin 20s linear infinite;
+        }
+    </style>
+</head>
+<body id = "universe">
+    <div id = "stars" ></div>
+    <div id = "sun"></div>
+    <div id = "earthbit">
+        <img id = "earth" src="earth.png" alt="地球" width="50px;" height="50px;">
+        <div id = "moonbit">
+            <img id = "moon" src="moon.png" alt="月球" width="20px;" height="20px;">
+        </div>
+    </div>
+</body>
+</html>
