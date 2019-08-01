@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    h1{
+        background-color: blue;
+    }
+    .redcol{
+        position: fixed;
+        top: 0;
+        left: 8px;
+        background-color: tomato;
+    }
+    .redcol1{
+        position: sticky;
+        background-color:darkgray;
+        top: 0;
+        left: 5px;
+
+    }
+    .redcol2{
+        background-color: aqua;
+        position: relative;
+        left: 50px;
+        top: 10px;
+    }
+    .redcol3{
+        background-color:aquamarine;
+        position: absolute;
+        top:200px;
+
+    }
+    </style> 
+</head>
+<body>
+    <h1>Example Domain</h1>
+    <p class="redcol">That is a text1 (position:fixed)</p>
+    <p class="redcol1">That is a text2 (position:sticky)</p>
+    <p class="redcol2">That is a text3 (position:relative)</p> 
+    <p class="redcol3">That is a text4 (position:absolute)</p> 
+
+    <div style="height:2000px;">
+        <a href="#">page1</a>
+        <a href="#">page2</a>
+        <a href="#">page3</a>
+    </div>
+</body>
+</html>

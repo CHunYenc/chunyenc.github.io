@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Learning CSS</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+        body {
+            /*background-image: url('BFV.jpg');
+        background-repeat: no-repeat;*/
+            background: url('BFV.jpg');
+            background-repeat: no-repeat;
+            background-size: 70%;
+            background-position: right;
+        }
+
+        h1 {
+            color: white;
+            background-color: DodgerBlue;
+        }
+
+        p {
+            color: white;
+            background-color: green;
+        }
+
+        section {
+            padding: 50px;
+            background-color: orange;
+        }
+
+        .border {
+            border: 5px red solid;
+            border-radius: 150px;
+        }
+
+        .border1 {
+            margin-bottom: 50px;
+            border: 5px red solid;
+            border-radius: 150px;
+        }
+
+        .border2 {
+            margin-top: 60px;
+            border: 5px red solid;
+            border-radius: 150px;
+        }
+
+        .border3 {
+            margin-top: 60px;
+            border: 5px red solid;
+        }
+
+        .border4 {
+
+            margin-top: 60px;
+            border: 5px red solid;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .border5 {
+            margin-top: 60px;
+            border: 5px red solid;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+
+        .border6 {
+            border: 5px red solid;
+            box-sizing: border-box;
+            margin: 10px;
+        }
+
+        li {
+            display: block;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .border7 {
+            width: 150px;
+            text-align: justify;
+            line-height: 2;
+            margin: 0px 0px 10px 0px;
+        }
+
+        .border8 {
+            width: 150px;
+        }
+
+        .title_ghost {
+            text-shadow: 2px 2px black;
+        }
+
+        .title_long {
+            letter-spacing: 10px;
+        }
+
+        .title_distance {
+            word-spacing: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .decoration {
+            decoration
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Example Domain</h1>
+        <p>This domain is established to be used for illustrative examples in documents. You may use this
+            domain in examples without prior coordination or asking for permission.</p>
+        <section class="border"></section>
+        <hr>
+        <h1>Margin 的用法</h1>
+        <p>下面這個 margin-bottom 50px </p>
+        <section class="border1"></section>
+        <section class="border2"></section>
+        <p>上面這個 margin-bottom 60px。我們會發現他們距離是60，並不是110，也不是50</p>
+        <a href="http://www.iana.org/domains/example">More information...</a>
+        <hr>
+        <h1>Padding 用法</h1>
+
+        <section class="border3">123</section>
+        <p>上面這個沒有設定padding</p>
+        <section class="border4">456</section>
+        <p>上面這個padding 20px</p>
+        <section class="border5">456</section>
+        <p>上面這個padding 50px</p>
+        <hr>
+        <h1>display : block and inline</h1>
+        <div>
+            <a href="#">page1</a>
+            <a href="#">page2</a>
+            <a href="#">page3</a>
+        </div>
+        <p>預設 也是等於 display:inline 的樣子 可以自己試試看。</p>
+        <li><a href="#">page1</a></li>
+        <li><a href="#">page2</a></li>
+        <li><a href="#">page3</a></li>
+        <p>加上 li 設定 display:block </p>
+        <h1></h1>
+    </div>
+    <hr>
+    <h1>CSS text-align 對齊</h1>
+    <div class="align_title">
+        <section class="border6">
+            <p class="center">123 142</p>
+        </section>
+        <section class="border6">
+            <p class="right">123 142</p>
+        </section>
+        <section class="border6">
+            <p class="left">123 142</p>
+        </section>
+    </div>
+    <hr>
+    <h1>CSS Line-hight 每一行的高度</h1>
+    <section class="border7">Invisible Alligators - by Hayes Roberts - Little Sari discovers invisible alligators
+        quietly sneaking around creating trouble for her and everyone else.</section>
+    <p>上面是更改行數後</p>
+    <section class="border8">Invisible Alligators - by Hayes Roberts - Little Sari discovers invisible alligators
+        quietly sneaking around creating trouble for her and everyone else.</section>
+    <p>上面預設</p>
+    <hr>
+    <h1 class="title_ghost">Title 加上影子</h1>
+    <hr>
+    <h1>Title 預設距離</h1>
+    <h1 class="title_long">Title 距離</h1>
+    <h1 class="title_distance">Title 單字距離</h1>
+
+    <li><a href="#">page1</a></li>
+    <li><a href="#">page2</a></li>
+    <li><a href="#">page3</a></li>
+    <h2 style="text-decoration:overline;">123</h2>
+    <h2 style="text-decoration:underline;">123</h2>
+</body>
+
+</html>
