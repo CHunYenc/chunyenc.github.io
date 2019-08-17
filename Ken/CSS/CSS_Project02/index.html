@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My eBay</title>
+    <style type="text/css">
+        /* ------------------ Hearder ------------------- */
+        body {
+            margin: 0;
+        }
+
+        header {
+            box-shadow: 0 3px 5px #cccc;
+            padding: 12px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            width: 1300px;
+            margin: auto;
+        }
+
+        .navbar {
+            list-style-type: none;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        li.navitem {
+            display: inline;
+            border-right: 1px solid black;
+        }
+
+        li.navitem a {
+            color: gray;
+            padding: 10px;
+        }
+
+        li.navitem a:link {
+            text-decoration: none;
+            color: black;
+        }
+
+        li.navitem a:hover {
+            text-decoration: underline;
+            color: #0654ba;
+        }
+
+        #signin-style a:link {
+            color: #0654ba;
+            padding: 0;
+        }
+
+        #signin-style a:link:last-child {
+            padding-right: 10px;
+        }
+
+        .float-right {
+            float: right;
+        }
+
+        .no-border {
+            border-right: none !important;
+        }
+
+        #alert {
+            margin-top: -5px;
+            padding: 0 15px 0 25px;
+        }
+
+        #cart {
+            margin-top: -5px;
+        }
+
+        /* ------------------ Search Form ------------------- */
+
+        #search-bar {
+            width: 100%;
+            height: 100px;
+        }
+
+        .setbgcolor {}
+
+        .clearfix {
+            clear: both;
+        }
+
+        #brand {
+            float: left;
+        }
+
+        #Shopping-button {
+            float: left;
+            width: 70px;
+            font-size: 14px;
+            color: #555555;
+            border: none;
+            background: #ffffff;
+
+            margin-right: 15px;
+        }
+
+        #arrow {
+            position: relative;
+            bottom: 40px;
+            left: 40px;
+
+        }
+
+        #search-form {
+            float: left;
+            margin-top: 15px;
+            overflow: hidden;
+            margin-left: 10px;
+        }
+
+        #search-field {
+            border-radius: 3px 0 0 3px;
+            width: 630px;
+            height: 40px;
+
+            box-sizing: border-box;
+            /*上面這段非常重要，否則排版會歪掉*/
+        }
+
+        .text-field {
+            font-size: 16px;
+            color: #767676;
+            padding: 10px 0 9px 8px;
+            border: 1px solid #ddd;
+        }
+
+        #category-textfield {
+            border-radius: 0 3px 3px 0;
+            padding: 11px 10px;
+            height: 40px;
+            width: 180px;
+            background: #fff;
+            box-sizing: border-box;
+            margin-left: -4px;
+        }
+
+        .options {
+            border: none;
+            font-size: 12px;
+            width: 100%;
+            background-color: transparent;
+        }
+
+        .btn-primary {
+            font-size: 14px;
+            height: 40px;
+
+            font-weight: 500;
+            border-radius: 3px;
+            border: 0;
+            padding: 8px 19px 9px 19px;
+
+            color: #fff;
+            background: linear-gradient(to bottom, #0079bc, #00509d);
+        }
+
+        .btn-primary:hover {
+            background: #00509d;
+        }
+
+        #advanced-button {
+            color: #555555;
+            text-decoration: none;
+            margin: 0 0 0 10px;
+
+            font-size: 13px;
+        }
+
+        #advanced-button:hover {
+            color: #0654ba;
+        }
+        /*--------------------------- Nav Bar --------------------------*/
+        nav{
+            padding-top: 10px;
+        }
+        .tb-border{
+            border-top : 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        #navigation-bar{
+            width: 100%;
+            height: 35px;
+            padding: 10px 0 11px 0;
+            box-sizing: border-box;
+        }
+        .li-space{
+            float:left;
+            
+            padding: 0 2%;
+        }
+        .divider{
+            float: left;
+            width: 1px;
+            height: 24px;
+            background: #ddd;
+            margin: -5px  0 0 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--------------------------- Header --------------------------->
+    <header>
+        <div class="container">
+            <ul class="navbar">
+                <li id="signin-style" class="navitem">Hi <a href="#">Sign in</a> or <a href="#">register</a></li>
+                <li class="navitem"><a href="#">Daily Deals</a></li>
+                <li class="navitem"><a href="#">Sell</a></li>
+                <li class="navitem"><a href="#">Help & Contact</a></li>
+                <li id="cart" class="navitem float-right no-border"><img src="02.jpg" alt="cart" width="30px;"
+                        title="這是你的購物車"></li>
+                <li id="alert" class="navitem float-right no-border"><img src="01.jpg" alt="li" width="25px;"></li>
+                <li class="navitem float-right no-border">My eBay</li>
+            </ul>
+        </div>
+    </header>
+    <!--------------------------- Search Form --------------------------->
+    <div id="search-bar" class="clearfix setbgcolor">
+        <div class="container">
+            <img id="brand" src="ebay.png" alt="ebay圖片" width="150px;">
+
+            <button id="Shopping-button">
+                <p>Shop my category</p>
+                <img id="arrow" src="03.jpg" alt="arrow" width="20px;">
+            </button>
+            <form id="search-form" action="">
+                <table>
+                    <tr>
+                        <td>
+                            <input id="search-field" class="text-field" type="text" name="search-content"
+                                placeholder="Search For everything">
+                        </td>
+                        <td>
+                            <div id="category-textfield" class="text-field">
+                                <select name="cate" class="options">
+                                    <option selected="selected" value="0">All Categories</option>
+                                    <option value="1">Antiques</option>
+                                    <option value="2">Art</option>
+                                    <option value="3">Baby</option>
+                                    <option value="4">Books</option>
+                                    <option value="5">Business &amp; Industrial</option>
+                                    <option value="6">Cameras & Photo</option>
+                                    <option value="7">Cell Phones & Accessories</option>
+                                </select>
+                            </div>
+                        </td>
+
+                        <td>
+                            <input class="btn-primary" type="submit">
+                        </td>
+                        <td>
+                            <a href="#" id="advanced-button" title="高級搜索">Advanced</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <!--------------------------- Nav Bar --------------------------->
+        <nav class="clearfix setbgcolor">
+            <div class="container">
+                <ul id="navigation-bar" class="navbar tb-border">
+                    <li class="navitem li-space no-border"><a href="#">Following</a></li>
+                    <li class="navitem li-space no-border"><a href="#">Today</a></li>
+                        <div class="divider"></div>
+                    <li class="navitem li-space no-border"><a href="#">Fashion</a></li>
+                    <li class="navitem li-space no-border"><a href="#">Electronics</a></li>
+                    <li class="navitem li-space no-border"><a href="#">Collectibles &amp; Art</a></li>
+                    <li class="navitem li-space no-border"><a href="#">Home &amp; Garden</a></li>
+                    <li class="navitem li-space no-border"><a href="#">Sporting Goods</a></li>
+                    <li class="navitem li-space no-border"><a href="#">Motors</a></li>
+                    <li class="navitem li-space no-border"><a href="#">Daily Deals</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </div>
+</body>
+
+</html>

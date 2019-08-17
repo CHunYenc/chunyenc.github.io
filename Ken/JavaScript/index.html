@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+    <!--<button onclick="alert('您好!')">點擊我</button>-->
+    <p id="text">獲取一段文字</p>
+    <button id="myButton">點按我</button>
+    <br><br><br><br><br>
+    <p id="text1">我想添加：</p>
+    <button id="myButton1">點按我</button>
+    <br><br><br><br><br>
+    <p id="text2"></p>
+    <button id="myButton2">點按我</button>
+    <br><br><br>
+
+    <input id="input" type="text"> 
+    <button id="myButton3">點按我</button>
+    <p id="text3"></p>
+
+    <input id="input1" type="text"> 
+    <button id="myButton4">點按我</button>
+    <p id="text4"></p>
+    <script type="text/javascript">
+        //alert("頁面加載中!");
+        //alert(document.getElementById('text').innerHTML = "修改後的文字") //讀取 id = text
+        document.getElementById("myButton").onclick = function(){
+            document.getElementById("text").innerHTML = "按過了!";
+        }
+        document.getElementById("myButton1").onclick = function(){
+            document.getElementById("text1").innerHTML = document.getElementById('text1').innerHTML + "一串字";
+        }
+        document.getElementById("myButton2").onclick = function(){
+            document.getElementById("text2").innerHTML = "<ul><li>蘋果</li><li>蘋果</li><li>香蕉果</li><li>火龍果</li></ul>"
+        }
+        document.getElementById("myButton3").onclick = function(){
+            document.getElementById("text3").innerHTML = document.getElementById("input").value;
+        }
+
+        var myArray = ["pizza","chocalate"];
+        document.getElementById("myButton4").onclick = function(){
+            document.getElementById("text4").innerHTML = myArray[0];
+        }
+        myArray.push("apple"); //新增
+        console.log(myArray); //F12 Console 印出
+        myArray.splice(0,1,"123"); //刪除、增加
+        console.log(myArray); //F12 Console 印出
+        
+        
+        </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random number</title>
+</head>
+<body>
+    <p>請猜 0 ~ 10 之間的整數！！！</p>
+    <input type="text" value="value" id="input">
+    <button id ="myButton">提交</button>
+
+    <p id="output"></p>
+    <script type="text/javascript">
+       
+        var x = Math.random();
+        x = Math.floor(x*=10)
+        console.log(x);
+
+        document.getElementById('myButton').onclick = function(){
+            if (document.getElementById("input").value == x)
+            {
+                document.getElementById("output").innerHTML = "猜中了 !";
+            }
+            else
+            {
+                document.getElementById("output").innerHTML = "猜錯了，數字是 " + x + " !";
+            }
+        }
+        
+ 
+       
+    //     var x = 2;
+
+    //     if (x == 1) {
+    //         alert("x 等於 1 !");
+    //     }else{
+    //         alert("x 不等於 1 !");
+    </script>
+</body>
+</html>

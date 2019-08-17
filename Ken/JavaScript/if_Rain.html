@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rain , YES OR NO</title>
+</head>
+<p>今天天氣有下雨嗎？（有 / 無）</p>
+<input type="text" id="input">
+<button id="myButton">提交</button>
+<body>
+
+    <script type="text/javascript">
+        document.getElementById('myButton').onclick = function () {
+
+            if (document.getElementById("input").value == "有") {
+                alert("今天下雨");
+            }
+            else {
+                alert("今天不下雨");
+            }
+        }
+    </script>
+</body>
+
+</html>
