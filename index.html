@@ -16,8 +16,9 @@
   <meta charset="utf-8">
   <link rel="icon" href="index/1.png">
   <title>Github : CHunYenc 首頁</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
     integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
@@ -36,10 +37,6 @@
       color: black;
     }
 
-    li {
-      margin: 10px;
-    }
-
     #me {
       border: 5px black solid;
       border-radius: 100%;
@@ -51,15 +48,11 @@
       margin: 5px;
     }
 
-    .imgcenter {
+    .blockcenter {
       display: block;
       margin-left: auto;
       margin-right: auto;
       width: 40%;
-    }
-
-    .dropdown {
-      padding: 10px;
     }
 
     .center {
@@ -68,6 +61,7 @@
 
     a {
       text-decoration: none;
+      color: black;
     }
 
     .button {
@@ -81,19 +75,26 @@
 
     .demo_img {
       margin: 5px;
-      padding: 10px;
-      border: 5px black solid;
-      border-radius: 10px;
       overflow: hidden;
-
+      border: 1px solid black;
     }
 
     .demoblock {
-      margin: 0px;
+      margin: 5px;
+      border: 5px black solid;
+      border-radius: 10px;
     }
 
     .card-body {
       margin: 30px 0 0 0;
+    }
+
+    h3 {
+      margin: 10px;
+    }
+
+    .jumbotron {
+      padding: 15px;
     }
   </style>
 
@@ -101,8 +102,7 @@
 
 <body>
   <!-- 導航列 -->
-  <!-- Image and text -->
-  <nav class="navbar navbar-expand-md navbar-light  bg-light">
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
     <a class="navbar-brand" href="index.html">
       <img src="index/1.png" width="30" height="30" class="d-inline-block align-top" alt="">
       CHunYenc
@@ -115,13 +115,15 @@
       <h1 class="card-title text-center">關於我</h1>
       <hr>
       <div class="row">
-        <img id="me"
-          src="https://instagram.ftpe8-3.fna.fbcdn.net/vp/475ec8c7d0556167665b7dd1074d77f7/5D60077C/t51.2885-19/s320x320/58468825_591112148075414_6131713191165558784_n.jpg?_nc_ht=instagram.ftpe8-3.fna.fbcdn.net"
-          alt="版主照片" width="200px;" height="200px;">
+        <img id="me" src="https://avatars3.githubusercontent.com/u/40264473?s=460&v=4" alt="版主照片" width="200px;"
+          height="200px;">
         <div class="col-12 col-lg-6">
           <div class="card">
             <div class="card-body">
-              <p class="card-text">我叫陳雋諺，<br>目前就讀於中華大學資訊管理系</p>
+              <ul>
+                <li>我叫陳雋諺</li>
+                <li>目前就讀於中華大學資訊管理系</li>
+              </ul>
               <p>Link img <i class="fa fa-arrow-down" aria-hidden="true"></i></p>
               <div class="icon">
                 <a href="https://www.facebook.com/Rchunyen"><i class="iconlink fab fa-facebook fa-2x"></i></a>
@@ -137,103 +139,71 @@
       </div>
     </div>
   </div>
-  <!-- ==================== Demo ========================== -->
-  <div class="container">
-    <div class="jumbotron text-center">
-      <h1>Demo</h1>
-      <hr>
-      <div class="row">
-        <div class="col demoblock">
-          <div class="demo_img">
-            <img src="/index/demo.jpg" alt="範例首頁(2018製)" height="300px;">
-          </div>
-          <div class="demo_link">
-            <a href="/index/demo_menu.html" target="_blank" rel="noopener noreferrer">
-              <button class="button" type="button">進入網頁</button>
-            </a>
-          </div>
-        </div>
-        <div class="col demoblock">
-          <div class="demo_img">
-            <img src="/index/universe.jpg" alt="地球轉動(2019製)" height="300px;">
-          </div>
-          <div class="demo_link">
-            <a href="/Ken/CSS/CSS_Project01/index.html" target="_blank" rel="noopener noreferrer">
-              <button class="button" type="button">進入網頁</button>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- ====================小技能區塊========================== -->
   <div class="container">
     <div class="jumbotron text-center">
-      <h1 class="display-5">小技能</h1>
       <hr>
-      <div class="row text-center">
-        <div class="col">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              C 語言
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="https://github.com/CHunYenc/C-Language">Github</a>
+      <h1>Github / 作業</h1>
+      <a href="https://github.com/CHunYenc/106-2_C-Language"><button type="button" class="btn btn-primary"
+          data-toggle="button" aria-pressed="false" autocomplete="off">
+          106-2 C 語言
+        </button></a>
+      <br><br>
+      <a href="https://github.com/CHunYenc/107-2_Python"><button type="button" class="btn btn-primary"
+          data-toggle="button" aria-pressed="false" autocomplete="off">
+          107-2 Python (Crawler)
+        </button></a>
+      <a href="https://github.com/CHunYenc/107-2_Java"><button type="button" class="btn btn-primary"
+          data-toggle="button" aria-pressed="false" autocomplete="off">
+          107-2 Java (JFrame)
+        </button></a>
+      <hr>
+      <h1 class="display-5">Github / 自學</h1>
+      <br>
+      <a href="https://github.com/CHunYenc/CHunYenc.github.io"><button type="button" class="btn btn-primary"
+          data-toggle="button" aria-pressed="false" autocomplete="off">
+          WEB (HTML JS CSS)
+        </button></a>
+      <div class="container">
+        <div class="jumbotron text-center">
+          <div class="row">
+            <div class="col demoblock">
+              <h3>107-1 HTML CSS JS</h3>
+              <hr>
+              <div class="demo_img">
+                <img src="/index/demo.jpg" alt="範例首頁(2018製)" height="200px;">
+              </div>
+              <div class="demo_link">
+                <a href="/index/demo_menu.html" target="_blank" rel="noopener noreferrer">
+                  <button class="button" type="button">進入網頁</button>
+                </a>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              HTML
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="https://github.com/CHunYanc/Web">Github</a>
-              <a class="dropdown-item" href="/index/demo_menu.html">Demo_Menu</a>
-              <a class="dropdown-item" href="/Ken/CSS/CSS_Project01/index.html">太陽、月球、地球軌道</a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Python
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="https://github.com/CHunYenc/Python">Github</a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Fix Phone
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item"
-                href="https://www.youtube.com/playlist?list=PLG6lqgDNXtsAwRfJ-_zTKnW8vTA6XVr9L">Youtube</a>
+            <div class="col demoblock">
+              <h3>星球的公轉自轉</h3>
+              <hr>
+              <div class="demo_img">
+                <img src="/index/universe.jpg" alt="地球轉動(2019製)" height="200px;">
+              </div>
+              <div class="demo_link">
+                <a href="/Ken/CSS/CSS_Project01/index.html" target="_blank" rel="noopener noreferrer">
+                  <button class="button" type="button">進入網頁</button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <hr>
+      <h1 class="display-5">Youtube / 不專業修手機 </h1>
+      <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+        點我
+      </button>
+      <hr>
     </div>
-    <!-- 擴充用
-            <div class="col">
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Fix Phone
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="https://www.youtube.com/playlist?list=PLG6lqgDNXtsAwRfJ-_zTKnW8vTA6XVr9L">Youtube</a>
-                    </div>
-                  </div>
-            </div>
-            -->
+
+
     <!-- 底部 -->
 
     <footer class="footer text-center">
@@ -253,13 +223,12 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
       crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"></script>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
         google_ad_client: "ca-pub-7050986665256364",
