@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ZH-Hans-TW">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      var rolling = 0;
+      function roll() {
+        setTimeout(function stoptoroll() { stop(); }, 2000);
+        rolling = setInterval(frame, 50);
+      }
+      function frame() {
+        var max = 0,min = 0;
+        var n1 = Math.floor(Math.random() * 6) + 1;
+        var n2 = Math.floor(Math.random() * 6) + 1;
+        var n3 = Math.floor(Math.random() * 6) + 1;
+        var n4 = Math.floor(Math.random() * 6) + 1;
+        document.getElementById("dice1").src = "img/dice" + n1 + ".png";
+        document.getElementById("dice2").src = "img/dice" + n2 + ".png";
+        document.getElementById("dice3").src = "img/dice" + n3 + ".png";
+        if(n1 > n2 && n1 > n3){max = n1;}
+        else if(n2>n1 && n2>n3){max = n1;}
+        else{max = n3;}
+
+        if(n1 < n2 && n1 < n3){min = n1;}
+        else if(n2<n1 && n2<n3){min = n2;}
+        else{min = n3}
+
+        var point_people = max*min;
+        document.getElementById("point_people").innerHTML = "得分: " + point_people ;
+      }
+      function stop() {
+        clearInterval(rolling);
+      }
+    </script>
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+    <div class="name">
+      <h2 align="center">B10610020 陳雋諺 製作</h2>
+    </div >
+    <hr>
+    <div class="pk">
+      <div class="people">
+        <h3>人類</h3>
+        <img id = "dice1" src = "img/dice1.png"></img>
+        <img id = "dice2" src = "img/dice1.png" />
+        <img id = "dice3" src = "img/dice1.png" />
+        <br>
+        <h1 id="point_people"></h1>
+      </div>
+    <div class="button">
+      <button onclick="roll()">Roll</button>
+    </div>
+    <div>
+      <h1 id="win"></h1>
+    </div>
+    <div class="button">
+    </div>
+  </body>
+</html>

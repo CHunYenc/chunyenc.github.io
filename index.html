@@ -33,8 +33,8 @@
       background: gray;
     }
 
-    h1 {
-      color: black;
+    .container {
+      padding: 0px;
     }
 
     #me {
@@ -61,11 +61,10 @@
 
     a {
       text-decoration: none;
-      color: black;
     }
 
     .button {
-      margin: 10px;
+      margin: 5px;
     }
 
     .demo_link {
@@ -119,18 +118,20 @@
           height="200px;">
         <div class="col-12 col-lg-6">
           <div class="card">
-            <div class="card-body">
-              <ul>
-                <li>我叫陳雋諺</li>
-                <li>目前就讀於中華大學資訊管理系</li>
-              </ul>
+            <div class="card-body center">
+              <p>我叫陳雋諺</p>
+              <p>目前就讀於中華大學資訊管理系</p>
               <p>Link img <i class="fa fa-arrow-down" aria-hidden="true"></i></p>
               <div class="icon">
-                <a href="https://www.facebook.com/Rchunyen"><i class="iconlink fab fa-facebook fa-2x"></i></a>
-                <a href="https://www.instagram.com/ryen.py"><i class="iconlink fab fa-instagram fa-2x"></i></a>
-                <a href="https://github.com/CHunYenc"><i class="iconlink fab fa-github-square fa-2x"></i></a>
-                <a href="https://cyenblo.blogspot.com/"><i class="iconlink fab fa-blogger fa-2x"></i></a>
-                <a href="https://www.youtube.com/channel/UCYEcZaWMAWLKsZ2PYLz6eew?view_as=subscriber"><i
+                <a href="https://www.facebook.com/Rchunyen" target="_blank"><i
+                    class="iconlink fab fa-facebook fa-2x"></i></a>
+                <a href="https://www.instagram.com/ryen.py" target="_blank"><i
+                    class="iconlink fab fa-instagram fa-2x"></i></a>
+                <a href="https://github.com/CHunYenc" target="_blank"><i
+                    class="iconlink fab fa-github-square fa-2x"></i></a>
+                <a href="https://cyenblo.blogspot.com/" target="_blank"><i
+                    class="iconlink fab fa-blogger fa-2x"></i></a>
+                <a href="https://www.youtube.com/channel/UCYEcZaWMAWLKsZ2PYLz6eew?view_as=subscriber" target="_blank"><i
                     class="iconlink fab fa-youtube-square fa-2x"></i></a>
               </div>
             </div>
@@ -143,76 +144,96 @@
   <!-- ====================小技能區塊========================== -->
   <div class="container">
     <div class="jumbotron text-center">
+      <div class="Github_SchoolWork">
+        <hr>
+        <h1>Github / 作業</h1>
+        <br>
+        <a href="https://github.com/CHunYenc/106-2_C-Language" target="_blank"><button type="button"
+            class="btn btn-primary linktxt">
+            106-2 C 語言
+          </button></a>
+        <a href="https://github.com/CHunYenc/107-2_Python" target="_blank"><button type="button"
+            class="btn btn-primary linktxt">
+            107 Python
+          </button></a>
+        <a href="https://github.com/CHunYenc/107-2_Java" target="_blank"><button type="button"
+            class="btn btn-primary linktxt">
+            107-2 Java (JFrame)
+          </button></a>
+      </div>
       <hr>
-      <h1>Github / 作業</h1>
-      <a href="https://github.com/CHunYenc/106-2_C-Language"><button type="button" class="btn btn-primary"
-          data-toggle="button" aria-pressed="false" autocomplete="off">
-          106-2 C 語言
-        </button></a>
-      <br><br>
-      <a href="https://github.com/CHunYenc/107-2_Python"><button type="button" class="btn btn-primary"
-          data-toggle="button" aria-pressed="false" autocomplete="off">
-          107-2 Python (Crawler)
-        </button></a>
-      <a href="https://github.com/CHunYenc/107-2_Java"><button type="button" class="btn btn-primary"
-          data-toggle="button" aria-pressed="false" autocomplete="off">
-          107-2 Java (JFrame)
-        </button></a>
-      <hr>
-      <h1 class="display-5">Github / 自學</h1>
-      <br>
-      <a href="https://github.com/CHunYenc/CHunYenc.github.io"><button type="button" class="btn btn-primary"
-          data-toggle="button" aria-pressed="false" autocomplete="off">
-          WEB (HTML JS CSS)
-        </button></a>
-      <div class="container">
-        <div class="jumbotron text-center">
-          <div class="row">
-            <div class="col demoblock">
-              <h3>107-1 HTML CSS JS</h3>
-              <hr>
-              <div class="demo_img">
-                <img src="/index/demo.jpg" alt="範例首頁(2018製)" height="200px;">
+      <div class="Github_MyStudy">
+        <h1>Github / 自學</h1>
+        <br>
+        <a href="https://github.com/CHunYenc/CHunYenc.github.io" target="_blank"><button type="button"
+            class="btn btn-primary linktxt">
+            WEB (HTML JS CSS)
+          </button></a>
+        <div class="container">
+          <div class="jumbotron text-center">
+            <div class="row">
+              <div class="col demoblock">
+                <h3>107-1 HTML CSS JS</h3>
+                <hr>
+                <div class="demo_img">
+                  <img src="/index/demo.jpg" alt="範例首頁(2018製)" height="200px;">
+                </div>
+                <div class="demo_link">
+                  <a href="/index/demo_menu.html" target="_blank" rel="noopener noreferrer">
+                    <button class="button" type="button" style="border: 1px solid black;">進入網頁</button>
+                  </a>
+                </div>
               </div>
-              <div class="demo_link">
-                <a href="/index/demo_menu.html" target="_blank" rel="noopener noreferrer">
-                  <button class="button" type="button">進入網頁</button>
-                </a>
-              </div>
-            </div>
-            <div class="col demoblock">
-              <h3>星球的公轉自轉</h3>
-              <hr>
-              <div class="demo_img">
-                <img src="/index/universe.jpg" alt="地球轉動(2019製)" height="200px;">
-              </div>
-              <div class="demo_link">
-                <a href="/Ken/CSS/CSS_Project01/index.html" target="_blank" rel="noopener noreferrer">
-                  <button class="button" type="button">進入網頁</button>
-                </a>
+              <div class="col demoblock">
+                <h3>星球的公轉自轉</h3>
+                <hr>
+                <div class="demo_img">
+                  <img src="/index/universe.jpg" alt="地球轉動(2019製)" height="200px;">
+                </div>
+                <div class="demo_link">
+                  <a href="/Ken/CSS/CSS_Project01/index.html" target="_blank" rel="noopener noreferrer">
+                    <button class="button" type="button" style="border: 1px solid black;">進入網頁</button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <hr>
-      <h1 class="display-5">Youtube / 不專業修手機 </h1>
-      <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-        點我
-      </button>
+      <div class="Github_YouTube">
+        <h1> YouTube </h1>
+        <p>放了兩部修手機影片 + 一些作業 + 一些遊戲</p>
+        <a href="https://www.youtube.com/channel/UCYEcZaWMAWLKsZ2PYLz6eew?view_as=subscriber" target="_blank"><button
+            type="button" class="btn btn-primary linktxt">GO!
+          </button></a>
+
+      </div>
       <hr>
+
     </div>
+
+    <!-- 好東西 
+    <div class="container">
+      <div class="jumbotron text-center">
+        <div class="Share_Good">
+          <hr>
+          <a href="">test</a>
+        </div>
+      </div>
+    </div>
+    -->
 
 
     <!-- 底部 -->
 
-    <footer class="footer text-center">
+    <footer class="footer text-center jumbotron">
       <a href="http://www.cutercounter.com/traditional-chinese-n/" target="_blank"><img
           src="http://www.cutercounter.com/hit.php?id=grnkppd&nd=7&style=27" border="0" alt="網頁計數器"></a>
       <!-- Start of CuterCounter Code -->
       <!-- End of CuterCounter Code -->
       <div class="text-center">
-        <p>使用 <a href="https://getbootstrap.com/">Bootstrap</a> , by <a
+        <p style="margin-bottom: 0px;">使用 <a href="https://getbootstrap.com/">Bootstrap</a> , by <a
             href="https://github.com/CHunYenc">@CHunYenc</a>.
         </p>
       </div>
