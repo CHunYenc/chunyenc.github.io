@@ -100,7 +100,7 @@ namespace hwk3_02
 
         static void Main(string[] args)
         {
-            int i,number,count=0;
+            int number,count=0;
             char co = 'o';
             do
             {
