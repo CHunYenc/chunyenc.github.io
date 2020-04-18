@@ -14,7 +14,7 @@
    -->
   <meta name="google-site-verification" content="t4FjIofmjhB_NKl7x1xcOSWsD--Ipx94G9P6-w_7Kmw" />
   <meta charset="utf-8">
-  <link rel="icon" href="index/1.png">
+  <link rel="icon" href="/Ken/demo_menu.html">
   <title>Github : CHunYenc 首頁</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,72 +28,34 @@
       height: 100%;
     }
 
-    body {
-      margin: 0;
-      background: gray;
+    /* 大頭貼圖片排版位置 */
+    .imgblock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .container {
-      padding: 0px;
-    }
-
+    /* 大頭貼框線及內容格式 */
     #me {
       border: 5px black solid;
       border-radius: 100%;
-      margin: auto;
-      padding: 5px;
+      margin: 0 auto;
+
     }
 
-    .iconlink {
-      margin: 5px;
-    }
 
-    .blockcenter {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 40%;
-    }
-
+    /* 置中文字 */
     .center {
       text-align: center;
     }
 
+    /* 清除連結下方 底線*/
     a {
       text-decoration: none;
     }
 
-    .button {
-      margin: 5px;
-    }
-
-    .demo_link {
-      margin: 10px;
-      padding: 0 20px;
-    }
-
-    .demo_img {
-      margin: 5px;
-      overflow: hidden;
-      border: 1px solid black;
-    }
-
-    .demoblock {
-      margin: 5px;
-      border: 5px black solid;
-      border-radius: 10px;
-    }
-
-    .card-body {
-      margin: 30px 0 0 0;
-    }
-
-    h3 {
-      margin: 10px;
-    }
-
-    .jumbotron {
-      padding: 15px;
+    .my_icon_link {
+      margin: 0 10px 0 10px;
     }
   </style>
 
@@ -103,51 +65,66 @@
   <!-- 導航列 -->
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <a class="navbar-brand" href="index.html">
-      <img src="index/1.png" width="30" height="30" class="d-inline-block align-top" alt="">
-      CHunYenc
+      <img src="/index/1.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      CHunYenc.io
     </a>
+
   </nav>
-  <!-- 自我介紹 -->
+  <!-- 前言、介紹 -->
   <div class="container">
-    <br>
     <div class="jumbotron">
-      <h1 class="card-title text-center">關於我</h1>
-      <hr>
       <div class="row">
-        <img id="me" src="https://avatars3.githubusercontent.com/u/40264473?s=460&v=4" alt="版主照片" width="200px;"
-          height="200px;">
-        <div class="col-12 col-lg-6">
-          <div class="card">
-            <div class="card-body center">
-              <p>我叫陳雋諺</p>
-              <p>目前就讀於中華大學資訊管理系</p>
-              <p>Link img <i class="fa fa-arrow-down" aria-hidden="true"></i></p>
-              <div class="icon">
-                <a href="https://www.facebook.com/Rchunyen" target="_blank"><i
-                    class="iconlink fab fa-facebook fa-2x"></i></a>
-                <a href="https://www.instagram.com/ryen.py" target="_blank"><i
-                    class="iconlink fab fa-instagram fa-2x"></i></a>
-                <a href="https://github.com/CHunYenc" target="_blank"><i
-                    class="iconlink fab fa-github-square fa-2x"></i></a>
-                <a href="https://cyenblo.blogspot.com/" target="_blank"><i
-                    class="iconlink fab fa-blogger fa-2x"></i></a>
-                <a href="https://www.youtube.com/channel/UCYEcZaWMAWLKsZ2PYLz6eew?view_as=subscriber" target="_blank"><i
-                    class="iconlink fab fa-youtube-square fa-2x"></i></a>
-              </div>
-            </div>
-          </div>
+        <div class="col-4 card-left imgblock">
+          <img id="me" src="https://avatars3.githubusercontent.com/u/40264473?s=460&v=4" alt="版主照片" width="200px;" />
+        </div>
+        <div class="col-8 card-right">
+          <h1 class="display-4">歡迎來到我的網頁</h1>
+          <hr>
+          <p class="lead">我叫陳雋諺，目前就讀於中華大學資訊管理系大三。</p>
+          <p class="lead">來自金門，編寫程式的職業是從我小到現在的目標。</p>
+          <p class="lead">下方小圖示分別是我的 Gmail , Facebook , Github , Youtube</p>
+          <a class="my_icon_link" href="mailto:b10610020@g.chu.edu.tw"><i
+              class="iconlink far fa-envelope fa-2x"></i></a>
+          <a class="my_icon_link" href="https://www.facebook.com/Rchunyen" target="_blank"><i
+              class="iconlink fab fa-facebook fa-2x"></i></a>
+          <a class="my_icon_link" href="https://github.com/CHunYenc" target="_blank"><i
+              class="iconlink fab fa-github-square fa-2x"></i></a>
+          <a class="my_icon_link" href="https://www.youtube.com/channel/UCYEcZaWMAWLKsZ2PYLz6eew?view_as=subscriber"
+            target="_blank"><i class="iconlink fab fa-youtube-square fa-2x"></i></a>
         </div>
       </div>
     </div>
   </div>
-
   <!-- ====================小技能區塊========================== -->
   <div class="container">
-    <div class="jumbotron text-center">
-      <div class="Github_SchoolWork">
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-4">我的 Github 快速連結</h1>
         <hr>
-        <h1>Github / 作業</h1>
-        <br>
+        <div class="Ureadme">
+          <p class="lead">含有 README</p>
+          <a href="https://github.com/CHunYenc/CHunYenc.github.io" target="_blank"><button type="button"
+              class="btn btn-primary linktxt">
+              WEB (HTML JS CSS)
+            </button></a>
+          <a href="https://github.com/CHunYenc/107-2_Java" target="_blank"><button type="button"
+              class="btn btn-primary linktxt">
+              107-2 Java (JFrame)
+            </button></a>
+          <a href="https://github.com/CHunYenc/108_1_R" target="_blank"><button type="button"
+              class="btn btn-primary linktxt">
+              108-1 R 語言
+            </button></a>
+          <a href="https://github.com/CHunYenc/108-2_androidstudio" target="_blank"><button type="button"
+              class="btn btn-primary linktxt">
+              108-2 AndroidStudio
+            </button></a>
+        </div>
+        <hr>
+        <div class="Nreadme">
+          <p class="lead">沒有 README</p>
+        </div>
+
         <a href="https://github.com/CHunYenc/106-2_C-Language" target="_blank"><button type="button"
             class="btn btn-primary linktxt">
             106-2 C 語言
@@ -156,60 +133,66 @@
             class="btn btn-primary linktxt">
             107 Python
           </button></a>
-        <a href="https://github.com/CHunYenc/107-2_Java" target="_blank"><button type="button"
-            class="btn btn-primary linktxt">
-            107-2 Java (JFrame)
-          </button></a>
       </div>
-      <hr>
-      <div class="Github_MyStudy">
-        <h1>Github / 自學</h1>
-        <br>
-        <a href="https://github.com/CHunYenc/CHunYenc.github.io" target="_blank"><button type="button"
-            class="btn btn-primary linktxt">
-            WEB (HTML JS CSS)
-          </button></a>
-        <div class="jumbotron text-center">
-          <div class="row">
-            <div class="col demoblock">
-              <h3>107-1 HTML CSS JS</h3>
-              <hr>
-              <div class="demo_img">
-                <img src="/index/demo.jpg" alt="範例首頁(2018製)" height="200px;">
-              </div>
-              <div class="demo_link">
-                <a href="/index/demo_menu.html" target="_blank" rel="noopener noreferrer">
-                  <button class="button" type="button" style="border: 1px solid black;">進入網頁</button>
-                </a>
-              </div>
+    </div>
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-4">網頁設計</h1>
+        <hr>
+        <div class="card-deck">
+          <div class="card">
+            <img src="/index/universe.jpg" class="card-img-top" alt="地球轉動(2019製)" height="300px">
+            <div class="card-body">
+              <h5 class="card-title">Udemy 課程紀錄</h5>
+              <p class="card-text">一開始進入網頁設計的課程。</p>
+              <a href="/Ken/demo_menu.html" target="_blank" rel="noopener noreferrer">
+                <button class="btn" type="button" style="border: 1px solid black;">進入網頁</button>
+              </a>
             </div>
-
-            <div class="col demoblock">
-              <h3>星球的公轉自轉</h3>
-              <hr>
-
-              <div class="demo_img">
-                <img src="/index/universe.jpg" alt="地球轉動(2019製)" height="200px;">
-              </div>
-
+          </div>
+          <div class="card">
+            <img src="/index/demo.jpg" class="card-img-top" alt="範例首頁(2018製)" height="300px">
+            <div class="card-body">
+              <h5 class="card-title">107-1 HTML CSS JS</h5>
+              <p class="card-text">學校線上課程製作的網頁 , 連結在下方
+              </p>
               <div class="demo_link">
-                <a href="/Ken/CSS/CSS_Project01/index.html" target="_blank" rel="noopener noreferrer">
-                  <button class="button" type="button" style="border: 1px solid black;">進入網頁</button>
+                <a href="/Lesson_Soeasy/demo_menu.html" target="_blank" rel="noopener noreferrer">
+                  <button class="btn" type="button" style="border: 1px solid black;">進入網頁</button>
                 </a>
               </div>
             </div>
           </div>
-          <hr>
-          <div class="Github_YouTube">
-            <h1> YouTube </h1>
-            <p>放了兩部修手機影片 + 一些作業 + 一些遊戲</p>
-            <a href="https://www.youtube.com/channel/UCYEcZaWMAWLKsZ2PYLz6eew?view_as=subscriber"
-              target="_blank"><button type="button" class="btn btn-primary linktxt">GO!
-              </button></a>
+        </div>
+        <br>
+      </div>
+      <div class="container">
+        <div class="card-deck">
+          <div class="card">
+            <img src="/index/universe.jpg" class="card-img-top" alt="地球轉動(2019製)" height="300px">
+            <div class="card-body">
+              <h5 class="card-title">Udemy 課程紀錄</h5>
+              <p class="card-text">一開始進入網頁設計的課程。</p>
+              <a href="/Ken/demo_menu.html" target="_blank" rel="noopener noreferrer">
+                <button class="btn" type="button" style="border: 1px solid black;">進入網頁</button>
+              </a>
+            </div>
           </div>
         </div>
       </div>
+      <br>
     </div>
+  </div>
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4">YouTube</h1>
+      <hr>
+      <p class="lead">放了兩部修手機影片 + 一些作業 + 一些遊戲</p>
+      <a href="https://www.youtube.com/channel/UCYEcZaWMAWLKsZ2PYLz6eew?view_as=subscriber" target="_blank"><button
+          type="button" class="btn btn-primary linktxt">GO!
+        </button></a>
+    </div>
+  </div>
   </div>
 
   <!-- 好東西 
@@ -225,31 +208,31 @@
 
 
   <!-- 底部 -->
-<div class="container">
-  <footer class="footer text-center jumbotron">
-    <a href="http://www.cutercounter.com/traditional-chinese-n/" target="_blank"><img
-        src="http://www.cutercounter.com/hit.php?id=grnkppd&nd=7&style=27" border="0" alt="網頁計數器"></a>
-    <!-- Start of CuterCounter Code -->
-    <!-- End of CuterCounter Code -->
-    <div class="text-center">
-      <p style="margin-bottom: 0px;">使用 <a href="https://getbootstrap.com/">Bootstrap</a> , by <a
-          href="https://github.com/CHunYenc">@CHunYenc</a>.
-      </p>
-    </div>
-  </footer>
+  <div class="container">
+    <footer class="footer text-center jumbotron">
+      <a href="http://www.cutercounter.com/traditional-chinese-n/" target="_blank"><img
+          src="http://www.cutercounter.com/hit.php?id=grnkppd&nd=7&style=27" border="0" alt="網頁計數器"></a>
+      <!-- Start of CuterCounter Code -->
+      <!-- End of CuterCounter Code -->
+      <div class="text-center">
+        <p style="margin-bottom: 0px;">使用 <a href="https://getbootstrap.com/">Bootstrap</a> , by <a
+            href="https://github.com/CHunYenc">@CHunYenc</a>.
+        </p>
+      </div>
+    </footer>
   </div>
 
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({
       google_ad_client: "ca-pub-7050986665256364",
