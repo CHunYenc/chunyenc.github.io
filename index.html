@@ -24,10 +24,6 @@
 
   <!-- Bootstrap core CSS -->
   <style type="text/css">
-    html {
-      height: 100%;
-    }
-
     /* 大頭貼圖片排版位置 */
     .imgblock {
       display: flex;
@@ -57,13 +53,18 @@
     .my_icon_link {
       margin: 0 10px 0 10px;
     }
+
+    footer {
+      clear: both;
+      position: relative;
+    }
   </style>
 
 </head>
 
 <body>
   <!-- 導航列 -->
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
+  <nav id="id_header" class="navbar navbar-expand-md navbar-light bg-light">
     <a class="navbar-brand" href="index.html">
       <img src="/index/1.png" width="30" height="30" class="d-inline-block align-top" alt="">
       CHunYenc.io
@@ -71,8 +72,8 @@
 
   </nav>
   <!-- 前言、介紹 -->
-  <div class="container">
-    <div class="jumbotron">
+  <div id="id_content" class="container">
+    <div class="jumbotron ">
       <div class="row">
         <div class="col-4 card-left imgblock">
           <img id="me" src="https://avatars3.githubusercontent.com/u/40264473?s=460&v=4" alt="版主照片" width="200px;" />
@@ -99,10 +100,18 @@
   <div class="container">
     <div class="jumbotron">
       <div class="container">
-        <h1 class="display-4">我的 Github 快速連結</h1>
+        <h1 class="display-4">我的 小東西 快速連結</h1>
+        <hr>
+        <div class="Heroku">
+          <p class="lead">目前在正在建造 ...</p>
+          <a href="https://wenpopo.herokuapp.com/" target="_blank"><button type="button"
+              class="btn btn-primary linktxt">
+              類 ERP 發票
+            </button></a>
+        </div>
         <hr>
         <div class="Ureadme">
-          <p class="lead">含有 README</p>
+          <p class="lead">含有 Github README</p>
           <a href="https://github.com/CHunYenc/CHunYenc.github.io" target="_blank"><button type="button"
               class="btn btn-primary linktxt">
               WEB (HTML JS CSS)
@@ -120,19 +129,6 @@
               108-2 AndroidStudio
             </button></a>
         </div>
-        <hr>
-        <div class="Nreadme">
-          <p class="lead">沒有 README</p>
-        </div>
-
-        <a href="https://github.com/CHunYenc/106-2_C-Language" target="_blank"><button type="button"
-            class="btn btn-primary linktxt">
-            106-2 C 語言
-          </button></a>
-        <a href="https://github.com/CHunYenc/107-2_Python" target="_blank"><button type="button"
-            class="btn btn-primary linktxt">
-            107 Python
-          </button></a>
       </div>
     </div>
     <div class="jumbotron">
@@ -164,35 +160,18 @@
             </div>
           </div>
         </div>
-        <br>
       </div>
+    </div>
+    <div class="jumbotron">
       <div class="container">
-        <div class="card-deck">
-          <div class="card">
-            <img src="/index/universe.jpg" class="card-img-top" alt="地球轉動(2019製)" height="300px">
-            <div class="card-body">
-              <h5 class="card-title">Udemy 課程紀錄</h5>
-              <p class="card-text">一開始進入網頁設計的課程。</p>
-              <a href="/Ken/demo_menu.html" target="_blank" rel="noopener noreferrer">
-                <button class="btn" type="button" style="border: 1px solid black;">進入網頁</button>
-              </a>
-            </div>
-          </div>
-        </div>
+        <h1 class="display-4">YouTube</h1>
+        <hr>
+        <p class="lead">放了兩部修手機影片 + 一些作業 + 一些遊戲</p>
+        <a href="https://www.youtube.com/channel/UCYEcZaWMAWLKsZ2PYLz6eew?view_as=subscriber" target="_blank"><button
+            type="button" class="btn btn-primary linktxt">GO!
+          </button></a>
       </div>
-      <br>
     </div>
-  </div>
-  <div class="jumbotron">
-    <div class="container">
-      <h1 class="display-4">YouTube</h1>
-      <hr>
-      <p class="lead">放了兩部修手機影片 + 一些作業 + 一些遊戲</p>
-      <a href="https://www.youtube.com/channel/UCYEcZaWMAWLKsZ2PYLz6eew?view_as=subscriber" target="_blank"><button
-          type="button" class="btn btn-primary linktxt">GO!
-        </button></a>
-    </div>
-  </div>
   </div>
 
   <!-- 好東西 
@@ -205,22 +184,18 @@
       </div>
     </div>
     -->
-
-
   <!-- 底部 -->
-  <div class="container">
-    <footer class="footer text-center jumbotron">
-      <a href="http://www.cutercounter.com/traditional-chinese-n/" target="_blank"><img
-          src="http://www.cutercounter.com/hit.php?id=grnkppd&nd=7&style=27" border="0" alt="網頁計數器"></a>
-      <!-- Start of CuterCounter Code -->
-      <!-- End of CuterCounter Code -->
-      <div class="text-center">
-        <p style="margin-bottom: 0px;">使用 <a href="https://getbootstrap.com/">Bootstrap</a> , by <a
-            href="https://github.com/CHunYenc">@CHunYenc</a>.
-        </p>
-      </div>
-    </footer>
-  </div>
+  <footer id="id_footer" class="footer text-center">
+    <a href="http://www.cutercounter.com/traditional-chinese-n/" target="_blank"><img
+        src="http://www.cutercounter.com/hit.php?id=grnkppd&nd=7&style=27" border="0" alt="網頁計數器"></a>
+    <!-- Start of CuterCounter Code -->
+    <!-- End of CuterCounter Code -->
+    <div class="text-center">
+      <p style="margin-bottom: 0px;">使用 <a href="https://getbootstrap.com/">Bootstrap</a> , by <a
+          href="https://github.com/CHunYenc">@CHunYenc</a>.
+      </p>
+    </div>
+  </footer>
 
 
 
