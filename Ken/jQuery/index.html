@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learn jQuery</title>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+    <style>
+        #circle {
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+            border-radius: 50%;
+        }
+
+        .square {
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="circle">
+
+    </div>
+    <button id="b1">消退</button>
+    <button id="b2">顯示</button>
+    <button id="b3">回復</button>
+
+    <script type="text/javascript">
+        $("#b1").click(
+            () => {
+                $('#circle').fadeOut(1000);
+            }
+        );
+        $("#b2").click(
+            () => {
+                $('#circle').fadeIn();
+            }
+        );
+        $("#circle").click(
+            () => {
+                $('#circle').animate({
+                    width: "500px",
+                    height: "500px",
+                    marginLeft: "300px",
+                }, 1000);
+            }
+        );
+        $('#b3').click(
+            () => {
+                $('#circle').animate({
+                    width: "200px",
+                    height: "200px",
+                    marginLeft: "0px",
+                }, 1000);
+            });
+    </script>
+</body>
+
+</html>

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Circle</title>
     <style>
-        #circle{
+        #circle {
             width: 300px;
             height: 300px;
             background: red;
@@ -15,16 +16,21 @@
         }
     </style>
 </head>
+
 <body>
     <div id="circle"></div>
-
-
+    <button id="bt" type="button">Show</button>
     <script type="text/javascript">
-    var myVariable = 'circle';
-    
-    document.getElementById('circle').onclick = function(){
-        document.getElementById('circle').style.display = "none";
-    }
+        var myVariable = 'circle';
+
+        document.getElementById('circle').onclick = function () {
+            document.getElementById('circle').style.display = "none";
+        }
+
+        document.getElementById('bt').onclick = function () {
+            document.getElementById('circle').style.display = "block";
+        }
     </script>
 </body>
+
 </html>
