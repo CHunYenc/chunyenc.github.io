@@ -1,0 +1,40 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+nav {
+    display: flex;
+    font-family: 'Chelsea Market', sans-serif;
+    /* https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content */
+    justify-content: space-around;
+    align-items: center;
+    min-height: 20vh;
+    background-color: yellowgreen;
+}
+
+.logo {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 20px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-size: 16px;
+}
