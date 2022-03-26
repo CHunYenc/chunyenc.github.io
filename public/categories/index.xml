@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on CHUN-YEN&#39;s BLOG</title>
+    <link>https://chunyenc.github.io/categories/</link>
+    <description>Recent content in Categories on CHUN-YEN&#39;s BLOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <lastBuildDate>Mon, 10 Aug 2020 01:00:00 +0200</lastBuildDate><atom:link href="https://chunyenc.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo</title>
+      <link>https://chunyenc.github.io/categories/hugo/</link>
+      <pubDate>Mon, 10 Aug 2020 01:00:00 +0200</pubDate>
+      
+      <guid>https://chunyenc.github.io/categories/hugo/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
