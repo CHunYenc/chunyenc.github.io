@@ -238,7 +238,7 @@
     <section class="article-content">
     
     
-    <h2 id="更換成-hugo-的原因">更換成 Hugo 的原因</h2>
+    <h1 id="更換成-hugo-的原因">更換成 Hugo 的原因</h1>
 <p>自己本身是有使用 Blogger，主要認為有下面幾個問題。</p>
 <ol>
 <li>垃圾留言</li>
@@ -251,7 +251,7 @@
 </li>
 <li>不能使用 markdown 方式來撰寫你想要的文章 ***</li>
 </ol>
-<h2 id="更換過程">更換過程</h2>
+<h1 id="更換過程">更換過程</h1>
 <p>我認為官方的文件講得很清楚，我也是照者下面的連結馬上建立一個 quickstart 資料夾。</p>
 <p><a class="link" href="https://gohugo.io/getting-started/quick-start/"  target="_blank" rel="noopener"
     >https://gohugo.io/getting-started/quick-start/</a></p>
@@ -260,21 +260,28 @@
 <p>所以現在看到的這個主題呢，是從官方(下面連結)找到的。</p>
 <p><a class="link" href="https://themes.gohugo.io/"  target="_blank" rel="noopener"
     >https://themes.gohugo.io/</a></p>
-<h2 id="我選的背景主題">我選的背景主題</h2>
+<h1 id="我選的背景主題">我選的背景主題</h1>
 <p><a class="link" href="https://themes.gohugo.io/themes/hugo-theme-stack/"  target="_blank" rel="noopener"
     >https://themes.gohugo.io/themes/hugo-theme-stack/</a></p>
 <p>底下有中文文檔，不過我還是中英文互相看，英文的文件我認為比較新。</p>
 <p>建議可以直接看英文啦，反正就看一下 <code>config.yml</code> 怎麼設定。</p>
-<h1 id="架設環境">架設環境</h1>
-<p>主要有三個地方需要注意，以下說明一下。</p>
-<p>Reference 都有我參考的文章，參考第 2 點建立的 main.yml 是無法執行的。(我的 branch gh-pages 一直沒有建立出 HTML)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">config.yml 底下有檔案連結可以過去參考看看。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="架設環境">架設環境</h1>
+<p>主要有三個地方需要注意，以下是說明。</p>
+<p>Reference 都有我參考的文章，關於 Reference 第 2 點的參考文章建立的 main.yml 是無法執行的。(我的 branch(gh-pages) 一直沒有建立出 HTML)</p>
 <ol>
 <li>
 <p>.github/workflows/main.yml</p>
 <ul>
 <li>檔案連結： <a class="link" href="https://github.com/CHunYenc/chunyenc.github.io/blob/master/.github/workflows/main.yml"  target="_blank" rel="noopener"
     >https://github.com/CHunYenc/chunyenc.github.io/blob/master/.github/workflows/main.yml</a></li>
-<li>如果 Google 「Github Hugo」都會發現大家有分享不同的 main.yml 檔，我下面會分享我的（Reference 第3點）。</li>
 </ul>
 </li>
 <li>
@@ -282,15 +289,30 @@
 <ul>
 <li>檔案連結： <a class="link" href="https://github.com/CHunYenc/chunyenc.github.io/blob/master/config.yml"  target="_blank" rel="noopener"
     >https://github.com/CHunYenc/chunyenc.github.io/blob/master/config.yml</a></li>
-<li>在 config.yml 加入 publishDir: docs, 可以讓你每次下 <code>hugo -t stack</code> 都能夠生成 HTML 檔案到 docs 資料夾</li>
+<li>在 config.yml 加入 publishDir: docs, 可以讓你每次下 <code>hugo -t stack</code> 都能夠生成 HTML 檔案到 docs 資料夾, 預設是到 public 資料夾</li>
 </ul>
 </li>
 <li>
-<p>docs 資料夾</p>
+<p>docs/</p>
 </li>
 </ol>
-<p>如果你有看到第一篇文章使用兩個 repository, 一個是主要去紀錄尚未生成的檔案, 一個是生成的靜態檔案(就是指 HTML 放的位置)。</p>
-<p>以下是我準備將網站上線的過程，但是我們還需要做一些事前準備</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">如果你有看到 Reference 第 1 點的參考文章使用兩個 repository, 
+</span></span><span class="line"><span class="cl">一個是主要去紀錄尚未生成的檔案, 
+</span></span><span class="line"><span class="cl">一個是生成的靜態檔案(就是指 HTML 放的位置)。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">但是我不用，我只需要一個 repository !!!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以下是我準備將網站上線的過程，但是要注意你的上面前兩點都已經設定好 💪</p>
 <p>👉 請確定已經將文章內容打好並且儲存後再執行</p>
 <p>👉 請確定已經將文章內容打好並且儲存後再執行。</p>
 <p>👉 請確定已經將文章內容打好並且儲存後再執行</p>
@@ -476,6 +498,8 @@
     <li><a href="#更換成-hugo-的原因">更換成 Hugo 的原因</a></li>
     <li><a href="#更換過程">更換過程</a></li>
     <li><a href="#我選的背景主題">我選的背景主題</a></li>
+    <li><a href="#架設環境">架設環境</a></li>
+    <li><a href="#reference">Reference</a></li>
   </ol>
 </nav>
         </div>

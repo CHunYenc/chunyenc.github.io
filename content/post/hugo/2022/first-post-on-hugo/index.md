@@ -12,7 +12,7 @@ comments: False
 ---
 
 
-## 更換成 Hugo 的原因
+# 更換成 Hugo 的原因
 
 自己本身是有使用 Blogger，主要認為有下面幾個問題。
 
@@ -23,7 +23,7 @@ comments: False
    - 不想一直預覽切來切去。
 4. 不能使用 markdown 方式來撰寫你想要的文章 ***
 
-## 更換過程
+# 更換過程
 
 我認為官方的文件講得很清楚，我也是照者下面的連結馬上建立一個 quickstart 資料夾。
 
@@ -37,7 +37,7 @@ https://gohugo.io/getting-started/quick-start/
 
 https://themes.gohugo.io/
 
-## 我選的背景主題
+# 我選的背景主題
 
 https://themes.gohugo.io/themes/hugo-theme-stack/
 
@@ -45,25 +45,34 @@ https://themes.gohugo.io/themes/hugo-theme-stack/
 
 建議可以直接看英文啦，反正就看一下 ```config.yml``` 怎麼設定。
 
+```
+config.yml 底下有檔案連結可以過去參考看看。
+```
+
 # 架設環境
 
-主要有三個地方需要注意，以下說明一下。
+主要有三個地方需要注意，以下是說明。
 
-Reference 都有我參考的文章，參考第 2 點建立的 main.yml 是無法執行的。(我的 branch gh-pages 一直沒有建立出 HTML)
+Reference 都有我參考的文章，關於 Reference 第 2 點的參考文章建立的 main.yml 是無法執行的。(我的 branch(gh-pages) 一直沒有建立出 HTML)
 
 1. .github/workflows/main.yml
    - 檔案連結： https://github.com/CHunYenc/chunyenc.github.io/blob/master/.github/workflows/main.yml
-   - 如果 Google 「Github Hugo」都會發現大家有分享不同的 main.yml 檔，我下面會分享我的（Reference 第3點）。
 
 2. config.yml
    - 檔案連結： https://github.com/CHunYenc/chunyenc.github.io/blob/master/config.yml
-   - 在 config.yml 加入 publishDir: docs, 可以讓你每次下 ```hugo -t stack``` 都能夠生成 HTML 檔案到 docs 資料夾
+   - 在 config.yml 加入 publishDir: docs, 可以讓你每次下 ```hugo -t stack``` 都能夠生成 HTML 檔案到 docs 資料夾, 預設是到 public 資料夾
 
-3. docs 資料夾
+3. docs/
 
-如果你有看到第一篇文章使用兩個 repository, 一個是主要去紀錄尚未生成的檔案, 一個是生成的靜態檔案(就是指 HTML 放的位置)。
+```
+如果你有看到 Reference 第 1 點的參考文章使用兩個 repository, 
+一個是主要去紀錄尚未生成的檔案, 
+一個是生成的靜態檔案(就是指 HTML 放的位置)。
 
-以下是我準備將網站上線的過程，但是我們還需要做一些事前準備
+但是我不用，我只需要一個 repository !!!
+```
+
+以下是我準備將網站上線的過程，但是要注意你的上面前兩點都已經設定好 💪
 
 👉 請確定已經將文章內容打好並且儲存後再執行
 
