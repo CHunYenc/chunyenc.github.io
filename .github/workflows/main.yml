@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master  # Set a branch to deploy
-  pull_request:
 
 jobs:
   deploy:
@@ -19,7 +18,7 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
-          # extended: true
+          extended: true
 
       - name: Build
         run: hugo --minify
@@ -29,4 +28,5 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.HUGO_DEPLOY_TOKEN }}
-          publish_dir: ./public
+          PUBLISH_BRANCH: gh-pages  # 推送到 gh-pages 分支
+          PUBLISH_DIR: ./public     # hugo 生成的目錄
