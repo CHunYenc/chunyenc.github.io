@@ -265,12 +265,60 @@
     >https://themes.gohugo.io/themes/hugo-theme-stack/</a></p>
 <p>底下有中文文檔，不過我還是中英文互相看，英文的文件我認為比較新。</p>
 <p>建議可以直接看英文啦，反正就看一下 <code>config.yml</code> 怎麼設定。</p>
-<h1 id="todo">TODO</h1>
-<p>XD 我先把架設到 Github，等等再補充內容 ！</p>
+<h1 id="架設環境">架設環境</h1>
+<p>主要有三個地方需要注意，以下說明一下。</p>
+<p>Reference 都有我參考的文章，參考第 2 點建立的 main.yml 是無法執行的。(我的 branch gh-pages 一直沒有建立出 HTML)</p>
+<ol>
+<li>
+<p>.github/workflows/main.yml</p>
+<ul>
+<li>檔案連結： <a class="link" href="https://github.com/CHunYenc/chunyenc.github.io/blob/master/.github/workflows/main.yml"  target="_blank" rel="noopener"
+    >https://github.com/CHunYenc/chunyenc.github.io/blob/master/.github/workflows/main.yml</a></li>
+<li>如果 Google 「Github Hugo」都會發現大家有分享不同的 main.yml 檔，我下面會分享我的（Reference 第3點）。</li>
+</ul>
+</li>
+<li>
+<p>config.yml</p>
+<ul>
+<li>檔案連結： <a class="link" href="https://github.com/CHunYenc/chunyenc.github.io/blob/master/config.yml"  target="_blank" rel="noopener"
+    >https://github.com/CHunYenc/chunyenc.github.io/blob/master/config.yml</a></li>
+<li>在 config.yml 加入 publishDir: docs, 可以讓你每次下 <code>hugo -t stack</code> 都能夠生成 HTML 檔案到 docs 資料夾</li>
+</ul>
+</li>
+<li>
+<p>docs 資料夾</p>
+</li>
+</ol>
+<p>如果你有看到第一篇文章使用兩個 repository, 一個是主要去紀錄尚未生成的檔案, 一個是生成的靜態檔案(就是指 HTML 放的位置)。</p>
+<p>以下是我準備將網站上線的過程，但是我們還需要做一些事前準備</p>
+<p>👉 請確定已經將文章內容打好並且儲存後再執行</p>
+<p>👉 請確定已經將文章內容打好並且儲存後再執行。</p>
+<p>👉 請確定已經將文章內容打好並且儲存後再執行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">hugo -t stack 
+</span></span><span class="line"><span class="cl"># 這時候會發現我們的 docs 資料夾內會有很多靜態檔案
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m &#34;feat: ...&#34;
+</span></span><span class="line"><span class="cl">git push
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>這樣你等一下就可以在你的網頁上看到了！</p>
 <h1 id="reference">Reference</h1>
 <ol>
 <li><a class="link" href="https://medium.com/@chswei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40"  target="_blank" rel="noopener"
     >https://medium.com/@chswei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40</a></li>
+<li><a class="link" href="https://yurepo.tw/2021/03/%E5%A6%82%E4%BD%95%E5%B0%87hugo%E9%83%A8%E8%90%BD%E6%A0%BC%E9%83%A8%E7%BD%B2%E5%88%B0github%E4%B8%8A/"  target="_blank" rel="noopener"
+    >https://yurepo.tw/2021/03/%E5%A6%82%E4%BD%95%E5%B0%87hugo%E9%83%A8%E8%90%BD%E6%A0%BC%E9%83%A8%E7%BD%B2%E5%88%B0github%E4%B8%8A/</a></li>
 </ol>
 
 </section>
