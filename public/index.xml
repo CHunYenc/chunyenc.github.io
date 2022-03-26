@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>CHUN-YEN&#39;s BLOG</title>
+        <link>https://chunyenc.github.io/</link>
+        <description>Recent content on CHUN-YEN&#39;s BLOG</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Mon, 10 Aug 2020 01:00:00 +0200</lastBuildDate><atom:link href="https://chunyenc.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>我的第一篇 HUGO 架設 BLOG 經驗分享</title>
+        <link>https://chunyenc.github.io/p/hugo-blog-online/</link>
+        <pubDate>Mon, 10 Aug 2020 01:00:00 +0200</pubDate>
+        
+        <guid>https://chunyenc.github.io/p/hugo-blog-online/</guid>
+        <description>&lt;img src="https://chunyenc.github.io/p/hugo-blog-online/featured.png" alt="Featured image of post 我的第一篇 HUGO 架設 BLOG 經驗分享" /&gt;&lt;h2 id=&#34;更換成-hugo-的原因&#34;&gt;更換成 Hugo 的原因&lt;/h2&gt;
+&lt;p&gt;自己本身是有使用 Blogger，主要認為有下面幾個問題。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;垃圾留言&lt;/li&gt;
+&lt;li&gt;介面很醜&lt;/li&gt;
+&lt;li&gt;發文介面使用不易
+&lt;ul&gt;
+&lt;li&gt;每次發文之後都會跑版，所以果斷使用一個自己架設的。&lt;/li&gt;
+&lt;li&gt;不想一直預覽切來切去。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;不能使用 markdown 方式來撰寫你想要的文章 ***&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;更換過程&#34;&gt;更換過程&lt;/h2&gt;
+&lt;p&gt;我認為官方的文件講得很清楚，我也是照者下面的連結馬上建立一個 quickstart 資料夾。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/getting-started/quick-start/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gohugo.io/getting-started/quick-start/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;然後使用一個官方預設的 Theme (佈景主題?)&lt;/p&gt;
+&lt;p&gt;但我自己設定時候講想說「好醜」、「這什麼鬼主題」XD&lt;/p&gt;
+&lt;p&gt;所以現在看到的這個主題呢，是從官方(下面連結)找到的。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://themes.gohugo.io/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;我選的背景主題&#34;&gt;我選的背景主題&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/themes/hugo-theme-stack/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://themes.gohugo.io/themes/hugo-theme-stack/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;底下有中文文檔，不過我還是中英文互相看，英文的文件我認為比較新。&lt;/p&gt;
+&lt;p&gt;建議可以直接看英文啦，反正就看一下 &lt;code&gt;config.yml&lt;/code&gt; 怎麼設定。&lt;/p&gt;
+&lt;h1 id=&#34;todo&#34;&gt;TODO&lt;/h1&gt;
+&lt;p&gt;XD 我先把架設到 Github，等等再補充內容 ！&lt;/p&gt;
+&lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://medium.com/@chswei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://medium.com/@chswei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
