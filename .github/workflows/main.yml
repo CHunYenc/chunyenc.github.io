@@ -29,7 +29,4 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.HUGO_DEPLOY_TOKEN }}
-          PUBLISH_BRANCH: gh-pages  # 推送到 gh-pages 分支
           publish_dir: ./public
-          hugo-version: '0.95.0' # hugo 版本
-          extended: true  # 如果是使用extended版本的務必取消註解。
