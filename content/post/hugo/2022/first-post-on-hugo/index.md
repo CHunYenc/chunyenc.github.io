@@ -1,7 +1,7 @@
 ---
 title: "我的第一篇 HUGO 架設 BLOG 經驗分享"
 description: "沒什麼描述，就是講講這個部落格的產生原因"
-date: "2020-08-10 01:00:00+0200"
+date: "2022-03-26 20:46:00+0800"
 slug: "hugo-blog-online"
 image: "featured.png"
 categories:

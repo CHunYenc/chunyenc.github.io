@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Posts on CHUN-YEN&#39;s BLOG</title>
-        <link>https://chunyenc.github.io/post/</link>
-        <description>Recent content in Posts on CHUN-YEN&#39;s BLOG</description>
+        <title>信用卡 on CHUN-YEN&#39;s BLOG</title>
+        <link>https://chunyenc.github.io/tags/%E4%BF%A1%E7%94%A8%E5%8D%A1/</link>
+        <description>Recent content in 信用卡 on CHUN-YEN&#39;s BLOG</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <lastBuildDate>Thu, 31 Mar 2022 18:50:00 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 31 Mar 2022 18:50:00 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/%E4%BF%A1%E7%94%A8%E5%8D%A1/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>2022年04月 - 個人信用卡整理 - 台新銀行</title>
         <link>https://chunyenc.github.io/p/2022-credit-card/</link>
         <pubDate>Thu, 31 Mar 2022 18:50:00 +0800</pubDate>
@@ -127,118 +127,6 @@
 &lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;
 &lt;p&gt;LOGO &lt;a class=&#34;link&#34; href=&#34;https://zh.pngtree.com/freepng/hand-drawn-cartoon-credit-card-png-element_4393806.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zh.pngtree.com/freepng/hand-drawn-cartoon-credit-card-png-element_4393806.html&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>我的第一篇 HUGO 架設 BLOG 經驗分享</title>
-        <link>https://chunyenc.github.io/p/hugo-blog-online/</link>
-        <pubDate>Sat, 26 Mar 2022 20:46:00 +0800</pubDate>
-        
-        <guid>https://chunyenc.github.io/p/hugo-blog-online/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/hugo-blog-online/featured.png" alt="Featured image of post 我的第一篇 HUGO 架設 BLOG 經驗分享" /&gt;&lt;h1 id=&#34;更換成-hugo-的原因&#34;&gt;更換成 Hugo 的原因&lt;/h1&gt;
-&lt;p&gt;自己本身是有使用 Blogger，主要認為有下面幾個問題。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;垃圾留言&lt;/li&gt;
-&lt;li&gt;介面很醜&lt;/li&gt;
-&lt;li&gt;發文介面使用不易
-&lt;ul&gt;
-&lt;li&gt;每次發文之後都會跑版，所以果斷使用一個自己架設的。&lt;/li&gt;
-&lt;li&gt;不想一直預覽切來切去。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;不能使用 markdown 方式來撰寫你想要的文章 ***&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;更換過程&#34;&gt;更換過程&lt;/h1&gt;
-&lt;p&gt;我認為官方的文件講得很清楚，我也是照者下面的連結馬上建立一個 quickstart 資料夾。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/getting-started/quick-start/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://gohugo.io/getting-started/quick-start/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;然後使用一個官方預設的 Theme (佈景主題?)&lt;/p&gt;
-&lt;p&gt;但我自己設定時候講想說「好醜」、「這什麼鬼主題」XD&lt;/p&gt;
-&lt;p&gt;所以現在看到的這個主題呢，是從官方(下面連結)找到的。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://themes.gohugo.io/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;我選的背景主題&#34;&gt;我選的背景主題&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/themes/hugo-theme-stack/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://themes.gohugo.io/themes/hugo-theme-stack/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;底下有中文文檔，不過我還是中英文互相看，英文的文件我認為比較新。&lt;/p&gt;
-&lt;p&gt;建議可以直接看英文啦，反正就看一下 &lt;code&gt;config.yml&lt;/code&gt; 怎麼設定。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;config.yml 底下有檔案連結可以過去參考看看。
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;架設環境&#34;&gt;架設環境&lt;/h1&gt;
-&lt;p&gt;主要有三個地方需要注意，以下是說明。&lt;/p&gt;
-&lt;p&gt;Reference 都有我參考的文章，關於 Reference 第 2 點的參考文章建立的 main.yml 是無法執行的。(我的 branch(gh-pages) 一直沒有建立出 HTML)&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;.github/workflows/main.yml&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;檔案連結： &lt;a class=&#34;link&#34; href=&#34;https://github.com/CHunYenc/chunyenc.github.io/blob/master/.github/workflows/main.yml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/CHunYenc/chunyenc.github.io/blob/master/.github/workflows/main.yml&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;config.yml&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;檔案連結： &lt;a class=&#34;link&#34; href=&#34;https://github.com/CHunYenc/chunyenc.github.io/blob/master/config.yml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/CHunYenc/chunyenc.github.io/blob/master/config.yml&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;在 config.yml 加入 publishDir: docs, 可以讓你每次下 &lt;code&gt;hugo -t stack&lt;/code&gt; 都能夠生成 HTML 檔案到 docs 資料夾, 預設是到 public 資料夾&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;docs/&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;如果你有看到 Reference 第 1 點的參考文章使用兩個 repository, 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;一個是主要去紀錄尚未生成的檔案, 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;一個是生成的靜態檔案(就是指 HTML 放的位置)。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;但是我不用，我只需要一個 repository !!!
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;以下是我準備將網站上線的過程，但是要注意你的上面前兩點都已經設定好 💪&lt;/p&gt;
-&lt;p&gt;👉 請確定已經將文章內容打好並且儲存後再執行&lt;/p&gt;
-&lt;p&gt;👉 請確定已經將文章內容打好並且儲存後再執行。&lt;/p&gt;
-&lt;p&gt;👉 請確定已經將文章內容打好並且儲存後再執行&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;hugo -t stack 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# 這時候會發現我們的 docs 資料夾內會有很多靜態檔案
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git add .
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git commit -m &amp;#34;feat: ...&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git push
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;這樣你等一下就可以在你的網頁上看到了！&lt;/p&gt;
-&lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://medium.com/@chswei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://medium.com/@chswei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://yurepo.tw/2021/03/%E5%A6%82%E4%BD%95%E5%B0%87hugo%E9%83%A8%E8%90%BD%E6%A0%BC%E9%83%A8%E7%BD%B2%E5%88%B0github%E4%B8%8A/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://yurepo.tw/2021/03/%E5%A6%82%E4%BD%95%E5%B0%87hugo%E9%83%A8%E8%90%BD%E6%A0%BC%E9%83%A8%E7%BD%B2%E5%88%B0github%E4%B8%8A/&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
 </description>
         </item>
         

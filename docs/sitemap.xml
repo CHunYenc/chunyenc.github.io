@@ -2,25 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://chunyenc.github.io/p/2022-credit-card/</loc>
+    <lastmod>2022-03-31T18:50:00+08:00</lastmod>
+  </url><url>
     <loc>https://chunyenc.github.io/categories/</loc>
-    <lastmod>2020-08-10T01:00:00+02:00</lastmod>
+    <lastmod>2022-03-31T18:50:00+08:00</lastmod>
   </url><url>
     <loc>https://chunyenc.github.io/</loc>
-    <lastmod>2020-08-10T01:00:00+02:00</lastmod>
+    <lastmod>2022-03-31T18:50:00+08:00</lastmod>
   </url><url>
-    <loc>https://chunyenc.github.io/tags/hugo/</loc>
-    <lastmod>2020-08-10T01:00:00+02:00</lastmod>
+    <loc>https://chunyenc.github.io/tags/creditcard/</loc>
+    <lastmod>2022-03-31T18:50:00+08:00</lastmod>
   </url><url>
-    <loc>https://chunyenc.github.io/categories/hugo/</loc>
-    <lastmod>2020-08-10T01:00:00+02:00</lastmod>
+    <loc>https://chunyenc.github.io/categories/money/</loc>
+    <lastmod>2022-03-31T18:50:00+08:00</lastmod>
   </url><url>
     <loc>https://chunyenc.github.io/post/</loc>
-    <lastmod>2020-08-10T01:00:00+02:00</lastmod>
+    <lastmod>2022-03-31T18:50:00+08:00</lastmod>
   </url><url>
     <loc>https://chunyenc.github.io/tags/</loc>
-    <lastmod>2020-08-10T01:00:00+02:00</lastmod>
+    <lastmod>2022-03-31T18:50:00+08:00</lastmod>
+  </url><url>
+    <loc>https://chunyenc.github.io/tags/%E4%BF%A1%E7%94%A8%E5%8D%A1/</loc>
+    <lastmod>2022-03-31T18:50:00+08:00</lastmod>
+  </url><url>
+    <loc>https://chunyenc.github.io/tags/%E5%8F%B0%E6%96%B0%E9%8A%80%E8%A1%8C/</loc>
+    <lastmod>2022-03-31T18:50:00+08:00</lastmod>
+  </url><url>
+    <loc>https://chunyenc.github.io/tags/%E5%9C%8B%E6%B3%B0%E9%8A%80%E8%A1%8C/</loc>
+    <lastmod>2022-03-31T18:50:00+08:00</lastmod>
+  </url><url>
+    <loc>https://chunyenc.github.io/tags/%E7%8E%89%E5%B1%B1%E9%8A%80%E8%A1%8C/</loc>
+    <lastmod>2022-03-31T18:50:00+08:00</lastmod>
+  </url><url>
+    <loc>https://chunyenc.github.io/tags/hugo/</loc>
+    <lastmod>2022-03-26T20:46:00+08:00</lastmod>
+  </url><url>
+    <loc>https://chunyenc.github.io/categories/hugo/</loc>
+    <lastmod>2022-03-26T20:46:00+08:00</lastmod>
   </url><url>
     <loc>https://chunyenc.github.io/p/hugo-blog-online/</loc>
-    <lastmod>2020-08-10T01:00:00+02:00</lastmod>
+    <lastmod>2022-03-26T20:46:00+08:00</lastmod>
   </url>
 </urlset>
