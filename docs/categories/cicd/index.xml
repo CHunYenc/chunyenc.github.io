@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>CICD on CHUN-YEN&#39;s BLOG</title>
+        <link>https://chunyenc.github.io/categories/cicd/</link>
+        <description>Recent content in CICD on CHUN-YEN&#39;s BLOG</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Sun, 10 Apr 2022 19:03:00 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/categories/cicd/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用</title>
+        <link>https://chunyenc.github.io/p/jenkins-01/</link>
+        <pubDate>Sun, 10 Apr 2022 19:03:00 +0800</pubDate>
+        
+        <guid>https://chunyenc.github.io/p/jenkins-01/</guid>
+        <description>&lt;img src="https://chunyenc.github.io/p/jenkins-01/jenkins.png" alt="Featured image of post JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用" /&gt;&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
+&lt;p&gt;趁這次假日架設了 Jenkins，但是目前為止 M1 處理器皆不支援。&lt;/p&gt;
+&lt;p&gt;所以用在學生時期使用的 Oracle Cloud 建立一台虛擬機，以下都可以適用在任何雲端平台來操作。&lt;/p&gt;
+&lt;h2 id=&#34;ubuntu-版本&#34;&gt;Ubuntu 版本&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# lsb_release -a
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;No LSB modules are available.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Distributor ID:	Ubuntu
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Description:	Ubuntu 18.04.6 LTS
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Release:	18.04
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Codename:	bionic
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;docker-版本&#34;&gt;Docker 版本&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# docker -v
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Docker version 20.10.14, build a224086
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;操作&#34;&gt;操作&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jenkinsci/docker/blob/master/README.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;README 官方閱讀手冊&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以下皆是參考上面的連結，很重要&lt;/p&gt;
+&lt;h2 id=&#34;開始&#34;&gt;開始&lt;/h2&gt;
+&lt;p&gt;切記這邊不能使用 &lt;code&gt;-d&lt;/code&gt; 指令，否則會影響到第一次啟動密碼&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run --name jenkins -p 8080:8080 -p 50000:50000 --restart always jenkins/jenkins:lts-jdk11
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;執行後，會顯示下面的資訊，密碼就是第一次啟動 Jenkins 在用的。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;... logging ...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*************************************************************
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*************************************************************
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*************************************************************
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Jenkins initial setup is required. An admin user has been created and a password generated.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Please use the following password to proceed to installation:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;61e8c8cb00c0417bb4c4719ba8559060
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*************************************************************
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*************************************************************
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;*************************************************************
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;先複製 &lt;code&gt;61e8c8cb00c0417bb4c4719ba8559060&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果不小心加上 &lt;code&gt;-d&lt;/code&gt; 後，該怎麼辦 ?&lt;/p&gt;
+&lt;p&gt;可以參考 &lt;a class=&#34;link&#34; href=&#34;#%e5%82%99%e8%a8%bb&#34; &gt;備註&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;前往網頁&#34;&gt;前往網頁&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://chunyenc.github.io/p/jenkins-01/00-wait.png&#34;
+	width=&#34;3064&#34;
+	height=&#34;1934&#34;
+	srcset=&#34;https://chunyenc.github.io/p/jenkins-01/00-wait_hu6ddb7192c6d259559aad120bbb04f985_467817_480x0_resize_box_3.png 480w, https://chunyenc.github.io/p/jenkins-01/00-wait_hu6ddb7192c6d259559aad120bbb04f985_467817_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;等待 Jenkins 上工&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chunyenc.github.io/p/jenkins-01/01-Unlock.png&#34;
+	width=&#34;3064&#34;
+	height=&#34;1934&#34;
+	srcset=&#34;https://chunyenc.github.io/p/jenkins-01/01-Unlock_hu6ddb7192c6d259559aad120bbb04f985_678683_480x0_resize_box_3.png 480w, https://chunyenc.github.io/p/jenkins-01/01-Unlock_hu6ddb7192c6d259559aad120bbb04f985_678683_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;進入 JenKins 的第一個畫面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;158&#34;
+		data-flex-basis=&#34;380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;就把 &lt;code&gt;61e8c8cb00c0417bb4c4719ba8559060&lt;/code&gt; 貼進去裡面就完成啟用囉 !&lt;/p&gt;
+&lt;h2 id=&#34;不安裝任何插件&#34;&gt;不安裝任何插件&lt;/h2&gt;
+&lt;p&gt;直接點擊右上角 x, 到時候我們再一項一項安裝.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://chunyenc.github.io/p/jenkins-01/02-plugin.png&#34;
+	width=&#34;2880&#34;
+	height=&#34;1800&#34;
+	srcset=&#34;https://chunyenc.github.io/p/jenkins-01/02-plugin_hueda57b2e559b3fbd1d2c509678b60380_450489_480x0_resize_box_3.png 480w, https://chunyenc.github.io/p/jenkins-01/02-plugin_hueda57b2e559b3fbd1d2c509678b60380_450489_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;點擊右上角 x 進行下一步&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;進入首頁&#34;&gt;進入首頁&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://chunyenc.github.io/p/jenkins-01/03-home.png&#34;
+	width=&#34;2880&#34;
+	height=&#34;1800&#34;
+	srcset=&#34;https://chunyenc.github.io/p/jenkins-01/03-home_hueda57b2e559b3fbd1d2c509678b60380_284587_480x0_resize_box_3.png 480w, https://chunyenc.github.io/p/jenkins-01/03-home_hueda57b2e559b3fbd1d2c509678b60380_284587_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Jenkins 首頁&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;更改-admin-密碼&#34;&gt;更改 admin 密碼&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://chunyenc.github.io/p/jenkins-01/04-change_password.png&#34;
+	width=&#34;2880&#34;
+	height=&#34;1800&#34;
+	srcset=&#34;https://chunyenc.github.io/p/jenkins-01/04-change_password_hueda57b2e559b3fbd1d2c509678b60380_228147_480x0_resize_box_3.png 480w, https://chunyenc.github.io/p/jenkins-01/04-change_password_hueda57b2e559b3fbd1d2c509678b60380_228147_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;更改 admin 登入密碼&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;384px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;結束今天我們就將-jenkins-架設完成囉&#34;&gt;結束，今天我們就將 Jenkins 架設完成囉&lt;/h1&gt;
+&lt;h1 id=&#34;備註---沒有密碼時的步驟&#34;&gt;備註 - 沒有密碼時的步驟&lt;/h1&gt;
+&lt;h2 id=&#34;查看-docker-目前執行的-container&#34;&gt;查看 docker 目前執行的 container&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# docker ps
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;CONTAINER ID   IMAGE                       COMMAND                  CREATED         STATUS          PORTS                                                                                      NAMES
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;d9146583cb09   jenkins/jenkins:lts-jdk11   &amp;#34;/sbin/tini -- /usr/…&amp;#34;   4 minutes ago   Up 34 seconds   0.0.0.0:8080-&amp;gt;8080/tcp, :::8080-&amp;gt;8080/tcp, 0.0.0.0:50000-&amp;gt;50000/tcp, :::50000-&amp;gt;50000/tcp   jenkins
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;進入-container&#34;&gt;進入 container&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;# docker exec -it d9146583cb09 /bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;jenkins@d9146583cb09:/$ cat /var/jenkins_home/secrets/initialAdminPassword
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;61e8c8cb00c0417bb4c4719ba8559060
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;接下來就可以看到密碼囉， &lt;code&gt;61e8c8cb00c0417bb4c4719ba8559060&lt;/code&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
