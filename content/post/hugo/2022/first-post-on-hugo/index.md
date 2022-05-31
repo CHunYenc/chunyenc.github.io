@@ -8,7 +8,7 @@ categories:
     - Blog
 tags:
     - Hugo
-comments: False
+comments: True
 ---
 
 

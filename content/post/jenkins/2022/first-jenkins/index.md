@@ -10,7 +10,7 @@ categories:
 tags:
     - Jenkins
 hidden: false
-comments: False
+comments: True
 draft: false
 
 ---

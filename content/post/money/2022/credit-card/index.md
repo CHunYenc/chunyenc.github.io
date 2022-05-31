@@ -12,7 +12,7 @@ tags:
     - 國泰銀行
     - 信用卡
     - CreditCard
-comments: False
+comments: true
 ---
 
 # 目前信用卡/金融卡
