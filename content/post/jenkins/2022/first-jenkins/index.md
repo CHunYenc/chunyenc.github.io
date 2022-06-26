@@ -102,6 +102,55 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 ![更改 admin 登入密碼](04-change_password.png)
 
+## 建立一個 work
+
+![點擊左上角，新增作業](05-create-work.png)
+
+## Hello Jenkins !!!
+
+![創建一個作業](06-create-hello-jenkins.png)
+
+這邊可以直接按「OK」。
+
+## 加入一個 echo shell
+
+![選取 執行 Shell](07-create-shell.jpeg)
+
+畢竟本篇是要執行一個 echo 「Hello World」。
+
+所以我們還是先照做，此篇只是第一篇的 jenkins XD
+
+![打上 echo Hello Jenkins](08-echo.jpg)
+
+點擊儲存。
+
+## 執行我們建立的作業 Hello Jenkins !!
+
+![回到 Dashboard](09-dashboard.jpg)
+
+```
+點擊我們 Hello Jenkins 作業做右邊的執行鈕
+重整頁面 (F5)
+接者會發現「上次執行成功時間」、「上次建置花費時間」已經有數值，不會像圖片上顯示「無」
+```
+
+我們現在去看看我們執行的結果
+
+```
+點擊「Hello Jenkins」名稱，進入頁面後。
+目光移到「左下角」的「建置歷程」
+```
+
+![建置歷程](11-task-history.png)
+
+這邊我點擊 #1 來看看我們，剛剛的 Hello Jenkins 有沒有執行出來 !!
+
+![建置的結果](10-success-task.png)
+
+這邊只是大致上介紹一下，Jenkins 可以協助你啟動任何的任務，不只是 Shell.
+
+未來我還會再增加一些 Jenkins 的範例，希望這篇有幫助到你 !
+
 # 結束，今天我們就將 Jenkins 架設完成囉
 
 # 備註 - 沒有密碼時的步驟
