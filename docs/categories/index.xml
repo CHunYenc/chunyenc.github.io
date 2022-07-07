@@ -6,7 +6,15 @@
         <description>Recent content in Categories on CHUN-YEN&#39;s BLOG</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <lastBuildDate>Wed, 29 Jun 2022 13:31:59 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 06 Jul 2022 17:59:19 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GIT</title>
+        <link>https://chunyenc.github.io/categories/git/</link>
+        <pubDate>Wed, 06 Jul 2022 17:59:19 +0800</pubDate>
+        
+        <guid>https://chunyenc.github.io/categories/git/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>DATABASE</title>
         <link>https://chunyenc.github.io/categories/database/</link>
         <pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate>

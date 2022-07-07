@@ -6,7 +6,60 @@
         <description>Recent content on CHUN-YEN&#39;s BLOG</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <lastBuildDate>Wed, 29 Jun 2022 13:31:59 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 06 Jul 2022 17:59:19 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Loss</title>
+        <link>https://chunyenc.github.io/p/loss/</link>
+        <pubDate>Wed, 06 Jul 2022 17:59:19 +0800</pubDate>
+        
+        <guid>https://chunyenc.github.io/p/loss/</guid>
+        <description>&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;有一天下午，把某項任務完成後，就下指令 &lt;code&gt;git add&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然後沒有 &lt;code&gt;git commit&lt;/code&gt; &amp;hellip; (更不用說 &lt;code&gt;git push&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;總之就在整理前後端版本對應的問題，然後就直接 &lt;code&gt;git checkout -f master&lt;/code&gt; 跳去 master，主要是覆蓋版本，因為主分支已經很久沒有上新版了。&lt;/p&gt;
+&lt;p&gt;最後 &amp;hellip; 前端的程式碼被我弄丟了 !&lt;/p&gt;
+&lt;h1 id=&#34;解法&#34;&gt;解法&lt;/h1&gt;
+&lt;h2 id=&#34;git-fsck&#34;&gt;git fsck&lt;/h2&gt;
+&lt;p&gt;有看到一個 十年前的文章 (今天是 2022/07/07)&lt;/p&gt;
+&lt;p&gt;連結：http://blog.hsatac.net/2012/07/git-restore-removed-files/&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS C:\code\frontend&amp;gt; git fsck --cache --unreachable
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Checking object directories: 100% (256/256), done.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Checking objects: 100% (2592/2592), done.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;unreachable blob 7fc292a549c604ee4219b2e0db9383b32f3ce152
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;unreachable blob 05037508dd7dda94f5fb422a7867471247283403
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;unreachable blob 7c83ff9c66bf28827bd0fbb2aa5e377e460829fe
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;... 底下還有很多
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;接下來每行  &lt;code&gt;blob 7fc292a549c604ee4219b2e0db9383b32f3ce152&lt;/code&gt; 都是你之前尚未 commit 的檔案。(不是很確定&lt;/p&gt;
+&lt;h2 id=&#34;git-show&#34;&gt;git show&lt;/h2&gt;
+&lt;p&gt;接下來就是每一行的看檔案了 &amp;hellip;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git show 7fc292a549c604ee4219b2e0db9383b32f3ce152 &amp;gt; temp.txt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;接下來你的 &lt;code&gt;C:\code\frontend&lt;/code&gt; (這是我的位置)&lt;/p&gt;
+&lt;p&gt;就會看到有一個 &lt;code&gt;temp.txt&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;基本上就是檔案回來囉 !&lt;/p&gt;
+&lt;p&gt;希望對您有幫助 !&lt;/p&gt;
+&lt;p&gt;#完成&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Docker 紀錄 - 2022 使用 Docker 建立 Oracle Database</title>
         <link>https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/</link>
         <pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate>
