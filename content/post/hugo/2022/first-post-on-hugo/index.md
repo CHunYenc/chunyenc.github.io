@@ -5,7 +5,7 @@ date: "2022-03-26 20:46:00+0800"
 slug: "hugo-blog-online"
 image: "featured.png"
 categories:
-    - Blog
+    - Experience
 tags:
     - Hugo
 comments: True

@@ -6,12 +6,36 @@
         <description>Recent content in Tags on CHUN-YEN&#39;s BLOG</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <lastBuildDate>Wed, 06 Jul 2022 17:59:19 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>git</title>
+        <lastBuildDate>Mon, 11 Jul 2022 17:31:45 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Django</title>
+        <link>https://chunyenc.github.io/tags/django/</link>
+        <pubDate>Mon, 11 Jul 2022 17:31:45 +0800</pubDate>
+        
+        <guid>https://chunyenc.github.io/tags/django/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Python</title>
+        <link>https://chunyenc.github.io/tags/python/</link>
+        <pubDate>Mon, 11 Jul 2022 17:31:45 +0800</pubDate>
+        
+        <guid>https://chunyenc.github.io/tags/python/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>GIT</title>
         <link>https://chunyenc.github.io/tags/git/</link>
         <pubDate>Wed, 06 Jul 2022 17:59:19 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/tags/git/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>DATABASE</title>
+        <link>https://chunyenc.github.io/tags/database/</link>
+        <pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate>
+        
+        <guid>https://chunyenc.github.io/tags/database/</guid>
         <description></description>
         </item>
         <item>

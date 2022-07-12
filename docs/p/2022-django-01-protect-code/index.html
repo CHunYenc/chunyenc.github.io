@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='程式碼就不會脫光光給別人看 XD'><title>Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼</title>
+
+<link rel='canonical' href='https://chunyenc.github.io/p/2022-django-01-protect-code/'>
+
+<link rel="stylesheet" href="/scss/style.min.450926226e724574a6b936335ea06111f8aeb253d932c86cb2cc807341cd2889.css"><meta property='og:title' content='Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼'>
+<meta property='og:description' content='程式碼就不會脫光光給別人看 XD'>
+<meta property='og:url' content='https://chunyenc.github.io/p/2022-django-01-protect-code/'>
+<meta property='og:site_name' content='CHUN-YEN&#39;s BLOG'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Django' /><meta property='article:tag' content='Python' /><meta property='article:published_time' content='2022-07-11T17:31:45&#43;08:00'/><meta property='article:modified_time' content='2022-07-11T17:31:45&#43;08:00'/><meta property='og:image' content='https://chunyenc.github.io/p/2022-django-01-protect-code/django.png' />
+<meta name="twitter:title" content="Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼">
+<meta name="twitter:description" content="程式碼就不會脫光光給別人看 XD"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://chunyenc.github.io/p/2022-django-01-protect-code/django.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切換選單">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hue8809023e63696ff023dae6b529de093_151181_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">CHUN-YEN&#39;s BLOG</a></h1>
+            <h2 class="site-description">發廢文、技術、生活</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://www.facebook.com/Rchunyen'
+                        target="_blank"
+                        title="Facebook"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/CHunYenc'
+                        target="_blank"
+                        title="GitHub"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://www.facebook.com/Rchunyen'
+                        target="_blank"
+                        title="Instagram"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <rect x="4" y="4" width="16" height="16" rx="4" />
+  <circle cx="12" cy="12" r="3" />
+  <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>夜晚模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/2022-django-01-protect-code/">
+                <img src="/p/2022-django-01-protect-code/django_hu080e9ab032fb83faecb2fd0168b96dc6_15390_800x0_resize_box_3.png"
+                        srcset="/p/2022-django-01-protect-code/django_hu080e9ab032fb83faecb2fd0168b96dc6_15390_800x0_resize_box_3.png 800w, /p/2022-django-01-protect-code/django_hu080e9ab032fb83faecb2fd0168b96dc6_15390_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="364" 
+                        loading="lazy"
+                        alt="Featured image of post Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/experience/" >
+                Experience
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/2022-django-01-protect-code/">Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            程式碼就不會脫光光給別人看 XD
+        </h3>
+        
+    </div>
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jul 11, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    閱讀時間: 4 分鐘
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="前言">前言</h1>
+<p>主要就是將原始程式碼轉成暗碼，雖然能夠不讓自己的程式碼直接裸奔。</p>
+<p>但是若碰到有心人士也是一樣可以透過逆向工程把你的程式碼還原。</p>
+<p>提到明碼轉成暗碼，優先選擇 Cython 來執行，速度甚至可能變快(?)，實際上當然還沒測試，只是看到非常多人透過 Cython 讓自己 Python 程式碼變快 XD</p>
+<p>真是期待，但今天並不是來測試效能，而是優先將 Django-app 轉換成 so 檔執行 !!</p>
+<h1 id="操作">操作</h1>
+<p>可以參考 Reference 第一篇文章的程式碼來執行，但是我這邊主要也是整理一下我自己實作的部分提供參考。</p>
+<h2 id="操作環境">操作環境</h2>
+<p>使用 WSL2，要注意如果使用 Windows 進行 Cython，</p>
+<p>在執行上面有跑出問題，所以我是放棄了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">root@DESKTOP-xxx:/mnt/c/Users/xxx# lsb_release -a
+</span></span><span class="line"><span class="cl">No LSB modules are available.
+</span></span><span class="line"><span class="cl">Distributor ID: Ubuntu
+</span></span><span class="line"><span class="cl">Description:    Ubuntu 18.04.6 LTS
+</span></span><span class="line"><span class="cl">Release:        18.04
+</span></span><span class="line"><span class="cl">Codename:       bionic
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="資料夾架構">資料夾架構</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@DESKTOP-xxx:/core$ tree -L <span class="m">3</span>
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── README.md
+</span></span><span class="line"><span class="cl">├── apps
+</span></span><span class="line"><span class="cl">│   └── app1
+</span></span><span class="line"><span class="cl">│       ├── __init__.py
+</span></span><span class="line"><span class="cl">│       ├── admin.py
+</span></span><span class="line"><span class="cl">│       ├── apps.py
+</span></span><span class="line"><span class="cl">│       ├── functions
+</span></span><span class="line"><span class="cl">│       ├── migrations
+</span></span><span class="line"><span class="cl">│       ├── models.py
+</span></span><span class="line"><span class="cl">│       ├── tests.py
+</span></span><span class="line"><span class="cl">│       ├── urls.py
+</span></span><span class="line"><span class="cl">│       └── views.py
+</span></span><span class="line"><span class="cl">├── build_clear.py
+</span></span><span class="line"><span class="cl">├── build_py_to_so.py <span class="c1"># 本文主角</span>
+</span></span><span class="line"><span class="cl">├── core
+</span></span><span class="line"><span class="cl">│   ├── __init__.py
+</span></span><span class="line"><span class="cl">│   ├── asgi.py
+</span></span><span class="line"><span class="cl">│   ├── settings.py
+</span></span><span class="line"><span class="cl">│   ├── urls.py
+</span></span><span class="line"><span class="cl">│   ├── variables.py
+</span></span><span class="line"><span class="cl">│   └── wsgi.py
+</span></span><span class="line"><span class="cl">├── logs
+</span></span><span class="line"><span class="cl">│   └── debug.log
+</span></span><span class="line"><span class="cl">├── manage.py
+</span></span><span class="line"><span class="cl">├── requirements.txt
+</span></span><span class="line"><span class="cl">├── run_venv.sh
+</span></span><span class="line"><span class="cl">├── templates
+</span></span><span class="line"><span class="cl">└── venv
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中最重要的就是 <code>build_py_to_so.py</code> 這支檔案，待會會將程式碼貼在本文。</p>
+<p>另外為了防止疑惑，以下說明其他資料夾的內容</p>
+<ul>
+<li>關於 Django
+<ul>
+<li>core - 為 django project 主要資料夾</li>
+<li>apps - 為 django app 生成的位置，如果建立在主目錄會非常亂</li>
+<li>logs - 儲存 log 檔的資料夾</li>
+<li>templates - 儲存 html 檔的資料夾</li>
+<li>manage.py - django 預設</li>
+</ul>
+</li>
+<li>關於 Python
+<ul>
+<li>venv - 虛擬環境</li>
+<li>requirements.txt - pip freeze, 為需要用的的套件</li>
+<li>build_clear.py - 自動清理 <code>.py</code>、<code>.c</code> 檔案，建議參考 Reference 第一篇文章
+<ul>
+<li>程式碼連結：<a class="link" href="https://gist.github.com/CHunYenc/adcdd234aab33d621fdfa127e41ee16a"  target="_blank" rel="noopener"
+    >https://gist.github.com/CHunYenc/adcdd234aab33d621fdfa127e41ee16a</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>其他
+<ul>
+<li>run_venv.sh</li>
+</ul>
+</li>
+</ul>
+<h2 id="如何將-app-從-py-轉為-cython">如何將 APP 從 py 轉為 cython</h2>
+<h3 id="build_py_to_sopy">build_py_to_so.py</h3>
+<h3 id="導入套件">導入套件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python3" data-lang="python3"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">distutils.extension</span> <span class="kn">import</span> <span class="n">Extension</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Cython.Build</span> <span class="kn">import</span> <span class="n">cythonize</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Cython.Distutils</span> <span class="kn">import</span> <span class="n">build_ext</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">Cython.Compiler</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面是使用到的套件，非常簡單，大部分都是 import Cython 套件。</p>
+<h3 id="取得-app-路徑">取得 app 路徑</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python3" data-lang="python3"><span class="line"><span class="cl"><span class="c1"># app 的資料夾名稱</span>
+</span></span><span class="line"><span class="cl"><span class="n">app_name</span> <span class="o">=</span> <span class="s2">&#34;app1&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="c1"># app 使用 function 資料夾架構</span>
+</span></span><span class="line"><span class="cl"><span class="n">functions_name</span> <span class="o">=</span> <span class="s2">&#34;functions&#34;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 取得 app1 資料夾路徑</span>
+</span></span><span class="line"><span class="cl"><span class="n">app_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;apps&#39;</span><span class="p">),</span> <span class="n">app_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 取得 app1/functions/*.py </span>
+</span></span><span class="line"><span class="cl"><span class="n">function_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_folder</span><span class="p">,</span> <span class="s1">&#39;functions&#39;</span><span class="p">),</span> <span class="s1">&#39;*.py&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 取得 app1/*.py</span>
+</span></span><span class="line"><span class="cl"><span class="n">app_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">app_folder</span><span class="p">,</span> <span class="s1">&#39;*.py&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面是取得資料夾的一些路徑，如果你有非常多的 app 要把程式碼轉為 cython，</p>
+<p>那也可以將你的 apps 使用 <code>os.path.join</code>，路徑的話應該會是 <code>apps/**/*.py</code>。</p>
+<p>注意：<code>app1/migrations/</code>，在執行的時候無法使用 Cython ， 會出錯誤。</p>
+<p>注意：<code>app1/migrations/</code>，在執行的時候無法使用 Cython ， 會出錯誤。</p>
+<p>注意：<code>app1/migrations/</code>，在執行的時候無法使用 Cython ， 會出錯誤。</p>
+<blockquote>
+<p>若你解決了，可以再留言跟我分享，你的方式。</p>
+</blockquote>
+<h3 id="主要程式碼">主要程式碼</h3>
+<p>這邊如果你是參考 Reference 第一篇文章的話，他是沒有第 3 行迴圈的部分，</p>
+<p>這邊我主要是忽略 <code>app1/migrations/</code> 資料夾產生的錯誤。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python3" data-lang="python3"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">to_so</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">format_folder</span> <span class="o">=</span> <span class="p">[</span><span class="n">app_file</span><span class="p">,</span> <span class="n">function_file</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">format_folder</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ext_modules</span> <span class="o">=</span> <span class="p">[</span><span class="n">Extension</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="p">)]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">setup</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">name</span><span class="o">=</span><span class="s2">&#34;py to so&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">cmdclass</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;build_ext&#39;</span><span class="p">:</span> <span class="n">build_ext</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">                <span class="n">ext_modules</span><span class="o">=</span><span class="n">cythonize</span><span class="p">(</span><span class="n">ext_modules</span><span class="p">,</span> <span class="n">language_level</span><span class="o">=</span><span class="s2">&#34;3&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="n">Cython</span><span class="o">.</span><span class="n">Compiler</span><span class="o">.</span><span class="n">Errors</span><span class="o">.</span><span class="n">CompileError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 獲取檔名</span>
+</span></span><span class="line"><span class="cl">            <span class="n">filename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="s1">&#39;autopep8 --in-place --aggressive --aggressive &#39;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="n">filename</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># 繼續轉換</span>
+</span></span><span class="line"><span class="cl">            <span class="n">to_so</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">to_so</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下來，我們要執行這支程式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">root@DESKTOP-xxx:/core# <span class="nb">source</span> /venv/bin/activate
+</span></span><span class="line"><span class="cl"><span class="o">(</span>venv<span class="o">)</span> root@DESKTOP-xxx:/core# python build_py_to_so.py build
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>這時發現 <code>app1</code>  資料夾內副檔名為 <code>.c</code> 的檔案。另外也會產出一個 <code>build</code> 資料夾。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>venv<span class="o">)</span> root@DESKTOP-xxx:/core# tree -L <span class="m">3</span>
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── apps
+</span></span><span class="line"><span class="cl">│   └── app1
+</span></span><span class="line"><span class="cl">│       ├── functions
+</span></span><span class="line"><span class="cl">│       ├── migrations
+</span></span><span class="line"><span class="cl">│       ├── .... 檔案太多, 吃掉 ...
+</span></span><span class="line"><span class="cl">│       ├── views.c
+</span></span><span class="line"><span class="cl">│       └── views.py
+</span></span><span class="line"><span class="cl">├── build <span class="c1">#</span>
+</span></span><span class="line"><span class="cl">│   ├── lib.linux-x86_64-3.7 <span class="c1"># 主要 django app 程式碼都在此處</span>
+</span></span><span class="line"><span class="cl">│   │   ├── connect.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">│   │   ├── app1
+</span></span><span class="line"><span class="cl">│   │   │   ├── __init__.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">│   │   │   ├── admin.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">│   │   │   ├── apps.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">│   │   │   ├── models.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">│   │   │   ├── tests.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">│   │   │   ├── urls.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">│   │   │   └── views.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">│   │   └── format.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">│   └── temp.linux-x86_64-3.7
+</span></span><span class="line"><span class="cl">│       └── mnt
+</span></span><span class="line"><span class="cl">├── build_clear.py
+</span></span><span class="line"><span class="cl">├── build_py_to_so.py
+</span></span><span class="line"><span class="cl">└── venv
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>這樣我們就把 python 轉成 cython 檔案囉！</p>
+<p>但我們如果要將程式碼交給客戶時，只要將 so 檔案，放入原本的資料夾內，</p>
+<p>python 也會優先執行 cython 的檔案唷 !!!</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>venv<span class="o">)</span> root@DESKTOP-xxx:/core# tree -L <span class="m">3</span>
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── README.md
+</span></span><span class="line"><span class="cl">├── apps
+</span></span><span class="line"><span class="cl">│   └── app1
+</span></span><span class="line"><span class="cl">│       ├── .... 檔案太多, 吃掉 ...
+</span></span><span class="line"><span class="cl">│       ├── views.c
+</span></span><span class="line"><span class="cl">│       ├── views.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">│       └── views.py
+</span></span><span class="line"><span class="cl">├── build
+</span></span><span class="line"><span class="cl">│   ├── lib.linux-x86_64-3.7
+</span></span><span class="line"><span class="cl">│   └── temp.linux-x86_64-3.7
+</span></span><span class="line"><span class="cl">├── build_clear.py
+</span></span><span class="line"><span class="cl">├── build_py_to_so.py
+</span></span><span class="line"><span class="cl">└── venv
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>這時候，我們就完成將 python 轉成 cython 程式碼囉 !!!</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>venv<span class="o">)</span> root@DESKTOP-xxx:/core# tree -L <span class="m">3</span>
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">├── README.md
+</span></span><span class="line"><span class="cl">├── apps
+</span></span><span class="line"><span class="cl">│   └── app1
+</span></span><span class="line"><span class="cl">│       ├── .... 檔案太多, 吃掉 ...
+</span></span><span class="line"><span class="cl">│       ├── urls.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">│       └── views.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">├── build_clear.py
+</span></span><span class="line"><span class="cl">├── build_py_to_so.py
+</span></span><span class="line"><span class="cl">└── venv
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>改成上面只剩下 <code>app1</code> 的資料夾底下只有 <code>.so</code> 檔的方式，沒意外的話也要能夠執行喔 !!</p>
+<h3 id="執行結果">執行結果</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>venv<span class="o">)</span> root@DESKTOP-xxx:/core/apps# tree -L <span class="m">2</span>
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">└── app1
+</span></span><span class="line"><span class="cl">    ├── __init__.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">    ├── __pycache__
+</span></span><span class="line"><span class="cl">    ├── admin.cpython-37m-x86_64-linux-gnu.so   
+</span></span><span class="line"><span class="cl">    ├── apps.cpython-37m-x86_64-linux-gnu.so    
+</span></span><span class="line"><span class="cl">    ├── functions
+</span></span><span class="line"><span class="cl">    ├── migrations
+</span></span><span class="line"><span class="cl">    ├── models.cpython-37m-x86_64-linux-gnu.so  
+</span></span><span class="line"><span class="cl">    ├── tests.cpython-37m-x86_64-linux-gnu.so   
+</span></span><span class="line"><span class="cl">    ├── urls.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">    └── views.cpython-37m-x86_64-linux-gnu.so
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">4</span> directories, <span class="m">7</span> files
+</span></span><span class="line"><span class="cl"><span class="o">(</span>venv<span class="o">)</span> root@DESKTOP-xxx:/core/apps# python ../manage.py runserver 0.0.0.0:8555
+</span></span><span class="line"><span class="cl">2022-07-12 08:28:46 - autoreload.py -&gt; run_with_reloader<span class="o">()</span> : Watching <span class="k">for</span> file changes with StatReloader
+</span></span><span class="line"><span class="cl">Performing system checks...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">System check identified no issues <span class="o">(</span><span class="m">0</span> silenced<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">July 12, <span class="m">2022</span> - 08:28:46
+</span></span><span class="line"><span class="cl">Django version 3.2.13, using settings <span class="s1">&#39;core.settings&#39;</span>
+</span></span><span class="line"><span class="cl">Starting development server at http://0.0.0.0:8555/
+</span></span><span class="line"><span class="cl">Quit the server with CONTROL-C.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="/p/2022-django-01-protect-code/result.png"
+	width="312"
+	height="136"
+	srcset="/p/2022-django-01-protect-code/result_huef6d3e8cb357a6fc35f094b44f7b0188_4500_480x0_resize_box_3.png 480w, /p/2022-django-01-protect-code/result_huef6d3e8cb357a6fc35f094b44f7b0188_4500_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="執行結果, 我的 index XD"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="229"
+		data-flex-basis="550px"
+	
+></p>
+<h1 id="reference">Reference</h1>
+<ol>
+<li><a class="link" href="https://imshanks.com/2019/08/03/converting-django-project-py-file-to-so-file.html"  target="_blank" rel="noopener"
+    >https://imshanks.com/2019/08/03/converting-django-project-py-file-to-so-file.html</a></li>
+<li><a class="link" href="https://cython.readthedocs.io/en/latest/"  target="_blank" rel="noopener"
+    >https://cython.readthedocs.io/en/latest/</a></li>
+<li><a class="link" href="https://gist.github.com/CHunYenc/adcdd234aab33d621fdfa127e41ee16a"  target="_blank" rel="noopener"
+    >https://gist.github.com/CHunYenc/adcdd234aab33d621fdfa127e41ee16a</a></li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/django/">Django</a>
+        
+            <a href="/tags/python/">Python</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-contents--wrapper">
+    <h2 class="section-title">相關文章</h2>
+    <div class="related-contents">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/p/git-%E5%B0%8F%E6%92%87%E6%AD%A5-01-%E6%B2%92%E6%9C%89-commit-%E7%9A%84%E6%AA%94%E6%A1%88%E9%81%BA%E5%A4%B1%E5%A6%82%E4%BD%95%E6%89%BE%E5%9B%9E/">
+        
+        
+            <div class="article-image">
+                <img src="/p/git-%E5%B0%8F%E6%92%87%E6%AD%A5-01-%E6%B2%92%E6%9C%89-commit-%E7%9A%84%E6%AA%94%E6%A1%88%E9%81%BA%E5%A4%B1%E5%A6%82%E4%BD%95%E6%89%BE%E5%9B%9E/git.042664999475fd8cc3672db6567e2e53_hu98c53942d89e2d49fa98853ce3ee6a44_5990_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post GIT 小撇步 01 - 沒有 commit 的檔案遺失，如何找回"
+                        
+                        data-hash="md5-BCZkmZR1/YzDZy22Vn4uUw==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">GIT 小撇步 01 - 沒有 commit 的檔案遺失，如何找回</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/2022-docker-pull-oracle-database-image/">
+        
+        
+            <div class="article-image">
+                <img src="/p/2022-docker-pull-oracle-database-image/oracle.115781e9e118271d57eff2e22632f018_huea2303bbb7ed042553c95de77a06331c_15171_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database"
+                        data-key="2022-docker-pull-oracle-database-image" 
+                        data-hash="md5-EVeB6eEYJx1X7/LiJjLwGA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/jenkins-01/">
+        
+        
+            <div class="article-image">
+                <img src="/p/jenkins-01/jenkins.35b3e9c9c2e692ca30e0d008d648b9a6_hu30e7924ffac9c8eb6b2b4ed356adf9f4_35161_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用"
+                        data-key="jenkins-01" 
+                        data-hash="md5-NbPpycLmksow4NAI1ki5pg==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/p/hugo-blog-online/">
+        
+        
+            <div class="article-image">
+                <img src="/p/hugo-blog-online/featured.ff0f3f3c6016016f059fbfd8c15c5d94_hu7bbb3f3ebdb843801f79bded2b036297_73881_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy"
+                        alt="Featured image of post 我的第一篇 HUGO 架設 BLOG 經驗分享"
+                        data-key="hugo-blog-online" 
+                        data-hash="md5-/w8/PGAWAW8Fn7/YwVxdlA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">我的第一篇 HUGO 架設 BLOG 經驗分享</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    console.log("HELLO");
+
+    
+    
+    
+    
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'chunyen';
+    console.log(disqus_shortname);
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2022 CHUN-YEN&#39;s BLOG
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.11.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目錄</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#操作">操作</a>
+      <ol>
+        <li><a href="#操作環境">操作環境</a></li>
+        <li><a href="#資料夾架構">資料夾架構</a></li>
+        <li><a href="#如何將-app-從-py-轉為-cython">如何將 APP 從 py 轉為 cython</a>
+          <ol>
+            <li><a href="#build_py_to_sopy">build_py_to_so.py</a></li>
+            <li><a href="#導入套件">導入套件</a></li>
+            <li><a href="#取得-app-路徑">取得 app 路徑</a></li>
+            <li><a href="#主要程式碼">主要程式碼</a></li>
+            <li><a href="#執行結果">執行結果</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#reference">Reference</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -7,12 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
         <lastBuildDate>Wed, 29 Jun 2022 13:31:59 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/oracle/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Docker 紀錄 - 2022 使用 Docker 建立 Oracle Database</title>
+        <title>Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database</title>
         <link>https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/</link>
         <pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle.png" alt="Featured image of post Docker 紀錄 - 2022 使用 Docker 建立 Oracle Database" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle.png" alt="Featured image of post Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;之前的我都是去 docker hub pull,&lt;/p&gt;
 &lt;p&gt;但是今天發現 docker pull 的方式不一樣了。&lt;/p&gt;
 &lt;h1 id=&#34;直接寫解法&#34;&gt;直接寫解法&lt;/h1&gt;

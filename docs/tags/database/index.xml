@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>DATABASE on CHUN-YEN&#39;s BLOG</title>
+        <link>https://chunyenc.github.io/tags/database/</link>
+        <description>Recent content in DATABASE on CHUN-YEN&#39;s BLOG</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-tw</language>
+        <lastBuildDate>Wed, 29 Jun 2022 13:31:59 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database</title>
+        <link>https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/</link>
+        <pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate>
+        
+        <guid>https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/</guid>
+        <description>&lt;img src="https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle.png" alt="Featured image of post Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;之前的我都是去 docker hub pull,&lt;/p&gt;
+&lt;p&gt;但是今天發現 docker pull 的方式不一樣了。&lt;/p&gt;
+&lt;h1 id=&#34;直接寫解法&#34;&gt;直接寫解法&lt;/h1&gt;
+&lt;h2 id=&#34;前往-oracle-container-註冊&#34;&gt;前往 oracle container 註冊：&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;https://container-registry.oracle.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;登入完後點擊-database&#34;&gt;登入完後，點擊 Database&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle-01.png&#34;
+	width=&#34;1016&#34;
+	height=&#34;307&#34;
+	srcset=&#34;https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle-01_hudafcddc1a56e3d3dea05f2e09d04b018_36201_480x0_resize_box_3.png 480w, https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle-01_hudafcddc1a56e3d3dea05f2e09d04b018_36201_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;2022/07/06 - Oracle UI&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;330&#34;
+		data-flex-basis=&#34;794px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;同意授權&#34;&gt;同意授權&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle-02.png&#34;
+	width=&#34;1530&#34;
+	height=&#34;715&#34;
+	srcset=&#34;https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle-02_hu3edc869a01bbec3eeca616b8cc1a27b2_72313_480x0_resize_box_3.png 480w, https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle-02_hu3edc869a01bbec3eeca616b8cc1a27b2_72313_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;2022/07/06 - Oracle 同意授權與未同意授權的畫面&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;213&#34;
+		data-flex-basis=&#34;513px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;請記得要點擊 Continue.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;授權&#34;&gt;授權&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle-03.png&#34;
+	width=&#34;872&#34;
+	height=&#34;529&#34;
+	srcset=&#34;https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle-03_huade5fc6aaf510070e83a07803aca1b3b_37538_480x0_resize_box_3.png 480w, https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle-03_huade5fc6aaf510070e83a07803aca1b3b_37538_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;2022/07/06 - Oracle 點擊同意授權&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;395px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;顯示打勾之後，再繼續下面的操作。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;docker-login&#34;&gt;docker login&lt;/h2&gt;
+&lt;p&gt;看你的環境是什麼，我今天使用的公司電腦，所以以下使用 Windows 的 PowerShell。&lt;/p&gt;
+&lt;p&gt;注意：這邊的話會叫你輸入登入資訊，但是因為我已經登入過了。&lt;/p&gt;
+&lt;p&gt;注意：這邊的話會叫你輸入登入資訊，但是因為我已經登入過了。&lt;/p&gt;
+&lt;p&gt;注意：這邊的話會叫你輸入登入資訊，但是因為我已經登入過了。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS D:\&amp;gt; docker login container-registry.oracle.com
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Authenticating with existing credentials...
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Login Succeeded
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;這時候就可以下載 container-registry.oracle.com 的 images ，&lt;/p&gt;
+&lt;p&gt;你可以先 COPY 下面的指令。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run -d --name oracle-db container-registry.oracle.com/database/enterprise:21.3.0.0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;這邊是測試，使用 docker run 來下載 container-registry.oracle.com 的 image.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;PS D:\&amp;gt; docker run -d --name oracle-db container-registry.oracle.com/database/enterprise:21.3.0.0
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Unable to find image &amp;#39;container-registry.oracle.com/database/enterprise:21.3.0.0&amp;#39; locally
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;21.3.0.0: Pulling from database/enterprise
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;401a42e1eb4f: Pulling fs layer
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;a13a3f09d2fa: Pulling fs layer
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;a55a58a3063b: Pulling fs layer
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;d6422a9150b2: Pulling fs layer
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;..... 以下太多資訊 省略
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;完成&#34;&gt;完成&lt;/h2&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

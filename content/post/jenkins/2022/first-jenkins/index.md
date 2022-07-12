@@ -6,7 +6,8 @@ date: 2022-04-10T19:03:00+08:00
 slug: "jenkins-01"
 image: "jenkins.png"
 categories:
-    - CICD
+    - Experience
+    - Learn
 tags:
     - Jenkins
 hidden: false
