@@ -6,13 +6,138 @@
         <description>Recent content on CHUN-YEN&#39;s BLOG</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
-        <lastBuildDate>Mon, 11 Jul 2022 17:31:45 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 13 Jul 2022 10:36:26 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>2022 07 13 Oracle Xe 11g</title>
+        <link>https://chunyenc.github.io/p/2022-07-13-oracle-xe-11g/</link>
+        <pubDate>Wed, 13 Jul 2022 10:36:26 +0800</pubDate>
+        
+        <guid>https://chunyenc.github.io/p/2022-07-13-oracle-xe-11g/</guid>
+        <description>&lt;img src="https://chunyenc.github.io/oracle.png" alt="Featured image of post 2022 07 13 Oracle Xe 11g" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+&lt;p&gt;主要紀錄建立 oracle-xe-11g 這個 image 的過程。&lt;/p&gt;
+&lt;h1 id=&#34;容器大小&#34;&gt;容器大小&lt;/h1&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@vm-1-47:/home/ubuntu# docker images
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;REPOSITORY                        TAG        IMAGE ID       CREATED         SIZE
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;oracleinanutshell/oracle-xe-11g   latest     ad13c30ec346   &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; years ago     2.13GB
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;操作&#34;&gt;操作&lt;/h1&gt;
+&lt;h2 id=&#34;docker&#34;&gt;docker&lt;/h2&gt;
+&lt;h3 id=&#34;docker-run&#34;&gt;docker run&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;docker run -d --name oracle-db -p 1521:1521 -e &lt;span class=&#34;nv&#34;&gt;ORACLE_ALLOW_REMOTE&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt; oracleinanutshell/oracle-xe-11g
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;說明：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;-d 為背景執行&lt;/li&gt;
+&lt;li&gt;&amp;ndash;name
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;container-name&lt;/code&gt;，把你的容器命名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;-p 為 port 號
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;host-port:container-port&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;-e 為環境變數
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ORACLE_ALLOW_REMOTE&lt;/code&gt;，因為要建立在虛擬機上，要從其他電腦連過來。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;oracle&#34;&gt;oracle&lt;/h2&gt;
+&lt;h3 id=&#34;docker-exec&#34;&gt;docker exec&lt;/h3&gt;
+&lt;p&gt;執行之前，我們要先查看我們 oracle-db 的 CONTAINER ID&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@vm-1-47:/home/ubuntu# docker ps
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;CONTAINER ID   IMAGE                             COMMAND                  CREATED         STATUS        PORTS                                          NAMES
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;18681d31f0ec   oracleinanutshell/oracle-xe-11g   &lt;span class=&#34;s2&#34;&gt;&amp;#34;/bin/sh -c &amp;#39;/usr/sb…&amp;#34;&lt;/span&gt;   &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt; seconds ago   Up &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; second   22/tcp, 8080/tcp, 0.0.0.0:1521-&amp;gt;1521/tcp       oracle-db
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;這時候後複製 &lt;code&gt;18681d31f0ec&lt;/code&gt;。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@vm-1-47:/home/ubuntu# docker &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; -it 18681d31f0ec /bin/bash
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@18681d31f0ec:/#
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;建立-oracle-user&#34;&gt;建立 oracle user&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;root@18681d31f0ec:/# su - oracle
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;oracle@18681d31f0ec:~$ sqlplus / as sysdba
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SQL*Plus: Release 11.2.0.2.0 Production on Wed Jul &lt;span class=&#34;m&#34;&gt;13&lt;/span&gt; 03:04:33 &lt;span class=&#34;m&#34;&gt;2022&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Copyright &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;c&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; 1982, 2011, Oracle.  All rights reserved.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Connected to:
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SQL&amp;gt; create user yen identified by 0107&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;User created.
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SQL&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;授予-oracle-user-權限&#34;&gt;授予 oracle user 權限&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SQL&amp;gt; grant dba to yen&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;Grant succeeded.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼</title>
         <link>https://chunyenc.github.io/p/2022-django-01-protect-code/</link>
         <pubDate>Mon, 11 Jul 2022 17:31:45 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/2022-django-01-protect-code/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/2022-django-01-protect-code/django.png" alt="Featured image of post Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/django.png" alt="Featured image of post Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;主要就是將原始程式碼轉成暗碼，雖然能夠不讓自己的程式碼直接裸奔。&lt;/p&gt;
 &lt;p&gt;但是若碰到有心人士也是一樣可以透過逆向工程把你的程式碼還原。&lt;/p&gt;
 &lt;p&gt;提到明碼轉成暗碼，優先選擇 Cython 來執行，速度甚至可能變快(?)，實際上當然還沒測試，只是看到非常多人透過 Cython 讓自己 Python 程式碼變快 XD&lt;/p&gt;
@@ -476,7 +601,7 @@
         <pubDate>Wed, 06 Jul 2022 17:59:19 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/git-%E5%B0%8F%E6%92%87%E6%AD%A5-01-%E6%B2%92%E6%9C%89-commit-%E7%9A%84%E6%AA%94%E6%A1%88%E9%81%BA%E5%A4%B1%E5%A6%82%E4%BD%95%E6%89%BE%E5%9B%9E/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/git-%E5%B0%8F%E6%92%87%E6%AD%A5-01-%E6%B2%92%E6%9C%89-commit-%E7%9A%84%E6%AA%94%E6%A1%88%E9%81%BA%E5%A4%B1%E5%A6%82%E4%BD%95%E6%89%BE%E5%9B%9E/git.png" alt="Featured image of post GIT 小撇步 01 - 沒有 commit 的檔案遺失，如何找回" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/git.png" alt="Featured image of post GIT 小撇步 01 - 沒有 commit 的檔案遺失，如何找回" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;有一天下午，把某項任務完成後，就下指令 &lt;code&gt;git add&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;然後沒有 &lt;code&gt;git commit&lt;/code&gt; &amp;hellip; (更不用說 &lt;code&gt;git push&lt;/code&gt;)&lt;/p&gt;
 &lt;p&gt;總之就在整理前後端版本對應的問題，然後就直接 &lt;code&gt;git checkout -f master&lt;/code&gt; 跳去 master，主要是覆蓋版本，因為主分支已經很久沒有上新版了。&lt;/p&gt;
@@ -529,7 +654,7 @@
         <pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle.png" alt="Featured image of post Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/oracle.png" alt="Featured image of post Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;之前的我都是去 docker hub pull,&lt;/p&gt;
 &lt;p&gt;但是今天發現 docker pull 的方式不一樣了。&lt;/p&gt;
 &lt;h1 id=&#34;直接寫解法&#34;&gt;直接寫解法&lt;/h1&gt;
@@ -656,7 +781,7 @@
         <pubDate>Sun, 10 Apr 2022 19:03:00 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/jenkins-01/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/jenkins-01/jenkins.png" alt="Featured image of post JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用" /&gt;&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/jenkins.png" alt="Featured image of post JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用" /&gt;&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
 &lt;p&gt;趁這次假日架設了 Jenkins，但是目前為止 M1 處理器皆不支援。&lt;/p&gt;
 &lt;p&gt;所以用在學生時期使用的 Oracle Cloud 建立一台虛擬機，以下都可以適用在任何雲端平台來操作。&lt;/p&gt;
 &lt;h2 id=&#34;ubuntu-版本&#34;&gt;Ubuntu 版本&lt;/h2&gt;
@@ -994,7 +1119,7 @@
         <pubDate>Thu, 31 Mar 2022 18:50:00 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/2022-credit-card/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/2022-credit-card/credit-card.png" alt="Featured image of post 2022年04月 - 個人信用卡整理 - 台新銀行" /&gt;&lt;h1 id=&#34;目前信用卡金融卡&#34;&gt;目前信用卡/金融卡&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/credit-card.png" alt="Featured image of post 2022年04月 - 個人信用卡整理 - 台新銀行" /&gt;&lt;h1 id=&#34;目前信用卡金融卡&#34;&gt;目前信用卡/金融卡&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1120,7 +1245,7 @@
         <pubDate>Sat, 26 Mar 2022 20:46:00 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/hugo-blog-online/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/hugo-blog-online/featured.png" alt="Featured image of post 我的第一篇 HUGO 架設 BLOG 經驗分享" /&gt;&lt;h1 id=&#34;更換成-hugo-的原因&#34;&gt;更換成 Hugo 的原因&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/featured.png" alt="Featured image of post 我的第一篇 HUGO 架設 BLOG 經驗分享" /&gt;&lt;h1 id=&#34;更換成-hugo-的原因&#34;&gt;更換成 Hugo 的原因&lt;/h1&gt;
 &lt;p&gt;自己本身是有使用 Blogger，主要認為有下面幾個問題。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;垃圾留言&lt;/li&gt;

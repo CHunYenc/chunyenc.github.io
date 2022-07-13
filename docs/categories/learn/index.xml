@@ -12,7 +12,7 @@
         <pubDate>Sun, 10 Apr 2022 19:03:00 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/jenkins-01/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/jenkins-01/jenkins.png" alt="Featured image of post JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用" /&gt;&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/jenkins.png" alt="Featured image of post JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用" /&gt;&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
 &lt;p&gt;趁這次假日架設了 Jenkins，但是目前為止 M1 處理器皆不支援。&lt;/p&gt;
 &lt;p&gt;所以用在學生時期使用的 Oracle Cloud 建立一台虛擬機，以下都可以適用在任何雲端平台來操作。&lt;/p&gt;
 &lt;h2 id=&#34;ubuntu-版本&#34;&gt;Ubuntu 版本&lt;/h2&gt;

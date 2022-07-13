@@ -12,7 +12,7 @@
         <pubDate>Wed, 06 Jul 2022 17:59:19 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/git-%E5%B0%8F%E6%92%87%E6%AD%A5-01-%E6%B2%92%E6%9C%89-commit-%E7%9A%84%E6%AA%94%E6%A1%88%E9%81%BA%E5%A4%B1%E5%A6%82%E4%BD%95%E6%89%BE%E5%9B%9E/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/git-%E5%B0%8F%E6%92%87%E6%AD%A5-01-%E6%B2%92%E6%9C%89-commit-%E7%9A%84%E6%AA%94%E6%A1%88%E9%81%BA%E5%A4%B1%E5%A6%82%E4%BD%95%E6%89%BE%E5%9B%9E/git.png" alt="Featured image of post GIT 小撇步 01 - 沒有 commit 的檔案遺失，如何找回" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/git.png" alt="Featured image of post GIT 小撇步 01 - 沒有 commit 的檔案遺失，如何找回" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;有一天下午，把某項任務完成後，就下指令 &lt;code&gt;git add&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;然後沒有 &lt;code&gt;git commit&lt;/code&gt; &amp;hellip; (更不用說 &lt;code&gt;git push&lt;/code&gt;)&lt;/p&gt;
 &lt;p&gt;總之就在整理前後端版本對應的問題，然後就直接 &lt;code&gt;git checkout -f master&lt;/code&gt; 跳去 master，主要是覆蓋版本，因為主分支已經很久沒有上新版了。&lt;/p&gt;

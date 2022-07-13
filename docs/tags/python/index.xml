@@ -12,7 +12,7 @@
         <pubDate>Mon, 11 Jul 2022 17:31:45 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/2022-django-01-protect-code/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/2022-django-01-protect-code/django.png" alt="Featured image of post Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/django.png" alt="Featured image of post Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;主要就是將原始程式碼轉成暗碼，雖然能夠不讓自己的程式碼直接裸奔。&lt;/p&gt;
 &lt;p&gt;但是若碰到有心人士也是一樣可以透過逆向工程把你的程式碼還原。&lt;/p&gt;
 &lt;p&gt;提到明碼轉成暗碼，優先選擇 Cython 來執行，速度甚至可能變快(?)，實際上當然還沒測試，只是看到非常多人透過 Cython 讓自己 Python 程式碼變快 XD&lt;/p&gt;

@@ -12,7 +12,7 @@
         <pubDate>Mon, 11 Jul 2022 17:31:45 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/2022-django-01-protect-code/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/2022-django-01-protect-code/django.png" alt="Featured image of post Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/django.png" alt="Featured image of post Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;主要就是將原始程式碼轉成暗碼，雖然能夠不讓自己的程式碼直接裸奔。&lt;/p&gt;
 &lt;p&gt;但是若碰到有心人士也是一樣可以透過逆向工程把你的程式碼還原。&lt;/p&gt;
 &lt;p&gt;提到明碼轉成暗碼，優先選擇 Cython 來執行，速度甚至可能變快(?)，實際上當然還沒測試，只是看到非常多人透過 Cython 讓自己 Python 程式碼變快 XD&lt;/p&gt;
@@ -476,7 +476,7 @@
         <pubDate>Wed, 06 Jul 2022 17:59:19 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/git-%E5%B0%8F%E6%92%87%E6%AD%A5-01-%E6%B2%92%E6%9C%89-commit-%E7%9A%84%E6%AA%94%E6%A1%88%E9%81%BA%E5%A4%B1%E5%A6%82%E4%BD%95%E6%89%BE%E5%9B%9E/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/git-%E5%B0%8F%E6%92%87%E6%AD%A5-01-%E6%B2%92%E6%9C%89-commit-%E7%9A%84%E6%AA%94%E6%A1%88%E9%81%BA%E5%A4%B1%E5%A6%82%E4%BD%95%E6%89%BE%E5%9B%9E/git.png" alt="Featured image of post GIT 小撇步 01 - 沒有 commit 的檔案遺失，如何找回" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/git.png" alt="Featured image of post GIT 小撇步 01 - 沒有 commit 的檔案遺失，如何找回" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;有一天下午，把某項任務完成後，就下指令 &lt;code&gt;git add&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;然後沒有 &lt;code&gt;git commit&lt;/code&gt; &amp;hellip; (更不用說 &lt;code&gt;git push&lt;/code&gt;)&lt;/p&gt;
 &lt;p&gt;總之就在整理前後端版本對應的問題，然後就直接 &lt;code&gt;git checkout -f master&lt;/code&gt; 跳去 master，主要是覆蓋版本，因為主分支已經很久沒有上新版了。&lt;/p&gt;
@@ -529,7 +529,7 @@
         <pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/oracle.png" alt="Featured image of post Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/oracle.png" alt="Featured image of post Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;之前的我都是去 docker hub pull,&lt;/p&gt;
 &lt;p&gt;但是今天發現 docker pull 的方式不一樣了。&lt;/p&gt;
 &lt;h1 id=&#34;直接寫解法&#34;&gt;直接寫解法&lt;/h1&gt;
@@ -656,7 +656,7 @@
         <pubDate>Sun, 10 Apr 2022 19:03:00 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/jenkins-01/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/jenkins-01/jenkins.png" alt="Featured image of post JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用" /&gt;&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/jenkins.png" alt="Featured image of post JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用" /&gt;&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
 &lt;p&gt;趁這次假日架設了 Jenkins，但是目前為止 M1 處理器皆不支援。&lt;/p&gt;
 &lt;p&gt;所以用在學生時期使用的 Oracle Cloud 建立一台虛擬機，以下都可以適用在任何雲端平台來操作。&lt;/p&gt;
 &lt;h2 id=&#34;ubuntu-版本&#34;&gt;Ubuntu 版本&lt;/h2&gt;
@@ -994,7 +994,7 @@
         <pubDate>Sat, 26 Mar 2022 20:46:00 +0800</pubDate>
         
         <guid>https://chunyenc.github.io/p/hugo-blog-online/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/p/hugo-blog-online/featured.png" alt="Featured image of post 我的第一篇 HUGO 架設 BLOG 經驗分享" /&gt;&lt;h1 id=&#34;更換成-hugo-的原因&#34;&gt;更換成 Hugo 的原因&lt;/h1&gt;
+        <description>&lt;img src="https://chunyenc.github.io/featured.png" alt="Featured image of post 我的第一篇 HUGO 架設 BLOG 經驗分享" /&gt;&lt;h1 id=&#34;更換成-hugo-的原因&#34;&gt;更換成 Hugo 的原因&lt;/h1&gt;
 &lt;p&gt;自己本身是有使用 Blogger，主要認為有下面幾個問題。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;垃圾留言&lt;/li&gt;
