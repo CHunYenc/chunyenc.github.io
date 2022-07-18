@@ -7,12 +7,12 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-tw</language>
         <lastBuildDate>Wed, 13 Jul 2022 10:36:26 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>2022 07 13 Oracle Xe 11g</title>
-        <link>https://chunyenc.github.io/p/2022-07-13-oracle-xe-11g/</link>
+        <title>Docker 紀錄 02 - 使用 oracleinanutshell/oracle-xe-11g 紀錄</title>
+        <link>https://chunyenc.github.io/p/2022-docker-oracle-xe-11g/</link>
         <pubDate>Wed, 13 Jul 2022 10:36:26 +0800</pubDate>
         
-        <guid>https://chunyenc.github.io/p/2022-07-13-oracle-xe-11g/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/oracle.png" alt="Featured image of post 2022 07 13 Oracle Xe 11g" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
+        <guid>https://chunyenc.github.io/p/2022-docker-oracle-xe-11g/</guid>
+        <description>&lt;img src="https://chunyenc.github.io/oracle.png" alt="Featured image of post Docker 紀錄 02 - 使用 oracleinanutshell/oracle-xe-11g 紀錄" /&gt;&lt;h1 id=&#34;前言&#34;&gt;前言&lt;/h1&gt;
 &lt;p&gt;主要紀錄建立 oracle-xe-11g 這個 image 的過程。&lt;/p&gt;
 &lt;h1 id=&#34;容器大小&#34;&gt;容器大小&lt;/h1&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

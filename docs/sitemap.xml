@@ -2,17 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://chunyenc.github.io/p/2022-07-13-oracle-xe-11g/</loc>
+    <loc>https://chunyenc.github.io/categories/</loc>
     <lastmod>2022-07-13T10:36:26+08:00</lastmod>
   </url><url>
     <loc>https://chunyenc.github.io/</loc>
     <lastmod>2022-07-13T10:36:26+08:00</lastmod>
   </url><url>
+    <loc>https://chunyenc.github.io/tags/database/</loc>
+    <lastmod>2022-07-13T10:36:26+08:00</lastmod>
+  </url><url>
+    <loc>https://chunyenc.github.io/p/2022-docker-oracle-xe-11g/</loc>
+    <lastmod>2022-07-13T10:36:26+08:00</lastmod>
+  </url><url>
+    <loc>https://chunyenc.github.io/categories/experience/</loc>
+    <lastmod>2022-07-13T10:36:26+08:00</lastmod>
+  </url><url>
+    <loc>https://chunyenc.github.io/tags/oracle/</loc>
+    <lastmod>2022-07-13T10:36:26+08:00</lastmod>
+  </url><url>
     <loc>https://chunyenc.github.io/post/</loc>
     <lastmod>2022-07-13T10:36:26+08:00</lastmod>
   </url><url>
-    <loc>https://chunyenc.github.io/categories/</loc>
-    <lastmod>2022-07-11T17:31:45+08:00</lastmod>
+    <loc>https://chunyenc.github.io/tags/</loc>
+    <lastmod>2022-07-13T10:36:26+08:00</lastmod>
   </url><url>
     <loc>https://chunyenc.github.io/tags/django/</loc>
     <lastmod>2022-07-11T17:31:45+08:00</lastmod>
@@ -20,13 +32,7 @@
     <loc>https://chunyenc.github.io/p/2022-django-01-protect-code/</loc>
     <lastmod>2022-07-11T17:31:45+08:00</lastmod>
   </url><url>
-    <loc>https://chunyenc.github.io/categories/experience/</loc>
-    <lastmod>2022-07-11T17:31:45+08:00</lastmod>
-  </url><url>
     <loc>https://chunyenc.github.io/tags/python/</loc>
-    <lastmod>2022-07-11T17:31:45+08:00</lastmod>
-  </url><url>
-    <loc>https://chunyenc.github.io/tags/</loc>
     <lastmod>2022-07-11T17:31:45+08:00</lastmod>
   </url><url>
     <loc>https://chunyenc.github.io/tags/git/</loc>
@@ -35,13 +41,7 @@
     <loc>https://chunyenc.github.io/p/git-%E5%B0%8F%E6%92%87%E6%AD%A5-01-%E6%B2%92%E6%9C%89-commit-%E7%9A%84%E6%AA%94%E6%A1%88%E9%81%BA%E5%A4%B1%E5%A6%82%E4%BD%95%E6%89%BE%E5%9B%9E/</loc>
     <lastmod>2022-07-06T17:59:19+08:00</lastmod>
   </url><url>
-    <loc>https://chunyenc.github.io/tags/database/</loc>
-    <lastmod>2022-06-29T13:31:59+08:00</lastmod>
-  </url><url>
     <loc>https://chunyenc.github.io/p/2022-docker-pull-oracle-database-image/</loc>
-    <lastmod>2022-06-29T13:31:59+08:00</lastmod>
-  </url><url>
-    <loc>https://chunyenc.github.io/tags/oracle/</loc>
     <lastmod>2022-06-29T13:31:59+08:00</lastmod>
   </url><url>
     <loc>https://chunyenc.github.io/tags/jenkins/</loc>

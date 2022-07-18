@@ -1,10 +1,14 @@
 ---
-title: "2022 07 13 Oracle Xe 11g"
+title: "Docker 紀錄 02 - 使用 oracleinanutshell/oracle-xe-11g 紀錄"
 description: 
 date: 2022-07-13T10:36:26+08:00
+slug: "2022-docker-oracle-xe-11g"
 image: oracle.png
-math: 
-license: 
+categories:
+    - Experience
+tags:
+    - Oracle
+    - DATABASE
 hidden: false
 comments: true
 draft: false
