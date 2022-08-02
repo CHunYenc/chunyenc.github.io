@@ -1,137 +1,118 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>國泰銀行 on CHUN-YEN&#39;s BLOG</title>
-        <link>https://chunyenc.github.io/tags/%E5%9C%8B%E6%B3%B0%E9%8A%80%E8%A1%8C/</link>
-        <description>Recent content in 國泰銀行 on CHUN-YEN&#39;s BLOG</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>zh-tw</language>
-        <lastBuildDate>Thu, 31 Mar 2022 18:50:00 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/%E5%9C%8B%E6%B3%B0%E9%8A%80%E8%A1%8C/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>2022年04月 - 個人信用卡整理 - 台新銀行</title>
-        <link>https://chunyenc.github.io/p/2022-credit-card/</link>
-        <pubDate>Thu, 31 Mar 2022 18:50:00 +0800</pubDate>
-        
-        <guid>https://chunyenc.github.io/p/2022-credit-card/</guid>
-        <description>&lt;img src="https://chunyenc.github.io/credit-card.png" alt="Featured image of post 2022年04月 - 個人信用卡整理 - 台新銀行" /&gt;&lt;h1 id=&#34;目前信用卡金融卡&#34;&gt;目前信用卡/金融卡&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;目前有以下的信用卡、銀行。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;目前只有想整理台灣信用卡，沒有要講 Crypto.com 那張。
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;ol&gt;
-&lt;li&gt;台新銀行 &lt;code&gt;一定要自動扣繳&lt;/code&gt;
-&lt;ol&gt;
-&lt;li&gt;GoGo悠遊御璽信用卡 &lt;code&gt;超過 5000up 5%&lt;/code&gt; &lt;code&gt;每月回饋最多 900 元&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;街口聯名卡 &lt;code&gt;超過 5000 up 6%&lt;/code&gt; &lt;code&gt;回饋最多 200 元&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Richart 金融卡&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;玉山銀行
-&lt;ol&gt;
-&lt;li&gt;Ubear 信用卡 - &lt;code&gt;網購、行動支付 3%&lt;/code&gt; &lt;code&gt;上限消費一萬台幣&lt;/code&gt; &lt;code&gt;每月回饋最多 200 元&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Pi 拍兔簽帳金融卡 - &lt;code&gt;PChome 5%&lt;/code&gt; &lt;code&gt;每月回饋最多 300 元&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;國泰銀行
-&lt;ol&gt;
-&lt;li&gt;Cube 信用卡 - &lt;code&gt;iRent 3%&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;連線銀行(Line Bank) &lt;code&gt;活存 - 口袋帳戶 2.2%&lt;/code&gt; &lt;code&gt;上限活存五萬台幣&lt;/code&gt;
-&lt;ol&gt;
-&lt;li&gt;快點卡 - &lt;code&gt;全通路 2%&lt;/code&gt; &lt;code&gt;上限消費一萬台幣&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Crypto.com &lt;code&gt;加密貨幣金融卡&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;中華郵政&lt;/li&gt;
-&lt;li&gt;Bankee - &lt;code&gt;活存 - 2.6%&lt;/code&gt; &lt;code&gt;上限活存五萬台幣&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;說明&#34;&gt;說明&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;本篇沒有算台新新卡友，如果是新卡友就不要繼續看了。
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;因為我是舊卡友。
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;今天也只打算整理台新的信用卡 ..&lt;/p&gt;
-&lt;p&gt;超失望，第一張 GOGO 卡現在變成這樣 .. QQ&lt;/p&gt;
-&lt;h1 id=&#34;台新&#34;&gt;台新&lt;/h1&gt;
-&lt;p&gt;今年 2022 年，若有大筆才會使用, 畢竟分期還有回饋的銀行。&lt;/p&gt;
-&lt;h2 id=&#34;gogo悠遊御璽信用卡&#34;&gt;GoGo悠遊御璽信用卡&lt;/h2&gt;
-&lt;p&gt;帳單期限：&lt;code&gt;2022/4/1~2023/1/31&lt;/code&gt; 的結帳帳單&lt;/p&gt;
-&lt;p&gt;連結：&lt;a class=&#34;link&#34; href=&#34;https://www.taishinbank.com.tw/TSB/personal/credit/intro/overview/future/86ba4c75-a85a-11e9-95ab-0050568c09e3&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.taishinbank.com.tw/TSB/personal/credit/intro/overview/future/86ba4c75-a85a-11e9-95ab-0050568c09e3&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;無腦用法：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;一定要使用 LINE PAY
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;當月必須消費 5000 元以上 (分期當月超過 5000 元也算)
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;使用 Richart 自動扣繳信用卡帳單
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;非無腦用法：&lt;/p&gt;
-&lt;p&gt;這邊有個重點，連結有一張大表。分為&lt;code&gt;「精選」4.8%、「指定」3.3%、「一般」0.8%&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;三個回饋上限各為 300 元台幣，意思是說同期可以最高有 900 元回饋。&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;街口聯名卡&#34;&gt;街口聯名卡&lt;/h2&gt;
-&lt;p&gt;帳單期限：&lt;code&gt;2022/1/1~2022/6/30&lt;/code&gt; 的結帳帳單&lt;/p&gt;
-&lt;p&gt;每月上限：&lt;code&gt;200元&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;連結：&lt;a class=&#34;link&#34; href=&#34;https://www.taishinbank.com.tw/TSB/personal/credit/intro/overview/future/fb892ea1-f967-11e9-b038-0050568c09e3&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.taishinbank.com.tw/TSB/personal/credit/intro/overview/future/fb892ea1-f967-11e9-b038-0050568c09e3&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;無腦用法：&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;A 用法 6%:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;禮拜三使用街口繳```中華電信電話費```
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;B 用法 6%:
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;當月必須消費 5000 元以上 / 分期也可以、含繳費(A用法)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;richart-金融卡&#34;&gt;Richart 金融卡&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;金融卡就不要奢求什麼了 XD ..｀
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;連結：&lt;a class=&#34;link&#34; href=&#34;https://richart.tw/TSDIB_RichartWeb/Products/VisaDebitCard&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://richart.tw/TSDIB_RichartWeb/Products/VisaDebitCard&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;reference&#34;&gt;Reference&lt;/h1&gt;
-&lt;p&gt;LOGO &lt;a class=&#34;link&#34; href=&#34;https://zh.pngtree.com/freepng/hand-drawn-cartoon-credit-card-png-element_4393806.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://zh.pngtree.com/freepng/hand-drawn-cartoon-credit-card-png-element_4393806.html&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        
-    </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>國泰銀行 on CHUN-YEN's BLOG</title><link>https://chunyenc.github.io/tags/%E5%9C%8B%E6%B3%B0%E9%8A%80%E8%A1%8C/</link><description>Recent content in 國泰銀行 on CHUN-YEN's BLOG</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Thu, 31 Mar 2022 18:50:00 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/%E5%9C%8B%E6%B3%B0%E9%8A%80%E8%A1%8C/index.xml" rel="self" type="application/rss+xml"/><item><title>2022年04月 - 個人信用卡整理 - 台新銀行</title><link>https://chunyenc.github.io/p/2022-credit-card/</link><pubDate>Thu, 31 Mar 2022 18:50:00 +0800</pubDate><guid>https://chunyenc.github.io/p/2022-credit-card/</guid><description>&lt;img src="https://chunyenc.github.io/credit-card.png" alt="Featured image of post 2022年04月 - 個人信用卡整理 - 台新銀行" />&lt;h1 id="目前信用卡金融卡">目前信用卡/金融卡&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">目前有以下的信用卡、銀行。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">目前只有想整理台灣信用卡，沒有要講 Crypto.com 那張。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ol>
+&lt;li>台新銀行 &lt;code>一定要自動扣繳&lt;/code>
+&lt;ol>
+&lt;li>GoGo悠遊御璽信用卡 &lt;code>超過 5000up 5%&lt;/code> &lt;code>每月回饋最多 900 元&lt;/code>&lt;/li>
+&lt;li>街口聯名卡 &lt;code>超過 5000 up 6%&lt;/code> &lt;code>回饋最多 200 元&lt;/code>&lt;/li>
+&lt;li>Richart 金融卡&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>玉山銀行
+&lt;ol>
+&lt;li>Ubear 信用卡 - &lt;code>網購、行動支付 3%&lt;/code> &lt;code>上限消費一萬台幣&lt;/code> &lt;code>每月回饋最多 200 元&lt;/code>&lt;/li>
+&lt;li>Pi 拍兔簽帳金融卡 - &lt;code>PChome 5%&lt;/code> &lt;code>每月回饋最多 300 元&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>國泰銀行
+&lt;ol>
+&lt;li>Cube 信用卡 - &lt;code>iRent 3%&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>連線銀行(Line Bank) &lt;code>活存 - 口袋帳戶 2.2%&lt;/code> &lt;code>上限活存五萬台幣&lt;/code>
+&lt;ol>
+&lt;li>快點卡 - &lt;code>全通路 2%&lt;/code> &lt;code>上限消費一萬台幣&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Crypto.com &lt;code>加密貨幣金融卡&lt;/code>&lt;/li>
+&lt;li>中華郵政&lt;/li>
+&lt;li>Bankee - &lt;code>活存 - 2.6%&lt;/code> &lt;code>上限活存五萬台幣&lt;/code>&lt;/li>
+&lt;/ol>
+&lt;h1 id="說明">說明&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">本篇沒有算台新新卡友，如果是新卡友就不要繼續看了。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">因為我是舊卡友。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>今天也只打算整理台新的信用卡 ..&lt;/p>
+&lt;p>超失望，第一張 GOGO 卡現在變成這樣 .. QQ&lt;/p>
+&lt;h1 id="台新">台新&lt;/h1>
+&lt;p>今年 2022 年，若有大筆才會使用, 畢竟分期還有回饋的銀行。&lt;/p>
+&lt;h2 id="gogo悠遊御璽信用卡">GoGo悠遊御璽信用卡&lt;/h2>
+&lt;p>帳單期限：&lt;code>2022/4/1~2023/1/31&lt;/code> 的結帳帳單&lt;/p>
+&lt;p>連結：&lt;a class="link" href="https://www.taishinbank.com.tw/TSB/personal/credit/intro/overview/future/86ba4c75-a85a-11e9-95ab-0050568c09e3" target="_blank" rel="noopener"
+>https://www.taishinbank.com.tw/TSB/personal/credit/intro/overview/future/86ba4c75-a85a-11e9-95ab-0050568c09e3&lt;/a>&lt;/p>
+&lt;p>無腦用法：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">一定要使用 LINE PAY
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">當月必須消費 5000 元以上 (分期當月超過 5000 元也算)
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">使用 Richart 自動扣繳信用卡帳單
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>非無腦用法：&lt;/p>
+&lt;p>這邊有個重點，連結有一張大表。分為&lt;code>「精選」4.8%、「指定」3.3%、「一般」0.8%&lt;/code>。&lt;/p>
+&lt;p>&lt;code>三個回饋上限各為 300 元台幣，意思是說同期可以最高有 900 元回饋。&lt;/code>&lt;/p>
+&lt;h2 id="街口聯名卡">街口聯名卡&lt;/h2>
+&lt;p>帳單期限：&lt;code>2022/1/1~2022/6/30&lt;/code> 的結帳帳單&lt;/p>
+&lt;p>每月上限：&lt;code>200元&lt;/code>&lt;/p>
+&lt;p>連結：&lt;a class="link" href="https://www.taishinbank.com.tw/TSB/personal/credit/intro/overview/future/fb892ea1-f967-11e9-b038-0050568c09e3" target="_blank" rel="noopener"
+>https://www.taishinbank.com.tw/TSB/personal/credit/intro/overview/future/fb892ea1-f967-11e9-b038-0050568c09e3&lt;/a>&lt;/p>
+&lt;p>無腦用法：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">A 用法 6%:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">禮拜三使用街口繳```中華電信電話費```
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">B 用法 6%:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">當月必須消費 5000 元以上 / 分期也可以、含繳費(A用法)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="richart-金融卡">Richart 金融卡&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">金融卡就不要奢求什麼了 XD ..｀
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>連結：&lt;a class="link" href="https://richart.tw/TSDIB_RichartWeb/Products/VisaDebitCard" target="_blank" rel="noopener"
+>https://richart.tw/TSDIB_RichartWeb/Products/VisaDebitCard&lt;/a>&lt;/p>
+&lt;h1 id="reference">Reference&lt;/h1>
+&lt;p>LOGO &lt;a class="link" href="https://zh.pngtree.com/freepng/hand-drawn-cartoon-credit-card-png-element_4393806.html" target="_blank" rel="noopener"
+>https://zh.pngtree.com/freepng/hand-drawn-cartoon-credit-card-png-element_4393806.html&lt;/a>&lt;/p></description></item></channel></rss>
