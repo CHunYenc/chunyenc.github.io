@@ -1,0 +1,16 @@
+kind: pipeline
+name: deploy-to-github
+
+steps:
+- name: build
+  image: plugins/hugo
+  settings: 
+    hugo_version: 0.95
+    validate: true
+
+- name: publish  
+  image: plugins/gh-pages
+  settings:
+    username: username
+    password: password
+    pages_directory: public/

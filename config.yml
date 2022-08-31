@@ -3,7 +3,6 @@ languageCode: zh-tw
 theme: stack
 paginate: 5
 title: CHUN-YEN's BLOG
-publishDir: docs
 staticDir:
   - static
 
