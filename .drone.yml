@@ -10,8 +10,9 @@ steps:
 
 - name: publish  
   image: plugins/gh-pages
-  secrets: [ username, password ]
   settings:
-    username: $username
-    password: $password
+    username: 
+      from_secret: username
+    password: 
+      from_secret: password
     pages_directory: public/
