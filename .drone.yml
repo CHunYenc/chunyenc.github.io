@@ -1,16 +1,23 @@
 kind: pipeline
+type: docker
 name: deploy-to-github
 
 steps:
+- name: submodule-update
+  image: alpine/git
+  commands:
+    - git submodule update --init --recursive
+
 - name: build
-  image: hypervtechnics/drone-hugo
-  settings:
-    hugo_version: 0.95
-    validate: true
+  image: klakegg/hugo
+  commands:
+    - hugo -D
 
 - name: publish  
   image: plugins/gh-pages
   settings:
-    username: username
-    password: password
+    username: 
+      from_secret: username
+    password: 
+      from_secret: password
     pages_directory: public/
