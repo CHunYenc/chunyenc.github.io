@@ -11,6 +11,9 @@ steps:
     config: config.yml
     content: content
     validate: true
+  commands:
+    - apk add libc6-compat libstdc++
+    - /bin/drone-hugo
 
 - name: publish  
   image: plugins/gh-pages
