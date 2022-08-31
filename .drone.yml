@@ -3,7 +3,7 @@ name: deploy-to-github
 
 steps:
 - name: build
-  image: plugins/hugo
+  image: AzurCrystal/drone-hugo:update-1.18.3
   settings:
     hugo_version: 0.95
     extended: true
