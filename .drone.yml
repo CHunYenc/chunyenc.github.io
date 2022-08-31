@@ -3,11 +3,15 @@ type: docker
 name: deploy-to-github
 
 steps:
+- name: submodules update
+    image: alpine/git
+    commands:
+      - git submodule update --init --recursive
+
 - name: build
   image: klakegg/hugo
   commands:
-    - git submodule update --init --recursive
-    - hugo -t stack
+    - hugo -D
 
 - name: publish  
   image: plugins/gh-pages
