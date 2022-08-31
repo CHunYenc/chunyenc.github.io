@@ -4,9 +4,9 @@ name: deploy-to-github
 
 steps:
 - name: submodule-update
-    image: alpine/git
-    commands:
-      - git submodule update --init --recursive
+  image: alpine/git
+  commands:
+    - git submodule update --init --recursive
 
 - name: build
   image: klakegg/hugo
