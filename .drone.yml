@@ -1,19 +1,12 @@
 kind: pipeline
+type: docker
 name: deploy-to-github
 
 steps:
 - name: build
-  image: azurcrystal/drone-hugo:update-1.18.3
-  settings:
-    hugo_version: 0.95
-    extended: true
-    validate: true
-    config: config.yml
-    content: content
-    validate: true
+  image: klakegg/hugo
   commands:
-    - apk add libc6-compat libstdc++
-    - /bin/drone-hugo
+    - ls -l
 
 - name: publish  
   image: plugins/gh-pages
