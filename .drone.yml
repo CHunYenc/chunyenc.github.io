@@ -3,8 +3,8 @@ name: deploy-to-github
 
 steps:
 - name: build
-  image: plugins/hugo
-  settings: 
+  image: hypervtechnics/drone-hugo
+  settings:
     hugo_version: 0.95
     validate: true
 
