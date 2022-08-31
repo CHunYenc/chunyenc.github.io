@@ -6,7 +6,7 @@ steps:
 - name: build
   image: klakegg/hugo
   commands:
-    - ls -l
+    - hugo -t stack
 
 - name: publish  
   image: plugins/gh-pages
