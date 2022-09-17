@@ -9,6 +9,7 @@ categories:
 tags:
     - Oracle
     - DATABASE
+    - Docker
 hidden: false
 comments: True
 draft: false
