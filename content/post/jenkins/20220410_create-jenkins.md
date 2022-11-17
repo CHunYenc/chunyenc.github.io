@@ -83,9 +83,9 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 可以參考 [備註](#備註)
 ## 前往網頁
 
-![等待 Jenkins 上工](00-wait.png)
+![等待 Jenkins 上工](/images/20220410/00-wait.png)
 
-![進入 JenKins 的第一個畫面](01-Unlock.png)
+![進入 JenKins 的第一個畫面](/images/20220410/01-Unlock.png)
 
 就把 ```61e8c8cb00c0417bb4c4719ba8559060``` 貼進去裡面就完成啟用囉 !
 
@@ -93,41 +93,41 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 直接點擊右上角 x, 到時候我們再一項一項安裝.
 
-![點擊右上角 x 進行下一步](02-plugin.png)
+![點擊右上角 x 進行下一步](/images/20220410/02-plugin.png)
 
 ## 進入首頁
 
-![Jenkins 首頁](03-home.png)
+![Jenkins 首頁](/images/20220410/03-home.png)
 
 ## 更改 admin 密碼
 
-![更改 admin 登入密碼](04-change_password.png)
+![更改 admin 登入密碼](/images/20220410/04-change_password.png)
 
 ## 建立一個 work
 
-![點擊左上角，新增作業](05-create-work.png)
+![點擊左上角，新增作業](/images/20220410/05-create-work.png)
 
 ## Hello Jenkins !!!
 
-![創建一個作業](06-create-hello-jenkins.png)
+![創建一個作業](/images/20220410/06-create-hello-jenkins.png)
 
 這邊可以直接按「OK」。
 
 ## 加入一個 echo shell
 
-![選取 執行 Shell](07-create-shell.jpeg)
+![選取 執行 Shell](/images/20220410/07-create-shell.jpeg)
 
 畢竟本篇是要執行一個 echo 「Hello World」。
 
 所以我們還是先照做，此篇只是第一篇的 jenkins XD
 
-![打上 echo Hello Jenkins](08-echo.jpg)
+![打上 echo Hello Jenkins](/images/20220410/08-echo.jpg)
 
 點擊儲存。
 
 ## 執行我們建立的作業 Hello Jenkins !!
 
-![回到 Dashboard](09-dashboard.jpg)
+![回到 Dashboard](/images/20220410/09-dashboard.jpg)
 
 ```
 點擊我們 Hello Jenkins 作業做右邊的執行鈕
@@ -142,11 +142,11 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 目光移到「左下角」的「建置歷程」
 ```
 
-![建置歷程](11-task-history.png)
+![建置歷程](/images/20220410/11-task-history.png)
 
 這邊我點擊 #1 來看看我們，剛剛的 Hello Jenkins 有沒有執行出來 !!
 
-![建置的結果](10-success-task.png)
+![建置的結果](/images/20220410/10-success-task.png)
 
 這邊只是大致上介紹一下，Jenkins 可以協助你啟動任何的任務，不只是 Shell.
 

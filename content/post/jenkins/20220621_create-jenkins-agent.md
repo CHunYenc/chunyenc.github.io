@@ -13,7 +13,7 @@ math:
 license: 
 hidden: false
 comments: true
-draft: true
+draft: false
 ---
 
 # 前言
@@ -33,13 +33,13 @@ draft: true
 
 首先就是先進入 Jenkins 左邊的「管理 Jenkins」。
 
-![管理 Jenkins](01-Configuration.png)
+![管理 Jenkins](/images/20220621/01-Configuration.png)
 
 ```
 點擊「管理節點」
 ```
 
-![管理節點](02-nodes.png)
+![管理節點](/images/20220621/02-nodes.png)
 
 ## 新增節點
 
@@ -52,19 +52,19 @@ draft: true
 ```空的節點：就是直接新增。```
 
 
-![新增節點](03-new-agent.png)
+![新增節點](/images/20220621/03-new-agent.png)
 
 ```
 什麼都不要填，直接 save。
 ```
 
-![建立好無法連線的 Agent](04-created-agent.png)
+![建立好無法連線的 Agent](/images/20220621/04-created-agent.png)
 
 ```
 點擊剛剛建立的 Agent，會跳出我們要連線的 Agent 的 secret-file
 ```
 
-![查看 Agent 的連線資訊](05-agent-information.png)
+![查看 Agent 的連線資訊](/images/20220621/05-agent-information.png)
 
 ```
 有點多資訊要擋，不好意思。
@@ -96,7 +96,7 @@ docker run --init jenkins/inbound-agent -url <url> -workDir=/home/jenkins/agent 
 
 docker run 執行完後，就會發現我們已經連線成功了！
 
-![Agent 連線成功](06-agent-ok.png)
+![Agent 連線成功](/images/20220621/06-agent-ok.png)
 
 ```
 下一篇，就要來建立 pipeline 了 !!!
