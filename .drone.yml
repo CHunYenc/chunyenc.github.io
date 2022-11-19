@@ -21,3 +21,6 @@ steps:
     password: 
       from_secret: password
     pages_directory: public/
+  when:
+    branch:
+    - master
