@@ -1,6 +1,6 @@
 # chunyenc.github.io
 
-[![Build Status](http://drone.chunyen.xyz/api/badges/CHunYenc/chunyenc.github.io/status.svg)](http://drone.chunyen.xyz/CHunYenc/chunyenc.github.io)
+[![Build Status](http://drone.chunyen.xyz/api/badges/CHunYenc/chunyenc.github.io/status.svg?ref=refs/heads/master)](http://drone.chunyen.xyz/CHunYenc/chunyenc.github.io)
 
 使用 hugo 建立的部落格網站。
 
