@@ -2,7 +2,7 @@ baseurl: https://chunyenc.github.io/
 languageCode: zh-tw
 theme: hugo-theme-stack
 paginate: 5
-title: CHUN-YEN's BLOG
+title: YEN's BLOG
 staticDir:
   - static
 enableRobotsTXT: true
@@ -11,15 +11,15 @@ sitemap:
   filename: sitemap.xml
   priority: 0.5
 
-# languages:
-#     en:
-#         languageName: English
-#         title: CHUN-YEN's BLOG
-#         weight: 1
-#     zh-cn:
-#         languageName: 中文
-#         title: 演示站点
-#         weight: 2
+languages:
+    # en:
+    #     languageName: English
+    #     title: YEN'S BLOG
+    #     weight: 1
+    zh-tw:
+        languageName: 中文
+        title: YEN 的部落格
+        weight: 1
 #     ar:
 #         languageName: عربي
 #         languagedirection: rtl
@@ -63,12 +63,12 @@ params:
     emoji: 🍥
     subtitle: 發廢文、技術、生活
     avatar:
-      enabled: true
+      enabled: false
       local: true
       src: img/avatar.png
 
   article:
-    math: false
+    math: true
     toc: true
     readingTime: true
     license:
@@ -199,7 +199,17 @@ params:
 ### See https://docs.stack.jimmycai.com/configuration/custom-menu.html
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
-  main: []
+  main: 
+    - name: 加密貨幣報價
+      url: http://price.chunyen.xyz
+      params:
+        newTab: true
+        icon: bitcoin
+    - name: 金門小秘笈
+      url: http://price.chunyen.xyz
+      params:
+        newTab: true
+        icon: home
 
   social:
     - identifier: github
