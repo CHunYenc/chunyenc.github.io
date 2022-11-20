@@ -1,10 +1,15 @@
 baseurl: https://chunyenc.github.io/
 languageCode: zh-tw
-theme: stack
+theme: hugo-theme-stack
 paginate: 5
 title: CHUN-YEN's BLOG
 staticDir:
   - static
+enableRobotsTXT: true
+sitemap:
+  changefreq: daily
+  filename: sitemap.xml
+  priority: 0.5
 
 # languages:
 #     en:
@@ -211,7 +216,7 @@ menu:
 
     - identifier: instagram
       name: Instagram
-      url: https://www.facebook.com/Rchunyen
+      url: https://www.instagram.com/ryen__c/
       params:
         icon: brand-instagram
 
