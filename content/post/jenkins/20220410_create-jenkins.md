@@ -2,9 +2,7 @@
 title: "JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用"
 description: "主要是指令與如何使用 Docker + Jenkins 並印出 「Hello Jenkins」"
 date: 2022-04-10T19:03:00+08:00
-
 slug: "jenkins-01"
-image: "jenkins.png"
 categories:
     - Experience
     - Learn

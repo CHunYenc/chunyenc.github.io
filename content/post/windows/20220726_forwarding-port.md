@@ -3,7 +3,6 @@ title: "WSL2 紀錄 01 - 將 WSL2 指定 PORT 從 Windows 轉發出來"
 description: 
 date: 2022-07-26T15:27:00+08:00
 slug: "2022-WSL01-PORT-FORWARDING"
-image: 
 categories:
     - Experience
 tags:

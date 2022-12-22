@@ -2,13 +2,10 @@
 title: "JenKins 架設紀錄 04 - 建立 Jenkins Agent"
 description: "主要是工作想要上線 Jenkins 讓我的專案能夠更快速上線"
 date: 2022-06-21T21:28:00+08:00
-
-image: "jenkins.png"
 categories:
     - CICD
 tags:
     - Jenkins
-
 math: 
 license: 
 hidden: false

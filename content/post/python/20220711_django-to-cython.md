@@ -2,7 +2,6 @@
 title: "Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼"
 description: "程式碼就不會脫光光給別人看 XD"
 date: 2022-07-11T17:31:45+08:00
-image: "django.png"
 slug: "2022-django-01-protect-code"
 categories:
   - Experience

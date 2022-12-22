@@ -2,7 +2,6 @@
 title: "20221117_Flask-Caching 套件來使用 redis."
 description: "Flask 上下文導致 redis 引入一直有問題, 所以改用 Flask-Caching, 但是 ..."
 date: 2022-11-17T22:57:28+08:00
-image: "flask.png"
 slug: "flask-01"
 categories:
   - Experience

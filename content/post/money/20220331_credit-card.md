@@ -3,7 +3,6 @@ title: "2022年04月 - 個人信用卡整理 - 台新銀行"
 description: ""
 date: "2022-03-31 18:50:00+0800"
 slug: "2022-credit-card"
-image: "credit-card.png"
 categories:
     - Life
 tags:

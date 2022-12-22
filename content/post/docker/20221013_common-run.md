@@ -3,7 +3,6 @@ title: "Docker 紀錄 04 - 經常使用的 docker run"
 description: "一直 Google 找別人的也好累, 來做一點自己常用執行的紀錄。"
 date: 2022-10-13T20:21:30+08:00
 slug: "common-docker-run"
-image: docker.png
 categories:
     - Experience
 tags:
