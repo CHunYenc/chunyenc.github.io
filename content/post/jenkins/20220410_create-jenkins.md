@@ -9,8 +9,8 @@ categories:
 tags:
     - Jenkins
 hidden: false
-comments: True
-draft: false
+comments: true
+draft: true
 
 ---
 
@@ -26,10 +26,10 @@ draft: false
 # lsb_release -a
 
 No LSB modules are available.
-Distributor ID:	Ubuntu
-Description:	Ubuntu 18.04.6 LTS
-Release:	18.04
-Codename:	bionic
+Distributor ID: Ubuntu
+Description: Ubuntu 18.04.6 LTS
+Release: 18.04
+Codename: bionic
 ```
 
 ## Docker 版本
@@ -79,6 +79,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 如果不小心加上 ```-d``` 後，該怎麼辦 ?
 
 可以參考 [備註](#備註)
+
 ## 前往網頁
 
 ![等待 Jenkins 上工](/images/20220410/00-wait.png)
@@ -105,7 +106,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 ![點擊左上角，新增作業](/images/20220410/05-create-work.png)
 
-## Hello Jenkins !!!
+## Hello Jenkins
 
 ![創建一個作業](/images/20220410/06-create-hello-jenkins.png)
 
@@ -123,7 +124,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 點擊儲存。
 
-## 執行我們建立的作業 Hello Jenkins !!
+## 執行我們建立的作業 Hello Jenkins
 
 ![回到 Dashboard](/images/20220410/09-dashboard.jpg)
 
@@ -155,6 +156,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 # 備註 - 沒有密碼時的步驟
 
 ## 查看 docker 目前執行的 container
+
 ```
 # docker ps
 CONTAINER ID   IMAGE                       COMMAND                  CREATED         STATUS          PORTS                                                                                      NAMES
@@ -171,4 +173,3 @@ jenkins@d9146583cb09:/$ cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
 接下來就可以看到密碼囉， ```61e8c8cb00c0417bb4c4719ba8559060```
-
