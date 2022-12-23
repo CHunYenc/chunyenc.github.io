@@ -11,7 +11,7 @@ steps:
 - name: build
   image: klakegg/hugo
   commands:
-    - hugo -D
+    - hugo
 
 - name: publish  
   image: plugins/gh-pages
