@@ -12,19 +12,10 @@ sitemap:
   priority: 0.5
 
 languages:
-    # en:
-    #     languageName: English
-    #     title: YEN'S BLOG
-    #     weight: 1
     zh-tw:
         languageName: 中文
         title: YEN 的部落格
         weight: 1
-#     ar:
-#         languageName: عربي
-#         languagedirection: rtl
-#         title: موقع تجريبي
-#         weight: 3
 
 # Change it to your Disqus shortname before using
 disqusShortname: chunyen
@@ -53,7 +44,7 @@ params:
 
   footer:
     since: 2022
-    customText:
+    customText: 
 
   dateFormat:
     published: Jan 02, 2006

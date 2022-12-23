@@ -9,7 +9,7 @@ tags:
     - GIT
 hidden: false
 comments: True
-draft: true
+draft: false
 ---
 
 # 前言
@@ -34,8 +34,6 @@ draft: true
 
 # 先說結論
 
-> 有加上虛擬環境的容量 (venv)
-
 尚未優化前，佔 ```1.2G```
 
 優化後，佔 ```121MiB```
@@ -48,12 +46,12 @@ draft: true
 
 local 端
 
-1. 做錯的話你可以直接 copy 重新
-2. 不用一直 clone
+- 做錯的話你可以直接 copy 重新
+- 不用一直 clone
 
 remote 端
 
-1. 主要是備份 .. 東西不見太恐怖了 !!!
+- 主要是備份 .. 東西不見太恐怖了 !!!
 
 > 請確實做好備份。
 
@@ -79,19 +77,49 @@ git rev-list --all | xargs -rL1 git ls-tree -r --long | sort -uk3 | sort -rnk4 |
 
 ## 刪除 Git 檔案
 
+提供你複製，複製後將 ```檔案名稱``` 更改掉，因為他要打上你想要刪除的檔案 or 資料夾。
+
 ```shell
 git filter-branch --force --index-filter 'git rm -rf --cached --ignore-unmatch 檔案名稱' --prune-empty --tag-name-filter cat -- --all
+```
 
+下面是我的範例，提供給你參考。
+
+```
 # example 刪除 data folder, csv and json file.
 git filter-branch --force --index-filter 'git rm -rf --cached --ignore-unmatch data *.json *.csv' --prune-empty --tag-name-filter cat -- --all
 ```
 
+- ```*.json``` ：刪除 ```.json``` 檔名的檔案。
+- ```--forec``` ：強制刪除
+- ```--index-filter``` ：刪除的時候索引重寫。
+- ```--prune-empty```：將空白的 commit 刪除。
+- ```--tag-name-filter tag```: 將會重寫 tag 的索引。
+
+Git 官方網站：[filter-branch](https://git-scm.com/docs/git-filter-branch)
+
 # 清理 .git 資料夾
 
-像是剛
-
+```shell
 rm -rf .git/refs/original/
 git reflog expire --expire=now --all
 git gc --prune=now
 git gc --aggressive --prune=now
 git push origin master --force
+```
+
+這邊我有先將伺服器端的儲存庫刪除，再重新上傳。
+
+> 注意要備份啊 !!!!!!
+
+另外你也可以透過下面的指令看現在 .git 或 資料夾內部的使用空間。
+
+```shell
+cd project
+
+# 查看 git 資料夾的使用空間
+du -sh .git
+
+# 查看全部檔案的使用空間, 但看不到 .git
+du -sh * 
+```

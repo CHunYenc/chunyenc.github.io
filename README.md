@@ -43,7 +43,7 @@ hugo new post/folder/file.md
 ## 發布
 
 ```bash
-hugo -t stack 
+hugo -t hugo-theme-stack 
 git add .
 git commit -m "feat: ..."
 git push
