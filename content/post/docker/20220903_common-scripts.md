@@ -52,7 +52,6 @@ mydocker                 latest    0a045e9f442f   19 minutes ago   568MB
 docker run <image-name>
 ```
 
-
 ## 刪除 image
 
 如何先查看本機上已經建立的 image 清單.
@@ -64,9 +63,29 @@ REPOSITORY               TAG       IMAGE ID       CREATED          SIZE
 mydocker                 latest    0a045e9f442f   19 minutes ago   568MB
 ```
 
-
-
 ```bash
 # 這邊刪除上面建立的 image 
 docker rmi 0a045e9f442f
+```
+
+# Example docker run
+
+經常使用的 docker run 範本，所以導致本篇會持續更新的原因。
+
+# postgres
+
+```
+docker run --restart always --name dev-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -v /home/user/dev-pg-data/pgdata:/var/lib/postgresql/data --network dev-network -d postgres:10
+```
+
+# redis
+
+```
+docker run --restart always -p 6379:6379 --name dev-redis -d redis
+```
+
+# oracle-xe
+
+```
+docker run -d --restart always --name dev-oracle -p 1521:1521 -e ORACLE_PASSWORD=<your password> -v oracle-volume:/u01/app/oracle/oradata gvenzl/oracle-xe:11
 ```
