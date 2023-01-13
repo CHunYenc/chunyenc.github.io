@@ -13,7 +13,15 @@ steps:
   image: klakegg/hugo
   commands:
     - hugo
-      
+
+- name: send-telegram
+  image: appleboy/drone-telegram
+  settings:
+    token: 
+      from_secret: telegram_token
+    to:
+      from_secret: telegram_to
+
 - name: publish
   image: plugins/gh-pages
   settings:
@@ -25,11 +33,3 @@ steps:
   when:
     branch:
     - master
-
-- name: send-telegram
-  image: appleboy/drone-telegram
-  settings:
-    token: 
-      from_secret: tg_token
-    to:
-      from_secret: tg_to
