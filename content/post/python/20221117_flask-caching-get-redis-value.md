@@ -2,7 +2,7 @@
 title: "20221117_Flask-Caching 套件來使用 redis."
 description: "Flask 上下文導致 redis 引入一直有問題, 所以改用 Flask-Caching, 但是 ..."
 date: 2022-11-17T22:57:28+08:00
-slug: "flask-01"
+slug: "flask-01-caching"
 categories:
   - Experience
 tags:
@@ -23,7 +23,7 @@ draft: false
 
 > 程式碼在此 [Github - CHunYenc/crypto-price-scheduler](https://github.com/CHunYenc/crypto-price-scheduler/tree/01567cdf781025f01167f35ad649b4f0f0ea493c)
 
-> Flask-Cacing 文檔 [Flask-Caching docs](https://flask-caching.readthedocs.io/en/latest/) 
+> Flask-Cacing 文檔 [Flask-Caching docs](https://flask-caching.readthedocs.io/en/latest/)
 
 # 安裝 Flask-Caching
 

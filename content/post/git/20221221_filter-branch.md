@@ -2,7 +2,7 @@
 title: "GIT 小撇步 02 - 教你如何刪除 commit 過的大檔案, 超占空間 !"
 description: "因為在準備 CI/CD 要減少每個步驟的耗費的時間，導致要整理 git .."
 date: 2022-12-21T13:36:01+08:00
-slug:
+slug: "git-deleted-commit-big-files"
 categories:
     - Experience
 tags:
