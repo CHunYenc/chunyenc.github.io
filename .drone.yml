@@ -1,11 +1,12 @@
 kind: pipeline
 type: docker
-name: deploy-to-github
+name: default
 
 steps:
 - name: submodule-update
   image: alpine/git
   commands:
+    - git config --global --add safe.directory /drone/src
     - git submodule update --init --recursive
 
 - name: build
@@ -26,9 +27,9 @@ steps:
     - master
 
 - name: send-telegram
-  image: appleboy/drone-telegram:1.3.8
+  image: appleboy/drone-telegram
   settings:
-    token:
+    token: 
       from_secret: tg_token
     to:
       from_secret: tg_to
