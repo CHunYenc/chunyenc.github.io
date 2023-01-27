@@ -1,5 +1,5 @@
 ---
-title: "Docker 紀錄 03 - 經常使用的 docker 指令 (持續更新)"
+title: "Docker 紀錄 03 - 經常使用的 docker 指令"
 description: 
 date: 2022-09-03T12:55:54+08:00
 slug: "2022-docker-command"
@@ -11,8 +11,6 @@ hidden: false
 comments: true
 draft: false
 ---
-
-# 前言
 
 # 正文
 
@@ -68,24 +66,66 @@ mydocker                 latest    0a045e9f442f   19 minutes ago   568MB
 docker rmi 0a045e9f442f
 ```
 
-# Example docker run
+# 範例
 
 經常使用的 docker run 範本，所以導致本篇會持續更新的原因。
 
 # postgres
 
+## 好看版本
+
 ```
-docker run --restart always --name dev-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -v /home/user/dev-pg-data/pgdata:/var/lib/postgresql/data --network dev-network -d postgres:10
+docker run -d \
+--restart always \
+--name dev-postgres \
+-p 5432:5432 \
+-e POSTGRES_PASSWORD=postgres \
+-v /home/user/dev-pg-data/pgdata:/var/lib/postgresql/data \
+--network dev-network postgres:10
+```
+
+## 複製版本
+
+```
+docker run -d --restart always --name dev-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -v /home/user/dev-pg-data/pgdata:/var/lib/postgresql/data --network dev-network postgres:10
 ```
 
 # redis
 
+## 好看版本
+
 ```
-docker run --restart always -p 6379:6379 --name dev-redis -d redis
+docker run -d \
+--restart always \
+-p 6379:6379 \
+--name dev-redis \
+--network dev-network redis
+```
+
+## 複製版本
+
+```
+docker run -d --restart always -p 6379:6379 --name dev-redis --network dev-network redis
 ```
 
 # oracle-xe
 
+## 好看版本
+
+```
+docker run -d \
+--restart always \
+--name dev-oracle -p 1521:1521 \
+-e ORACLE_PASSWORD=<your password> \
+-v oracle-volume:/u01/app/oracle/oradata gvenzl/oracle-xe:11
+```
+
+## 複製版本
+
 ```
 docker run -d --restart always --name dev-oracle -p 1521:1521 -e ORACLE_PASSWORD=<your password> -v oracle-volume:/u01/app/oracle/oradata gvenzl/oracle-xe:11
 ```
+
+# nginx
+
+待補 
