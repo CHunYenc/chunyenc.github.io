@@ -21,6 +21,9 @@ steps:
       from_secret: telegram_token
     to:
       from_secret: telegram_to
+  when:
+    branch:
+    - master
 
 - name: publish
   image: plugins/gh-pages
