@@ -129,8 +129,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 app = Celery('core')
 
 # 設置 broker 和 backend
-app.conf.broker_url = "redis://localhost:11855/1"
-app.conf.result_backend = "redis://localhost:11855/0"
+app.conf.broker_url = "redis://localhost:6379/1"
+app.conf.result_backend = "redis://localhost:6379/0"
 
 # 設置時區和序列化方式
 app.conf.timezone = "UTC"
