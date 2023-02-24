@@ -8,6 +8,7 @@ staticDir:
 enableRobotsTXT: true
 sitemap:
   filename: sitemap.xml
+allowed_hosts: ['*']
 
 languages:
   zh-tw:
@@ -30,7 +31,7 @@ DefaultContentLanguage: zh-tw
 hasCJKLanguage: false
 
 permalinks:
-  post: /p/:slug/
+  posts: /p/:slug/
   page: /:slug/
 
 params:
@@ -190,34 +191,22 @@ params:
 menu:
   main:
     - name: 加密貨幣報價
-      url: http://price.chunyen.xyz
+      url: https://p.chunyen.xyz
       params:
         newTab: true
         icon: bitcoin
-    - name: 金門小秘笈
-      url: http://price.chunyen.xyz
+    - name: 常用社群連結
+      url: https://link.chunyen.xyz
       params:
         newTab: true
-        icon: home
+        icon: linktree
 
-  social:
-    - identifier: github
-      name: GitHub
-      url: https://github.com/CHunYenc
-      params:
-        icon: brand-github
-
-    - identifier: facebook
-      name: Facebook
-      url: https://www.facebook.com/Rchunyen
-      params:
-        icon: brand-facebook
-
-    - identifier: instagram
-      name: Instagram
-      url: https://www.instagram.com/ryen__c/
-      params:
-        icon: brand-instagram
+  # social:
+  #   - identifier: facebook
+  #     name: Facebook
+  #     url: https://www.facebook.com/Rchunyen
+  #     params:
+        # icon: brand-facebook
 
 related:
   includeNewer: true
