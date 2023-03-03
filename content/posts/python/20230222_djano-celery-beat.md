@@ -2,7 +2,7 @@
 title: "Django 紀錄 02 - 如何在 Django 應用使用 Celery 進行系統任務管理"
 description: "雖然 Djang 也有其他的任務套件, 但 Celery 用起來還是問題最少 .."
 date: 2023-02-22T22:17:10+08:00
-slug: "2023-django-celery-beat"
+slug: "django-02"
 categories:
   - Experience
 tags:
