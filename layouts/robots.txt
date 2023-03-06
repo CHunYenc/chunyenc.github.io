@@ -1,7 +1,4 @@
-User-agent: Googlebot
-Disallow: /nogooglebot/
-
 User-agent: *
 Allow: /
 
-Sitemap: https://chunyen.xyz/sitemap.xml
+Sitemap: https://chunyen.xyz/sitemap-index.xml

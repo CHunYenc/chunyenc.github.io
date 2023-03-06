@@ -7,8 +7,8 @@ staticDir:
   - static
 enableRobotsTXT: true
 sitemap:
-  filename: sitemap.xml
-allowed_hosts: ['*']
+  filename: sitemap-index.xml
+allowed_hosts: ["*"]
 
 languages:
   zh-tw:
@@ -43,7 +43,7 @@ params:
 
   footer:
     since: 2022
-    customText:
+    customText: Copyright © CHUN-YEN, CHEN
 
   dateFormat:
     published: Jan 02, 2006
@@ -206,7 +206,7 @@ menu:
   #     name: Facebook
   #     url: https://www.facebook.com/Rchunyen
   #     params:
-        # icon: brand-facebook
+  # icon: brand-facebook
 
 related:
   includeNewer: true

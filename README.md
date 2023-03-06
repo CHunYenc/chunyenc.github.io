@@ -2,49 +2,26 @@
 
 [![Build Status](http://drone.chunyen.xyz/api/badges/CHunYenc/chunyenc.github.io/status.svg?ref=refs/heads/master)](http://drone.chunyen.xyz/CHunYenc/chunyenc.github.io)
 
-使用 hugo 建立的部落格網站。
+歡迎來到我的累積經驗部落格，這是一個個人部落格，我在這裡分享自己對於技術、程式碼等各種主題的經驗和想法。
 
-- [chunyenc.github.io](#chunyencgithubio)
-- [常用操作](#常用操作)
-  - [Download](#download)
-    - [best](#best)
-    - [clone themes](#clone-themes)
-  - [加入文章](#加入文章)
-  - [發布](#發布)
+這個部落格使用 Hugo 作為靜態網站生成器，並托管於 GitHub Pages 上。
 
-# 常用操作
+Welcome to My Accumulated Experience Blog, a personal blog where I share my experiences and thoughts on various topics, including technology and programming.
 
-## Download
+This blog is powered by Hugo, a fast and flexible static site generator, and hosted on GitHub Pages.
 
-如果使用一般的 clone 方式，會導致沒有主題。
+## 主題
 
-如果發現沒有主題，你可以參考 [clone themes](#clone-themes)
+這個部落格使用 [Stack](https://themes.gohugo.io/themes/hugo-theme-stack/) 為主題。
 
-### best
+The theme used in this blog is [Stack](https://themes.gohugo.io/themes/hugo-theme-stack/).
 
-```shell
-git clone --recurse-submodules https://github.com/CHunYenc/chunyenc.github.io.git blog
-```
+## 使用方法
 
-### clone themes
+要使用這個部落格，只需克隆這個存儲庫，然後在本地安裝 Hugo。接著，運行 `hugo server` 命令來啟動本地服務器並預覽部落格。您可以修改內容和配置文件，以定制化部落格。
 
-```shell
-git clone https://github.com/CHunYenc/chunyenc.github.io.git blog
-cd blog
-git submodule update
-```
+# CC BY-NC-SA 4.0 許可證
 
-## 加入文章
+本部落格的所有內容（包括文本、圖片、音頻、視頻等）均受到 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 許可證的保護。這意味著您可以自由地分享、複製、發布、翻譯、修改、展示和表演本部落格的內容，但需要標示原始作者和出處，並且不能用於商業目的。此外，任何修改或創建的作品必須採用相同的許可證進行發布，這被稱為 "共享同樣的方式"。# CC BY-NC-SA 4.0 License
 
-```bash
-hugo new post/folder/file.md
-```
-
-## 發布
-
-```bash
-hugo -t hugo-theme-stack 
-git add .
-git commit -m "feat: ..."
-git push
-```
+All content on this blog, including text, images, audio, and video, is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license. This means that you are free to share, copy, distribute, translate, modify, display, and perform the content of this blog, but you must attribute the original author and source, and you may not use it for commercial purposes. Additionally, any modifications or creations of work must be published under the same license, which is called "share alike."
