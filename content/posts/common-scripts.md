@@ -24,9 +24,8 @@ weight: 1
 若有任何建議或是覺得需要修改的地方還請不吝指教，謝謝！
 
 如何聯繫我 ?
-- op84a2546@gmail.com
-- https://linktr.ee/chunyenc
-- 本文底下登入 Github 帳號後`留言`
+
+> 可以利用本篇文章下面留言，導航列也有提供我的社群平台 ~
 
 # 目錄
 
@@ -38,12 +37,12 @@ weight: 1
   - [VSCode](#vscode)
     - [Markdown](#markdown)
 - [常用指令區](#常用指令區)
-- [Git](#git)
-  - [下載子模組](#下載子模組)
-  - [切換遠端分支](#切換遠端分支)
-- [Docker](#docker)
-  - [Redis](#redis)
-  - [PostgreSQL](#postgresql)
+  - [Git](#git)
+    - [下載子模組](#下載子模組)
+    - [切換遠端分支](#切換遠端分支)
+  - [Docker](#docker)
+    - [Redis](#redis)
+    - [PostgreSQL](#postgresql)
 
 
 # 套件框架區
@@ -56,19 +55,25 @@ weight: 1
 
 # 常用指令區
 
-# Git
+## Git
 
-## 下載子模組
+Git 是一個分散式版本控制系統，用於追蹤檔案變更並協助多人共同開發專案。
+
+### 下載子模組
+
+當你使用 git `clone` 下載完儲存庫後，發現沒有下載 submodule, 使用下面的指令可以直接把子模組載入。
+
+```
+git submodule update
+```
+
+### 切換遠端分支
 
 `待補`
 
-## 切換遠端分支
+## Docker
 
-`待補`
-
-# Docker
-
-## Redis
+### Redis
 
 ```
 docker run -d \
@@ -79,9 +84,10 @@ docker run -d \
 ```
 
 > Q: 為什麼有 dev-network ? 
+>
 > A: 為了可以讓開發容器可以直接使用 `dev-redis` 進行連線 ! 前提是開發容器也要使用 dev-network 建立 ! 
 
-## PostgreSQL
+### PostgreSQL
 
 ```
 docker run -d \
