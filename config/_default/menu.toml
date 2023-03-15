@@ -1,0 +1,18 @@
+[[main]]
+identifier = "加密貨幣報價"
+name = "加密貨幣報價"
+url = "https://p.chunyen.tech"
+
+[main.params]
+icon = "bitcoin"
+newtab = true
+
+
+[[main]]
+identifier = "常用社群連結"
+name = "常用社群連結"
+url = "https://link.chunyen.xyz"
+
+[main.params]
+icon = "linktree"
+newtab = true

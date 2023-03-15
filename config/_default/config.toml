@@ -1,0 +1,33 @@
+# Change baseurl before deploy
+baseurl = "https://chunyen.xyz/"
+languageCode = "zh-tw"
+paginate = 5
+title = "YEN 的部落格"
+theme = "hugo-theme-stack"
+
+
+# Theme i18n support
+# Available values: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk, ar
+DefaultContentLanguage = "zh-tw"
+
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage = false
+
+# Change it to your Disqus shortname before using
+disqusShortname = "hugo-theme-stack"
+
+# Static
+staticDir = ["static"]
+
+# Permalinks format of each content section
+[permalinks]
+posts = "/p/:slug/"
+page = "/:slug/"
+
+# SEO
+enableRobotsTXT = true
+googleAnalytics = "G-P1Y8DR82ZX"
+
+[sitemap]
+filename = "sitemap-index.xml"

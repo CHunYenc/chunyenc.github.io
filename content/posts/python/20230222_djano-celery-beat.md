@@ -2,7 +2,7 @@
 title: "Django 紀錄 02 - 如何在 Django 應用使用 Celery 進行系統任務管理"
 description: "雖然 Djang 也有其他的任務套件, 但 Celery 用起來還是問題最少 .."
 date: 2023-02-22T22:17:10+08:00
-slug: "2023-django-celery-beat"
+slug: "django-02"
 categories:
   - Experience
 tags:
@@ -129,8 +129,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 app = Celery('core')
 
 # 設置 broker 和 backend
-app.conf.broker_url = "redis://localhost:11855/1"
-app.conf.result_backend = "redis://localhost:11855/0"
+app.conf.broker_url = "redis://localhost:6379/1"
+app.conf.result_backend = "redis://localhost:6379/0"
 
 # 設置時區和序列化方式
 app.conf.timezone = "UTC"
