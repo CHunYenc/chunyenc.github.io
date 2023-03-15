@@ -21,6 +21,7 @@ disqusShortname = "hugo-theme-stack"
 staticDir = ["static"]
 
 # Permalinks format of each content section
+[permalinks]
 posts = "/p/:slug/"
 page = "/:slug/"
 

@@ -1,7 +1,7 @@
 [[main]]
 identifier = "加密貨幣報價"
 name = "加密貨幣報價"
-url = "https://p.chunyen.xyz"
+url = "https://p.chunyen.tech"
 
 [main.params]
 icon = "bitcoin"
