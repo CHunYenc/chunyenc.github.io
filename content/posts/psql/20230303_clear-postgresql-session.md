@@ -2,7 +2,7 @@
 title: "PSQL 01 - 踢掉指定的 PostgreSQL Session."
 description: "強制取消後端測試時, 導致無法刪除已經建立的測試資料庫。"
 date: 2023-03-03T06:11:52Z
-slug: "psql-01"
+slug: "psql-deleted-session"
 categories:
   - Experience
 tags:

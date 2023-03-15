@@ -2,7 +2,7 @@
 title: "Django 紀錄 03 - 使用套件 django-environ 管理環境參數 !! 超方便 !!"
 description: "在工作時發現同事使用 .. 發現很好用 !! 所以有花時間研究一下。"
 date: 2023-03-01T17:43:00+08:00
-slug: "2023-django-environ"
+slug: "django-environ"
 categories:
   - Experience
 tags:
@@ -10,7 +10,7 @@ tags:
   - Python
 hidden: false
 comments: true
-draft: true
+draft: false
 ---
 
 # 前言

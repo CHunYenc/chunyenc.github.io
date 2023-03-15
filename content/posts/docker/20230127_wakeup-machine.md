@@ -1,11 +1,12 @@
 ---
-title: "教學 - 如何讓 render.com 提供的機器不睡眠"
+title: "教學 01 - 如何讓 render.com 提供的機器不睡眠"
 description: "使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠."
 date: 2023-01-27T15:53:22+08:00
 image: 
 slug: "wakup-machine"
 categories:
     - Experience
+    - Tutorial
 tags:
     - GIT
     - Docker

@@ -1,8 +1,8 @@
 ---
-title: "20221117_Flask-Caching 套件來使用 redis."
+title: "Flask 紀錄 01 - 使用 Flask-Caching 和 Redis 實現快速緩存的方法"
 description: "Flask 上下文導致 redis 引入一直有問題, 所以改用 Flask-Caching, 但是 ..."
 date: 2022-11-17T22:57:28+08:00
-slug: "flask-01"
+slug: "flask-caching-redis"
 categories:
   - Experience
 tags:

@@ -2,7 +2,7 @@
 title: "GIT 小撇步 01 - 教你找回尚未 commit 且遺失的檔案"
 description: "紀錄一下 git add 後 沒有 commit, 找回 add 的檔案."
 date: 2022-07-06T17:59:19+08:00
-slug: "git-find-out-not-commit-file"
+slug: "git-find-out-not-commit-files"
 categories:
     - Experience
 tags:

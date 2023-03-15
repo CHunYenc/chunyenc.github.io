@@ -5,12 +5,11 @@ date: 2022-04-10T19:03:00+08:00
 slug: "jenkins-01-deploy"
 categories:
     - Experience
-    - Learn
 tags:
     - Jenkins
 hidden: false
 comments: true
-draft: true
+draft: false
 
 ---
 

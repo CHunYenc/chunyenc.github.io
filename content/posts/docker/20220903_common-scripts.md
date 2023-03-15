@@ -2,7 +2,7 @@
 title: "Docker 紀錄 03 - 經常使用的 docker 指令"
 description: 
 date: 2022-09-03T12:55:54+08:00
-slug: "2022-docker-command"
+slug: "docker-common-commands"
 categories:
     - Experience
 tags:
