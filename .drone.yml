@@ -15,13 +15,13 @@ steps:
     - hugo
 
 - name: publish
-  image: plugins/gh-pages
+  image: plugins/gh-pages:1.3.2
   settings:
     username:
       from_secret: username
     password:
       from_secret: password
-    pages_directory: public/*
+    pages_directory: public
   when:
     branch:
     - master
