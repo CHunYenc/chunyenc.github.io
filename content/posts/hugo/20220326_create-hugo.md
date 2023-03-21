@@ -55,10 +55,10 @@ config.yml 底下有檔案連結可以過去參考看看。
 Reference 都有我參考的文章，關於 Reference 第 2 點的參考文章建立的 main.yml 是無法執行的。(我的 branch(gh-pages) 一直沒有建立出 HTML)
 
 1. .github/workflows/main.yml
-   - 檔案連結： https://github.com/CHunYenc/chunyenc.github.io/blob/master/.github/workflows/main.yml
+   - 檔案連結： https://github.com/CHunYenc/chunyenc.github.io/blob/f9482b47d8c1e19b6015df92ba0c9007ff7631bc/.github/workflows/main.yml
 
 2. config.yml
-   - 檔案連結： https://github.com/CHunYenc/chunyenc.github.io/blob/master/config.yml
+   - 檔案連結： https://github.com/CHunYenc/chunyenc.github.io/blob/f9482b47d8c1e19b6015df92ba0c9007ff7631bc/config.yml
    - 在 config.yml 加入 publishDir: docs, 可以讓你每次下 ```hugo -t stack``` 都能夠生成 HTML 檔案到 docs 資料夾, 預設是到 public 資料夾
 
 3. docs/

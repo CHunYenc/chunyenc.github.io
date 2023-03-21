@@ -18,11 +18,11 @@ draft: true
 
 前一篇「JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用」發出也已經過了非常久了，今天要來嘗試使用 Jenkins Agent，來部署我的小應用程式。
 
-連結：[CHunYenc/crypto-price-scheduler](https://github.com/CHunYenc/crypto-price-scheduler)
+連結：[CHunYenc/get-crypto-price-backend](https://github.com/CHunYenc/get-crypto-price-backend)
 
 說明：主要是幫我爬取 Binance、Crypto.com 交易所的加密貨幣交易對價錢。然後再透過 Google Sheet 使用 ```IMPORTXML``` 的公式導入現在價格。
 
-之後會再寫一篇如何來使用 ```crypto-price-scheduler``` 這個小系統。
+之後會再寫一篇如何來使用 ```get-crypto-price-backend``` 這個小系統。
 
 # 開始
 

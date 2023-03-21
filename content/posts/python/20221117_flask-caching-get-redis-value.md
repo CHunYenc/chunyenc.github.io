@@ -21,7 +21,7 @@ draft: false
 
 成功所以紀錄一下。
 
-> 程式碼在此 [Github - CHunYenc/crypto-price-scheduler](https://github.com/CHunYenc/crypto-price-scheduler/tree/01567cdf781025f01167f35ad649b4f0f0ea493c)
+> 程式碼在此 [Github - CHunYenc/get-crypto-price-backend(dev/flask-no-celery)](https://github.com/CHunYenc/get-crypto-price-backend/blob/dev/flask-no-celery/app/socket.py)
 
 > Flask-Cacing 文檔 [Flask-Caching docs](https://flask-caching.readthedocs.io/en/latest/)
 
