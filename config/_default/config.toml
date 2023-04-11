@@ -20,14 +20,9 @@ disqusShortname = "hugo-theme-stack"
 # Static
 staticDir = ["static"]
 
-# Permalinks format of each content section
-[permalinks]
-posts = "/p/:slug/"
-page = "/:slug/"
-
 # SEO
 enableRobotsTXT = true
 googleAnalytics = "G-P1Y8DR82ZX"
 
 [sitemap]
-filename = "sitemap-index.xml"
+filename = "sitemap.xml"

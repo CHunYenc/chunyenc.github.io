@@ -40,6 +40,8 @@ weight: 1
   - [Git](#git)
     - [下載子模組](#下載子模組)
     - [切換遠端分支](#切換遠端分支)
+  - [Vue](#vue)
+    - [更改 Port](#更改-port)
   - [Docker](#docker)
     - [Redis](#redis)
     - [PostgreSQL](#postgresql)
@@ -71,6 +73,17 @@ git submodule update
 
 `待補`
 
+
+## Vue
+
+### 更改 Port
+
+`cli-services` 版本為 `@vue/cli-service": "~5.0.0`，如果不是也可以試試看。
+
+```bash
+# default 8080
+npm run serve -- --port 8000
+```
 ## Docker
 
 ### Redis
