@@ -25,4 +25,4 @@ enableRobotsTXT = true
 googleAnalytics = "G-P1Y8DR82ZX"
 
 [sitemap]
-filename = "sitemap.xml"
+filename = "sitemap-index.xml"
