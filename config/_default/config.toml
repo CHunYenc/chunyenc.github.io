@@ -2,7 +2,7 @@
 baseurl = "https://chunyen.xyz/"
 languageCode = "zh-tw"
 paginate = 5
-title = "CY 菜鳥軟體工程師日誌"
+title = "CY | Coding Corner 程式小角落"
 theme = "hugo-theme-stack"
 
 
