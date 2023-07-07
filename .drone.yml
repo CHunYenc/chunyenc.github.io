@@ -3,39 +3,39 @@ type: docker
 name: default
 
 steps:
-- name: submodule-update
-  image: alpine/git
-  commands:
-    - git config --global --add safe.directory /drone/src
-    - git submodule update --init --recursive
+  - name: submodule-update
+    image: alpine/git
+    commands:
+      - git config --global --add safe.directory /drone/src
+      - git submodule update --init --recursive
 
-- name: build
-  image: klakegg/hugo
-  commands:
-    - hugo
+  - name: build
+    image: klakegg/hugo:0.101.0-alpine
+    commands:
+      - hugo
 
-- name: publish
-  image: plugins/gh-pages:1.3.2
-  settings:
-    username:
-      from_secret: username
-    password:
-      from_secret: password
-    pages_directory: public
-  when:
-    branch:
-    - master
-    
-- name: send-telegram
-  image: appleboy/drone-telegram
-  settings:
-    token: 
-      from_secret: telegram_token
-    to:
-      from_secret: telegram_to
-  when:
-    branch:
-    - master
+  - name: publish
+    image: plugins/gh-pages:1.3.2
+    settings:
+      username:
+        from_secret: username
+      password:
+        from_secret: password
+      pages_directory: public
+    when:
+      branch:
+        - master
+
+  - name: send-telegram
+    image: appleboy/drone-telegram
+    settings:
+      token:
+        from_secret: telegram_token
+      to:
+        from_secret: telegram_to
+    when:
+      branch:
+        - master
 
 when:
   event:
