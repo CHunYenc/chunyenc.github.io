@@ -7,7 +7,7 @@ categories:
     - Experience
 tags:
     - Oracle
-    - DATABASE
+    - Database
     - Docker
 hidden: false
 comments: true
