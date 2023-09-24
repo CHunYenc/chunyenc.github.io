@@ -52,17 +52,17 @@ draft: false
 
 如下圖，我們全部複製。
 
-![全部的 dll 檔案](/images/20230821_xampp-x64-oracle_instant-client/01.dll-files.png)
+![全部的 dll 檔案](/images/20230821_xampp-oci/01.dll-files.png)
 
 ### 複製到 xampp\apache\bin 資料夾
 
-![將 dll 移至 apache/bin 資料夾](/images/20230821_xampp-x64-oracle_instant-client/02.apache.png)
+![將 dll 移至 apache/bin 資料夾](/images/20230821_xampp-oci/02.apache.png)
 
 > 關鍵之一，如果今天我們使用 XAMPP 啟用 PHP 時，這邊沒有 dll 檔案時，我們的 OCI8 就沒辦法啟動。
 
 ### 複製到 xampp\php 資料夾
 
-![將 dll 移至 xampp/php 資料夾](/images/20230821_xampp-x64-oracle_instant-client/03.php.png)
+![將 dll 移至 xampp/php 資料夾](/images/20230821_xampp-oci/03.php.png)
 
 > 關鍵之二，如果今天我們 PHP 時，這邊沒有 dll 檔案時，使用 `php -m` 指令會顯示錯誤。
 
@@ -76,8 +76,34 @@ oci8 插件的說明：<https://pecl.php.net/package/oci8>
 
 > 關鍵之三，所以插件的版本與 PHP 的版本是互相關聯的。 `記得要安裝 ts 版本。`，你可以參考下圖。
 
-![確認 PHP 有無支援 Thread Safety](/images/20230821_xampp-x64-oracle_instant-client/04.php_info.png)
+![確認 PHP 有無支援 Thread Safety](/images/20230821_xampp-oci/04.php_info.png)
+
+> 上面這張圖的紅框位置，會影響到插件的版本
 
 ### 移動 OCI8 插件的 dll 檔案
 
+首先我們先進行解壓縮。
+
+再依照 `應用程式擴充` 排序，所以你現在的畫面會與下圖一樣。
+
+![OCI8 插件圖片](/images/20230821_xampp-oci/05.php-oci-driver.jpg)
+
+然後把紅框選取的檔案複製到下圖 `XAMPP PHP` 插件位置。
+
+![OCI8 插件的 PHP 位置](/images/20230821_xampp-oci/06.jpg)
+
 ## 設定 php.ini
+
+驅動程式到這邊都裝好了。
+
+接下來要讓 PHP 啟用，需要到下圖的位置 `xampp/php/php.ini` 檔案來啟用 `OCI` .
+
+![PHP ini 啟動 OCI 位置](/images/20230821_xampp-oci/07.jpg)
+
+> 這邊筆者是啟用 `oci8_19`，來進行測試。
+
+## 檢查有無啟用
+
+![檢查 OCI8 有無安裝成功](/images/20230821_xampp-oci/08.jpg)
+
+## 完成
