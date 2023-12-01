@@ -1,8 +1,35 @@
 [[main]]
-identifier = "常用社群連結"
-name = "常用社群連結"
+identifier = "我的社群網站"
+name = "My Social Media"
 url = "https://link.chunyen.xyz"
 
 [main.params]
 icon = "linktree"
+newtab = true
+
+[[main]]
+identifier = "網站狀態"
+name = "My Site Status"
+url = "https://status.chunyen.xyz"
+
+[main.params]
+icon = "home"
+newtab = true
+
+[[main]]
+identifier = "Facebook"
+name = "Facebook"
+url = "https://www.facebook.com/chunyench/"
+
+[main.params]
+icon = "brand-facebook"
+newtab = true
+
+[[main]]
+identifier = "Instagram"
+name = "Instagram"
+url = "https://www.instagram.com/chunyench/"
+
+[main.params]
+icon = "brand-instagram"
 newtab = true

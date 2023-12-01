@@ -45,14 +45,13 @@ draft: false
     - [Redis](#redis)
     - [PostgreSQL](#postgresql)
 
-
 # 套件框架區
 
 ## VSCode
 
 ### Markdown
 
-- https://github.com/yzhang-gh/vscode-markdown `自動生成 md 目錄` 
+- <https://github.com/yzhang-gh/vscode-markdown> `自動生成 md 目錄`
 
 # 常用指令區
 
@@ -72,7 +71,6 @@ git submodule update
 
 `待補`
 
-
 ## Vue
 
 ### 更改 Port
@@ -83,6 +81,7 @@ git submodule update
 # default 8080
 npm run serve -- --port 8000
 ```
+
 ## Docker
 
 ### Redis
@@ -95,9 +94,9 @@ docker run -d \
 --network dev-network redis
 ```
 
-> Q: 為什麼有 dev-network ? 
+> Q: 為什麼有 dev-network ?
 >
-> A: 為了可以讓開發容器可以直接使用 `dev-redis` 進行連線 ! 前提是開發容器也要使用 dev-network 建立 ! 
+> A: 為了可以讓開發容器可以直接使用 `dev-redis` 進行連線 ! 前提是開發容器也要使用 dev-network 建立 !
 
 ### PostgreSQL
 
