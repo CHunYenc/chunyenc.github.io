@@ -14,9 +14,6 @@ DefaultContentLanguage = "zh-tw"
 # This will make .Summary and .WordCount behave correctly for CJK languages.
 hasCJKLanguage = false
 
-# Change it to your Disqus shortname before using
-disqusShortname = "hugo-theme-stack"
-
 # Static
 staticDir = ["static"]
 
@@ -26,3 +23,7 @@ googleAnalytics = "G-P1Y8DR82ZX"
 
 [sitemap]
 filename = "sitemap-index.xml"
+
+[author]
+    email = "admin@chunyen.xyz"
+    name = "陳雋諺, Chun-Yen Chen"
