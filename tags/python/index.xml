@@ -1,0 +1,1112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Python on CY | 程式小角落</title><link>https://chunyen.xyz/tags/python/</link><description>Recent content in Python on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 10 Feb 2024 00:20:00 +0800</lastBuildDate><atom:link href="https://chunyen.xyz/tags/python/index.xml" rel="self" type="application/rss+xml"/><item><title>Gunicorn - 輸出 Console Log, 在 Railway.</title><link>https://chunyen.xyz/p/gunicorn-output-console-log/</link><pubDate>Sat, 10 Feb 2024 00:20:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/gunicorn-output-console-log/</guid><description>在 Railway 上使用 Gunicorn 時，如何輸出 Console Log，不然沒辦法知道系統的運行狀況。</description><tags><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>這篇的產出主要是因為我自己在使用 Railway.app (Paas 平台) 的時候，發現沒有辦法看到 Gunicorn 的 Console Log &amp;hellip; 如果系統有問題，我根本不知道發生了什麼事情。&lt;/p>
+&lt;p>因為筆者過去都使用 Docker Compose + Gunicorn 或是有需要就接到 Nginx (or Apache) 的架構，所以都是直接看 Log。&lt;/p>
+&lt;p>甚至 Gunicorn 也可以設定輸出到檔案，然後透過 &lt;code>tail -f&lt;/code> 來觀看。&lt;/p>
+&lt;p>但是本次是在 Railway.app 上，所以就有這篇的產出。&lt;/p>
+&lt;h1 id="最終設定">最終設定&lt;/h1>
+&lt;p>在 Railway.app 上，我們可以透過設定 &lt;code>Custom Start Command&lt;/code> 來達到我們的目的。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">gunicorn --access-logfile &lt;span class="s1">&amp;#39;-&amp;#39;&lt;/span> --error-logfile &lt;span class="s1">&amp;#39;-&amp;#39;&lt;/span> app:app
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>這樣就可以把 Console Log 輸出到標準輸出 (stdout) 了。&lt;/p>
+&lt;h1 id="結論">結論&lt;/h1>
+&lt;p>其實非常簡單, 但是我花了一些時間才找到這個設定。&lt;/p>
+&lt;p>而且現在大家都靠 GPT-3 了，所以我也不知道這篇文章有沒有人會看到 XDDD&lt;/p>
+&lt;p>希望這篇對你有幫助。&lt;/p></content></item><item><title>PSQL 01 - 踢掉指定的 PostgreSQL Session.</title><link>https://chunyen.xyz/p/psql-deleted-session/</link><pubDate>Fri, 03 Mar 2023 06:11:52 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/psql-deleted-session/</guid><description>強制取消後端測試時, 導致無法刪除已經建立的測試資料庫。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>主要是在撰寫 Django 測試時，有時候會因為某些原因導致測試過程強制中斷，例如程式出錯或手動中斷執行等。&lt;/p>
+&lt;p>當發生這種情況時，測試資料庫可能會佔有一些 session 無法正確刪除，進而影響測試的正確性。&lt;/p>
+&lt;p>以下是發生的一些關鍵字或 &amp;hellip;. 問題&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>venv&lt;span class="o">)&lt;/span> user@vm:~/backend$ python manage.py &lt;span class="nb">test&lt;/span> SomethingTestCase -v &lt;span class="m">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Creating &lt;span class="nb">test&lt;/span> database &lt;span class="k">for&lt;/span> &lt;span class="nb">alias&lt;/span> &lt;span class="s1">&amp;#39;default&amp;#39;&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;test_template&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Got an error creating the &lt;span class="nb">test&lt;/span> database: database &lt;span class="s2">&amp;#34;test_template&amp;#34;&lt;/span> already exists
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Type &lt;span class="s1">&amp;#39;yes&amp;#39;&lt;/span> &lt;span class="k">if&lt;/span> you would like to try deleting the &lt;span class="nb">test&lt;/span> database &lt;span class="s1">&amp;#39;test_template&amp;#39;&lt;/span>, or &lt;span class="s1">&amp;#39;no&amp;#39;&lt;/span> to cancel: yes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Destroying old &lt;span class="nb">test&lt;/span> database &lt;span class="k">for&lt;/span> &lt;span class="nb">alias&lt;/span> &lt;span class="s1">&amp;#39;default&amp;#39;&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;test_template&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Got an error recreating the &lt;span class="nb">test&lt;/span> database: database &lt;span class="s2">&amp;#34;test_template&amp;#34;&lt;/span> is being accessed by other users
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">DETAIL: There is &lt;span class="m">1&lt;/span> other session using the database.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>可以看到最後有出現一行關於 database session 的問題。&lt;/p>
+&lt;p>&lt;code>DETAIL: There is 1 other session using the database.&lt;/code>&lt;/p>
+&lt;h1 id="如何解決">如何解決&lt;/h1>
+&lt;h2 id="查詢目前在-postgresql-中的-session-有幾個-">查詢目前在 PostgreSQL 中的 Session 有幾個 ?&lt;/h2>
+&lt;p>當 PostgreSQL 資料庫中發現有用戶端連線時，就會產生一個會話或連線的記錄。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="k">SELECT&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">FROM&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">pg_stat_activity&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>使用此命令可以查詢正在執行的所有 SQL 語句、會話的狀態、用戶名、資料庫名、主機名、客戶端應用程式等資訊。&lt;/p>
+&lt;p>可用於診斷資料庫中的問題，例如瞭解目前資料庫是否被其他用戶連線、哪些查詢正在執行，以及為什麼某些查詢會長時間運行等。&lt;/p>
+&lt;h3 id="範例">範例&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>datid&lt;/th>
+&lt;th>datname&lt;/th>
+&lt;th>pid&lt;/th>
+&lt;th>usesysid&lt;/th>
+&lt;th>username&lt;/th>
+&lt;th>application_name&lt;/th>
+&lt;th>client_addr&lt;/th>
+&lt;th>query&lt;/th>
+&lt;th>&amp;hellip;&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>10000&lt;/td>
+&lt;td>test_template&lt;/td>
+&lt;td>2191385&lt;/td>
+&lt;td>10&lt;/td>
+&lt;td>postgres&lt;/td>
+&lt;td>DBeaver 22.3.5&amp;hellip;&lt;/td>
+&lt;td>192.168.x.1&lt;/td>
+&lt;td>select a ..&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>19000&lt;/td>
+&lt;td>template&lt;/td>
+&lt;td>2191386&lt;/td>
+&lt;td>10&lt;/td>
+&lt;td>postgres&lt;/td>
+&lt;td>DBeaver 21&amp;hellip;&lt;/td>
+&lt;td>192.168.x.2&lt;/td>
+&lt;td>select b ..&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>範例就是 pg_stat_activity 這張表會呈現的內容，資訊量非常豐富。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="如何踢出指定的-session-">如何踢出指定的 Session ?&lt;/h2>
+&lt;p>今天假設我要踢掉範例中的 pid 為 2191385 的 Session.　這時候只要打上下方的指令&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="k">SELECT&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">pg_terminate_backend&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2191385&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>這時候你查詢 &lt;code>SELECT * FROM pg_stat_activity;&lt;/code> 一次，你看一下你打上的 pid 對應的 session 是不是已經被你刪除了 !&lt;/p>
+&lt;h2 id="那我要怎麼清楚某個指定-user-下的所有-session-">那我要怎麼清楚某個指定 user 下的所有 session ?&lt;/h2>
+&lt;p>這個查詢會返回所有用戶名等於 &lt;code>username&lt;/code> 的 PostgreSQL Session。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="k">SELECT&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">FROM&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">pg_stat_activity&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">WHERE&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">usename&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;&amp;lt;username&amp;gt;&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="完成">完成&lt;/h1>
+&lt;p>今天是一個 PostgreSQL 的使用知識，正好在寫測時時出現，就把這個過程記錄一下。&lt;/p></content></item><item><title>Django 紀錄 03 - 使用套件 django-environ 管理環境參數 !! 超方便 !!</title><link>https://chunyen.xyz/p/django-environ/</link><pubDate>Wed, 01 Mar 2023 17:43:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/django-environ/</guid><description>在工作時發現同事使用 .. 發現很好用 !! 所以有花時間研究一下。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>當今年二月不斷的補班的時候 &amp;hellip;　發現團隊內部有人使用 &lt;code>django-environ&lt;/code> 套件。&lt;/p>
+&lt;p>筆者過去是使用 &lt;code>python-dotenv&lt;/code>。但是發現 &lt;code>django-environ&lt;/code> 有提供更多針對 &lt;code>django&lt;/code> 框架的框架設定 !&lt;/p>
+&lt;ul>
+&lt;li>讀取和解析環境檔案 (.env) 中的變數&lt;/li>
+&lt;li>將環境變數轉換成適當的 Python 型別&lt;/li>
+&lt;li>提供一些方便的方法來取得常用的設定值，如&lt;code>資料庫連接字串&lt;/code>、&lt;code>快取設定&lt;/code>、&lt;code>郵件設定&lt;/code>等&lt;/li>
+&lt;li>支援多種格式的環境變數，如 JSON、YAML、INI 等&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>針對 &lt;code>資料庫連接字串&lt;/code>、&lt;code>快取設定&lt;/code> 就是一大優點&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="優勢-1---資料庫接字串">優勢 1 - 資料庫接字串&lt;/h1>
+&lt;h2 id="使用前的設定">使用前的設定&lt;/h2>
+&lt;p>筆者再使用 django-environ 前是使用 &lt;code>python-dotenv&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># settings.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASES&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;default&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;ENGINE&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;django.db.backends.postgresql&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># 1- 設定 ENGINE&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;NAME&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">variables&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">POSTGRESQL_NAME&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># 2- 資料庫名稱&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;USER&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">variables&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">POSTGRESQL_USER&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># 3- 資料庫使用者&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;PASSWORD&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">variables&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">POSTGRESQL_PASSWORD&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># 4- 資料庫密碼&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;HOST&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">variables&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">POSTGRESQL_HOST&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># 5- 資料庫 IP&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;PORT&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">variables&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">POSTGRESQL_PORT&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># 6- 資料庫 PORT&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># variables.py 管理環境變數&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">POSTGRESQL_PASSWORD&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getenv&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;DB_PASSWORD&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;DEFAULT_PASSWORD&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># 如果沒有 DB_PASSWORD, 就是 DEFAULT_PASSWORD&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">POSTGRESQL_HOST&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getenv&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;DB_HOST&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;localhost&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># 如果沒有 DB_HOST, 就是 localhost&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">....&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># .env&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DB_PASSWORD&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">postgres&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">POSTGRESQL_HOST&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">192.168.1.1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">....&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>通常我們使用 Django 去連接資料物的時候可能都會需要這些設定。&lt;/p>
+&lt;h2 id="使用後的設定">使用後的設定&lt;/h2>
+&lt;p>筆者再使用 django-environ 後就直接縮短這個部分的參數&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># settings.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASES&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;default&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">variables&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">DATABASE&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># variables.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASE&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">env&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">db&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="c1"># default load .env DATABASE_URL&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># .env&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASE_URL&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;postgres://postgres:postgres@192.168.1.1:5432/mydb&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 如果我要更換成 MYSQL&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASE_URL&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;postgres://postgres:postgres@192.168.1.1:5432/mydb&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="優勢-2---快取設定">優勢 2 - 快取設定&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">待補
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="reference">Reference&lt;/h1>
+&lt;ol>
+&lt;li>joke2k/django-environ: Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application. - GitHub. &lt;a class="link" href="https://github.com/joke2k/django-environ" target="_blank" rel="noopener"
+>https://github.com/joke2k/django-environ&lt;/a> 已存取 2023/3/1.&lt;/li>
+&lt;li>django-environ - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天. &lt;a class="link" href="https://ithelp.ithome.com.tw/articles/10233649" target="_blank" rel="noopener"
+>https://ithelp.ithome.com.tw/articles/10233649&lt;/a> 已存取 2023/3/1.&lt;/li>
+&lt;li>Welcome to django-environ documentation - Read the Docs. &lt;a class="link" href="https://django-environ.readthedocs.io/" target="_blank" rel="noopener"
+>https://django-environ.readthedocs.io/&lt;/a> 已存取 2023/3/1.&lt;/li>
+&lt;li>Django-environd的使用(管理配置文件敏感参数和环境变量)_想学废更多东西的猿的博客-CSDN博客_django environ. &lt;a class="link" href="https://blog.csdn.net/zscccccc/article/details/121630824" target="_blank" rel="noopener"
+>https://blog.csdn.net/zscccccc/article/details/121630824&lt;/a> 已存取 2023/3/1.&lt;/li>
+&lt;/ol></content></item><item><title>Django 紀錄 02 - 如何在 Django 應用使用 Celery 進行系統任務管理</title><link>https://chunyen.xyz/p/django-celery-beat/</link><pubDate>Wed, 22 Feb 2023 22:17:10 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/django-celery-beat/</guid><description>雖然 Djang 也有其他的任務套件, 但 Celery 用起來還是問題最少 ..</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>最近在使用 &lt;code>django-celery-beat&lt;/code>，發現網路上的參數基本上都舊了。&lt;/p>
+&lt;p>所以安裝的方式這邊幫大家梳理一下，有時候網路上的安裝方式可能會導致自己花非常多時間。&lt;/p>
+&lt;blockquote>
+&lt;p>如果你是老手，可以直接到 Github 查看程式碼。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;a class="link" href="https://github.com/CHunYenc/django-celery-beat-example" target="_blank" rel="noopener"
+>https://github.com/CHunYenc/django-celery-beat-example&lt;/a>&lt;/p>
+&lt;h1 id="版本">版本&lt;/h1>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>name&lt;/th>
+&lt;th>version&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;strong>python&lt;/strong>&lt;/td>
+&lt;td>3.10.7&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>django&lt;/strong>&lt;/td>
+&lt;td>4.1.7&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>celery&lt;/strong>&lt;/td>
+&lt;td>5.2.7&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;strong>django-celery-beat&lt;/strong>&lt;/td>
+&lt;td>2.4.0&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h1 id="步驟">步驟&lt;/h1>
+&lt;h2 id="建立虛擬環境">建立虛擬環境&lt;/h2>
+&lt;p>當使用 Python 時會使用到大量套件或不同版本的 Python 時，建立虛擬環境可以幫助隔離 Python 的不同版本和套件，以避免版本衝突。&lt;/p>
+&lt;blockquote>
+&lt;p>為了讓有乾淨的環境, 必須建立虛擬環境 !!&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="linux--mac">Linux / Mac&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">python -m venv .venv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="windows">Windows&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">py -3.10 -m venv .venv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="進入虛擬環境">進入虛擬環境&lt;/h2>
+&lt;p>接下來啟動 Python 虛擬環境，執行後你的 shell 會切換到虛擬環境中。&lt;/p>
+&lt;h3 id="linux--mac-1">Linux / Mac&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> .venv/bin/activate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 進入後&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>.venv&lt;span class="o">)&lt;/span> path % ...
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="windows-1">Windows&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">.venv&lt;span class="se">\S&lt;/span>cripts&lt;span class="se">\A&lt;/span>ctivate.ps1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 進入後&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>.venv&lt;span class="o">)&lt;/span> PS &amp;gt; ...
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>下面我就僅使用 (.venv) 表示虛擬環境。後面會直接接指令。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="安裝套件">安裝套件&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">(.venv) pip install django celery[redis] django-celery-beat
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="建立-django-project">建立 Django Project&lt;/h2>
+&lt;p>這邊筆者的路徑是已經在 &lt;code>/Users/yen/code/django-celery-beat-example&lt;/code>，&lt;/p>
+&lt;p>所以當你使用下列指令時，你的 &lt;code>core&lt;/code> 資料夾位置應該會是 &lt;code>/Users/yen/code/django-celery-beat-example/core&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>.venv&lt;span class="o">)&lt;/span> django-admin startproject core .
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="安裝-django-celery-beat">安裝 Django-Celery-beat&lt;/h2>
+&lt;h3 id="coresettingspy-的-installed_apps">core/settings.py 的 INSTALLED_APPS&lt;/h3>
+&lt;p>安裝 &lt;code>django-celery-beat&lt;/code> 在 &lt;code>INSTALLED_APPS&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python3" data-lang="python3">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 開發時的習慣, 上線建議不要使用 *&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">ALLOWED_HOSTS&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;*&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 主要內容 INSTALLED_APPS 加入 &amp;#39;django_celery_beat&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">INSTALLED_APPS&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># packages&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;django_celery_beat&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>安裝上去會發現，&lt;code>django-celery-beat&lt;/code> 有預設的資料表來控制任務喔 !!!&lt;/p>
+&lt;h3 id="corecelerypy">core/celery.py&lt;/h3>
+&lt;p>在這個檔案中設定 Celery 的 instance。一般會設定 broker 和 backend 的位置，以及指定 task 檔案的位置等等。有了這個設定之後，Django 就能夠將要執行的 task 發送到 Celery，由 Celery 負責執行。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python3" data-lang="python3">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">logging&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">os&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">kombu&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Exchange&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">Queue&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">celery&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Celery&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Set the default Django settings module for the &amp;#39;celery&amp;#39; program.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">environ&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">setdefault&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;DJANGO_SETTINGS_MODULE&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;core.settings&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 建立一個 Celery 實例，名稱為 core&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Celery&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;core&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 設置 broker 和 backend&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">conf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">broker_url&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;redis://localhost:6379/1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">conf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">result_backend&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;redis://localhost:6379/0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 設置時區和序列化方式&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">conf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">timezone&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;UTC&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">conf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">accept_content&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s1">&amp;#39;application/json&amp;#39;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">conf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">task_serializer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;json&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">conf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">result_serializer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;json&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">conf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">beat_scheduler&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;django_celery_beat.schedulers:DatabaseScheduler&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 設置要被 celery worker 載入的任務模組&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">conf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">imports&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;core.tasks&amp;#34;&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 設置定時任務&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">conf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">beat_schedule&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;system-task&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="err">　&lt;/span>&lt;span class="c1"># Celery 任務名稱&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;task&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;system-hello-celery&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># Celery 任務執行的函示名稱&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;schedule&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">2.0&lt;/span> &lt;span class="c1"># 每兩秒執行一次&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Load task modules from all registered Django apps.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">autodiscover_tasks&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">logger&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">logging&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getLogger&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;django.celery&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>broker_url&lt;/code>: Celery 的&lt;code>消息中介&lt;/code>。主要 &lt;code>來處理任務的分發和調度&lt;/code>，因為它可以將分散在各個系統之間的工作協調起來。&lt;/p>
+&lt;p>&lt;code>result_backend&lt;/code>: Celery 結果儲存位置。&lt;/p>
+&lt;p>&lt;code>timezone&lt;/code>: Celery 的時區。&lt;/p>
+&lt;p>&lt;code>accept_content&lt;/code>: Celery Worker 接受的任務格式。除了 &lt;code>json&lt;/code> 外, 還有 &lt;code>pickle&lt;/code> 等等的任務結構。&lt;/p>
+&lt;p>&lt;code>task_serializer&lt;/code>: Celery Worker 執行任務(程式)時需要進行序列化以方便傳輸和儲存。這邊使用 &lt;code>json&lt;/code>。&lt;/p>
+&lt;p>&lt;code>result_serializer&lt;/code>: Celery Worker 完成任務(程式)時需要進行序列化儲存至 &lt;code>RESULT_BACKEND&lt;/code> 指定的 &lt;code>redis&lt;/code>。這邊也是使用 &lt;code>json&lt;/code>。&lt;/p>
+&lt;p>&lt;code>imports&lt;/code>: 你可以使用 &lt;code>[&amp;quot;core.tasks&amp;quot;, &amp;quot;app.tasks.function&amp;quot;]&lt;/code> 來導入你的任務程式。&lt;/p>
+&lt;p>&lt;code>beat_schedule&lt;/code>: 是 Celery 預設的調度器，是後端啟動時直接啟用。&lt;/p>
+&lt;blockquote>
+&lt;p>SERIALIZER 為什麼要設定呢 ? 因為 Celery 4.0 之前是使用 pickle.&lt;/p>
+&lt;/blockquote>
+&lt;p>其他我沒提到的設定參數可以到下面連結查看。&lt;/p>
+&lt;p>&lt;a class="link" href="https://docs.celeryproject.org/en/stable/userguide/configuration.html#configuration-reference" target="_blank" rel="noopener"
+>https://docs.celeryproject.org/en/stable/userguide/configuration.html#configuration-reference&lt;/a>&lt;/p>
+&lt;h3 id="core__init__py">core/&lt;strong>init&lt;/strong>.py&lt;/h3>
+&lt;p>在 &lt;code>__init__.py&lt;/code> 主要是要讓 Django 項目中使用 &lt;code>celery_app&lt;/code> 與 &lt;code>celery_logger&lt;/code> 物件。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python3" data-lang="python3">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># core/__init__.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">__future__&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">absolute_import&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">core.celery&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">app&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">celery_app&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">logger&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">celery_logger&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">__all__&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;celery_app&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;celery_logger&amp;#39;&lt;/span>&lt;span class="p">,)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="coretaskspy">core/tasks.py&lt;/h3>
+&lt;p>主要將 Celery 要執行的程式寫在此處。而 Celery 就會登入該檔案的函式。&lt;/p>
+&lt;p>例如這邊有一個 Celery 函示叫 &lt;code>system-hello-celery&lt;/code>, 就是對應 &lt;code>core/celery.py&lt;/code> 中的 &lt;code>beat_schedule&lt;/code> 內的 task。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python3" data-lang="python3">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">json&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">core&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">celery_logger&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">celery&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">shared_task&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@shared_task&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;system-hello-celery&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">hello_celery&lt;/span>&lt;span class="p">():&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">celery_logger&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">info&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;HELLO Celery&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="執行-celery">執行 Celery&lt;/h2>
+&lt;h3 id="使用-docker-建立-redis">使用 Docker 建立 redis&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">docker run -d --restart always -p 6379:6379 --name dev-redis redis
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>如果在本機執行 docker, 那麼 IP 就是 &lt;code>localhost:6379&lt;/code>。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="migrate-database">migrate database&lt;/h3>
+&lt;p>當您在 Django 中更改模型之後，例如添加、修改或刪除模型，您需要將這些變更反映到資料庫中。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">(.venv) python manage.py migrate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="run-celery">run celery&lt;/h3>
+&lt;h4 id="開發用">開發用&lt;/h4>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>.venv&lt;span class="o">)&lt;/span> celery -A core.celery worker -l info -B
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="上線時-production">上線時 (production)&lt;/h4>
+&lt;p>在正式環境中，不建議在同一個應用程序中運行 worker 和 beat scheduler，因為會影響應用程序的性能和穩定性。&lt;/p>
+&lt;h5 id="第一個-terminal">第一個 terminal&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>.venv&lt;span class="o">)&lt;/span> celery -A core.celery worker --loglevel&lt;span class="o">=&lt;/span>info
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h5 id="第二個-terminal">第二個 terminal&lt;/h5>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>.venv&lt;span class="o">)&lt;/span> celery -A core.celery beat -l info
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>你也可以使用 docker-compose 執行個別一個 services。&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="完成">完成&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">... 省略
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>2023-02-24 09:47:46,349: INFO/MainProcess&lt;span class="o">]&lt;/span> celery@DESKTOP-7GLUFOT ready.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>2023-02-24 09:47:46,359: INFO/MainProcess&lt;span class="o">]&lt;/span> Task system-hello-celery&lt;span class="o">[&lt;/span>409aa851-639d-4183-92eb-662715a55b41&lt;span class="o">]&lt;/span> received
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">HELLO Celery
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>2023-02-24 09:47:46,361: INFO/ForkPoolWorker-2&lt;span class="o">]&lt;/span> HELLO Celery
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>2023-02-24 09:47:46,381: INFO/ForkPoolWorker-2&lt;span class="o">]&lt;/span> Task system-hello-celery&lt;span class="o">[&lt;/span>409aa851-639d-4183-92eb-662715a55b41&lt;span class="o">]&lt;/span> succeeded in 0.02016970000022411s: None
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="後續">後續&lt;/h1>
+&lt;p>你還可以透過 &lt;code>django-environ&lt;/code> 套件來優化你的 &lt;code>settings.py&lt;/code> 或 &lt;code>celery.py&lt;/code>，將環境設定的資訊都隱藏。&lt;/p>
+&lt;p>那也是我後續要來新增的文章 XD&lt;/p></content></item><item><title>Flask 紀錄 01 - 使用 Flask-Caching 和 Redis 實現快速緩存的方法</title><link>https://chunyen.xyz/p/flask-caching-redis/</link><pubDate>Thu, 17 Nov 2022 22:57:28 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/flask-caching-redis/</guid><description>Flask 上下文導致 redis 引入一直有問題, 所以改用 Flask-Caching, 但是 ...</description><tags><tag>Flask</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="簡介">簡介&lt;/h1>
+&lt;p>主要在 Flask 連接 redis 一直發生問題，所以使用 &lt;code>Flask-Caching&lt;/code> 來處理讀寫 redis.&lt;/p>
+&lt;p>但是還是有一點問題，就是 &lt;code>Flask-Caching&lt;/code> 官方沒有支援讀取 redis 的用法，但是在網路上有看到一則留言。&lt;/p>
+&lt;p>成功所以紀錄一下。&lt;/p>
+&lt;blockquote>
+&lt;p>程式碼在此 &lt;a class="link" href="https://github.com/CHunYenc/get-crypto-price-backend/blob/dev/flask-no-celery/app/socket.py" target="_blank" rel="noopener"
+>Github - CHunYenc/get-crypto-price-backend(dev/flask-no-celery)&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>Flask-Cacing 文檔 &lt;a class="link" href="https://flask-caching.readthedocs.io/en/latest/" target="_blank" rel="noopener"
+>Flask-Caching docs&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="安裝-flask-caching">安裝 Flask-Caching&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">pip install Flask-Caching
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="init-flask-caching">Init Flask-Caching&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python3" data-lang="python3">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">flask_caching&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Cache&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">cache&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Cache&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">config&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="s2">&amp;#34;CACHE_TYPE&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;RedisCache&amp;#34;&lt;/span>&lt;span class="p">})&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">create_app&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">env&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">app&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">Flask&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="vm">__name__&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">config&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">from_object&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">config&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">env&lt;/span>&lt;span class="p">])&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">with&lt;/span> &lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">app_context&lt;/span>&lt;span class="p">():&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># Caching&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">cache&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">init_app&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">app&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">...&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="讀-redis-特殊方式">讀 redis 特殊方式&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python3" data-lang="python3">&lt;span class="line">&lt;span class="cl">&lt;span class="n">k_prefix&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cache&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cache&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">key_prefix&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">keys&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">cache&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cache&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_write_client&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">keys&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">k_prefix&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="s2">&amp;#34;*&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">keys&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">k&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">decode&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;utf8&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">k&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">keys&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">keys&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">k&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">replace&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">k_prefix&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">for&lt;/span> &lt;span class="n">k&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">keys&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>k_prefix 是 Flask-Caching 會自動加入 flask-cache 在 redis 上面，所以需要把 k_prefix 去除。&lt;/p>
+&lt;blockquote>
+&lt;p>程式碼參考位置 /backend/app/socket.py&lt;/p>
+&lt;/blockquote></content></item><item><title>Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼</title><link>https://chunyen.xyz/p/django-cython/</link><pubDate>Mon, 11 Jul 2022 17:31:45 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/django-cython/</guid><description>程式碼就不會脫光光給別人看 XD</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>主要就是將原始程式碼轉成暗碼，雖然能夠不讓自己的程式碼直接裸奔。&lt;/p>
+&lt;p>但是若碰到有心人士也是一樣可以透過逆向工程把你的程式碼還原。&lt;/p>
+&lt;p>提到明碼轉成暗碼，優先選擇 Cython 來執行，速度甚至可能變快(?)，實際上當然還沒測試，只是看到非常多人透過 Cython 讓自己 Python 程式碼變快 XD&lt;/p>
+&lt;p>真是期待，但今天並不是來測試效能，而是優先將 Django-app 轉換成 so 檔執行 !!&lt;/p>
+&lt;h1 id="操作">操作&lt;/h1>
+&lt;p>可以參考 Reference 第一篇文章的程式碼來執行，但是我這邊主要也是整理一下我自己實作的部分提供參考。&lt;/p>
+&lt;h2 id="操作環境">操作環境&lt;/h2>
+&lt;p>使用 WSL2，要注意如果使用 Windows 進行 Cython，&lt;/p>
+&lt;p>在執行上面有跑出問題，所以我是放棄了。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">root@DESKTOP-xxx:/mnt/c/Users/xxx# lsb_release -a
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">No LSB modules are available.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Distributor ID: Ubuntu
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Description: Ubuntu 18.04.6 LTS
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Release: 18.04
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Codename: bionic
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="資料夾架構">資料夾架構&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">root@DESKTOP-xxx:/core$ tree -L &lt;span class="m">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── README.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── apps
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── app1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── __init__.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── admin.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── apps.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── functions
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── migrations
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── models.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── tests.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── urls.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── views.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── build_clear.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── build_py_to_so.py &lt;span class="c1"># 本文主角&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── core
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── __init__.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── asgi.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── settings.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── urls.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── variables.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── wsgi.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── logs
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── debug.log
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── manage.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── requirements.txt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── run_venv.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── templates
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── venv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>其中最重要的就是 &lt;code>build_py_to_so.py&lt;/code> 這支檔案，待會會將程式碼貼在本文。&lt;/p>
+&lt;p>另外為了防止疑惑，以下說明其他資料夾的內容&lt;/p>
+&lt;ul>
+&lt;li>關於 Django
+&lt;ul>
+&lt;li>core - 為 django project 主要資料夾&lt;/li>
+&lt;li>apps - 為 django app 生成的位置，如果建立在主目錄會非常亂&lt;/li>
+&lt;li>logs - 儲存 log 檔的資料夾&lt;/li>
+&lt;li>templates - 儲存 html 檔的資料夾&lt;/li>
+&lt;li>manage.py - django 預設&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>關於 Python
+&lt;ul>
+&lt;li>venv - 虛擬環境&lt;/li>
+&lt;li>requirements.txt - pip freeze, 為需要用的的套件&lt;/li>
+&lt;li>build_clear.py - 自動清理 &lt;code>.py&lt;/code>、&lt;code>.c&lt;/code> 檔案，建議參考 Reference 第一篇文章
+&lt;ul>
+&lt;li>程式碼連結：&lt;a class="link" href="https://gist.github.com/CHunYenc/adcdd234aab33d621fdfa127e41ee16a" target="_blank" rel="noopener"
+>https://gist.github.com/CHunYenc/adcdd234aab33d621fdfa127e41ee16a&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>其他
+&lt;ul>
+&lt;li>run_venv.sh&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="如何將-app-從-py-轉為-cython">如何將 APP 從 py 轉為 cython&lt;/h2>
+&lt;h3 id="build_py_to_sopy">build_py_to_so.py&lt;/h3>
+&lt;h3 id="導入套件">導入套件&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python3" data-lang="python3">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">distutils.core&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">setup&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">distutils.extension&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Extension&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">Cython.Build&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">cythonize&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">Cython.Distutils&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">build_ext&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">Cython.Compiler&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">os&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上面是使用到的套件，非常簡單，大部分都是 import Cython 套件。&lt;/p>
+&lt;h3 id="取得-app-路徑">取得 app 路徑&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python3" data-lang="python3">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># app 的資料夾名稱&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app_name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;app1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># app 使用 function 資料夾架構&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">functions_name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;functions&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 取得 app1 資料夾路徑&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app_folder&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">join&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">join&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getcwd&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="s1">&amp;#39;apps&amp;#39;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">app_name&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 取得 app1/functions/*.py &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">function_file&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">join&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">join&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">app_folder&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;functions&amp;#39;&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="s1">&amp;#39;*.py&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 取得 app1/*.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app_file&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">join&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">app_folder&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;*.py&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上面是取得資料夾的一些路徑，如果你有非常多的 app 要把程式碼轉為 cython，&lt;/p>
+&lt;p>那也可以將你的 apps 使用 &lt;code>os.path.join&lt;/code>，路徑的話應該會是 &lt;code>apps/**/*.py&lt;/code>。&lt;/p>
+&lt;p>注意：&lt;code>app1/migrations/&lt;/code>，在執行的時候無法使用 Cython ， 會出錯誤。&lt;/p>
+&lt;p>注意：&lt;code>app1/migrations/&lt;/code>，在執行的時候無法使用 Cython ， 會出錯誤。&lt;/p>
+&lt;p>注意：&lt;code>app1/migrations/&lt;/code>，在執行的時候無法使用 Cython ， 會出錯誤。&lt;/p>
+&lt;blockquote>
+&lt;p>若你解決了，可以再留言跟我分享，你的方式。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="主要程式碼">主要程式碼&lt;/h3>
+&lt;p>這邊如果你是參考 Reference 第一篇文章的話，他是沒有第 3 行迴圈的部分，&lt;/p>
+&lt;p>這邊我主要是忽略 &lt;code>app1/migrations/&lt;/code> 資料夾產生的錯誤。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python3" data-lang="python3">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">to_so&lt;/span>&lt;span class="p">():&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">format_folder&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">app_file&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">function_file&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="ow">in&lt;/span> &lt;span class="n">format_folder&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ext_modules&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">Extension&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;*&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">],&lt;/span> &lt;span class="p">)]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">setup&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;py to so&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">cmdclass&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="s1">&amp;#39;build_ext&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">build_ext&lt;/span>&lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ext_modules&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">cythonize&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ext_modules&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">language_level&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;3&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">except&lt;/span> &lt;span class="n">Cython&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Compiler&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Errors&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">CompileError&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 獲取檔名&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">filename&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">str&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">split&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s1">&amp;#39;&lt;/span>&lt;span class="p">)[&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">filename&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">popen&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;autopep8 --in-place --aggressive --aggressive &amp;#39;&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">path&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">join&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getcwd&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="n">filename&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 繼續轉換&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">to_so&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="vm">__name__&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="s1">&amp;#39;__main__&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">to_so&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>接下來，我們要執行這支程式。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">root@DESKTOP-xxx:/core# &lt;span class="nb">source&lt;/span> /venv/bin/activate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>venv&lt;span class="o">)&lt;/span> root@DESKTOP-xxx:/core# python build_py_to_so.py build
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>這時發現 &lt;code>app1&lt;/code> 資料夾內副檔名為 &lt;code>.c&lt;/code> 的檔案。另外也會產出一個 &lt;code>build&lt;/code> 資料夾。&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>venv&lt;span class="o">)&lt;/span> root@DESKTOP-xxx:/core# tree -L &lt;span class="m">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── apps
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── app1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── functions
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── migrations
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── .... 檔案太多, 吃掉 ...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── views.c
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── views.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── build &lt;span class="c1">#&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── lib.linux-x86_64-3.7 &lt;span class="c1"># 主要 django app 程式碼都在此處&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ │ ├── connect.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ │ ├── app1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ │ │ ├── __init__.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ │ │ ├── admin.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ │ │ ├── apps.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ │ │ ├── models.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ │ │ ├── tests.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ │ │ ├── urls.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ │ │ └── views.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ │ └── format.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── temp.linux-x86_64-3.7
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── mnt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── build_clear.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── build_py_to_so.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── venv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>這樣我們就把 python 轉成 cython 檔案囉！&lt;/p>
+&lt;p>但我們如果要將程式碼交給客戶時，只要將 so 檔案，放入原本的資料夾內，&lt;/p>
+&lt;p>python 也會優先執行 cython 的檔案唷 !!!&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>venv&lt;span class="o">)&lt;/span> root@DESKTOP-xxx:/core# tree -L &lt;span class="m">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── README.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── apps
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── app1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── .... 檔案太多, 吃掉 ...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── views.c
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── views.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── views.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── build
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── lib.linux-x86_64-3.7
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── temp.linux-x86_64-3.7
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── build_clear.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── build_py_to_so.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── venv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>這時候，我們就完成將 python 轉成 cython 程式碼囉 !!!&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>venv&lt;span class="o">)&lt;/span> root@DESKTOP-xxx:/core# tree -L &lt;span class="m">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── README.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── apps
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── app1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── .... 檔案太多, 吃掉 ...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ ├── urls.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── views.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── build_clear.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── build_py_to_so.py
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── venv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>改成上面只剩下 &lt;code>app1&lt;/code> 的資料夾底下只有 &lt;code>.so&lt;/code> 檔的方式，沒意外的話也要能夠執行喔 !!&lt;/p>
+&lt;h3 id="執行結果">執行結果&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>venv&lt;span class="o">)&lt;/span> root@DESKTOP-xxx:/core/apps# tree -L &lt;span class="m">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── app1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── __init__.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── __pycache__
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── admin.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── apps.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── functions
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── migrations
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── models.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── tests.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ├── urls.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── views.cpython-37m-x86_64-linux-gnu.so
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">4&lt;/span> directories, &lt;span class="m">7&lt;/span> files
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>venv&lt;span class="o">)&lt;/span> root@DESKTOP-xxx:/core/apps# python ../manage.py runserver 0.0.0.0:8555
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2022-07-12 08:28:46 - autoreload.py -&amp;gt; run_with_reloader&lt;span class="o">()&lt;/span> : Watching &lt;span class="k">for&lt;/span> file changes with StatReloader
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Performing system checks...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">System check identified no issues &lt;span class="o">(&lt;/span>&lt;span class="m">0&lt;/span> silenced&lt;span class="o">)&lt;/span>.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">July 12, &lt;span class="m">2022&lt;/span> - 08:28:46
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Django version 3.2.13, using settings &lt;span class="s1">&amp;#39;core.settings&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Starting development server at http://0.0.0.0:8555/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Quit the server with CONTROL-C.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://chunyen.xyz/result.png"
+loading="lazy"
+alt="執行結果, 我的 index XD"
+>&lt;/p>
+&lt;h1 id="reference">Reference&lt;/h1>
+&lt;ol>
+&lt;li>&lt;a class="link" href="https://imshanks.com/2019/08/03/converting-django-project-py-file-to-so-file.html" target="_blank" rel="noopener"
+>https://imshanks.com/2019/08/03/converting-django-project-py-file-to-so-file.html&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://cython.readthedocs.io/en/latest/" target="_blank" rel="noopener"
+>https://cython.readthedocs.io/en/latest/&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://gist.github.com/CHunYenc/adcdd234aab33d621fdfa127e41ee16a" target="_blank" rel="noopener"
+>https://gist.github.com/CHunYenc/adcdd234aab33d621fdfa127e41ee16a&lt;/a>&lt;/li>
+&lt;/ol></content></item></channel></rss>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cloudflare on CY | 程式小角落</title><link>https://chunyen.xyz/tags/cloudflare/</link><description>Recent content in Cloudflare on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Mon, 16 Jan 2023 00:02:09 +0800</lastBuildDate><atom:link href="https://chunyen.xyz/tags/cloudflare/index.xml" rel="self" type="application/rss+xml"/><item><title>Cloudflare - 架設 Google-blogger 與 Github-page DNS 困難排除</title><link>https://chunyen.xyz/p/cloudflare-dns-error/</link><pubDate>Mon, 16 Jan 2023 00:02:09 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/cloudflare-dns-error/</guid><description>Cloudflare 設定也是一大學問 !</description><tags><tag>Cloudflare</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>主要是有應用架設在 &lt;code>Heroku&lt;/code>, 發現他要所謂 &lt;code>Server Name Indication (SNI)&lt;/code> 的方式來部署 &lt;code>HTTPS&lt;/code>。&lt;/p>
+&lt;blockquote>
+&lt;p>結論就是 &lt;code>DNS&lt;/code> 從 &lt;code>Google Domains&lt;/code> 換成 &lt;code>Cloudflare&lt;/code>，然後碰到&lt;code>轉址&lt;/code>、&lt;code>HTTPS&lt;/code>的問題。&lt;/p>
+&lt;/blockquote>
+&lt;p>透過 &lt;code>Cloudflare&lt;/code> 弄上 &lt;code>HTTPS&lt;/code> 時，發現 &lt;code>Blogger&lt;/code>、&lt;code>Github page&lt;/code> 都不能正常瀏覽。&lt;/p>
+&lt;p>因為 &lt;code>Blogger&lt;/code>、&lt;code>Github Page&lt;/code> 本身就可以加上 &lt;code>HTTPS&lt;/code>，但是加上 &lt;code>HTTPS&lt;/code> 後一直不能瀏覽。&lt;/p>
+&lt;p>然後 &lt;code>HTTPS&lt;/code> 是可以正常瀏覽。&lt;/p>
+&lt;h2 id="問題特徵">問題特徵&lt;/h2>
+&lt;p>將前言的整理一下，&lt;code>如果你有下面的問題，可以參考我怎麼解決的！&lt;/code>&lt;/p>
+&lt;ol>
+&lt;li>&lt;code>http&lt;/code> 可以正常瀏覽頁面。&lt;/li>
+&lt;li>改成 &lt;code>https&lt;/code> 無法瀏覽頁面。顯示&lt;code>「這個網頁無法正常運作」&lt;/code>。
+&lt;ul>
+&lt;li>使用 &lt;code>blogger&lt;/code>
+&lt;ul>
+&lt;li>步驟 1 - 進入 &lt;code>設定&lt;/code>&lt;/li>
+&lt;li>步驟 2 - &lt;code>HTTPS 重新導向&lt;/code> 開啟&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>使用 &lt;code>Github&lt;/code>
+&lt;ul>
+&lt;li>步驟 1 - 點擊儲存庫 &lt;code>YOURGITHUBNAME.github.io&lt;/code>&lt;/li>
+&lt;li>步驟 2 - 進入 &lt;code>Settings&lt;/code>&lt;/li>
+&lt;li>步驟 3 - 點擊 &lt;code>Pages&lt;/code>, 設定頁面並加入自定義 &lt;code>domain&lt;/code>.&lt;/li>
+&lt;li>步驟 4 - &lt;code>Enforce HTTPS&lt;/code> 開啟&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>關於第 &lt;code>2&lt;/code> 點。不管是 blogger、Github 都會導致&lt;code>「這個網頁無法正常運作」&lt;/code>的狀況。&lt;/p>
+&lt;blockquote>
+&lt;p>如果你的狀況跟我很類似，或許你可以試試看 !&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="設定方式">設定方式&lt;/h1>
+&lt;h2 id="將-ssltls-改為-full-模式">將 &lt;code>SSL/TLS&lt;/code> 改為 &lt;code>FULL&lt;/code> 模式&lt;/h2>
+&lt;p>&lt;img src="https://chunyen.xyz/images/20230116/01-full.jpg"
+loading="lazy"
+alt="Cloudflare SSL/TLS 設定"
+>&lt;/p>
+&lt;p>我原本的設定是 &lt;code>Flexible (彈性)&lt;/code> 模式。&lt;/p>
+&lt;p>關於 Flexible 模式的說明，其實 &lt;code>Cloudflare&lt;/code> 官方文檔有提到碰到的問題。&lt;/p>
+&lt;p>&lt;a class="link" href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/flexible/" target="_blank" rel="noopener"
+>Flexible 模式&lt;/a>&lt;/p>
+&lt;p>&lt;code>Flexible&lt;/code> 雖然開啟後好用，可以將 &lt;code>HTTP&lt;/code> 的網頁透過 &lt;code>Cloudflare&lt;/code> 的處理後變成 &lt;code>HTTPS&lt;/code>。&lt;/p>
+&lt;p>但是原本的網頁已經有 &lt;code>HTTPS&lt;/code> 時，就要透過 &lt;code>FULL&lt;/code> 模式去做處理。&lt;/p>
+&lt;blockquote>
+&lt;p>如果你的網頁都是使用 &lt;code>HTTP&lt;/code>，那麼你可以預設 &lt;code>Flexible&lt;/code>。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="路由規則">路由規則&lt;/h2>
+&lt;p>了解路由規則時，先釐清自己的使用需求是不是符合。&lt;/p>
+&lt;p>我的主網域：&lt;a class="link" href="https://chunyen.xyz" target="_blank" rel="noopener"
+>https://chunyen.xyz&lt;/a> (Github Page，有 &lt;code>HTTPS&lt;/code>)&lt;/p>
+&lt;p>我的子網域：&lt;a class="link" href="https://b.chunyen.xyz" target="_blank" rel="noopener"
+>https://b.chunyen.xyz &lt;/a> (Blogger，有 &lt;code>HTTPS&lt;/code>)&lt;/p>
+&lt;p>我的子網域：&lt;a class="link" href="https://p.chunyen.xyz" target="_blank" rel="noopener"
+>http://p.chunyen.xyz&lt;/a> (自己的應用，無 &lt;code>HTTPS&lt;/code>)&lt;/p>
+&lt;p>假設我的網頁、部落格內建的 &lt;code>HTTPS&lt;/code> 較多，其實我就直接使用 &lt;code>FULL&lt;/code> 模式。&lt;/p>
+&lt;p>若是相反呢？我就使用 &lt;code>Flexible&lt;/code>。&lt;/p>
+&lt;blockquote>
+&lt;p>再透過 Cloudflare 路由規則將指定的網頁設定成其他模式 ! 只有三個的扣打可以使用其他模式。&lt;/p>
+&lt;/blockquote>
+&lt;p>步驟：&lt;/p>
+&lt;ol>
+&lt;li>點擊 &lt;code>規則&lt;/code>&lt;/li>
+&lt;li>再點擊 &lt;code>網頁規則&lt;/code> 同一頁的 &lt;code>建立網頁規則&lt;/code>&lt;/li>
+&lt;li>&lt;code>填入 URL&lt;/code> 後，記得要選取 &lt;code>挑選設定&lt;/code> 的 &lt;code>SSL&lt;/code> 為你要設定的模式。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://chunyen.xyz/images/20230116/03-rule-example.jpg"
+loading="lazy"
+alt="Cloudflare SSL/TLS 路由規則"
+>&lt;/p>
+&lt;p>接下來應該沒問題了 ! 免費時間等超久。&lt;/p>
+&lt;blockquote>
+&lt;p>但是免費的還是等吧 xD&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="最後的設定">最後的設定&lt;/h2>
+&lt;p>&lt;img src="https://chunyen.xyz/images/20230116/04-result.jpg"
+loading="lazy"
+alt="Cloudflare SSL/TLS 路由規則的結果"
+>&lt;/p>
+&lt;ol>
+&lt;li>我將 &lt;code>SSL/TLS&lt;/code> 設定為彈性。&lt;/li>
+&lt;li>另外透過兩個 &lt;code>路由規則&lt;/code> 來設定我的 &lt;code>blogger&lt;/code>、&lt;code>github page&lt;/code> 的網頁&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>路由規則的部分剩下一個扣打。&lt;/p>
+&lt;/blockquote>
+&lt;p>若依照我的設定，應該你的網頁就可以正常瀏覽了！&lt;/p>
+&lt;p>花了非常多時間。但沒想到 &lt;code>Cloudflare&lt;/code> 提供這麼多免費的服務，之前一直有看到這間公司的 Logo，但一直沒機會使用。&lt;/p>
+&lt;h1 id="完成-">完成 !&lt;/h1></content></item></channel></rss>

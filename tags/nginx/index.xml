@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nginx on CY | 程式小角落</title><link>https://chunyen.xyz/tags/nginx/</link><description>Recent content in Nginx on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sun, 14 May 2023 10:42:02 +0000</lastBuildDate><atom:link href="https://chunyen.xyz/tags/nginx/index.xml" rel="self" type="application/rss+xml"/><item><title>Nginx - 將 HTTP 的網頁上線成 HTTPS.</title><link>https://chunyen.xyz/p/nginx-add-https/</link><pubDate>Sun, 14 May 2023 10:42:02 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/nginx-add-https/</guid><description>以前就上線過 HTTPS, 但這次設定被其他環境干擾, 害我花了超出預期的時間.</description><tags><tag>Django</tag><tag>Nginx</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>前陣子再協助朋友設定 NGINX 時, 發現手邊都沒有在做紀錄 HTTPS 的設定, 所以這次就來紀錄一下。&lt;/p>
+&lt;p>其實不難，只是擔心朋友針對機器在做轉 Port 的設定 .. 這樣就會讓我很頭痛了。&lt;/p>
+&lt;p>當然後面有解決, 但是花了超出預期的時間。&lt;/p>
+&lt;blockquote>
+&lt;p>小提醒：下面的路徑都是絕對路徑，因為使用的是 Docker，所以路徑會有點不一樣。你可以依照自己的環境去做設定。&lt;/p>
+&lt;/blockquote>
+&lt;p>這邊就不特別說明 Docker 的設定及路徑怎麼查詢囉 !&lt;/p>
+&lt;h1 id="設定檔案">設定檔案&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;span class="lnt">48
+&lt;/span>&lt;span class="lnt">49
+&lt;/span>&lt;span class="lnt">50
+&lt;/span>&lt;span class="lnt">51
+&lt;/span>&lt;span class="lnt">52
+&lt;/span>&lt;span class="lnt">53
+&lt;/span>&lt;span class="lnt">54
+&lt;/span>&lt;span class="lnt">55
+&lt;/span>&lt;span class="lnt">56
+&lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
+&lt;/span>&lt;span class="lnt">62
+&lt;/span>&lt;span class="lnt">63
+&lt;/span>&lt;span class="lnt">64
+&lt;/span>&lt;span class="lnt">65
+&lt;/span>&lt;span class="lnt">66
+&lt;/span>&lt;span class="lnt">67
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">server {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # port
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen 443 ssl;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen [::]:443 ssl;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_name www.example.com;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # ssl
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_certificate /home/example/example.crt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_certificate_key /home/example/example.key;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_session_timeout 5m;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_prefer_server_ciphers on;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> location / {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> root /var/www/html/;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> index index.html;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> location /config {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> root /var/www/html/;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> index config.json;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # error
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> error_page 500 502 503 504 /50x.html;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">server {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # port
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen 5000 ssl;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen [::]:5000 ssl;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_name www.example.com;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # ssl
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_certificate /home/example/example.crt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_certificate_key /home/example/example.key;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_session_timeout 5m;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_prefer_server_ciphers on;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # path
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> location / {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_pass http://myip.com:8080;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # proxy header
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_set_header X-Real-IP $remote_addr;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_connect_timeout 300;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_send_timeout 300;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_read_timeout 300;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> send_timeout 300;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> keepalive_timeout 300s;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> client_body_timeout 300s;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # error
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> error_page 500 502 503 504 /50x.html;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">server {
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen 80 default_server;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen [::]:80 default_server;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_name www.example.com;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> return 301 https://www.example.com$request_uri;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></content></item></channel></rss>

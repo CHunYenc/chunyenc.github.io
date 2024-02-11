@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BUG on CY | 程式小角落</title><link>https://chunyen.xyz/tags/bug/</link><description>Recent content in BUG on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Wed, 16 Jan 2019 23:22:00 +0000</lastBuildDate><atom:link href="https://chunyen.xyz/tags/bug/index.xml" rel="self" type="application/rss+xml"/><item><title>【BUG】當 DevC++ 亂碼，如何解決呢？</title><link>https://chunyen.xyz/p/how-to-fix-dev-cpp-garbled/</link><pubDate>Wed, 16 Jan 2019 23:22:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/how-to-fix-dev-cpp-garbled/</guid><description/><tags><tag>亂碼</tag><tag>BUG</tag><tag>Dev-C++</tag><tag>garbled</tag><tag>IDE</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>如標題，最近正從 C 語言 進階到 C++ 時，&lt;/p>
+&lt;p>在 C 語言 學習過程中使用的 Dev-C++ 也隨之陪伴我到 C++，&lt;/p>
+&lt;p>但是最近碰到了一件事，就是 cout 中文字時，會跑出亂碼。&lt;/p>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/01.dev-c&amp;#43;&amp;#43;_garbled.jpg"
+loading="lazy"
+alt="Dev-C&amp;#43;&amp;#43; 亂碼"
+>&lt;/p>
+&lt;p>應該要印出 &amp;ldquo;是字元&amp;rdquo; 才對。&lt;/p>
+&lt;p>不過不知道為什麼查詢到這個問題的結果蠻少的，&lt;/p>
+&lt;p>大部分都說 Dev-C++ 因停止開發了，所以趕快換IDE。&lt;/p>
+&lt;p>所以打這篇文就來解決一下吧！&lt;/p>
+&lt;h2 id="解決流程">解決流程&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>Win+R&lt;/code> (Alt+Ctrl 中間的) 進入到 執行&lt;/li>
+&lt;li>輸入 &lt;code>CMD&lt;/code> (命令提示元)&lt;/li>
+&lt;li>對&lt;code>標題列按右鍵&lt;/code>&lt;/li>
+&lt;li>點選&lt;code>預設值&lt;/code>
+&lt;img src="https://chunyen.xyz/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/02.setting_cmd_default.png"
+loading="lazy"
+alt="Dev-C&amp;#43;&amp;#43; CMD 預設設定介面"
+>&lt;/li>
+&lt;li>進入&lt;code>主控台視窗&lt;/code>&lt;/li>
+&lt;li>打勾 &lt;code>使用舊版主控台&lt;/code>&lt;/li>
+&lt;li>對標題列按右鍵：&lt;/li>
+&lt;li>進入主控台視窗 預設：&lt;/li>
+&lt;li>將 使用舊版主控台 打勾 ，我電腦不會自動重開機，所以請放心。&lt;/li>
+&lt;/ul>
+&lt;h3 id="預設設定">預設設定&lt;/h3>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/03.setting_default.png"
+loading="lazy"
+alt="Dev-C&amp;#43;&amp;#43; CMD 預設設定介面"
+>&lt;/p>
+&lt;h3 id="更改後設定">更改後設定&lt;/h3>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/04.setting_change.png"
+loading="lazy"
+alt="Dev-C&amp;#43;&amp;#43; CMD 設定後介面"
+>&lt;/p>
+&lt;p>記得點擊確定。&lt;/p>
+&lt;h3 id="再次確認有無-dev-c-亂碼">再次確認有無 Dev-C++ 亂碼&lt;/h3>
+&lt;p>來看看程式碼，再次執行就會發現已經沒問題囉！&lt;/p>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/05.finish.jpeg"
+loading="lazy"
+alt="Dev-C&amp;#43;&amp;#43; CMD 設定後介面"
+>&lt;/p>
+&lt;p>完成！&lt;/p></content></item></channel></rss>

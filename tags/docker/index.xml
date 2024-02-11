@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on CY | 程式小角落</title><link>https://chunyen.xyz/tags/docker/</link><description>Recent content in Docker on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 27 Jan 2023 15:53:22 +0800</lastBuildDate><atom:link href="https://chunyen.xyz/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>https://chunyen.xyz/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;blockquote>
+&lt;p>祝大家新年快樂 !!!&lt;/p>
+&lt;/blockquote>
+&lt;p>今天是初六，也休息一陣子了，覺得有點廢。&lt;/p>
+&lt;p>主要是因為大四時擔任宿舍網路會長時製作的 LINE-BOT 上線在 &lt;code>heroku&lt;/code>，但是 &lt;code>2022/12&lt;/code> 已經公告說他們要開始收錢了。於是我就將 LINE-BOT 的伺服器轉移到 &lt;code>render.com&lt;/code> 平台。&lt;/p>
+&lt;p>那在轉移時有製作一個工具。就是要不間斷的去呼叫免費平台(類似 heroku.com、render.com)。&lt;/p>
+&lt;blockquote>
+&lt;p>就是要讓機器永遠不睡眠 ! 操爆它 (X)&lt;/p>
+&lt;/blockquote>
+&lt;p>統整做了三件事：&lt;/p>
+&lt;ol>
+&lt;li>運用 Python 定時呼叫小應用的網址&lt;/li>
+&lt;li>利用 Docker 彈性系統參數&lt;/li>
+&lt;li>利用 Docker Compose 定時呼叫多個平台&lt;/li>
+&lt;/ol>
+&lt;p>本篇不是教你怎麼做這個工具，是教你如何用。&lt;/p>
+&lt;p>所以會從 &lt;code>2.&lt;/code> 來教你怎麼做 !&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="利用-docker-來使用工具">利用 Docker 來使用工具&lt;/h1>
+&lt;p>&lt;code>工具只需要透過 Docker 就可以執行囉 !&lt;/code>&lt;/p>
+&lt;p>範例如下：&lt;code>範例下方還有部分說明唷 !&lt;/code>&lt;/p>
+&lt;p>&lt;code>**** 記得要先建立一個 schedule.log 檔案。&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">docker run -d &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--restart always &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--name wakeup-render &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-e &lt;span class="nv">URL&lt;/span>&lt;span class="o">=&lt;/span>https://yourwebsite.domain.com/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-e &lt;span class="nv">APSCHEDULER_DAY_OF_WEEK&lt;/span>&lt;span class="o">=&lt;/span>mon-fri &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-e &lt;span class="nv">APSCHEDULER_MINUTE&lt;/span>&lt;span class="o">=&lt;/span>*/10 &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-v /Users/yen/Desktop/schedule.log:/app/scheduler.log &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>chunyenc/wakeup-machine
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>&lt;code>--restart&lt;/code> 若重開機將自動執行&lt;/li>
+&lt;li>&lt;code>--name&lt;/code> container 的名稱&lt;/li>
+&lt;li>&lt;code>-e&lt;/code> 環境變數
+&lt;ul>
+&lt;li>URL 是你要呼叫的網址&lt;/li>
+&lt;li>APSCHEDULER_DAY_OF_WEEK 一週裡面哪幾天執行&lt;/li>
+&lt;li>APSCHEDULER_MINUTE 是多少分鐘呼叫一次&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;code>-v&lt;/code> 映射檔案
+&lt;ul>
+&lt;li>linux 可以使用 &lt;code>pwd&lt;/code> 指令來查看目前的絕對路徑&lt;/li>
+&lt;li>schedule.log 就是查看執行 log 的檔案&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="環境變數列表">環境變數列表&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>環境變數&lt;/th>
+&lt;th>範例值&lt;/th>
+&lt;th>備註&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>URL&lt;/td>
+&lt;td>&lt;a class="link" href="https://chunyen.xyz" target="_blank" rel="noopener"
+>https://chunyen.xyz&lt;/a>&lt;/td>
+&lt;td>呼叫的網址&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_YEAR&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_MONTH&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_DAY&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_WEEK&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_DAY_OF_WEEK&lt;/td>
+&lt;td>mon-fri&lt;/td>
+&lt;td>依照範例，設定週一到週五&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_HOUR&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_MINUTE&lt;/td>
+&lt;td>*/10&lt;/td>
+&lt;td>依照範例，設定每十分鐘&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_SECOND&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>APSCHEDULER 需要參考下面網址來設定
+&lt;a class="link" href="https://apscheduler.readthedocs.io/en/3.x/modules/triggers/cron.html" target="_blank" rel="noopener"
+>https://apscheduler.readthedocs.io/en/3.x/modules/triggers/cron.html&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="如果是使用-docker-compose-">如果是使用 Docker Compose ..&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;3.9&amp;#39;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">service-one&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">chunyenc/wakeup-machine&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">URL=https://one.chunyen.xyz&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">APSCHEDULER_MINUTE=*/10&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">APSCHEDULER_HOUR=0-1,5-23&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">APSCHEDULER_DAY_OF_WEEK=mon-fri&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">./pricing.log:/app/scheduler.log&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">service-two&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">chunyenc/wakeup-machine&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">URL=https://two.chunyen.xyz&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">APSCHEDULER_MINUTE=*/10&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">APSCHEDULER_HOUR=9-23&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">./linebot.log:/app/scheduler.log&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></content></item><item><title>置頂 - 提高效率的必備指令：一份我的常用指令與工具清單</title><link>https://chunyen.xyz/p/common-scripts/</link><pubDate>Wed, 18 Jan 2023 11:38:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/common-scripts/</guid><description>工作時常使用到的指令與工具</description><tags><tag>GIT</tag><tag>Docker</tag><tag>VSCode</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>主要為存放工作中經常使用的指令、框架、套件。&lt;/p>
+&lt;p>若有任何建議或是覺得需要修改的地方還請不吝指教，謝謝！&lt;/p>
+&lt;p>如何聯繫我 ?&lt;/p>
+&lt;blockquote>
+&lt;p>可以利用本篇文章下面留言，導航列也有提供我的社群平台 ~&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="目錄">目錄&lt;/h1>
+&lt;p>電腦版右側有目錄，手機版沒有，這邊的目錄為了手機版而整理 !&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#%e5%89%8d%e8%a8%80" >前言&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#%e7%9b%ae%e9%8c%84" >目錄&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#%e5%a5%97%e4%bb%b6%e6%a1%86%e6%9e%b6%e5%8d%80" >套件框架區&lt;/a>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#vscode" >VSCode&lt;/a>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#markdown" >Markdown&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a class="link" href="#%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4%e5%8d%80" >常用指令區&lt;/a>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#git" >Git&lt;/a>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#%e4%b8%8b%e8%bc%89%e5%ad%90%e6%a8%a1%e7%b5%84" >下載子模組&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#%e5%88%87%e6%8f%9b%e9%81%a0%e7%ab%af%e5%88%86%e6%94%af" >切換遠端分支&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a class="link" href="#vue" >Vue&lt;/a>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#%e6%9b%b4%e6%94%b9-port" >更改 Port&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a class="link" href="#docker" >Docker&lt;/a>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#redis" >Redis&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#postgresql" >PostgreSQL&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="套件框架區">套件框架區&lt;/h1>
+&lt;h2 id="vscode">VSCode&lt;/h2>
+&lt;h3 id="markdown">Markdown&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://github.com/yzhang-gh/vscode-markdown" target="_blank" rel="noopener"
+>https://github.com/yzhang-gh/vscode-markdown&lt;/a> &lt;code>自動生成 md 目錄&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h1 id="常用指令區">常用指令區&lt;/h1>
+&lt;h2 id="git">Git&lt;/h2>
+&lt;p>Git 是一個分散式版本控制系統，用於追蹤檔案變更並協助多人共同開發專案。&lt;/p>
+&lt;h3 id="下載子模組">下載子模組&lt;/h3>
+&lt;p>當你使用 git &lt;code>clone&lt;/code> 下載完儲存庫後，發現沒有下載 submodule, 使用下面的指令可以直接把子模組載入。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-v" data-lang="v">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">git&lt;/span> &lt;span class="nv">submodule&lt;/span> &lt;span class="nv">update&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="切換遠端分支">切換遠端分支&lt;/h3>
+&lt;p>&lt;code>待補&lt;/code>&lt;/p>
+&lt;h2 id="vue">Vue&lt;/h2>
+&lt;h3 id="更改-port">更改 Port&lt;/h3>
+&lt;p>&lt;code>cli-services&lt;/code> 版本為 &lt;code>@vue/cli-service&amp;quot;: &amp;quot;~5.0.0&lt;/code>，如果不是也可以試試看。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># default 8080&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">npm run serve -- --port &lt;span class="m">8000&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="docker">Docker&lt;/h2>
+&lt;h3 id="redis">Redis&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--restart always \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-p 6379:6379 \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--name dev-redis \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network redis
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>Q: 為什麼有 dev-network ?&lt;/p>
+&lt;p>A: 為了可以讓開發容器可以直接使用 &lt;code>dev-redis&lt;/code> 進行連線 ! 前提是開發容器也要使用 dev-network 建立 !&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="postgresql">PostgreSQL&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--restart always \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--name dev-postgres \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-p 5432:5432 \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-e POSTGRES_PASSWORD=postgres \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-v /home/user/dev-pg-data/pgdata:/var/lib/postgresql/data \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network postgres:10
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></content></item><item><title>Docker 紀錄 03 - 經常使用的 docker 指令</title><link>https://chunyen.xyz/p/docker-common-commands/</link><pubDate>Sat, 03 Sep 2022 12:55:54 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/docker-common-commands/</guid><description/><tags><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="正文">正文&lt;/h1>
+&lt;h2 id="建立-image">建立 image&lt;/h2>
+&lt;p>提供複製的指令。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># create image from dockerfile&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker build -t &amp;lt;image-name&amp;gt; . --no-cache
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>實際上在使用的時候，會是以下的範例。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker build -t mydocker . --no-cache
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>輸入完後 docker image 就會開始建立。&lt;/p>
+&lt;p>完成後，進行檢查時就使用下面的指令。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker images
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然後就顯示機器上擁有的 docker images&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">REPOSITORY TAG IMAGE ID CREATED SIZE
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mydocker latest 0a045e9f442f 19 minutes ago 568MB
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="執行-image">執行 image&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker run &amp;lt;image-name&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="刪除-image">刪除 image&lt;/h2>
+&lt;p>如何先查看本機上已經建立的 image 清單.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker images
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">REPOSITORY TAG IMAGE ID CREATED SIZE
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mydocker latest 0a045e9f442f &lt;span class="m">19&lt;/span> minutes ago 568MB
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 這邊刪除上面建立的 image &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker rmi 0a045e9f442f
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="範例">範例&lt;/h1>
+&lt;p>經常使用的 docker run 範本，所以導致本篇會持續更新的原因。&lt;/p>
+&lt;h1 id="postgres">postgres&lt;/h1>
+&lt;h2 id="好看版本">好看版本&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--restart always \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--name dev-postgres \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-p 5432:5432 \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-e POSTGRES_PASSWORD=postgres \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-v /home/user/dev-pg-data/pgdata:/var/lib/postgresql/data \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network postgres:10
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="複製版本">複製版本&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d --restart always --name dev-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -v /home/user/dev-pg-data/pgdata:/var/lib/postgresql/data --network dev-network postgres:10
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="redis">redis&lt;/h1>
+&lt;h2 id="好看版本-1">好看版本&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--restart always \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-p 6379:6379 \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--name dev-redis \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network redis
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="複製版本-1">複製版本&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d --restart always -p 6379:6379 --name dev-redis --network dev-network redis
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="oracle-xe">oracle-xe&lt;/h1>
+&lt;h2 id="好看版本-2">好看版本&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--restart always \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--name dev-oracle -p 1521:1521 \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-e ORACLE_PASSWORD=&amp;lt;your password&amp;gt; \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-v oracle-volume:/u01/app/oracle/oradata gvenzl/oracle-xe:11
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="複製版本-2">複製版本&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d --restart always --name dev-oracle -p 1521:1521 -e ORACLE_PASSWORD=&amp;lt;your password&amp;gt; -v oracle-volume:/u01/app/oracle/oradata gvenzl/oracle-xe:11
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="nginx">nginx&lt;/h1>
+&lt;p>待補&lt;/p></content></item><item><title>Docker 紀錄 02 - 使用 oracleinanutshell/oracle-xe-11g 紀錄</title><link>https://chunyen.xyz/p/docker-oracle-xe-11g/</link><pubDate>Wed, 13 Jul 2022 10:36:26 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/docker-oracle-xe-11g/</guid><description/><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>主要紀錄建立 oracle-xe-11g 這個 image 的過程。&lt;/p>
+&lt;h1 id="容器大小">容器大小&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">root@vm-1-47:/home/ubuntu# docker images
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">REPOSITORY TAG IMAGE ID CREATED SIZE
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">oracleinanutshell/oracle-xe-11g latest ad13c30ec346 &lt;span class="m">3&lt;/span> years ago 2.13GB
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h1 id="操作">操作&lt;/h1>
+&lt;h2 id="docker">docker&lt;/h2>
+&lt;h3 id="docker-run">docker run&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">docker run -d --name oracle-db -p 1521:1521 -e &lt;span class="nv">ORACLE_ALLOW_REMOTE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nb">true&lt;/span> oracleinanutshell/oracle-xe-11g
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>說明：&lt;/p>
+&lt;ol>
+&lt;li>-d 為背景執行&lt;/li>
+&lt;li>&amp;ndash;name
+&lt;ul>
+&lt;li>&lt;code>container-name&lt;/code>，把你的容器命名&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>-p 為 port 號
+&lt;ul>
+&lt;li>&lt;code>host-port:container-port&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>-e 為環境變數
+&lt;ul>
+&lt;li>&lt;code>ORACLE_ALLOW_REMOTE&lt;/code>，因為要建立在虛擬機上，要從其他電腦連過來。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="oracle">oracle&lt;/h2>
+&lt;h3 id="docker-exec">docker exec&lt;/h3>
+&lt;p>執行之前，我們要先查看我們 oracle-db 的 CONTAINER ID&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">root@vm-1-47:/home/ubuntu# docker ps
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">18681d31f0ec oracleinanutshell/oracle-xe-11g &lt;span class="s2">&amp;#34;/bin/sh -c &amp;#39;/usr/sb…&amp;#34;&lt;/span> &lt;span class="m">3&lt;/span> seconds ago Up &lt;span class="m">1&lt;/span> second 22/tcp, 8080/tcp, 0.0.0.0:1521-&amp;gt;1521/tcp oracle-db
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>這時候後複製 &lt;code>18681d31f0ec&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">root@vm-1-47:/home/ubuntu# docker &lt;span class="nb">exec&lt;/span> -it 18681d31f0ec /bin/bash
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">root@18681d31f0ec:/#
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="建立-oracle-user">建立 oracle user&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">root@18681d31f0ec:/# su - oracle
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">oracle@18681d31f0ec:~$ sqlplus / as sysdba
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">SQL*Plus: Release 11.2.0.2.0 Production on Wed Jul &lt;span class="m">13&lt;/span> 03:04:33 &lt;span class="m">2022&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Copyright &lt;span class="o">(&lt;/span>c&lt;span class="o">)&lt;/span> 1982, 2011, Oracle. All rights reserved.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Connected to:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">SQL&amp;gt; create user yen identified by 0107&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">User created.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">SQL&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="授予-oracle-user-權限">授予 oracle user 權限&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">SQL&amp;gt; grant dba to yen&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Grant succeeded.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></content></item><item><title>Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database</title><link>https://chunyen.xyz/p/docker-pull-oracle-database-image/</link><pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/docker-pull-oracle-database-image/</guid><description>2021 去年使用的方式又跟今年(2022) 不一樣了 ..</description><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>之前的我都是去 docker hub pull,&lt;/p>
+&lt;p>但是今天發現 docker pull 的方式不一樣了。&lt;/p>
+&lt;h1 id="直接寫解法">直接寫解法&lt;/h1>
+&lt;h2 id="前往-oracle-container-註冊">前往 oracle container 註冊&lt;/h2>
+&lt;pre>&lt;code>https://container-registry.oracle.com
+&lt;/code>&lt;/pre>
+&lt;h2 id="登入完後點擊-database">登入完後，點擊 Database&lt;/h2>
+&lt;p>&lt;img src="https://chunyen.xyz/images/20220629/oracle-01.png"
+loading="lazy"
+alt="2022/07/06 - Oracle UI"
+>&lt;/p>
+&lt;h2 id="同意授權">同意授權&lt;/h2>
+&lt;p>&lt;img src="https://chunyen.xyz/images/20220629/oracle-02.png"
+loading="lazy"
+alt="2022/07/06 - Oracle 同意授權與未同意授權的畫面"
+>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">請記得要點擊 Continue.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="授權">授權&lt;/h2>
+&lt;p>&lt;img src="https://chunyen.xyz/images/20220629/oracle-01.png"
+loading="lazy"
+alt="2022/07/06 - Oracle 點擊同意授權"
+>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">顯示打勾之後，再繼續下面的操作。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="docker-login">docker login&lt;/h2>
+&lt;p>看你的環境是什麼，我今天使用的公司電腦，所以以下使用 Windows 的 PowerShell。&lt;/p>
+&lt;p>注意：這邊的話會叫你輸入登入資訊，但是因為我已經登入過了。&lt;/p>
+&lt;p>注意：這邊的話會叫你輸入登入資訊，但是因為我已經登入過了。&lt;/p>
+&lt;p>注意：這邊的話會叫你輸入登入資訊，但是因為我已經登入過了。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">PS D:\&amp;gt; docker login container-registry.oracle.com
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Authenticating with existing credentials...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Login Succeeded
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>這時候就可以下載 container-registry.oracle.com 的 images ，&lt;/p>
+&lt;p>你可以先 COPY 下面的指令。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d --name oracle-db container-registry.oracle.com/database/enterprise:21.3.0.0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>這邊是測試，使用 docker run 來下載 container-registry.oracle.com 的 image.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">PS D:\&amp;gt; docker run -d --name oracle-db container-registry.oracle.com/database/enterprise:21.3.0.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Unable to find image &amp;#39;container-registry.oracle.com/database/enterprise:21.3.0.0&amp;#39; locally
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">21.3.0.0: Pulling from database/enterprise
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">401a42e1eb4f: Pulling fs layer
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">a13a3f09d2fa: Pulling fs layer
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">a55a58a3063b: Pulling fs layer
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">d6422a9150b2: Pulling fs layer
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">..... 以下太多資訊 省略
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="完成">完成&lt;/h2></content></item><item><title>【Docker】Macbook Air M1 CPU 使用 Docker 建立 SQL Server</title><link>https://chunyen.xyz/p/macbook-air-m1-install-sql-server/</link><pubDate>Sat, 07 Aug 2021 21:10:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/macbook-air-m1-install-sql-server/</guid><description/><tags><tag>SQLServer</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image><url>https://chunyen.xyz/</url></image><content>&lt;p>圖片來源：&lt;a class="link" href="https://zh.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener"
+>https://zh.wikipedia.org/wiki/Microsoft_SQL_Server&lt;/a>&lt;/p>
+&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>說明一下為什麼會使用到 SQL Server + Macbook Air。&lt;/p>
+&lt;p>主要是在今年 (2021) 年初買了 Macbook Air M1。&lt;/p>
+&lt;p>那過了近半年，在目前工作的專案下，對方有提出一個需求就是需要導入 SQL Server，&lt;/p>
+&lt;p>就想說試試看 M1 是否可以建立 SQL Server 的環境。&lt;/p>
+&lt;h2 id="本文章分為四段">本文章分為四段&lt;/h2>
+&lt;ul>
+&lt;li>檢查您的電腦是否有安裝 Docker&lt;/li>
+&lt;li>Docker run&lt;/li>
+&lt;li>使用 dbeaver 開源資料庫管理工具連線 SQL Server Container&lt;/li>
+&lt;li>結束&lt;/li>
+&lt;/ul>
+&lt;h2 id="本文開始">本文開始&lt;/h2>
+&lt;h3 id="檢查是否安裝-docker">檢查是否安裝 Docker&lt;/h3>
+&lt;p>合理來說 Macbook Pro 一樣可以參考下面範例，若不行，希望你能留言告訴大家&lt;/p>
+&lt;p>首先當然先確認電腦是否有安裝 Docker，這邊顯示一下我目前 Docker 的版本&lt;/p>
+&lt;p>指令：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">Docker -v
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/01.docker-version.png"
+loading="lazy"
+alt="Docker 版本"
+>&lt;/p>
+&lt;p>未安裝的話這邊提供一下 Docker 官方網站：&lt;/p>
+&lt;p>&lt;a class="link" href="https://docs.docker.com/docker-for-mac/install/" target="_blank" rel="noopener"
+>https://docs.docker.com/docker-for-mac/install/&lt;/a>&lt;/p>
+&lt;p>暫時不提供安裝教學，官方也寫得非常清楚。&lt;/p>
+&lt;h3 id="docker-run">Docker run&lt;/h3>
+&lt;p>這邊其實當初也找了非常多，最後在&lt;/p>
+&lt;p>&lt;a class="link" href="https://medium.com/geekculture/docker-express-running-a-local-sql-server-on-your-m1-mac-8bbc22c49dc9" target="_blank" rel="noopener"
+>https://medium.com/geekculture/docker-express-running-a-local-sql-server-on-your-m1-mac-8bbc22c49dc9&lt;/a>&lt;/p>
+&lt;p>這篇有發現如何在 M1 安裝 SQL Server，其中他有 Highlight 這一段：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker run -e &lt;span class="s2">&amp;#34;ACCEPT_EULA=1&amp;#34;&lt;/span> -e &lt;span class="s2">&amp;#34;MSSQL_SA_PASSWORD=MyPass@word&amp;#34;&lt;/span> -e &lt;span class="s2">&amp;#34;MSSQL_PID=Developer&amp;#34;&lt;/span> -e &lt;span class="s2">&amp;#34;MSSQL_USER=SA&amp;#34;&lt;/span> -p 1433:1433 -d --name&lt;span class="o">=&lt;/span>sql mcr.microsoft.com/azure-sql-edge
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>你如果對 Docker 不是很熟的話，這邊稍微介紹一下當中的用法：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>docker run&lt;/code>：建立一個 container，而 run 後面的意思下面會依序介紹：&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>-e&lt;/code>：設定環境變數，這邊設定了四個。(環境變數可以參考微軟官方）：
+&lt;a class="link" href="https://docs.microsoft.com/zh-tw/sql/linux/sql-server-linux-configure-environment-variables?view=sql-server-ver15" target="_blank" rel="noopener"
+>https://docs.microsoft.com/zh-tw/sql/linux/sql-server-linux-configure-environment-variables?view=sql-server-ver15&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>ACCEPT_EULA&lt;/code>：使用者授權&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>MSSQL_SA_PASSWORD&lt;/code>：SA 資料庫密碼&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>MSSQL_PID&lt;/code>：設定 SQL Server 版本或產品金鑰，請參考上面官方連結&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>MSSQL_USER&lt;/code>：使用者名稱&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>-p 1433:1433&lt;/code>：這邊指的是 host 1433 port 就是等於這個 Container 1433 port
+(host:container 的意思)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>-d&lt;/code>：背景執行&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>--name&lt;/code>：container 的名稱，這邊設定 sql&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>mcr.microsoft.com/azure-sql-edge&lt;/code>：就是我們要建立的 image&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>以上是指令的介紹，那我再分享一下我的 dock run 的指令好了，來一個範例版。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker run -e &lt;span class="s2">&amp;#34;ACCEPT_EULA=1&amp;#34;&lt;/span> -e &lt;span class="s2">&amp;#34;MSSQL_SA_PASSWORD=20210807Chunyen&amp;#34;&lt;/span> -e &lt;span class="s2">&amp;#34;MSSQL_PID=Developer&amp;#34;&lt;/span> -e &lt;span class="s2">&amp;#34;MSSQL_USER=SA&amp;#34;&lt;/span> -p 1433:1433 --name&lt;span class="o">=&lt;/span>sqlserver mcr.microsoft.com/azure-sql-edge
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>這邊我更動了兩個環境配置。&lt;/p>
+&lt;ul>
+&lt;li>移除 &lt;code>-d&lt;/code>：我先看看我們的設定是否有問題，因為密碼不能太簡單&lt;/li>
+&lt;li>更改 &lt;code>MSSQL_SA_PASSWORD&lt;/code>：設定成自己想要的密碼&lt;/li>
+&lt;/ul>
+&lt;p>首次安裝他需要安裝 image，這邊我們等他一下。&lt;/p>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
+loading="lazy"
+alt="安裝 sql-server image"
+>&lt;/p>
+&lt;p>正在下載 image &amp;ldquo;mcr.microsoft.com/azure-sql-edge&amp;rdquo;&lt;/p>
+&lt;p>安裝完後，因為我們是直接 docker run，不是 docker pull。&lt;/p>
+&lt;p>Docker pull 的指令為下載 image，詳細可以 Google，這邊不介紹此指令。&lt;/p>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
+loading="lazy"
+alt="sql-server 安裝完成"
+>&lt;/p>
+&lt;p>接下來出現這個畫面後，沒有跑出任何 Error，我們就可以打開 &lt;code>dbeaver&lt;/code> (開源資料庫管理工具)&lt;/p>
+&lt;h3 id="使用-dbeaver-開源資料庫管理工具連線-sql-server-container">使用 dbeaver 開源資料庫管理工具連線 SQL Server Container&lt;/h3>
+&lt;p>這邊就不展示如何安裝 dbeaver。&lt;/p>
+&lt;p>首先我們先打開 dbeaver，如下圖進行新增連線&lt;/p>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/04.dbeaver-connect-db.png"
+loading="lazy"
+alt="dbeaver 建立連線"
+>&lt;/p>
+&lt;p>dbeaver 建立連線&lt;/p>
+&lt;p>建立連線後點擊 Next，輸入連線資訊。&lt;/p>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/05.dbeaver-setting-connect-information.png"
+loading="lazy"
+alt="dbeaver 設定連線資訊"
+>&lt;/p>
+&lt;p>dbeaver 連線 SQL Server&lt;/p>
+&lt;p>先輸入以下資訊：&lt;/p>
+&lt;ul>
+&lt;li>Host： localhost&lt;/li>
+&lt;li>Port：1433&lt;/li>
+&lt;li>Database：master&lt;/li>
+&lt;/ul>
+&lt;p>再輸入&lt;/p>
+&lt;ul>
+&lt;li>User name：sa&lt;/li>
+&lt;li>Password：20210807Chunyen （我上面預設的）
+&lt;ul>
+&lt;li>輸入完畢點擊 Test Connection&lt;/li>
+&lt;li>跳出 Connection Test 視窗。&lt;/li>
+&lt;li>點擊 OK&lt;/li>
+&lt;li>再點擊 Finish.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>接下來 dbeaver 就會連線到你在上面使用 Docker 建立的 SQL Server 囉！&lt;/p>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/06.dbeaver-sql-server-schema.png"
+loading="lazy"
+alt="使用 dbeaver 查看 sql-server schema"
+>&lt;/p>
+&lt;h2 id="結束">結束&lt;/h2>
+&lt;p>本篇結束，已經連到 SQL Server !!!&lt;/p>
+&lt;p>可以連線後，就可以繼續做工作的事情囉！&lt;/p>
+&lt;p>祝福讀完文章的你，一路順風 XD&lt;/p>
+&lt;p>如果你有碰到任何問題，歡迎你在下面留言！&lt;/p></content></item></channel></rss>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VSCode on CY | 程式小角落</title><link>https://chunyen.xyz/tags/vscode/</link><description>Recent content in VSCode on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Wed, 18 Jan 2023 11:38:22 +0800</lastBuildDate><atom:link href="https://chunyen.xyz/tags/vscode/index.xml" rel="self" type="application/rss+xml"/><item><title>置頂 - 提高效率的必備指令：一份我的常用指令與工具清單</title><link>https://chunyen.xyz/p/common-scripts/</link><pubDate>Wed, 18 Jan 2023 11:38:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/common-scripts/</guid><description>工作時常使用到的指令與工具</description><tags><tag>GIT</tag><tag>Docker</tag><tag>VSCode</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>主要為存放工作中經常使用的指令、框架、套件。&lt;/p>
+&lt;p>若有任何建議或是覺得需要修改的地方還請不吝指教，謝謝！&lt;/p>
+&lt;p>如何聯繫我 ?&lt;/p>
+&lt;blockquote>
+&lt;p>可以利用本篇文章下面留言，導航列也有提供我的社群平台 ~&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="目錄">目錄&lt;/h1>
+&lt;p>電腦版右側有目錄，手機版沒有，這邊的目錄為了手機版而整理 !&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#%e5%89%8d%e8%a8%80" >前言&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#%e7%9b%ae%e9%8c%84" >目錄&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#%e5%a5%97%e4%bb%b6%e6%a1%86%e6%9e%b6%e5%8d%80" >套件框架區&lt;/a>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#vscode" >VSCode&lt;/a>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#markdown" >Markdown&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a class="link" href="#%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4%e5%8d%80" >常用指令區&lt;/a>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#git" >Git&lt;/a>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#%e4%b8%8b%e8%bc%89%e5%ad%90%e6%a8%a1%e7%b5%84" >下載子模組&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#%e5%88%87%e6%8f%9b%e9%81%a0%e7%ab%af%e5%88%86%e6%94%af" >切換遠端分支&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a class="link" href="#vue" >Vue&lt;/a>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#%e6%9b%b4%e6%94%b9-port" >更改 Port&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a class="link" href="#docker" >Docker&lt;/a>
+&lt;ul>
+&lt;li>&lt;a class="link" href="#redis" >Redis&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="#postgresql" >PostgreSQL&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="套件框架區">套件框架區&lt;/h1>
+&lt;h2 id="vscode">VSCode&lt;/h2>
+&lt;h3 id="markdown">Markdown&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://github.com/yzhang-gh/vscode-markdown" target="_blank" rel="noopener"
+>https://github.com/yzhang-gh/vscode-markdown&lt;/a> &lt;code>自動生成 md 目錄&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h1 id="常用指令區">常用指令區&lt;/h1>
+&lt;h2 id="git">Git&lt;/h2>
+&lt;p>Git 是一個分散式版本控制系統，用於追蹤檔案變更並協助多人共同開發專案。&lt;/p>
+&lt;h3 id="下載子模組">下載子模組&lt;/h3>
+&lt;p>當你使用 git &lt;code>clone&lt;/code> 下載完儲存庫後，發現沒有下載 submodule, 使用下面的指令可以直接把子模組載入。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-v" data-lang="v">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">git&lt;/span> &lt;span class="nv">submodule&lt;/span> &lt;span class="nv">update&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="切換遠端分支">切換遠端分支&lt;/h3>
+&lt;p>&lt;code>待補&lt;/code>&lt;/p>
+&lt;h2 id="vue">Vue&lt;/h2>
+&lt;h3 id="更改-port">更改 Port&lt;/h3>
+&lt;p>&lt;code>cli-services&lt;/code> 版本為 &lt;code>@vue/cli-service&amp;quot;: &amp;quot;~5.0.0&lt;/code>，如果不是也可以試試看。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># default 8080&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">npm run serve -- --port &lt;span class="m">8000&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="docker">Docker&lt;/h2>
+&lt;h3 id="redis">Redis&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--restart always \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-p 6379:6379 \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--name dev-redis \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network redis
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>Q: 為什麼有 dev-network ?&lt;/p>
+&lt;p>A: 為了可以讓開發容器可以直接使用 &lt;code>dev-redis&lt;/code> 進行連線 ! 前提是開發容器也要使用 dev-network 建立 !&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="postgresql">PostgreSQL&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--restart always \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--name dev-postgres \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-p 5432:5432 \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-e POSTGRES_PASSWORD=postgres \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-v /home/user/dev-pg-data/pgdata:/var/lib/postgresql/data \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network postgres:10
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></content></item></channel></rss>

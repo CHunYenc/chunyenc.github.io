@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Port on CY | 程式小角落</title><link>https://chunyen.xyz/tags/port/</link><description>Recent content in Port on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Tue, 26 Jul 2022 15:27:00 +0800</lastBuildDate><atom:link href="https://chunyen.xyz/tags/port/index.xml" rel="self" type="application/rss+xml"/><item><title>WSL2 紀錄 01 - 將 WSL2 指定 PORT 從 Windows 轉發出來</title><link>https://chunyen.xyz/p/wsl2-port-forwarding/</link><pubDate>Tue, 26 Jul 2022 15:27:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/wsl2-port-forwarding/</guid><description/><tags><tag>Windows</tag><tag>Port</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>後端 Django 使用 WSL2 建立，但是要讓同事連時，該怎麼處理?&lt;/p>
+&lt;h1 id="處理方法">處理方法&lt;/h1>
+&lt;h2 id="到-wsl2-查詢-ip">到 WSL2 查詢 IP&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">yen@DESKTOP-xxx:/mnt/c/.../$ ifconfig
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">eth0: &lt;span class="nv">flags&lt;/span>&lt;span class="o">=&lt;/span>4163&amp;lt;UP,BROADCAST,RUNNING,MULTICAST&amp;gt; mtu &lt;span class="m">1500&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> inet 172.24.134.84 netmask 255.255.240.0 broadcast 172.24.143.255
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> inet6 fe80::215:5dff:fea3:d5d7 prefixlen &lt;span class="m">64&lt;/span> scopeid 0x20&amp;lt;link&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ether 00:15:5d:a3:d5:d7 txqueuelen &lt;span class="m">1000&lt;/span> &lt;span class="o">(&lt;/span>Ethernet&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> RX packets &lt;span class="m">43142&lt;/span> bytes &lt;span class="m">7192731&lt;/span> &lt;span class="o">(&lt;/span>7.1 MB&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> RX errors &lt;span class="m">0&lt;/span> dropped &lt;span class="m">2&lt;/span> overruns &lt;span class="m">0&lt;/span> frame &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> TX packets &lt;span class="m">1060&lt;/span> bytes &lt;span class="m">178104&lt;/span> &lt;span class="o">(&lt;/span>178.1 KB&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> TX errors &lt;span class="m">0&lt;/span> dropped &lt;span class="m">0&lt;/span> overruns &lt;span class="m">0&lt;/span> carrier &lt;span class="m">0&lt;/span> collisions &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">...
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>關鍵是在 &lt;code>172.24.134.84&lt;/code>，要去記得 WSL2 的 IP 位置。&lt;/p>
+&lt;p>這邊要記得 HOST 為 &lt;code>172.24.134.84&lt;/code>、PORT 為 &lt;code>9000&lt;/code>。(你要分享的 PORT)&lt;/p>
+&lt;h2 id="到-windows">到 Windows&lt;/h2>
+&lt;h3 id="轉發-wsl2-的連線位置">轉發 WSL2 的連線位置&lt;/h3>
+&lt;p>以下是範例，進行複製的話，不要複製這個，去樣本複製：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">PS C:&lt;span class="se">\U&lt;/span>sers&lt;span class="se">\x&lt;/span>xx&amp;gt; netsh interface portproxy add v4tov4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">listenport&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">9000&lt;/span> &lt;span class="nv">listenaddress&lt;/span>&lt;span class="o">=&lt;/span>0.0.0.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">connectport&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">9000&lt;/span> &lt;span class="nv">connectaddress&lt;/span>&lt;span class="o">=&lt;/span>172.24.134.84
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>說明：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>listenport=9000&lt;/p>
+&lt;p>listenport 意思為我要讓別人連線的 PORT 是 9000。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>listenaddress=0.0.0.0&lt;/p>
+&lt;p>listenaddress 意思為我要讓別人連線的 IP 是 0.0.0.0，就是指你現在 Windows 的 IP&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>connectport&lt;/p>
+&lt;p>connectaddress 意思為被轉發的 PORT。&lt;code>填寫 WSL2 的 PORT&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>connectaddress&lt;/p>
+&lt;p>connectaddress 意思為被轉發的 IP。&lt;code>填寫 WSL2 的 IP&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>以下是樣本，提供你複製：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">netsh interface portproxy add v4tov4 &lt;span class="nv">listenport&lt;/span>&lt;span class="o">=&lt;/span>xxxx &lt;span class="nv">listenaddress&lt;/span>&lt;span class="o">=&lt;/span>0.0.0.0 &lt;span class="nv">connectport&lt;/span>&lt;span class="o">=&lt;/span>xxxx &lt;span class="nv">connectaddress&lt;/span>&lt;span class="o">=&lt;/span>172.x.x.x
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="使用瀏覽器連線你的-ip">使用瀏覽器連線你的 IP&lt;/h2>
+&lt;h3 id="查看自己-windows-的-ip">查看自己 Windows 的 IP&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">PS C:\Users\xxx&amp;gt; ipconfig
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Windows IP 設定
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">乙太網路卡 乙太網路:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 連線特定 DNS 尾碼 . . . . . . . . :
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 連結-本機 IPv6 位址 . . . . . . . : xxxxxxxxxxxxxxxxxxxxxx
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> IPv4 位址 . . . . . . . . . . . . : 192.168.1.108
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 子網路遮罩 . . . . . . . . . . . .: 255.255.255.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 預設閘道 . . . . . . . . . . . . .: 192.168.1.254
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">....
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>這邊可以知道我的 IP 是 &lt;code>192.168.1.108&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;p>連線到 &lt;a class="link" href="http://192.168.1.108:9000" target="_blank" rel="noopener"
+>http://192.168.1.108:9000&lt;/a>&lt;/p>
+&lt;h2 id="如何刪除剛剛新增的設定">如何刪除剛剛新增的設定&lt;/h2>
+&lt;h3 id="查詢新增的-portproxy">查詢新增的 portproxy&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">C:&lt;span class="se">\U&lt;/span>sers&lt;span class="se">\x&lt;/span>xx&amp;gt; netsh interface portproxy show v4tov4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">接聽 ipv4: 連線到 ipv4:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">位址 連接埠 位址 連接埠
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--------------- ---------- --------------- ----------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">0.0.0.0 &lt;span class="m">9000&lt;/span> 172.24.134.84 &lt;span class="m">9000&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="刪除-portproxy">刪除 portproxy&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">C:&lt;span class="se">\U&lt;/span>sers&lt;span class="se">\x&lt;/span>xx&amp;gt; netsh interface portproxy delete v4tov4 &lt;span class="nv">listenport&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">9000&lt;/span> &lt;span class="nv">listenaddress&lt;/span>&lt;span class="o">=&lt;/span>0.0.0.0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="確認-portproxy-是否刪除">確認 portproxy 是否刪除&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">C:&lt;span class="se">\U&lt;/span>sers&lt;span class="se">\x&lt;/span>xx&amp;gt; netsh interface portproxy show v4tov4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">沒顯示任何訊息就是沒有透過 portproxy 轉發的 port 了 !!
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>完成囉！&lt;/p>
+&lt;blockquote>
+&lt;p>記得如果有將後端或其他應用分享出去時，記得要重新啟動！&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="reference">Reference&lt;/h1>
+&lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/61002681/connecting-to-wsl2-server-via-local-network" target="_blank" rel="noopener"
+>https://stackoverflow.com/questions/61002681/connecting-to-wsl2-server-via-local-network&lt;/a>&lt;/p></content></item></channel></rss>

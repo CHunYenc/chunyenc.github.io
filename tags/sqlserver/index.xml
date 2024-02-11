@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SQLServer on CY | 程式小角落</title><link>https://chunyen.xyz/tags/sqlserver/</link><description>Recent content in SQLServer on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 07 Aug 2021 21:10:00 +0000</lastBuildDate><atom:link href="https://chunyen.xyz/tags/sqlserver/index.xml" rel="self" type="application/rss+xml"/><item><title>【Docker】Macbook Air M1 CPU 使用 Docker 建立 SQL Server</title><link>https://chunyen.xyz/p/macbook-air-m1-install-sql-server/</link><pubDate>Sat, 07 Aug 2021 21:10:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/macbook-air-m1-install-sql-server/</guid><description/><tags><tag>SQLServer</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image><url>https://chunyen.xyz/</url></image><content>&lt;p>圖片來源：&lt;a class="link" href="https://zh.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener"
+>https://zh.wikipedia.org/wiki/Microsoft_SQL_Server&lt;/a>&lt;/p>
+&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>說明一下為什麼會使用到 SQL Server + Macbook Air。&lt;/p>
+&lt;p>主要是在今年 (2021) 年初買了 Macbook Air M1。&lt;/p>
+&lt;p>那過了近半年，在目前工作的專案下，對方有提出一個需求就是需要導入 SQL Server，&lt;/p>
+&lt;p>就想說試試看 M1 是否可以建立 SQL Server 的環境。&lt;/p>
+&lt;h2 id="本文章分為四段">本文章分為四段&lt;/h2>
+&lt;ul>
+&lt;li>檢查您的電腦是否有安裝 Docker&lt;/li>
+&lt;li>Docker run&lt;/li>
+&lt;li>使用 dbeaver 開源資料庫管理工具連線 SQL Server Container&lt;/li>
+&lt;li>結束&lt;/li>
+&lt;/ul>
+&lt;h2 id="本文開始">本文開始&lt;/h2>
+&lt;h3 id="檢查是否安裝-docker">檢查是否安裝 Docker&lt;/h3>
+&lt;p>合理來說 Macbook Pro 一樣可以參考下面範例，若不行，希望你能留言告訴大家&lt;/p>
+&lt;p>首先當然先確認電腦是否有安裝 Docker，這邊顯示一下我目前 Docker 的版本&lt;/p>
+&lt;p>指令：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">Docker -v
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/01.docker-version.png"
+loading="lazy"
+alt="Docker 版本"
+>&lt;/p>
+&lt;p>未安裝的話這邊提供一下 Docker 官方網站：&lt;/p>
+&lt;p>&lt;a class="link" href="https://docs.docker.com/docker-for-mac/install/" target="_blank" rel="noopener"
+>https://docs.docker.com/docker-for-mac/install/&lt;/a>&lt;/p>
+&lt;p>暫時不提供安裝教學，官方也寫得非常清楚。&lt;/p>
+&lt;h3 id="docker-run">Docker run&lt;/h3>
+&lt;p>這邊其實當初也找了非常多，最後在&lt;/p>
+&lt;p>&lt;a class="link" href="https://medium.com/geekculture/docker-express-running-a-local-sql-server-on-your-m1-mac-8bbc22c49dc9" target="_blank" rel="noopener"
+>https://medium.com/geekculture/docker-express-running-a-local-sql-server-on-your-m1-mac-8bbc22c49dc9&lt;/a>&lt;/p>
+&lt;p>這篇有發現如何在 M1 安裝 SQL Server，其中他有 Highlight 這一段：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker run -e &lt;span class="s2">&amp;#34;ACCEPT_EULA=1&amp;#34;&lt;/span> -e &lt;span class="s2">&amp;#34;MSSQL_SA_PASSWORD=MyPass@word&amp;#34;&lt;/span> -e &lt;span class="s2">&amp;#34;MSSQL_PID=Developer&amp;#34;&lt;/span> -e &lt;span class="s2">&amp;#34;MSSQL_USER=SA&amp;#34;&lt;/span> -p 1433:1433 -d --name&lt;span class="o">=&lt;/span>sql mcr.microsoft.com/azure-sql-edge
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>你如果對 Docker 不是很熟的話，這邊稍微介紹一下當中的用法：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>docker run&lt;/code>：建立一個 container，而 run 後面的意思下面會依序介紹：&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>-e&lt;/code>：設定環境變數，這邊設定了四個。(環境變數可以參考微軟官方）：
+&lt;a class="link" href="https://docs.microsoft.com/zh-tw/sql/linux/sql-server-linux-configure-environment-variables?view=sql-server-ver15" target="_blank" rel="noopener"
+>https://docs.microsoft.com/zh-tw/sql/linux/sql-server-linux-configure-environment-variables?view=sql-server-ver15&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>ACCEPT_EULA&lt;/code>：使用者授權&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>MSSQL_SA_PASSWORD&lt;/code>：SA 資料庫密碼&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>MSSQL_PID&lt;/code>：設定 SQL Server 版本或產品金鑰，請參考上面官方連結&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>MSSQL_USER&lt;/code>：使用者名稱&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>-p 1433:1433&lt;/code>：這邊指的是 host 1433 port 就是等於這個 Container 1433 port
+(host:container 的意思)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>-d&lt;/code>：背景執行&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>--name&lt;/code>：container 的名稱，這邊設定 sql&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>mcr.microsoft.com/azure-sql-edge&lt;/code>：就是我們要建立的 image&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>以上是指令的介紹，那我再分享一下我的 dock run 的指令好了，來一個範例版。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker run -e &lt;span class="s2">&amp;#34;ACCEPT_EULA=1&amp;#34;&lt;/span> -e &lt;span class="s2">&amp;#34;MSSQL_SA_PASSWORD=20210807Chunyen&amp;#34;&lt;/span> -e &lt;span class="s2">&amp;#34;MSSQL_PID=Developer&amp;#34;&lt;/span> -e &lt;span class="s2">&amp;#34;MSSQL_USER=SA&amp;#34;&lt;/span> -p 1433:1433 --name&lt;span class="o">=&lt;/span>sqlserver mcr.microsoft.com/azure-sql-edge
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>這邊我更動了兩個環境配置。&lt;/p>
+&lt;ul>
+&lt;li>移除 &lt;code>-d&lt;/code>：我先看看我們的設定是否有問題，因為密碼不能太簡單&lt;/li>
+&lt;li>更改 &lt;code>MSSQL_SA_PASSWORD&lt;/code>：設定成自己想要的密碼&lt;/li>
+&lt;/ul>
+&lt;p>首次安裝他需要安裝 image，這邊我們等他一下。&lt;/p>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
+loading="lazy"
+alt="安裝 sql-server image"
+>&lt;/p>
+&lt;p>正在下載 image &amp;ldquo;mcr.microsoft.com/azure-sql-edge&amp;rdquo;&lt;/p>
+&lt;p>安裝完後，因為我們是直接 docker run，不是 docker pull。&lt;/p>
+&lt;p>Docker pull 的指令為下載 image，詳細可以 Google，這邊不介紹此指令。&lt;/p>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
+loading="lazy"
+alt="sql-server 安裝完成"
+>&lt;/p>
+&lt;p>接下來出現這個畫面後，沒有跑出任何 Error，我們就可以打開 &lt;code>dbeaver&lt;/code> (開源資料庫管理工具)&lt;/p>
+&lt;h3 id="使用-dbeaver-開源資料庫管理工具連線-sql-server-container">使用 dbeaver 開源資料庫管理工具連線 SQL Server Container&lt;/h3>
+&lt;p>這邊就不展示如何安裝 dbeaver。&lt;/p>
+&lt;p>首先我們先打開 dbeaver，如下圖進行新增連線&lt;/p>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/04.dbeaver-connect-db.png"
+loading="lazy"
+alt="dbeaver 建立連線"
+>&lt;/p>
+&lt;p>dbeaver 建立連線&lt;/p>
+&lt;p>建立連線後點擊 Next，輸入連線資訊。&lt;/p>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/05.dbeaver-setting-connect-information.png"
+loading="lazy"
+alt="dbeaver 設定連線資訊"
+>&lt;/p>
+&lt;p>dbeaver 連線 SQL Server&lt;/p>
+&lt;p>先輸入以下資訊：&lt;/p>
+&lt;ul>
+&lt;li>Host： localhost&lt;/li>
+&lt;li>Port：1433&lt;/li>
+&lt;li>Database：master&lt;/li>
+&lt;/ul>
+&lt;p>再輸入&lt;/p>
+&lt;ul>
+&lt;li>User name：sa&lt;/li>
+&lt;li>Password：20210807Chunyen （我上面預設的）
+&lt;ul>
+&lt;li>輸入完畢點擊 Test Connection&lt;/li>
+&lt;li>跳出 Connection Test 視窗。&lt;/li>
+&lt;li>點擊 OK&lt;/li>
+&lt;li>再點擊 Finish.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>接下來 dbeaver 就會連線到你在上面使用 Docker 建立的 SQL Server 囉！&lt;/p>
+&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/06.dbeaver-sql-server-schema.png"
+loading="lazy"
+alt="使用 dbeaver 查看 sql-server schema"
+>&lt;/p>
+&lt;h2 id="結束">結束&lt;/h2>
+&lt;p>本篇結束，已經連到 SQL Server !!!&lt;/p>
+&lt;p>可以連線後，就可以繼續做工作的事情囉！&lt;/p>
+&lt;p>祝福讀完文章的你，一路順風 XD&lt;/p>
+&lt;p>如果你有碰到任何問題，歡迎你在下面留言！&lt;/p></content></item></channel></rss>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tutorial on CY | 程式小角落</title><link>https://chunyen.xyz/categories/tutorial/</link><description>Recent content in Tutorial on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 27 Jan 2023 15:53:22 +0800</lastBuildDate><atom:link href="https://chunyen.xyz/categories/tutorial/index.xml" rel="self" type="application/rss+xml"/><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>https://chunyen.xyz/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;blockquote>
+&lt;p>祝大家新年快樂 !!!&lt;/p>
+&lt;/blockquote>
+&lt;p>今天是初六，也休息一陣子了，覺得有點廢。&lt;/p>
+&lt;p>主要是因為大四時擔任宿舍網路會長時製作的 LINE-BOT 上線在 &lt;code>heroku&lt;/code>，但是 &lt;code>2022/12&lt;/code> 已經公告說他們要開始收錢了。於是我就將 LINE-BOT 的伺服器轉移到 &lt;code>render.com&lt;/code> 平台。&lt;/p>
+&lt;p>那在轉移時有製作一個工具。就是要不間斷的去呼叫免費平台(類似 heroku.com、render.com)。&lt;/p>
+&lt;blockquote>
+&lt;p>就是要讓機器永遠不睡眠 ! 操爆它 (X)&lt;/p>
+&lt;/blockquote>
+&lt;p>統整做了三件事：&lt;/p>
+&lt;ol>
+&lt;li>運用 Python 定時呼叫小應用的網址&lt;/li>
+&lt;li>利用 Docker 彈性系統參數&lt;/li>
+&lt;li>利用 Docker Compose 定時呼叫多個平台&lt;/li>
+&lt;/ol>
+&lt;p>本篇不是教你怎麼做這個工具，是教你如何用。&lt;/p>
+&lt;p>所以會從 &lt;code>2.&lt;/code> 來教你怎麼做 !&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="利用-docker-來使用工具">利用 Docker 來使用工具&lt;/h1>
+&lt;p>&lt;code>工具只需要透過 Docker 就可以執行囉 !&lt;/code>&lt;/p>
+&lt;p>範例如下：&lt;code>範例下方還有部分說明唷 !&lt;/code>&lt;/p>
+&lt;p>&lt;code>**** 記得要先建立一個 schedule.log 檔案。&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">docker run -d &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--restart always &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>--name wakeup-render &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-e &lt;span class="nv">URL&lt;/span>&lt;span class="o">=&lt;/span>https://yourwebsite.domain.com/ &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-e &lt;span class="nv">APSCHEDULER_DAY_OF_WEEK&lt;/span>&lt;span class="o">=&lt;/span>mon-fri &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-e &lt;span class="nv">APSCHEDULER_MINUTE&lt;/span>&lt;span class="o">=&lt;/span>*/10 &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>-v /Users/yen/Desktop/schedule.log:/app/scheduler.log &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span>chunyenc/wakeup-machine
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>&lt;code>--restart&lt;/code> 若重開機將自動執行&lt;/li>
+&lt;li>&lt;code>--name&lt;/code> container 的名稱&lt;/li>
+&lt;li>&lt;code>-e&lt;/code> 環境變數
+&lt;ul>
+&lt;li>URL 是你要呼叫的網址&lt;/li>
+&lt;li>APSCHEDULER_DAY_OF_WEEK 一週裡面哪幾天執行&lt;/li>
+&lt;li>APSCHEDULER_MINUTE 是多少分鐘呼叫一次&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;code>-v&lt;/code> 映射檔案
+&lt;ul>
+&lt;li>linux 可以使用 &lt;code>pwd&lt;/code> 指令來查看目前的絕對路徑&lt;/li>
+&lt;li>schedule.log 就是查看執行 log 的檔案&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="環境變數列表">環境變數列表&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>環境變數&lt;/th>
+&lt;th>範例值&lt;/th>
+&lt;th>備註&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>URL&lt;/td>
+&lt;td>&lt;a class="link" href="https://chunyen.xyz" target="_blank" rel="noopener"
+>https://chunyen.xyz&lt;/a>&lt;/td>
+&lt;td>呼叫的網址&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_YEAR&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_MONTH&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_DAY&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_WEEK&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_DAY_OF_WEEK&lt;/td>
+&lt;td>mon-fri&lt;/td>
+&lt;td>依照範例，設定週一到週五&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_HOUR&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_MINUTE&lt;/td>
+&lt;td>*/10&lt;/td>
+&lt;td>依照範例，設定每十分鐘&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>APSCHEDULER_SECOND&lt;/td>
+&lt;td>&lt;/td>
+&lt;td>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>APSCHEDULER 需要參考下面網址來設定
+&lt;a class="link" href="https://apscheduler.readthedocs.io/en/3.x/modules/triggers/cron.html" target="_blank" rel="noopener"
+>https://apscheduler.readthedocs.io/en/3.x/modules/triggers/cron.html&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="如果是使用-docker-compose-">如果是使用 Docker Compose ..&lt;/h1>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">version&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;3.9&amp;#39;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">services&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">service-one&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">chunyenc/wakeup-machine&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">URL=https://one.chunyen.xyz&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">APSCHEDULER_MINUTE=*/10&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">APSCHEDULER_HOUR=0-1,5-23&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">APSCHEDULER_DAY_OF_WEEK=mon-fri&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">./pricing.log:/app/scheduler.log&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">service-two&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">image&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">chunyenc/wakeup-machine&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">environment&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">URL=https://two.chunyen.xyz&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">APSCHEDULER_MINUTE=*/10&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">APSCHEDULER_HOUR=9-23&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">volumes&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">./linebot.log:/app/scheduler.log&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></content></item></channel></rss>
