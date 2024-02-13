@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Experience on CY | 程式小角落</title><link>https://chunyen.xyz/categories/experience/</link><description>Recent content in Experience on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 10 Feb 2024 00:20:00 +0800</lastBuildDate><atom:link href="https://chunyen.xyz/categories/experience/index.xml" rel="self" type="application/rss+xml"/><item><title>Gunicorn - 輸出 Console Log, 在 Railway.</title><link>https://chunyen.xyz/p/gunicorn-output-console-log/</link><pubDate>Sat, 10 Feb 2024 00:20:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/gunicorn-output-console-log/</guid><description>在 Railway 上使用 Gunicorn 時，如何輸出 Console Log，不然沒辦法知道系統的運行狀況。</description><tags><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Experience on CY | 程式小角落</title><link>https://chunyenc.github.io/categories/experience/</link><description>Recent content in Experience on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 10 Feb 2024 00:20:00 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/categories/experience/index.xml" rel="self" type="application/rss+xml"/><item><title>Gunicorn - 輸出 Console Log, 在 Railway.</title><link>https://chunyenc.github.io/p/gunicorn-output-console-log/</link><pubDate>Sat, 10 Feb 2024 00:20:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/gunicorn-output-console-log/</guid><description>在 Railway 上使用 Gunicorn 時，如何輸出 Console Log，不然沒辦法知道系統的運行狀況。</description><tags><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>這篇的產出主要是因為我自己在使用 Railway.app (Paas 平台) 的時候，發現沒有辦法看到 Gunicorn 的 Console Log &amp;hellip; 如果系統有問題，我根本不知道發生了什麼事情。&lt;/p>
 &lt;p>因為筆者過去都使用 Docker Compose + Gunicorn 或是有需要就接到 Nginx (or Apache) 的架構，所以都是直接看 Log。&lt;/p>
 &lt;p>甚至 Gunicorn 也可以設定輸出到檔案，然後透過 &lt;code>tail -f&lt;/code> 來觀看。&lt;/p>
@@ -17,7 +17,7 @@
 &lt;h1 id="結論">結論&lt;/h1>
 &lt;p>其實非常簡單, 但是我花了一些時間才找到這個設定。&lt;/p>
 &lt;p>而且現在大家都靠 GPT-3 了，所以我也不知道這篇文章有沒有人會看到 XDDD&lt;/p>
-&lt;p>希望這篇對你有幫助。&lt;/p></content></item><item><title>Win7 - 連線共享印表機時, 出現 0x00000709 錯誤</title><link>https://chunyen.xyz/p/win7-error-0x00000709/</link><pubDate>Sat, 27 Jan 2024 17:00:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/win7-error-0x00000709/</guid><description>花了很多時間, 分享電腦升級為 Win11, 結果其他電腦都可以連線, 唯獨這台 Win7 一直出現 0x00000709 錯誤.</description><tags><tag>Windows</tag><tag>Share</tag><tag>硬體障礙排除</tag></tags><categories><category>Experience</category><category>Windows</category></categories><image/><content>&lt;h2 id="詳細問題">詳細問題&lt;/h2>
+&lt;p>希望這篇對你有幫助。&lt;/p></content></item><item><title>Win7 - 連線共享印表機時, 出現 0x00000709 錯誤</title><link>https://chunyenc.github.io/p/win7-error-0x00000709/</link><pubDate>Sat, 27 Jan 2024 17:00:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/win7-error-0x00000709/</guid><description>花了很多時間, 分享電腦升級為 Win11, 結果其他電腦都可以連線, 唯獨這台 Win7 一直出現 0x00000709 錯誤.</description><tags><tag>Windows</tag><tag>Share</tag><tag>硬體障礙排除</tag></tags><categories><category>Experience</category><category>Windows</category></categories><image/><content>&lt;h2 id="詳細問題">詳細問題&lt;/h2>
 &lt;ul>
 &lt;li>分享的電腦為 Win11&lt;/li>
 &lt;li>連線的辦公室電腦有 Win7, Win10&lt;/li>
@@ -41,7 +41,7 @@
 >UpdatePack7R2 2022，Windows 7 更新包&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://www.far-beyound.com.tw/news/2/14" target="_blank" rel="noopener"
 >萬里資訊 - 解決辦法-無法使用共用印表機0x0000011b與0x00000709等錯誤&lt;/a>&lt;/li>
-&lt;/ul></content></item><item><title>Laravel(v5) - 更改 Response Download PDF 到直接打開 PDF</title><link>https://chunyen.xyz/p/laravelv05-change-response-download/</link><pubDate>Fri, 03 Nov 2023 18:50:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/laravelv05-change-response-download/</guid><description>碰到 Laravel v5.x 還沒有 response()->file() 所以紀錄一下解決方式</description><tags><tag>PHP</tag><tag>Laravel</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/ul></content></item><item><title>Laravel(v5) - 更改 Response Download PDF 到直接打開 PDF</title><link>https://chunyenc.github.io/p/laravelv05-change-response-download/</link><pubDate>Fri, 03 Nov 2023 18:50:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/laravelv05-change-response-download/</guid><description>碰到 Laravel v5.x 還沒有 response()->file() 所以紀錄一下解決方式</description><tags><tag>PHP</tag><tag>Laravel</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>公司官網使用 &lt;code>Laravel v5.1.x&lt;/code>, 有一個功能是要讓使用者可以下載 PDF 檔案，但是原本的寫法是使用 &lt;code>response()-&amp;gt;download()&lt;/code>，但是這樣會導致使用者下載後還要再去開啟 PDF 檔案，所以要改成直接開啟 PDF 檔案。&lt;/p>
 &lt;p>但是我一開始發現 &lt;code>laravel v10.x&lt;/code>, 有 &lt;code>response()-&amp;gt;file()&lt;/code> 可以使用，但是 &lt;code>laravel v5.x&lt;/code> 沒有，所以要另外找方法。&lt;/p>
 &lt;h2 id="流程">流程&lt;/h2>
@@ -108,7 +108,7 @@ step1 --> step2
 &lt;h2 id="有趣的事情">有趣的事情&lt;/h2>
 &lt;p>因為透過 PDF 直接打開後，會發現到每次開啟檔案都不是 PDF 檔名了。而是 PDF 文件標題，而公司文件的標題非常的亂 &amp;hellip; 甚至還有一些奇怪的符號、COPY 其他公司的文件來改的 .. 所以後面我又寫了一隻 Python 程式來幫我把全部 PDF 檔案的標題改掉。&lt;/p>
 &lt;p>至於 PHP 能不能夠改 PDF 的檔案標題，我沒有找到方法，所以就用 Python 來做了。&lt;/p>
-&lt;p>如果你是用 PHP 的話，也歡迎你跟我說你用什麼套件來改 PDF 檔案標題。&lt;/p></content></item><item><title>Php - XAMPP x64 安裝 Oracle Instant Client</title><link>https://chunyen.xyz/p/xampp-x64-oracle-instant-client/</link><pubDate>Mon, 21 Aug 2023 07:41:54 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/xampp-x64-oracle-instant-client/</guid><description>公司使用 x64 的OCI8一直沒成功，這邊算是紀錄解決的關鍵點</description><tags><tag>Oracle</tag><tag>PHP</tag><tag>Database</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>如果你是用 PHP 的話，也歡迎你跟我說你用什麼套件來改 PDF 檔案標題。&lt;/p></content></item><item><title>Php - XAMPP x64 安裝 Oracle Instant Client</title><link>https://chunyenc.github.io/p/xampp-x64-oracle-instant-client/</link><pubDate>Mon, 21 Aug 2023 07:41:54 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/xampp-x64-oracle-instant-client/</guid><description>公司使用 x64 的OCI8一直沒成功，這邊算是紀錄解決的關鍵點</description><tags><tag>Oracle</tag><tag>PHP</tag><tag>Database</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>近期換了工作，而這份工作是使用原生 PHP。有預計會升級為 &lt;code>Laravel&lt;/code>。&lt;/p>
 &lt;p>那在安裝 PHP 開發過程中，遇到一個令人挑戰的問題。公司前輩沒有使用 XAMPP x64 環境下成功安裝 OCI8。主要還是我&lt;code>自發性&lt;/code>去解決這個問題。主要我覺得很簡單，但是中間還是碰到一些問題，所以才會留下這篇文章。&lt;/p>
 &lt;p>所以到我解決這件事情前，公司到目前上線的系統都是使用 x32 架構的 OCI8。接下來還要把上線的系統改為 &lt;code>x64&lt;/code>，所以接下來有得忙了 XD&lt;/p>
@@ -129,12 +129,12 @@ step1 --> step2
 &lt;p>首先我們下載完 Oracle Client，就直接解壓縮。&lt;/p>
 &lt;p>然後排序&lt;code>檔案類型&lt;/code>，我們要的是 &lt;code>應用程式擴充&lt;/code>，為 .dll 副檔名的檔案。&lt;/p>
 &lt;p>如下圖，我們全部複製。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/01.dll-files.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/01.dll-files.png"
 loading="lazy"
 alt="全部的 dll 檔案"
 >&lt;/p>
 &lt;h3 id="複製到-xamppapachebin-資料夾">複製到 xampp\apache\bin 資料夾&lt;/h3>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/02.apache.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/02.apache.png"
 loading="lazy"
 alt="將 dll 移至 apache/bin 資料夾"
 >&lt;/p>
@@ -142,7 +142,7 @@ alt="將 dll 移至 apache/bin 資料夾"
 &lt;p>關鍵之一，如果今天我們使用 XAMPP 啟用 PHP 時，這邊沒有 dll 檔案時，我們的 OCI8 就沒辦法啟動。&lt;/p>
 &lt;/blockquote>
 &lt;h3 id="複製到-xamppphp-資料夾">複製到 xampp\php 資料夾&lt;/h3>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/03.php.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/03.php.png"
 loading="lazy"
 alt="將 dll 移至 xampp/php 資料夾"
 >&lt;/p>
@@ -157,7 +157,7 @@ alt="將 dll 移至 xampp/php 資料夾"
 &lt;blockquote>
 &lt;p>關鍵之三，所以插件的版本與 PHP 的版本是互相關聯的。 &lt;code>記得要安裝 ts 版本。&lt;/code>，你可以參考下圖。&lt;/p>
 &lt;/blockquote>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/04.php_info.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/04.php_info.png"
 loading="lazy"
 alt="確認 PHP 有無支援 Thread Safety"
 >&lt;/p>
@@ -167,19 +167,19 @@ alt="確認 PHP 有無支援 Thread Safety"
 &lt;h3 id="移動-oci8-插件的-dll-檔案">移動 OCI8 插件的 dll 檔案&lt;/h3>
 &lt;p>首先我們先進行解壓縮。&lt;/p>
 &lt;p>再依照 &lt;code>應用程式擴充&lt;/code> 排序，所以你現在的畫面會與下圖一樣。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/05.php-oci-driver.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/05.php-oci-driver.jpg"
 loading="lazy"
 alt="OCI8 插件圖片"
 >&lt;/p>
 &lt;p>然後把紅框選取的檔案複製到下圖 &lt;code>XAMPP PHP&lt;/code> 插件位置。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/06.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/06.jpg"
 loading="lazy"
 alt="OCI8 插件的 PHP 位置"
 >&lt;/p>
 &lt;h2 id="設定-phpini">設定 php.ini&lt;/h2>
 &lt;p>驅動程式到這邊都裝好了。&lt;/p>
 &lt;p>接下來要讓 PHP 啟用，需要到下圖的位置 &lt;code>xampp/php/php.ini&lt;/code> 檔案來啟用 &lt;code>OCI&lt;/code> .&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/07.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/07.jpg"
 loading="lazy"
 alt="PHP ini 啟動 OCI 位置"
 >&lt;/p>
@@ -187,11 +187,11 @@ alt="PHP ini 啟動 OCI 位置"
 &lt;p>這邊筆者是啟用 &lt;code>oci8_19&lt;/code>，來進行測試。&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="檢查有無啟用">檢查有無啟用&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/08.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/08.jpg"
 loading="lazy"
 alt="檢查 OCI8 有無安裝成功"
 >&lt;/p>
-&lt;h2 id="完成">完成&lt;/h2></content></item><item><title>Nginx - 將 HTTP 的網頁上線成 HTTPS.</title><link>https://chunyen.xyz/p/nginx-add-https/</link><pubDate>Sun, 14 May 2023 10:42:02 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/nginx-add-https/</guid><description>以前就上線過 HTTPS, 但這次設定被其他環境干擾, 害我花了超出預期的時間.</description><tags><tag>Django</tag><tag>Nginx</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;h2 id="完成">完成&lt;/h2></content></item><item><title>Nginx - 將 HTTP 的網頁上線成 HTTPS.</title><link>https://chunyenc.github.io/p/nginx-add-https/</link><pubDate>Sun, 14 May 2023 10:42:02 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/nginx-add-https/</guid><description>以前就上線過 HTTPS, 但這次設定被其他環境干擾, 害我花了超出預期的時間.</description><tags><tag>Django</tag><tag>Nginx</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>前陣子再協助朋友設定 NGINX 時, 發現手邊都沒有在做紀錄 HTTPS 的設定, 所以這次就來紀錄一下。&lt;/p>
 &lt;p>其實不難，只是擔心朋友針對機器在做轉 Port 的設定 .. 這樣就會讓我很頭痛了。&lt;/p>
 &lt;p>當然後面有解決, 但是花了超出預期的時間。&lt;/p>
@@ -340,7 +340,7 @@ alt="檢查 OCI8 有無安裝成功"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>Logtail - 一個彙整免費 Paas 平台的日誌平台</title><link>https://chunyen.xyz/p/logtail-log-management/</link><pubDate>Thu, 13 Apr 2023 02:46:15 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/logtail-log-management/</guid><description>筆者從 papertrailapp 毫不猶豫直接跳到 logtail.</description><tags><tag>Logtail</tag><tag>Render.com</tag><tag>Heroku</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/div></content></item><item><title>Logtail - 一個彙整免費 Paas 平台的日誌平台</title><link>https://chunyenc.github.io/p/logtail-log-management/</link><pubDate>Thu, 13 Apr 2023 02:46:15 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/logtail-log-management/</guid><description>筆者從 papertrailapp 毫不猶豫直接跳到 logtail.</description><tags><tag>Logtail</tag><tag>Render.com</tag><tag>Heroku</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>因筆者有使用 Heroku、Render.com、Railway 的經驗，那他們都是 PaaS (Platform as a Service，平台及服務) 的服務平台。&lt;/p>
 &lt;blockquote>
 &lt;p>這些 PaaS 平台通常提供了開發工具、執行環境、資料庫、身份驗證、監控等服務，讓開發人員可以專注於應用程式的開發，而不必擔心基礎架構的建設。&lt;/p>
@@ -362,7 +362,7 @@ alt="檢查 OCI8 有無安裝成功"
 &lt;h1 id="好處一無痛串接-paas-平台">好處一：無痛串接 Paas 平台&lt;/h1>
 &lt;h2 id="heroku">Heroku&lt;/h2>
 &lt;p>綁定 &lt;code>Heroku&lt;/code> 前，先到 &lt;code>Logtail&lt;/code> 申請後就可以直接來用了 .. (如下圖)&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230413_logtail/01.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230413_logtail/01.png"
 loading="lazy"
 alt="綁定的過程"
 >&lt;/p>
@@ -397,7 +397,7 @@ alt="綁定的過程"
 &lt;h1 id="建議還是自架">建議：還是自架&lt;/h1>
 &lt;p>主要還是回到錢的部分，一個月 24 USD 真的不便宜。&lt;/p>
 &lt;p>目前是有朝向 Graylog(&lt;code>ElasticSearch&lt;/code> or &lt;code>OpenSearch&lt;/code>) + Grafana 來建。&lt;/p>
-&lt;p>這邊之後再給大家講一下我的架構。&lt;/p></content></item><item><title>網頁原生表單 01 - 如何將表單更改為 Javascript 的函式送出 ?</title><link>https://chunyen.xyz/p/form-submit-prevent/</link><pubDate>Fri, 24 Mar 2023 08:24:11 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/form-submit-prevent/</guid><description>如果不更改，按下 Enter 讓表單送出後會在網址列 URL 加上 ? (問號).</description><tags><tag>HTML</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>這邊之後再給大家講一下我的架構。&lt;/p></content></item><item><title>網頁原生表單 01 - 如何將表單更改為 Javascript 的函式送出 ?</title><link>https://chunyenc.github.io/p/form-submit-prevent/</link><pubDate>Fri, 24 Mar 2023 08:24:11 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/form-submit-prevent/</guid><description>如果不更改，按下 Enter 讓表單送出後會在網址列 URL 加上 ? (問號).</description><tags><tag>HTML</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>在網頁開發中，表單是最常見的元素之一。不管是在登入視窗、新增資料，都需要表單的元素進行開發。&lt;/p>
 &lt;p>但是當使用者提交表單時，預設情況下，瀏覽器會將表單數據轉換為 URL 字符串，並在網址末尾添加問號和表單數據。&lt;/p>
 &lt;p>例如說我表單中有一個 &lt;code>name&lt;/code> 的欄位，填寫了 &lt;code>John&lt;/code>。這時候送出表單會發送什麼事 ?&lt;/p>
@@ -523,7 +523,7 @@ alt="綁定的過程"
 &lt;blockquote>
 &lt;p>這些都是未來可以研究的東西，那麼我先將資訊貼在這 !&lt;/p>
 &lt;p>希望之後我能再加強這部分的事件進行了解。&lt;/p>
-&lt;/blockquote></content></item><item><title>PSQL 01 - 踢掉指定的 PostgreSQL Session.</title><link>https://chunyen.xyz/p/psql-deleted-session/</link><pubDate>Fri, 03 Mar 2023 06:11:52 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/psql-deleted-session/</guid><description>強制取消後端測試時, 導致無法刪除已經建立的測試資料庫。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/blockquote></content></item><item><title>PSQL 01 - 踢掉指定的 PostgreSQL Session.</title><link>https://chunyenc.github.io/p/psql-deleted-session/</link><pubDate>Fri, 03 Mar 2023 06:11:52 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/psql-deleted-session/</guid><description>強制取消後端測試時, 導致無法刪除已經建立的測試資料庫。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>主要是在撰寫 Django 測試時，有時候會因為某些原因導致測試過程強制中斷，例如程式出錯或手動中斷執行等。&lt;/p>
 &lt;p>當發生這種情況時，測試資料庫可能會佔有一些 session 無法正確刪除，進而影響測試的正確性。&lt;/p>
 &lt;p>以下是發生的一些關鍵字或 &amp;hellip;. 問題&lt;/p>
@@ -631,7 +631,7 @@ alt="綁定的過程"
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h1 id="完成">完成&lt;/h1>
-&lt;p>今天是一個 PostgreSQL 的使用知識，正好在寫測時時出現，就把這個過程記錄一下。&lt;/p></content></item><item><title>Django 紀錄 03 - 使用套件 django-environ 管理環境參數 !! 超方便 !!</title><link>https://chunyen.xyz/p/django-environ/</link><pubDate>Wed, 01 Mar 2023 17:43:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/django-environ/</guid><description>在工作時發現同事使用 .. 發現很好用 !! 所以有花時間研究一下。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>今天是一個 PostgreSQL 的使用知識，正好在寫測時時出現，就把這個過程記錄一下。&lt;/p></content></item><item><title>Django 紀錄 03 - 使用套件 django-environ 管理環境參數 !! 超方便 !!</title><link>https://chunyenc.github.io/p/django-environ/</link><pubDate>Wed, 01 Mar 2023 17:43:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/django-environ/</guid><description>在工作時發現同事使用 .. 發現很好用 !! 所以有花時間研究一下。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>當今年二月不斷的補班的時候 &amp;hellip;　發現團隊內部有人使用 &lt;code>django-environ&lt;/code> 套件。&lt;/p>
 &lt;p>筆者過去是使用 &lt;code>python-dotenv&lt;/code>。但是發現 &lt;code>django-environ&lt;/code> 有提供更多針對 &lt;code>django&lt;/code> 框架的框架設定 !&lt;/p>
 &lt;ul>
@@ -738,7 +738,7 @@ alt="綁定的過程"
 >https://django-environ.readthedocs.io/&lt;/a> 已存取 2023/3/1.&lt;/li>
 &lt;li>Django-environd的使用(管理配置文件敏感参数和环境变量)_想学废更多东西的猿的博客-CSDN博客_django environ. &lt;a class="link" href="https://blog.csdn.net/zscccccc/article/details/121630824" target="_blank" rel="noopener"
 >https://blog.csdn.net/zscccccc/article/details/121630824&lt;/a> 已存取 2023/3/1.&lt;/li>
-&lt;/ol></content></item><item><title>Django 紀錄 02 - 如何在 Django 應用使用 Celery 進行系統任務管理</title><link>https://chunyen.xyz/p/django-celery-beat/</link><pubDate>Wed, 22 Feb 2023 22:17:10 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/django-celery-beat/</guid><description>雖然 Djang 也有其他的任務套件, 但 Celery 用起來還是問題最少 ..</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/ol></content></item><item><title>Django 紀錄 02 - 如何在 Django 應用使用 Celery 進行系統任務管理</title><link>https://chunyenc.github.io/p/django-celery-beat/</link><pubDate>Wed, 22 Feb 2023 22:17:10 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/django-celery-beat/</guid><description>雖然 Djang 也有其他的任務套件, 但 Celery 用起來還是問題最少 ..</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>最近在使用 &lt;code>django-celery-beat&lt;/code>，發現網路上的參數基本上都舊了。&lt;/p>
 &lt;p>所以安裝的方式這邊幫大家梳理一下，有時候網路上的安裝方式可能會導致自己花非常多時間。&lt;/p>
 &lt;blockquote>
@@ -1094,7 +1094,7 @@ alt="綁定的過程"
 &lt;/div>
 &lt;/div>&lt;h1 id="後續">後續&lt;/h1>
 &lt;p>你還可以透過 &lt;code>django-environ&lt;/code> 套件來優化你的 &lt;code>settings.py&lt;/code> 或 &lt;code>celery.py&lt;/code>，將環境設定的資訊都隱藏。&lt;/p>
-&lt;p>那也是我後續要來新增的文章 XD&lt;/p></content></item><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>https://chunyen.xyz/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>那也是我後續要來新增的文章 XD&lt;/p></content></item><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>https://chunyenc.github.io/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;blockquote>
 &lt;p>祝大家新年快樂 !!!&lt;/p>
 &lt;/blockquote>
@@ -1269,7 +1269,7 @@ alt="綁定的過程"
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">./linebot.log:/app/scheduler.log&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>置頂 - 提高效率的必備指令：一份我的常用指令與工具清單</title><link>https://chunyen.xyz/p/common-scripts/</link><pubDate>Wed, 18 Jan 2023 11:38:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/common-scripts/</guid><description>工作時常使用到的指令與工具</description><tags><tag>GIT</tag><tag>Docker</tag><tag>VSCode</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/div></content></item><item><title>置頂 - 提高效率的必備指令：一份我的常用指令與工具清單</title><link>https://chunyenc.github.io/p/common-scripts/</link><pubDate>Wed, 18 Jan 2023 11:38:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/common-scripts/</guid><description>工作時常使用到的指令與工具</description><tags><tag>GIT</tag><tag>Docker</tag><tag>VSCode</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>主要為存放工作中經常使用的指令、框架、套件。&lt;/p>
 &lt;p>若有任何建議或是覺得需要修改的地方還請不吝指教，謝謝！&lt;/p>
 &lt;p>如何聯繫我 ?&lt;/p>
@@ -1390,7 +1390,7 @@ alt="綁定的過程"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network postgres:10
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>Cloudflare - 架設 Google-blogger 與 Github-page DNS 困難排除</title><link>https://chunyen.xyz/p/cloudflare-dns-error/</link><pubDate>Mon, 16 Jan 2023 00:02:09 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/cloudflare-dns-error/</guid><description>Cloudflare 設定也是一大學問 !</description><tags><tag>Cloudflare</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/div></content></item><item><title>Cloudflare - 架設 Google-blogger 與 Github-page DNS 困難排除</title><link>https://chunyenc.github.io/p/cloudflare-dns-error/</link><pubDate>Mon, 16 Jan 2023 00:02:09 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/cloudflare-dns-error/</guid><description>Cloudflare 設定也是一大學問 !</description><tags><tag>Cloudflare</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>主要是有應用架設在 &lt;code>Heroku&lt;/code>, 發現他要所謂 &lt;code>Server Name Indication (SNI)&lt;/code> 的方式來部署 &lt;code>HTTPS&lt;/code>。&lt;/p>
 &lt;blockquote>
 &lt;p>結論就是 &lt;code>DNS&lt;/code> 從 &lt;code>Google Domains&lt;/code> 換成 &lt;code>Cloudflare&lt;/code>，然後碰到&lt;code>轉址&lt;/code>、&lt;code>HTTPS&lt;/code>的問題。&lt;/p>
@@ -1427,7 +1427,7 @@ alt="綁定的過程"
 &lt;/blockquote>
 &lt;h1 id="設定方式">設定方式&lt;/h1>
 &lt;h2 id="將-ssltls-改為-full-模式">將 &lt;code>SSL/TLS&lt;/code> 改為 &lt;code>FULL&lt;/code> 模式&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230116/01-full.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230116/01-full.jpg"
 loading="lazy"
 alt="Cloudflare SSL/TLS 設定"
 >&lt;/p>
@@ -1459,7 +1459,7 @@ alt="Cloudflare SSL/TLS 設定"
 &lt;li>再點擊 &lt;code>網頁規則&lt;/code> 同一頁的 &lt;code>建立網頁規則&lt;/code>&lt;/li>
 &lt;li>&lt;code>填入 URL&lt;/code> 後，記得要選取 &lt;code>挑選設定&lt;/code> 的 &lt;code>SSL&lt;/code> 為你要設定的模式。&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230116/03-rule-example.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230116/03-rule-example.jpg"
 loading="lazy"
 alt="Cloudflare SSL/TLS 路由規則"
 >&lt;/p>
@@ -1468,7 +1468,7 @@ alt="Cloudflare SSL/TLS 路由規則"
 &lt;p>但是免費的還是等吧 xD&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="最後的設定">最後的設定&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230116/04-result.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230116/04-result.jpg"
 loading="lazy"
 alt="Cloudflare SSL/TLS 路由規則的結果"
 >&lt;/p>
@@ -1481,7 +1481,7 @@ alt="Cloudflare SSL/TLS 路由規則的結果"
 &lt;/blockquote>
 &lt;p>若依照我的設定，應該你的網頁就可以正常瀏覽了！&lt;/p>
 &lt;p>花了非常多時間。但沒想到 &lt;code>Cloudflare&lt;/code> 提供這麼多免費的服務，之前一直有看到這間公司的 Logo，但一直沒機會使用。&lt;/p>
-&lt;h1 id="完成-">完成 !&lt;/h1></content></item><item><title>GIT 小撇步 02 - 教你如何刪除 commit 過的大檔案, 超占空間 !</title><link>https://chunyen.xyz/p/git-deleted-commit-big-files/</link><pubDate>Wed, 21 Dec 2022 13:36:01 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/git-deleted-commit-big-files/</guid><description>因為在準備 CI/CD 要減少每個步驟的耗費的時間，導致要整理 git ..</description><tags><tag>GIT</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;h1 id="完成-">完成 !&lt;/h1></content></item><item><title>GIT 小撇步 02 - 教你如何刪除 commit 過的大檔案, 超占空間 !</title><link>https://chunyenc.github.io/p/git-deleted-commit-big-files/</link><pubDate>Wed, 21 Dec 2022 13:36:01 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/git-deleted-commit-big-files/</guid><description>因為在準備 CI/CD 要減少每個步驟的耗費的時間，導致要整理 git ..</description><tags><tag>GIT</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>準備要幫自己手上的專案套上 CI/CD，但是發現過去的資料其實沒有使用 &lt;code>submodule&lt;/code> 的方式去管理 &lt;code>data&lt;/code>。&lt;/p>
 &lt;blockquote>
 &lt;p>此處的 &lt;code>data&lt;/code> 是一個資料夾，裡面放的是客戶系統的資料。會有 &lt;code>.csv&lt;/code> or &lt;code>.json&lt;/code> 的檔案。&lt;/p>
@@ -1614,7 +1614,7 @@ alt="Cloudflare SSL/TLS 路由規則的結果"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">du -sh *
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>Flask 紀錄 01 - 使用 Flask-Caching 和 Redis 實現快速緩存的方法</title><link>https://chunyen.xyz/p/flask-caching-redis/</link><pubDate>Thu, 17 Nov 2022 22:57:28 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/flask-caching-redis/</guid><description>Flask 上下文導致 redis 引入一直有問題, 所以改用 Flask-Caching, 但是 ...</description><tags><tag>Flask</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="簡介">簡介&lt;/h1>
+&lt;/div></content></item><item><title>Flask 紀錄 01 - 使用 Flask-Caching 和 Redis 實現快速緩存的方法</title><link>https://chunyenc.github.io/p/flask-caching-redis/</link><pubDate>Thu, 17 Nov 2022 22:57:28 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/flask-caching-redis/</guid><description>Flask 上下文導致 redis 引入一直有問題, 所以改用 Flask-Caching, 但是 ...</description><tags><tag>Flask</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="簡介">簡介&lt;/h1>
 &lt;p>主要在 Flask 連接 redis 一直發生問題，所以使用 &lt;code>Flask-Caching&lt;/code> 來處理讀寫 redis.&lt;/p>
 &lt;p>但是還是有一點問題，就是 &lt;code>Flask-Caching&lt;/code> 官方沒有支援讀取 redis 的用法，但是在網路上有看到一則留言。&lt;/p>
 &lt;p>成功所以紀錄一下。&lt;/p>
@@ -1690,7 +1690,7 @@ alt="Cloudflare SSL/TLS 路由規則的結果"
 &lt;/div>&lt;p>k_prefix 是 Flask-Caching 會自動加入 flask-cache 在 redis 上面，所以需要把 k_prefix 去除。&lt;/p>
 &lt;blockquote>
 &lt;p>程式碼參考位置 /backend/app/socket.py&lt;/p>
-&lt;/blockquote></content></item><item><title>Docker 紀錄 03 - 經常使用的 docker 指令</title><link>https://chunyen.xyz/p/docker-common-commands/</link><pubDate>Sat, 03 Sep 2022 12:55:54 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/docker-common-commands/</guid><description/><tags><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="正文">正文&lt;/h1>
+&lt;/blockquote></content></item><item><title>Docker 紀錄 03 - 經常使用的 docker 指令</title><link>https://chunyenc.github.io/p/docker-common-commands/</link><pubDate>Sat, 03 Sep 2022 12:55:54 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/docker-common-commands/</guid><description/><tags><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="正文">正文&lt;/h1>
 &lt;h2 id="建立-image">建立 image&lt;/h2>
 &lt;p>提供複製的指令。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -1856,7 +1856,7 @@ alt="Cloudflare SSL/TLS 路由規則的結果"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h1 id="nginx">nginx&lt;/h1>
-&lt;p>待補&lt;/p></content></item><item><title>WSL2 紀錄 01 - 將 WSL2 指定 PORT 從 Windows 轉發出來</title><link>https://chunyen.xyz/p/wsl2-port-forwarding/</link><pubDate>Tue, 26 Jul 2022 15:27:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/wsl2-port-forwarding/</guid><description/><tags><tag>Windows</tag><tag>Port</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>待補&lt;/p></content></item><item><title>WSL2 紀錄 01 - 將 WSL2 指定 PORT 從 Windows 轉發出來</title><link>https://chunyenc.github.io/p/wsl2-port-forwarding/</link><pubDate>Tue, 26 Jul 2022 15:27:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/wsl2-port-forwarding/</guid><description/><tags><tag>Windows</tag><tag>Port</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>後端 Django 使用 WSL2 建立，但是要讓同事連時，該怎麼處理?&lt;/p>
 &lt;h1 id="處理方法">處理方法&lt;/h1>
 &lt;h2 id="到-wsl2-查詢-ip">到 WSL2 查詢 IP&lt;/h2>
@@ -2022,7 +2022,7 @@ alt="Cloudflare SSL/TLS 路由規則的結果"
 &lt;/blockquote>
 &lt;h1 id="reference">Reference&lt;/h1>
 &lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/61002681/connecting-to-wsl2-server-via-local-network" target="_blank" rel="noopener"
->https://stackoverflow.com/questions/61002681/connecting-to-wsl2-server-via-local-network&lt;/a>&lt;/p></content></item><item><title>Docker 紀錄 02 - 使用 oracleinanutshell/oracle-xe-11g 紀錄</title><link>https://chunyen.xyz/p/docker-oracle-xe-11g/</link><pubDate>Wed, 13 Jul 2022 10:36:26 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/docker-oracle-xe-11g/</guid><description/><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+>https://stackoverflow.com/questions/61002681/connecting-to-wsl2-server-via-local-network&lt;/a>&lt;/p></content></item><item><title>Docker 紀錄 02 - 使用 oracleinanutshell/oracle-xe-11g 紀錄</title><link>https://chunyenc.github.io/p/docker-oracle-xe-11g/</link><pubDate>Wed, 13 Jul 2022 10:36:26 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/docker-oracle-xe-11g/</guid><description/><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>主要紀錄建立 oracle-xe-11g 這個 image 的過程。&lt;/p>
 &lt;h1 id="容器大小">容器大小&lt;/h1>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -2139,7 +2139,7 @@ alt="Cloudflare SSL/TLS 路由規則的結果"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Grant succeeded.
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼</title><link>https://chunyen.xyz/p/django-cython/</link><pubDate>Mon, 11 Jul 2022 17:31:45 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/django-cython/</guid><description>程式碼就不會脫光光給別人看 XD</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/div></content></item><item><title>Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼</title><link>https://chunyenc.github.io/p/django-cython/</link><pubDate>Mon, 11 Jul 2022 17:31:45 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/django-cython/</guid><description>程式碼就不會脫光光給別人看 XD</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>主要就是將原始程式碼轉成暗碼，雖然能夠不讓自己的程式碼直接裸奔。&lt;/p>
 &lt;p>但是若碰到有心人士也是一樣可以透過逆向工程把你的程式碼還原。&lt;/p>
 &lt;p>提到明碼轉成暗碼，優先選擇 Cython 來執行，速度甚至可能變快(?)，實際上當然還沒測試，只是看到非常多人透過 Cython 讓自己 Python 程式碼變快 XD&lt;/p>
@@ -2572,7 +2572,7 @@ alt="Cloudflare SSL/TLS 路由規則的結果"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Quit the server with CONTROL-C.
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://chunyen.xyz/result.png"
+&lt;/div>&lt;p>&lt;img src="https://chunyenc.github.io/result.png"
 loading="lazy"
 alt="執行結果, 我的 index XD"
 >&lt;/p>
@@ -2584,7 +2584,7 @@ alt="執行結果, 我的 index XD"
 >https://cython.readthedocs.io/en/latest/&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://gist.github.com/CHunYenc/adcdd234aab33d621fdfa127e41ee16a" target="_blank" rel="noopener"
 >https://gist.github.com/CHunYenc/adcdd234aab33d621fdfa127e41ee16a&lt;/a>&lt;/li>
-&lt;/ol></content></item><item><title>GIT 小撇步 01 - 教你找回尚未 commit 且遺失的檔案</title><link>https://chunyen.xyz/p/git-find-out-not-commit-files/</link><pubDate>Wed, 06 Jul 2022 17:59:19 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/git-find-out-not-commit-files/</guid><description>紀錄一下 git add 後 沒有 commit, 找回 add 的檔案.</description><tags><tag>GIT</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/ol></content></item><item><title>GIT 小撇步 01 - 教你找回尚未 commit 且遺失的檔案</title><link>https://chunyenc.github.io/p/git-find-out-not-commit-files/</link><pubDate>Wed, 06 Jul 2022 17:59:19 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/git-find-out-not-commit-files/</guid><description>紀錄一下 git add 後 沒有 commit, 找回 add 的檔案.</description><tags><tag>GIT</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>有一天下午，把某項任務完成後，就下指令 &lt;code>git add&lt;/code>&lt;/p>
 &lt;p>然後沒有 &lt;code>git commit&lt;/code> &amp;hellip; (更不用說 &lt;code>git push&lt;/code>)&lt;/p>
 &lt;p>總之就在整理前後端版本對應的問題，然後就直接 &lt;code>git checkout -f master&lt;/code> 跳去 master，主要是覆蓋版本，因為主分支已經很久沒有上新版了。&lt;/p>
@@ -2629,7 +2629,7 @@ alt="執行結果, 我的 index XD"
 &lt;p>就會看到有一個 &lt;code>temp.txt&lt;/code>&lt;/p>
 &lt;p>基本上就是檔案回來囉 !&lt;/p>
 &lt;p>希望對您有幫助 !&lt;/p>
-&lt;h1 id="完成">完成&lt;/h1></content></item><item><title>Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database</title><link>https://chunyen.xyz/p/docker-pull-oracle-database-image/</link><pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/docker-pull-oracle-database-image/</guid><description>2021 去年使用的方式又跟今年(2022) 不一樣了 ..</description><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;h1 id="完成">完成&lt;/h1></content></item><item><title>Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database</title><link>https://chunyenc.github.io/p/docker-pull-oracle-database-image/</link><pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/docker-pull-oracle-database-image/</guid><description>2021 去年使用的方式又跟今年(2022) 不一樣了 ..</description><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>之前的我都是去 docker hub pull,&lt;/p>
 &lt;p>但是今天發現 docker pull 的方式不一樣了。&lt;/p>
 &lt;h1 id="直接寫解法">直接寫解法&lt;/h1>
@@ -2637,12 +2637,12 @@ alt="執行結果, 我的 index XD"
 &lt;pre>&lt;code>https://container-registry.oracle.com
 &lt;/code>&lt;/pre>
 &lt;h2 id="登入完後點擊-database">登入完後，點擊 Database&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220629/oracle-01.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220629/oracle-01.png"
 loading="lazy"
 alt="2022/07/06 - Oracle UI"
 >&lt;/p>
 &lt;h2 id="同意授權">同意授權&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220629/oracle-02.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220629/oracle-02.png"
 loading="lazy"
 alt="2022/07/06 - Oracle 同意授權與未同意授權的畫面"
 >&lt;/p>
@@ -2655,7 +2655,7 @@ alt="2022/07/06 - Oracle 同意授權與未同意授權的畫面"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="授權">授權&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220629/oracle-01.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220629/oracle-01.png"
 loading="lazy"
 alt="2022/07/06 - Oracle 點擊同意授權"
 >&lt;/p>
@@ -2717,7 +2717,7 @@ alt="2022/07/06 - Oracle 點擊同意授權"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">..... 以下太多資訊 省略
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="完成">完成&lt;/h2></content></item><item><title>JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用</title><link>https://chunyen.xyz/p/jenkins-01-deploy/</link><pubDate>Sun, 10 Apr 2022 19:03:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/jenkins-01-deploy/</guid><description>主要是指令與如何使用 Docker + Jenkins 並印出 「Hello Jenkins」</description><tags><tag>Jenkins</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="環境">環境&lt;/h1>
+&lt;/div>&lt;h2 id="完成">完成&lt;/h2></content></item><item><title>JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用</title><link>https://chunyenc.github.io/p/jenkins-01-deploy/</link><pubDate>Sun, 10 Apr 2022 19:03:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/jenkins-01-deploy/</guid><description>主要是指令與如何使用 Docker + Jenkins 並印出 「Hello Jenkins」</description><tags><tag>Jenkins</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="環境">環境&lt;/h1>
 &lt;p>趁這次假日架設了 Jenkins，但是目前為止 M1 處理器皆不支援。&lt;/p>
 &lt;p>所以用在學生時期使用的 Oracle Cloud 建立一台虛擬機，以下都可以適用在任何雲端平台來操作。&lt;/p>
 &lt;h2 id="ubuntu-版本">Ubuntu 版本&lt;/h2>
@@ -2809,56 +2809,56 @@ alt="2022/07/06 - Oracle 點擊同意授權"
 &lt;p>如果不小心加上 &lt;code>-d&lt;/code> 後，該怎麼辦 ?&lt;/p>
 &lt;p>可以參考 &lt;a class="link" href="#%e5%82%99%e8%a8%bb" >備註&lt;/a>&lt;/p>
 &lt;h2 id="前往網頁">前往網頁&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/00-wait.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/00-wait.png"
 loading="lazy"
 alt="等待 Jenkins 上工"
 >&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/01-Unlock.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/01-Unlock.png"
 loading="lazy"
 alt="進入 JenKins 的第一個畫面"
 >&lt;/p>
 &lt;p>就把 &lt;code>61e8c8cb00c0417bb4c4719ba8559060&lt;/code> 貼進去裡面就完成啟用囉 !&lt;/p>
 &lt;h2 id="不安裝任何插件">不安裝任何插件&lt;/h2>
 &lt;p>直接點擊右上角 x, 到時候我們再一項一項安裝.&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/02-plugin.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/02-plugin.png"
 loading="lazy"
 alt="點擊右上角 x 進行下一步"
 >&lt;/p>
 &lt;h2 id="進入首頁">進入首頁&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/03-home.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/03-home.png"
 loading="lazy"
 alt="Jenkins 首頁"
 >&lt;/p>
 &lt;h2 id="更改-admin-密碼">更改 admin 密碼&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/04-change_password.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/04-change_password.png"
 loading="lazy"
 alt="更改 admin 登入密碼"
 >&lt;/p>
 &lt;h2 id="建立一個-work">建立一個 work&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/05-create-work.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/05-create-work.png"
 loading="lazy"
 alt="點擊左上角，新增作業"
 >&lt;/p>
 &lt;h2 id="hello-jenkins">Hello Jenkins&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/06-create-hello-jenkins.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/06-create-hello-jenkins.png"
 loading="lazy"
 alt="創建一個作業"
 >&lt;/p>
 &lt;p>這邊可以直接按「OK」。&lt;/p>
 &lt;h2 id="加入一個-echo-shell">加入一個 echo shell&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/07-create-shell.jpeg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/07-create-shell.jpeg"
 loading="lazy"
 alt="選取 執行 Shell"
 >&lt;/p>
 &lt;p>畢竟本篇是要執行一個 echo 「Hello World」。&lt;/p>
 &lt;p>所以我們還是先照做，此篇只是第一篇的 jenkins XD&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/08-echo.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/08-echo.jpg"
 loading="lazy"
 alt="打上 echo Hello Jenkins"
 >&lt;/p>
 &lt;p>點擊儲存。&lt;/p>
 &lt;h2 id="執行我們建立的作業-hello-jenkins">執行我們建立的作業 Hello Jenkins&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/09-dashboard.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/09-dashboard.jpg"
 loading="lazy"
 alt="回到 Dashboard"
 >&lt;/p>
@@ -2885,12 +2885,12 @@ alt="回到 Dashboard"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">目光移到「左下角」的「建置歷程」
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/11-task-history.png"
+&lt;/div>&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/11-task-history.png"
 loading="lazy"
 alt="建置歷程"
 >&lt;/p>
 &lt;p>這邊我點擊 #1 來看看我們，剛剛的 Hello Jenkins 有沒有執行出來 !!&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/10-success-task.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/10-success-task.png"
 loading="lazy"
 alt="建置的結果"
 >&lt;/p>
@@ -2926,7 +2926,7 @@ alt="建置的結果"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">61e8c8cb00c0417bb4c4719ba8559060
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>接下來就可以看到密碼囉， &lt;code>61e8c8cb00c0417bb4c4719ba8559060&lt;/code>&lt;/p></content></item><item><title>我的第一篇 HUGO 架設 BLOG 經驗分享</title><link>https://chunyen.xyz/p/hugo-blog-online/</link><pubDate>Sat, 26 Mar 2022 20:46:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/hugo-blog-online/</guid><description>沒什麼描述，就是講講這個部落格的產生原因</description><tags><tag>Hugo</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="更換成-hugo-的原因">更換成 Hugo 的原因&lt;/h1>
+&lt;/div>&lt;p>接下來就可以看到密碼囉， &lt;code>61e8c8cb00c0417bb4c4719ba8559060&lt;/code>&lt;/p></content></item><item><title>我的第一篇 HUGO 架設 BLOG 經驗分享</title><link>https://chunyenc.github.io/p/hugo-blog-online/</link><pubDate>Sat, 26 Mar 2022 20:46:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/hugo-blog-online/</guid><description>沒什麼描述，就是講講這個部落格的產生原因</description><tags><tag>Hugo</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="更換成-hugo-的原因">更換成 Hugo 的原因&lt;/h1>
 &lt;p>自己本身是有使用 Blogger，主要認為有下面幾個問題。&lt;/p>
 &lt;ol>
 &lt;li>垃圾留言&lt;/li>
@@ -3029,7 +3029,7 @@ alt="建置的結果"
 >https://medium.com/@chswei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://yurepo.tw/2021/03/%E5%A6%82%E4%BD%95%E5%B0%87hugo%E9%83%A8%E8%90%BD%E6%A0%BC%E9%83%A8%E7%BD%B2%E5%88%B0github%E4%B8%8A/" target="_blank" rel="noopener"
 >https://yurepo.tw/2021/03/%E5%A6%82%E4%BD%95%E5%B0%87hugo%E9%83%A8%E8%90%BD%E6%A0%BC%E9%83%A8%E7%BD%B2%E5%88%B0github%E4%B8%8A/&lt;/a>&lt;/li>
-&lt;/ol></content></item><item><title>ZYXEL NBG6604 Access Point Model 使用基地台模式連接到管理員/設定頁面</title><link>https://chunyen.xyz/p/zyxel-nbg6604-access-point-model-connect-to-admin-page/</link><pubDate>Sat, 27 Nov 2021 14:22:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/zyxel-nbg6604-access-point-model-connect-to-admin-page/</guid><description/><tags><tag>Network</tag><tag>ZYXEL</tag><tag>NBG6604</tag><tag>Access-Point-Model</tag><tag>AP-Model</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h2 id="說明">說明&lt;/h2>
+&lt;/ol></content></item><item><title>ZYXEL NBG6604 Access Point Model 使用基地台模式連接到管理員/設定頁面</title><link>https://chunyenc.github.io/p/zyxel-nbg6604-access-point-model-connect-to-admin-page/</link><pubDate>Sat, 27 Nov 2021 14:22:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/zyxel-nbg6604-access-point-model-connect-to-admin-page/</guid><description/><tags><tag>Network</tag><tag>ZYXEL</tag><tag>NBG6604</tag><tag>Access-Point-Model</tag><tag>AP-Model</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h2 id="說明">說明&lt;/h2>
 &lt;p>不廢話，先說明一下為什麼會碰到這個問題，實際原因不太了解。真的對網路只是微懂。&lt;/p>
 &lt;p>而本篇主要是記錄這問題是如何解決的，並從哪裡得到這些資訊及解決方式。&lt;/p>
 &lt;p>機型：ZYXEL NBG6604&lt;/p>
@@ -3041,7 +3041,7 @@ alt="建置的結果"
 &lt;p>我無法使用 &lt;a class="link" href="http://myrouter" target="_blank" rel="noopener"
 >http://myrouter&lt;/a> 進入管理員頁面。&lt;/p>
 &lt;p>這個時候只要用網路線/WIFI的方式連線上分享器，使用電腦更改連線IP，以下為我的設定&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20211127_zyxel-ngb6604/01.setting-static-ip.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20211127_zyxel-ngb6604/01.setting-static-ip.png"
 loading="lazy"
 alt="設定固定 IP"
 >&lt;/p>
@@ -3051,12 +3051,12 @@ alt="設定固定 IP"
 &lt;p>Gateway 的 IP 在更改 AP模式（Access Point Model） 時有跳出來，請記錄下來。&lt;/p>
 &lt;p>大致上這樣連線 &lt;a class="link" href="http://192.168.1.2" target="_blank" rel="noopener"
 >http://192.168.1.2&lt;/a> 既可以進入到設定頁面了！&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20211127_zyxel-ngb6604/02.connect-to-wifi-router.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20211127_zyxel-ngb6604/02.connect-to-wifi-router.png"
 loading="lazy"
 alt="進入 WIFI Router 設定頁面"
 >&lt;/p>
 &lt;p>參考影片：&lt;a class="link" href="https://www.youtube.com/watch?v=4WDxZMQChCQ" target="_blank" rel="noopener"
->ACCESS POINT Mode on ZyXEL Wireless router | NETVN - YouTube&lt;/a>&lt;/p></content></item><item><title>【Docker】Macbook Air M1 CPU 使用 Docker 建立 SQL Server</title><link>https://chunyen.xyz/p/macbook-air-m1-install-sql-server/</link><pubDate>Sat, 07 Aug 2021 21:10:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/macbook-air-m1-install-sql-server/</guid><description/><tags><tag>SQLServer</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image><url>https://chunyen.xyz/</url></image><content>&lt;p>圖片來源：&lt;a class="link" href="https://zh.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener"
+>ACCESS POINT Mode on ZyXEL Wireless router | NETVN - YouTube&lt;/a>&lt;/p></content></item><item><title>【Docker】Macbook Air M1 CPU 使用 Docker 建立 SQL Server</title><link>https://chunyenc.github.io/p/macbook-air-m1-install-sql-server/</link><pubDate>Sat, 07 Aug 2021 21:10:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/macbook-air-m1-install-sql-server/</guid><description/><tags><tag>SQLServer</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image><url>https://chunyenc.github.io/</url></image><content>&lt;p>圖片來源：&lt;a class="link" href="https://zh.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener"
 >https://zh.wikipedia.org/wiki/Microsoft_SQL_Server&lt;/a>&lt;/p>
 &lt;h2 id="前言">前言&lt;/h2>
 &lt;p>說明一下為什麼會使用到 SQL Server + Macbook Air。&lt;/p>
@@ -3083,7 +3083,7 @@ alt="進入 WIFI Router 設定頁面"
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">Docker -v
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/01.docker-version.png"
+&lt;/div>&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/01.docker-version.png"
 loading="lazy"
 alt="Docker 版本"
 >&lt;/p>
@@ -3155,14 +3155,14 @@ alt="Docker 版本"
 &lt;li>更改 &lt;code>MSSQL_SA_PASSWORD&lt;/code>：設定成自己想要的密碼&lt;/li>
 &lt;/ul>
 &lt;p>首次安裝他需要安裝 image，這邊我們等他一下。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
 loading="lazy"
 alt="安裝 sql-server image"
 >&lt;/p>
 &lt;p>正在下載 image &amp;ldquo;mcr.microsoft.com/azure-sql-edge&amp;rdquo;&lt;/p>
 &lt;p>安裝完後，因為我們是直接 docker run，不是 docker pull。&lt;/p>
 &lt;p>Docker pull 的指令為下載 image，詳細可以 Google，這邊不介紹此指令。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
 loading="lazy"
 alt="sql-server 安裝完成"
 >&lt;/p>
@@ -3170,13 +3170,13 @@ alt="sql-server 安裝完成"
 &lt;h3 id="使用-dbeaver-開源資料庫管理工具連線-sql-server-container">使用 dbeaver 開源資料庫管理工具連線 SQL Server Container&lt;/h3>
 &lt;p>這邊就不展示如何安裝 dbeaver。&lt;/p>
 &lt;p>首先我們先打開 dbeaver，如下圖進行新增連線&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/04.dbeaver-connect-db.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/04.dbeaver-connect-db.png"
 loading="lazy"
 alt="dbeaver 建立連線"
 >&lt;/p>
 &lt;p>dbeaver 建立連線&lt;/p>
 &lt;p>建立連線後點擊 Next，輸入連線資訊。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/05.dbeaver-setting-connect-information.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/05.dbeaver-setting-connect-information.png"
 loading="lazy"
 alt="dbeaver 設定連線資訊"
 >&lt;/p>
@@ -3200,7 +3200,7 @@ alt="dbeaver 設定連線資訊"
 &lt;/li>
 &lt;/ul>
 &lt;p>接下來 dbeaver 就會連線到你在上面使用 Docker 建立的 SQL Server 囉！&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/06.dbeaver-sql-server-schema.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/06.dbeaver-sql-server-schema.png"
 loading="lazy"
 alt="使用 dbeaver 查看 sql-server schema"
 >&lt;/p>
@@ -3208,11 +3208,11 @@ alt="使用 dbeaver 查看 sql-server schema"
 &lt;p>本篇結束，已經連到 SQL Server !!!&lt;/p>
 &lt;p>可以連線後，就可以繼續做工作的事情囉！&lt;/p>
 &lt;p>祝福讀完文章的你，一路順風 XD&lt;/p>
-&lt;p>如果你有碰到任何問題，歡迎你在下面留言！&lt;/p></content></item><item><title>【BUG】當 DevC++ 亂碼，如何解決呢？</title><link>https://chunyen.xyz/p/how-to-fix-dev-cpp-garbled/</link><pubDate>Wed, 16 Jan 2019 23:22:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/how-to-fix-dev-cpp-garbled/</guid><description/><tags><tag>亂碼</tag><tag>BUG</tag><tag>Dev-C++</tag><tag>garbled</tag><tag>IDE</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>如果你有碰到任何問題，歡迎你在下面留言！&lt;/p></content></item><item><title>【BUG】當 DevC++ 亂碼，如何解決呢？</title><link>https://chunyenc.github.io/p/how-to-fix-dev-cpp-garbled/</link><pubDate>Wed, 16 Jan 2019 23:22:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/how-to-fix-dev-cpp-garbled/</guid><description/><tags><tag>亂碼</tag><tag>BUG</tag><tag>Dev-C++</tag><tag>garbled</tag><tag>IDE</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>如標題，最近正從 C 語言 進階到 C++ 時，&lt;/p>
 &lt;p>在 C 語言 學習過程中使用的 Dev-C++ 也隨之陪伴我到 C++，&lt;/p>
 &lt;p>但是最近碰到了一件事，就是 cout 中文字時，會跑出亂碼。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/01.dev-c&amp;#43;&amp;#43;_garbled.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/01.dev-c&amp;#43;&amp;#43;_garbled.jpg"
 loading="lazy"
 alt="Dev-C&amp;#43;&amp;#43; 亂碼"
 >&lt;/p>
@@ -3226,7 +3226,7 @@ alt="Dev-C&amp;#43;&amp;#43; 亂碼"
 &lt;li>輸入 &lt;code>CMD&lt;/code> (命令提示元)&lt;/li>
 &lt;li>對&lt;code>標題列按右鍵&lt;/code>&lt;/li>
 &lt;li>點選&lt;code>預設值&lt;/code>
-&lt;img src="https://chunyen.xyz/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/02.setting_cmd_default.png"
+&lt;img src="https://chunyenc.github.io/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/02.setting_cmd_default.png"
 loading="lazy"
 alt="Dev-C&amp;#43;&amp;#43; CMD 預設設定介面"
 >&lt;/li>
@@ -3237,19 +3237,19 @@ alt="Dev-C&amp;#43;&amp;#43; CMD 預設設定介面"
 &lt;li>將 使用舊版主控台 打勾 ，我電腦不會自動重開機，所以請放心。&lt;/li>
 &lt;/ul>
 &lt;h3 id="預設設定">預設設定&lt;/h3>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/03.setting_default.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/03.setting_default.png"
 loading="lazy"
 alt="Dev-C&amp;#43;&amp;#43; CMD 預設設定介面"
 >&lt;/p>
 &lt;h3 id="更改後設定">更改後設定&lt;/h3>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/04.setting_change.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/04.setting_change.png"
 loading="lazy"
 alt="Dev-C&amp;#43;&amp;#43; CMD 設定後介面"
 >&lt;/p>
 &lt;p>記得點擊確定。&lt;/p>
 &lt;h3 id="再次確認有無-dev-c-亂碼">再次確認有無 Dev-C++ 亂碼&lt;/h3>
 &lt;p>來看看程式碼，再次執行就會發現已經沒問題囉！&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/05.finish.jpeg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20190116_dev-c&amp;#43;&amp;#43;/05.finish.jpeg"
 loading="lazy"
 alt="Dev-C&amp;#43;&amp;#43; CMD 設定後介面"
 >&lt;/p>

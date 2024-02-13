@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PHP on CY | 程式小角落</title><link>https://chunyen.xyz/tags/php/</link><description>Recent content in PHP on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 03 Nov 2023 18:50:00 +0000</lastBuildDate><atom:link href="https://chunyen.xyz/tags/php/index.xml" rel="self" type="application/rss+xml"/><item><title>Laravel(v5) - 更改 Response Download PDF 到直接打開 PDF</title><link>https://chunyen.xyz/p/laravelv05-change-response-download/</link><pubDate>Fri, 03 Nov 2023 18:50:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/laravelv05-change-response-download/</guid><description>碰到 Laravel v5.x 還沒有 response()->file() 所以紀錄一下解決方式</description><tags><tag>PHP</tag><tag>Laravel</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PHP on CY | 程式小角落</title><link>https://chunyenc.github.io/tags/php/</link><description>Recent content in PHP on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 03 Nov 2023 18:50:00 +0000</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/php/index.xml" rel="self" type="application/rss+xml"/><item><title>Laravel(v5) - 更改 Response Download PDF 到直接打開 PDF</title><link>https://chunyenc.github.io/p/laravelv05-change-response-download/</link><pubDate>Fri, 03 Nov 2023 18:50:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/laravelv05-change-response-download/</guid><description>碰到 Laravel v5.x 還沒有 response()->file() 所以紀錄一下解決方式</description><tags><tag>PHP</tag><tag>Laravel</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>公司官網使用 &lt;code>Laravel v5.1.x&lt;/code>, 有一個功能是要讓使用者可以下載 PDF 檔案，但是原本的寫法是使用 &lt;code>response()-&amp;gt;download()&lt;/code>，但是這樣會導致使用者下載後還要再去開啟 PDF 檔案，所以要改成直接開啟 PDF 檔案。&lt;/p>
 &lt;p>但是我一開始發現 &lt;code>laravel v10.x&lt;/code>, 有 &lt;code>response()-&amp;gt;file()&lt;/code> 可以使用，但是 &lt;code>laravel v5.x&lt;/code> 沒有，所以要另外找方法。&lt;/p>
 &lt;h2 id="流程">流程&lt;/h2>
@@ -65,7 +65,7 @@ step1 --> step2
 &lt;h2 id="有趣的事情">有趣的事情&lt;/h2>
 &lt;p>因為透過 PDF 直接打開後，會發現到每次開啟檔案都不是 PDF 檔名了。而是 PDF 文件標題，而公司文件的標題非常的亂 &amp;hellip; 甚至還有一些奇怪的符號、COPY 其他公司的文件來改的 .. 所以後面我又寫了一隻 Python 程式來幫我把全部 PDF 檔案的標題改掉。&lt;/p>
 &lt;p>至於 PHP 能不能夠改 PDF 的檔案標題，我沒有找到方法，所以就用 Python 來做了。&lt;/p>
-&lt;p>如果你是用 PHP 的話，也歡迎你跟我說你用什麼套件來改 PDF 檔案標題。&lt;/p></content></item><item><title>Php - XAMPP x64 安裝 Oracle Instant Client</title><link>https://chunyen.xyz/p/xampp-x64-oracle-instant-client/</link><pubDate>Mon, 21 Aug 2023 07:41:54 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/xampp-x64-oracle-instant-client/</guid><description>公司使用 x64 的OCI8一直沒成功，這邊算是紀錄解決的關鍵點</description><tags><tag>Oracle</tag><tag>PHP</tag><tag>Database</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>如果你是用 PHP 的話，也歡迎你跟我說你用什麼套件來改 PDF 檔案標題。&lt;/p></content></item><item><title>Php - XAMPP x64 安裝 Oracle Instant Client</title><link>https://chunyenc.github.io/p/xampp-x64-oracle-instant-client/</link><pubDate>Mon, 21 Aug 2023 07:41:54 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/xampp-x64-oracle-instant-client/</guid><description>公司使用 x64 的OCI8一直沒成功，這邊算是紀錄解決的關鍵點</description><tags><tag>Oracle</tag><tag>PHP</tag><tag>Database</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>近期換了工作，而這份工作是使用原生 PHP。有預計會升級為 &lt;code>Laravel&lt;/code>。&lt;/p>
 &lt;p>那在安裝 PHP 開發過程中，遇到一個令人挑戰的問題。公司前輩沒有使用 XAMPP x64 環境下成功安裝 OCI8。主要還是我&lt;code>自發性&lt;/code>去解決這個問題。主要我覺得很簡單，但是中間還是碰到一些問題，所以才會留下這篇文章。&lt;/p>
 &lt;p>所以到我解決這件事情前，公司到目前上線的系統都是使用 x32 架構的 OCI8。接下來還要把上線的系統改為 &lt;code>x64&lt;/code>，所以接下來有得忙了 XD&lt;/p>
@@ -86,12 +86,12 @@ step1 --> step2
 &lt;p>首先我們下載完 Oracle Client，就直接解壓縮。&lt;/p>
 &lt;p>然後排序&lt;code>檔案類型&lt;/code>，我們要的是 &lt;code>應用程式擴充&lt;/code>，為 .dll 副檔名的檔案。&lt;/p>
 &lt;p>如下圖，我們全部複製。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/01.dll-files.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/01.dll-files.png"
 loading="lazy"
 alt="全部的 dll 檔案"
 >&lt;/p>
 &lt;h3 id="複製到-xamppapachebin-資料夾">複製到 xampp\apache\bin 資料夾&lt;/h3>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/02.apache.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/02.apache.png"
 loading="lazy"
 alt="將 dll 移至 apache/bin 資料夾"
 >&lt;/p>
@@ -99,7 +99,7 @@ alt="將 dll 移至 apache/bin 資料夾"
 &lt;p>關鍵之一，如果今天我們使用 XAMPP 啟用 PHP 時，這邊沒有 dll 檔案時，我們的 OCI8 就沒辦法啟動。&lt;/p>
 &lt;/blockquote>
 &lt;h3 id="複製到-xamppphp-資料夾">複製到 xampp\php 資料夾&lt;/h3>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/03.php.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/03.php.png"
 loading="lazy"
 alt="將 dll 移至 xampp/php 資料夾"
 >&lt;/p>
@@ -114,7 +114,7 @@ alt="將 dll 移至 xampp/php 資料夾"
 &lt;blockquote>
 &lt;p>關鍵之三，所以插件的版本與 PHP 的版本是互相關聯的。 &lt;code>記得要安裝 ts 版本。&lt;/code>，你可以參考下圖。&lt;/p>
 &lt;/blockquote>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/04.php_info.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/04.php_info.png"
 loading="lazy"
 alt="確認 PHP 有無支援 Thread Safety"
 >&lt;/p>
@@ -124,19 +124,19 @@ alt="確認 PHP 有無支援 Thread Safety"
 &lt;h3 id="移動-oci8-插件的-dll-檔案">移動 OCI8 插件的 dll 檔案&lt;/h3>
 &lt;p>首先我們先進行解壓縮。&lt;/p>
 &lt;p>再依照 &lt;code>應用程式擴充&lt;/code> 排序，所以你現在的畫面會與下圖一樣。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/05.php-oci-driver.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/05.php-oci-driver.jpg"
 loading="lazy"
 alt="OCI8 插件圖片"
 >&lt;/p>
 &lt;p>然後把紅框選取的檔案複製到下圖 &lt;code>XAMPP PHP&lt;/code> 插件位置。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/06.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/06.jpg"
 loading="lazy"
 alt="OCI8 插件的 PHP 位置"
 >&lt;/p>
 &lt;h2 id="設定-phpini">設定 php.ini&lt;/h2>
 &lt;p>驅動程式到這邊都裝好了。&lt;/p>
 &lt;p>接下來要讓 PHP 啟用，需要到下圖的位置 &lt;code>xampp/php/php.ini&lt;/code> 檔案來啟用 &lt;code>OCI&lt;/code> .&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/07.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/07.jpg"
 loading="lazy"
 alt="PHP ini 啟動 OCI 位置"
 >&lt;/p>
@@ -144,7 +144,7 @@ alt="PHP ini 啟動 OCI 位置"
 &lt;p>這邊筆者是啟用 &lt;code>oci8_19&lt;/code>，來進行測試。&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="檢查有無啟用">檢查有無啟用&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230821_xampp-oci/08.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230821_xampp-oci/08.jpg"
 loading="lazy"
 alt="檢查 OCI8 有無安裝成功"
 >&lt;/p>

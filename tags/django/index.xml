@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Django on CY | 程式小角落</title><link>https://chunyen.xyz/tags/django/</link><description>Recent content in Django on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sun, 14 May 2023 10:42:02 +0000</lastBuildDate><atom:link href="https://chunyen.xyz/tags/django/index.xml" rel="self" type="application/rss+xml"/><item><title>Nginx - 將 HTTP 的網頁上線成 HTTPS.</title><link>https://chunyen.xyz/p/nginx-add-https/</link><pubDate>Sun, 14 May 2023 10:42:02 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/nginx-add-https/</guid><description>以前就上線過 HTTPS, 但這次設定被其他環境干擾, 害我花了超出預期的時間.</description><tags><tag>Django</tag><tag>Nginx</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Django on CY | 程式小角落</title><link>https://chunyenc.github.io/tags/django/</link><description>Recent content in Django on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sun, 14 May 2023 10:42:02 +0000</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/django/index.xml" rel="self" type="application/rss+xml"/><item><title>Nginx - 將 HTTP 的網頁上線成 HTTPS.</title><link>https://chunyenc.github.io/p/nginx-add-https/</link><pubDate>Sun, 14 May 2023 10:42:02 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/nginx-add-https/</guid><description>以前就上線過 HTTPS, 但這次設定被其他環境干擾, 害我花了超出預期的時間.</description><tags><tag>Django</tag><tag>Nginx</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>前陣子再協助朋友設定 NGINX 時, 發現手邊都沒有在做紀錄 HTTPS 的設定, 所以這次就來紀錄一下。&lt;/p>
 &lt;p>其實不難，只是擔心朋友針對機器在做轉 Port 的設定 .. 這樣就會讓我很頭痛了。&lt;/p>
 &lt;p>當然後面有解決, 但是花了超出預期的時間。&lt;/p>
@@ -147,7 +147,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>PSQL 01 - 踢掉指定的 PostgreSQL Session.</title><link>https://chunyen.xyz/p/psql-deleted-session/</link><pubDate>Fri, 03 Mar 2023 06:11:52 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/psql-deleted-session/</guid><description>強制取消後端測試時, 導致無法刪除已經建立的測試資料庫。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/div></content></item><item><title>PSQL 01 - 踢掉指定的 PostgreSQL Session.</title><link>https://chunyenc.github.io/p/psql-deleted-session/</link><pubDate>Fri, 03 Mar 2023 06:11:52 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/psql-deleted-session/</guid><description>強制取消後端測試時, 導致無法刪除已經建立的測試資料庫。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>主要是在撰寫 Django 測試時，有時候會因為某些原因導致測試過程強制中斷，例如程式出錯或手動中斷執行等。&lt;/p>
 &lt;p>當發生這種情況時，測試資料庫可能會佔有一些 session 無法正確刪除，進而影響測試的正確性。&lt;/p>
 &lt;p>以下是發生的一些關鍵字或 &amp;hellip;. 問題&lt;/p>
@@ -255,7 +255,7 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h1 id="完成">完成&lt;/h1>
-&lt;p>今天是一個 PostgreSQL 的使用知識，正好在寫測時時出現，就把這個過程記錄一下。&lt;/p></content></item><item><title>Django 紀錄 03 - 使用套件 django-environ 管理環境參數 !! 超方便 !!</title><link>https://chunyen.xyz/p/django-environ/</link><pubDate>Wed, 01 Mar 2023 17:43:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/django-environ/</guid><description>在工作時發現同事使用 .. 發現很好用 !! 所以有花時間研究一下。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>今天是一個 PostgreSQL 的使用知識，正好在寫測時時出現，就把這個過程記錄一下。&lt;/p></content></item><item><title>Django 紀錄 03 - 使用套件 django-environ 管理環境參數 !! 超方便 !!</title><link>https://chunyenc.github.io/p/django-environ/</link><pubDate>Wed, 01 Mar 2023 17:43:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/django-environ/</guid><description>在工作時發現同事使用 .. 發現很好用 !! 所以有花時間研究一下。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>當今年二月不斷的補班的時候 &amp;hellip;　發現團隊內部有人使用 &lt;code>django-environ&lt;/code> 套件。&lt;/p>
 &lt;p>筆者過去是使用 &lt;code>python-dotenv&lt;/code>。但是發現 &lt;code>django-environ&lt;/code> 有提供更多針對 &lt;code>django&lt;/code> 框架的框架設定 !&lt;/p>
 &lt;ul>
@@ -362,7 +362,7 @@
 >https://django-environ.readthedocs.io/&lt;/a> 已存取 2023/3/1.&lt;/li>
 &lt;li>Django-environd的使用(管理配置文件敏感参数和环境变量)_想学废更多东西的猿的博客-CSDN博客_django environ. &lt;a class="link" href="https://blog.csdn.net/zscccccc/article/details/121630824" target="_blank" rel="noopener"
 >https://blog.csdn.net/zscccccc/article/details/121630824&lt;/a> 已存取 2023/3/1.&lt;/li>
-&lt;/ol></content></item><item><title>Django 紀錄 02 - 如何在 Django 應用使用 Celery 進行系統任務管理</title><link>https://chunyen.xyz/p/django-celery-beat/</link><pubDate>Wed, 22 Feb 2023 22:17:10 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/django-celery-beat/</guid><description>雖然 Djang 也有其他的任務套件, 但 Celery 用起來還是問題最少 ..</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/ol></content></item><item><title>Django 紀錄 02 - 如何在 Django 應用使用 Celery 進行系統任務管理</title><link>https://chunyenc.github.io/p/django-celery-beat/</link><pubDate>Wed, 22 Feb 2023 22:17:10 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/django-celery-beat/</guid><description>雖然 Djang 也有其他的任務套件, 但 Celery 用起來還是問題最少 ..</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>最近在使用 &lt;code>django-celery-beat&lt;/code>，發現網路上的參數基本上都舊了。&lt;/p>
 &lt;p>所以安裝的方式這邊幫大家梳理一下，有時候網路上的安裝方式可能會導致自己花非常多時間。&lt;/p>
 &lt;blockquote>
@@ -718,7 +718,7 @@
 &lt;/div>
 &lt;/div>&lt;h1 id="後續">後續&lt;/h1>
 &lt;p>你還可以透過 &lt;code>django-environ&lt;/code> 套件來優化你的 &lt;code>settings.py&lt;/code> 或 &lt;code>celery.py&lt;/code>，將環境設定的資訊都隱藏。&lt;/p>
-&lt;p>那也是我後續要來新增的文章 XD&lt;/p></content></item><item><title>Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼</title><link>https://chunyen.xyz/p/django-cython/</link><pubDate>Mon, 11 Jul 2022 17:31:45 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/django-cython/</guid><description>程式碼就不會脫光光給別人看 XD</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>那也是我後續要來新增的文章 XD&lt;/p></content></item><item><title>Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼</title><link>https://chunyenc.github.io/p/django-cython/</link><pubDate>Mon, 11 Jul 2022 17:31:45 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/django-cython/</guid><description>程式碼就不會脫光光給別人看 XD</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>主要就是將原始程式碼轉成暗碼，雖然能夠不讓自己的程式碼直接裸奔。&lt;/p>
 &lt;p>但是若碰到有心人士也是一樣可以透過逆向工程把你的程式碼還原。&lt;/p>
 &lt;p>提到明碼轉成暗碼，優先選擇 Cython 來執行，速度甚至可能變快(?)，實際上當然還沒測試，只是看到非常多人透過 Cython 讓自己 Python 程式碼變快 XD&lt;/p>
@@ -1151,7 +1151,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Quit the server with CONTROL-C.
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://chunyen.xyz/result.png"
+&lt;/div>&lt;p>&lt;img src="https://chunyenc.github.io/result.png"
 loading="lazy"
 alt="執行結果, 我的 index XD"
 >&lt;/p>

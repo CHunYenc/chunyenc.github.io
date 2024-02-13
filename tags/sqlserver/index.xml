@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SQLServer on CY | 程式小角落</title><link>https://chunyen.xyz/tags/sqlserver/</link><description>Recent content in SQLServer on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 07 Aug 2021 21:10:00 +0000</lastBuildDate><atom:link href="https://chunyen.xyz/tags/sqlserver/index.xml" rel="self" type="application/rss+xml"/><item><title>【Docker】Macbook Air M1 CPU 使用 Docker 建立 SQL Server</title><link>https://chunyen.xyz/p/macbook-air-m1-install-sql-server/</link><pubDate>Sat, 07 Aug 2021 21:10:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/macbook-air-m1-install-sql-server/</guid><description/><tags><tag>SQLServer</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image><url>https://chunyen.xyz/</url></image><content>&lt;p>圖片來源：&lt;a class="link" href="https://zh.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SQLServer on CY | 程式小角落</title><link>https://chunyenc.github.io/tags/sqlserver/</link><description>Recent content in SQLServer on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 07 Aug 2021 21:10:00 +0000</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/sqlserver/index.xml" rel="self" type="application/rss+xml"/><item><title>【Docker】Macbook Air M1 CPU 使用 Docker 建立 SQL Server</title><link>https://chunyenc.github.io/p/macbook-air-m1-install-sql-server/</link><pubDate>Sat, 07 Aug 2021 21:10:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/macbook-air-m1-install-sql-server/</guid><description/><tags><tag>SQLServer</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image><url>https://chunyenc.github.io/</url></image><content>&lt;p>圖片來源：&lt;a class="link" href="https://zh.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener"
 >https://zh.wikipedia.org/wiki/Microsoft_SQL_Server&lt;/a>&lt;/p>
 &lt;h2 id="前言">前言&lt;/h2>
 &lt;p>說明一下為什麼會使用到 SQL Server + Macbook Air。&lt;/p>
@@ -25,7 +25,7 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">Docker -v
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/01.docker-version.png"
+&lt;/div>&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/01.docker-version.png"
 loading="lazy"
 alt="Docker 版本"
 >&lt;/p>
@@ -97,14 +97,14 @@ alt="Docker 版本"
 &lt;li>更改 &lt;code>MSSQL_SA_PASSWORD&lt;/code>：設定成自己想要的密碼&lt;/li>
 &lt;/ul>
 &lt;p>首次安裝他需要安裝 image，這邊我們等他一下。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
 loading="lazy"
 alt="安裝 sql-server image"
 >&lt;/p>
 &lt;p>正在下載 image &amp;ldquo;mcr.microsoft.com/azure-sql-edge&amp;rdquo;&lt;/p>
 &lt;p>安裝完後，因為我們是直接 docker run，不是 docker pull。&lt;/p>
 &lt;p>Docker pull 的指令為下載 image，詳細可以 Google，這邊不介紹此指令。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
 loading="lazy"
 alt="sql-server 安裝完成"
 >&lt;/p>
@@ -112,13 +112,13 @@ alt="sql-server 安裝完成"
 &lt;h3 id="使用-dbeaver-開源資料庫管理工具連線-sql-server-container">使用 dbeaver 開源資料庫管理工具連線 SQL Server Container&lt;/h3>
 &lt;p>這邊就不展示如何安裝 dbeaver。&lt;/p>
 &lt;p>首先我們先打開 dbeaver，如下圖進行新增連線&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/04.dbeaver-connect-db.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/04.dbeaver-connect-db.png"
 loading="lazy"
 alt="dbeaver 建立連線"
 >&lt;/p>
 &lt;p>dbeaver 建立連線&lt;/p>
 &lt;p>建立連線後點擊 Next，輸入連線資訊。&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/05.dbeaver-setting-connect-information.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/05.dbeaver-setting-connect-information.png"
 loading="lazy"
 alt="dbeaver 設定連線資訊"
 >&lt;/p>
@@ -142,7 +142,7 @@ alt="dbeaver 設定連線資訊"
 &lt;/li>
 &lt;/ul>
 &lt;p>接下來 dbeaver 就會連線到你在上面使用 Docker 建立的 SQL Server 囉！&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/blogger/20210807_m1-sqlserver/06.dbeaver-sql-server-schema.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/06.dbeaver-sql-server-schema.png"
 loading="lazy"
 alt="使用 dbeaver 查看 sql-server schema"
 >&lt;/p>

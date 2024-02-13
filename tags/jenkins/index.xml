@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jenkins on CY | 程式小角落</title><link>https://chunyen.xyz/tags/jenkins/</link><description>Recent content in Jenkins on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sun, 10 Apr 2022 19:03:00 +0800</lastBuildDate><atom:link href="https://chunyen.xyz/tags/jenkins/index.xml" rel="self" type="application/rss+xml"/><item><title>JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用</title><link>https://chunyen.xyz/p/jenkins-01-deploy/</link><pubDate>Sun, 10 Apr 2022 19:03:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/jenkins-01-deploy/</guid><description>主要是指令與如何使用 Docker + Jenkins 並印出 「Hello Jenkins」</description><tags><tag>Jenkins</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="環境">環境&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jenkins on CY | 程式小角落</title><link>https://chunyenc.github.io/tags/jenkins/</link><description>Recent content in Jenkins on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sun, 10 Apr 2022 19:03:00 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/jenkins/index.xml" rel="self" type="application/rss+xml"/><item><title>JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用</title><link>https://chunyenc.github.io/p/jenkins-01-deploy/</link><pubDate>Sun, 10 Apr 2022 19:03:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/jenkins-01-deploy/</guid><description>主要是指令與如何使用 Docker + Jenkins 並印出 「Hello Jenkins」</description><tags><tag>Jenkins</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="環境">環境&lt;/h1>
 &lt;p>趁這次假日架設了 Jenkins，但是目前為止 M1 處理器皆不支援。&lt;/p>
 &lt;p>所以用在學生時期使用的 Oracle Cloud 建立一台虛擬機，以下都可以適用在任何雲端平台來操作。&lt;/p>
 &lt;h2 id="ubuntu-版本">Ubuntu 版本&lt;/h2>
@@ -90,56 +90,56 @@
 &lt;p>如果不小心加上 &lt;code>-d&lt;/code> 後，該怎麼辦 ?&lt;/p>
 &lt;p>可以參考 &lt;a class="link" href="#%e5%82%99%e8%a8%bb" >備註&lt;/a>&lt;/p>
 &lt;h2 id="前往網頁">前往網頁&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/00-wait.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/00-wait.png"
 loading="lazy"
 alt="等待 Jenkins 上工"
 >&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/01-Unlock.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/01-Unlock.png"
 loading="lazy"
 alt="進入 JenKins 的第一個畫面"
 >&lt;/p>
 &lt;p>就把 &lt;code>61e8c8cb00c0417bb4c4719ba8559060&lt;/code> 貼進去裡面就完成啟用囉 !&lt;/p>
 &lt;h2 id="不安裝任何插件">不安裝任何插件&lt;/h2>
 &lt;p>直接點擊右上角 x, 到時候我們再一項一項安裝.&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/02-plugin.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/02-plugin.png"
 loading="lazy"
 alt="點擊右上角 x 進行下一步"
 >&lt;/p>
 &lt;h2 id="進入首頁">進入首頁&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/03-home.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/03-home.png"
 loading="lazy"
 alt="Jenkins 首頁"
 >&lt;/p>
 &lt;h2 id="更改-admin-密碼">更改 admin 密碼&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/04-change_password.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/04-change_password.png"
 loading="lazy"
 alt="更改 admin 登入密碼"
 >&lt;/p>
 &lt;h2 id="建立一個-work">建立一個 work&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/05-create-work.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/05-create-work.png"
 loading="lazy"
 alt="點擊左上角，新增作業"
 >&lt;/p>
 &lt;h2 id="hello-jenkins">Hello Jenkins&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/06-create-hello-jenkins.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/06-create-hello-jenkins.png"
 loading="lazy"
 alt="創建一個作業"
 >&lt;/p>
 &lt;p>這邊可以直接按「OK」。&lt;/p>
 &lt;h2 id="加入一個-echo-shell">加入一個 echo shell&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/07-create-shell.jpeg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/07-create-shell.jpeg"
 loading="lazy"
 alt="選取 執行 Shell"
 >&lt;/p>
 &lt;p>畢竟本篇是要執行一個 echo 「Hello World」。&lt;/p>
 &lt;p>所以我們還是先照做，此篇只是第一篇的 jenkins XD&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/08-echo.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/08-echo.jpg"
 loading="lazy"
 alt="打上 echo Hello Jenkins"
 >&lt;/p>
 &lt;p>點擊儲存。&lt;/p>
 &lt;h2 id="執行我們建立的作業-hello-jenkins">執行我們建立的作業 Hello Jenkins&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/09-dashboard.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/09-dashboard.jpg"
 loading="lazy"
 alt="回到 Dashboard"
 >&lt;/p>
@@ -166,12 +166,12 @@ alt="回到 Dashboard"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">目光移到「左下角」的「建置歷程」
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/11-task-history.png"
+&lt;/div>&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/11-task-history.png"
 loading="lazy"
 alt="建置歷程"
 >&lt;/p>
 &lt;p>這邊我點擊 #1 來看看我們，剛剛的 Hello Jenkins 有沒有執行出來 !!&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20220410/10-success-task.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20220410/10-success-task.png"
 loading="lazy"
 alt="建置的結果"
 >&lt;/p>

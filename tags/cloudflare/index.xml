@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cloudflare on CY | 程式小角落</title><link>https://chunyen.xyz/tags/cloudflare/</link><description>Recent content in Cloudflare on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Mon, 16 Jan 2023 00:02:09 +0800</lastBuildDate><atom:link href="https://chunyen.xyz/tags/cloudflare/index.xml" rel="self" type="application/rss+xml"/><item><title>Cloudflare - 架設 Google-blogger 與 Github-page DNS 困難排除</title><link>https://chunyen.xyz/p/cloudflare-dns-error/</link><pubDate>Mon, 16 Jan 2023 00:02:09 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/cloudflare-dns-error/</guid><description>Cloudflare 設定也是一大學問 !</description><tags><tag>Cloudflare</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cloudflare on CY | 程式小角落</title><link>https://chunyenc.github.io/tags/cloudflare/</link><description>Recent content in Cloudflare on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Mon, 16 Jan 2023 00:02:09 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/cloudflare/index.xml" rel="self" type="application/rss+xml"/><item><title>Cloudflare - 架設 Google-blogger 與 Github-page DNS 困難排除</title><link>https://chunyenc.github.io/p/cloudflare-dns-error/</link><pubDate>Mon, 16 Jan 2023 00:02:09 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/cloudflare-dns-error/</guid><description>Cloudflare 設定也是一大學問 !</description><tags><tag>Cloudflare</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>主要是有應用架設在 &lt;code>Heroku&lt;/code>, 發現他要所謂 &lt;code>Server Name Indication (SNI)&lt;/code> 的方式來部署 &lt;code>HTTPS&lt;/code>。&lt;/p>
 &lt;blockquote>
 &lt;p>結論就是 &lt;code>DNS&lt;/code> 從 &lt;code>Google Domains&lt;/code> 換成 &lt;code>Cloudflare&lt;/code>，然後碰到&lt;code>轉址&lt;/code>、&lt;code>HTTPS&lt;/code>的問題。&lt;/p>
@@ -35,7 +35,7 @@
 &lt;/blockquote>
 &lt;h1 id="設定方式">設定方式&lt;/h1>
 &lt;h2 id="將-ssltls-改為-full-模式">將 &lt;code>SSL/TLS&lt;/code> 改為 &lt;code>FULL&lt;/code> 模式&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230116/01-full.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230116/01-full.jpg"
 loading="lazy"
 alt="Cloudflare SSL/TLS 設定"
 >&lt;/p>
@@ -67,7 +67,7 @@ alt="Cloudflare SSL/TLS 設定"
 &lt;li>再點擊 &lt;code>網頁規則&lt;/code> 同一頁的 &lt;code>建立網頁規則&lt;/code>&lt;/li>
 &lt;li>&lt;code>填入 URL&lt;/code> 後，記得要選取 &lt;code>挑選設定&lt;/code> 的 &lt;code>SSL&lt;/code> 為你要設定的模式。&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230116/03-rule-example.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230116/03-rule-example.jpg"
 loading="lazy"
 alt="Cloudflare SSL/TLS 路由規則"
 >&lt;/p>
@@ -76,7 +76,7 @@ alt="Cloudflare SSL/TLS 路由規則"
 &lt;p>但是免費的還是等吧 xD&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="最後的設定">最後的設定&lt;/h2>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230116/04-result.jpg"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230116/04-result.jpg"
 loading="lazy"
 alt="Cloudflare SSL/TLS 路由規則的結果"
 >&lt;/p>

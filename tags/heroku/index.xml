@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Heroku on CY | 程式小角落</title><link>https://chunyen.xyz/tags/heroku/</link><description>Recent content in Heroku on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Thu, 13 Apr 2023 02:46:15 +0000</lastBuildDate><atom:link href="https://chunyen.xyz/tags/heroku/index.xml" rel="self" type="application/rss+xml"/><item><title>Logtail - 一個彙整免費 Paas 平台的日誌平台</title><link>https://chunyen.xyz/p/logtail-log-management/</link><pubDate>Thu, 13 Apr 2023 02:46:15 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/logtail-log-management/</guid><description>筆者從 papertrailapp 毫不猶豫直接跳到 logtail.</description><tags><tag>Logtail</tag><tag>Render.com</tag><tag>Heroku</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Heroku on CY | 程式小角落</title><link>https://chunyenc.github.io/tags/heroku/</link><description>Recent content in Heroku on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Thu, 13 Apr 2023 02:46:15 +0000</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/heroku/index.xml" rel="self" type="application/rss+xml"/><item><title>Logtail - 一個彙整免費 Paas 平台的日誌平台</title><link>https://chunyenc.github.io/p/logtail-log-management/</link><pubDate>Thu, 13 Apr 2023 02:46:15 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/logtail-log-management/</guid><description>筆者從 papertrailapp 毫不猶豫直接跳到 logtail.</description><tags><tag>Logtail</tag><tag>Render.com</tag><tag>Heroku</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>因筆者有使用 Heroku、Render.com、Railway 的經驗，那他們都是 PaaS (Platform as a Service，平台及服務) 的服務平台。&lt;/p>
 &lt;blockquote>
 &lt;p>這些 PaaS 平台通常提供了開發工具、執行環境、資料庫、身份驗證、監控等服務，讓開發人員可以專注於應用程式的開發，而不必擔心基礎架構的建設。&lt;/p>
@@ -20,7 +20,7 @@
 &lt;h1 id="好處一無痛串接-paas-平台">好處一：無痛串接 Paas 平台&lt;/h1>
 &lt;h2 id="heroku">Heroku&lt;/h2>
 &lt;p>綁定 &lt;code>Heroku&lt;/code> 前，先到 &lt;code>Logtail&lt;/code> 申請後就可以直接來用了 .. (如下圖)&lt;/p>
-&lt;p>&lt;img src="https://chunyen.xyz/images/20230413_logtail/01.png"
+&lt;p>&lt;img src="https://chunyenc.github.io/images/20230413_logtail/01.png"
 loading="lazy"
 alt="綁定的過程"
 >&lt;/p>
@@ -55,7 +55,7 @@ alt="綁定的過程"
 &lt;h1 id="建議還是自架">建議：還是自架&lt;/h1>
 &lt;p>主要還是回到錢的部分，一個月 24 USD 真的不便宜。&lt;/p>
 &lt;p>目前是有朝向 Graylog(&lt;code>ElasticSearch&lt;/code> or &lt;code>OpenSearch&lt;/code>) + Grafana 來建。&lt;/p>
-&lt;p>這邊之後再給大家講一下我的架構。&lt;/p></content></item><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>https://chunyen.xyz/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyen.xyz/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>這邊之後再給大家講一下我的架構。&lt;/p></content></item><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>https://chunyenc.github.io/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;blockquote>
 &lt;p>祝大家新年快樂 !!!&lt;/p>
 &lt;/blockquote>
