@@ -1,6 +1,6 @@
 # chunyenc.github.io
 
-[![pages-build-deployment](https://github.com/CHunYenc/chunyenc.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/CHunYenc/chunyenc.github.io/actions/workflows/pages/pages-build-deployment)
+[![Online](https://github.com/CHunYenc/chunyenc.github.io/actions/workflows/hugo.yml/badge.svg)](https://github.com/CHunYenc/chunyenc.github.io/actions/workflows/hugo.yml)
 
 歡迎來到我的累積經驗部落格，這是一個個人部落格，我在這裡分享自己對於技術、程式碼等各種主題的經驗和想法。
 
