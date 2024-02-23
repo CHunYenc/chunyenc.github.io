@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on CY | 程式小角落</title><link>https://chunyenc.github.io/tags/docker/</link><description>Recent content in Docker on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 27 Jan 2023 15:53:22 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>https://chunyenc.github.io/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on CY | 程式小角落</title><link>/tags/docker/</link><description>Recent content in Docker on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 27 Jan 2023 15:53:22 +0800</lastBuildDate><atom:link href="/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;blockquote>
 &lt;p>祝大家新年快樂 !!!&lt;/p>
 &lt;/blockquote>
@@ -173,7 +173,7 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">./linebot.log:/app/scheduler.log&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>置頂 - 提高效率的必備指令：一份我的常用指令與工具清單</title><link>https://chunyenc.github.io/p/common-scripts/</link><pubDate>Wed, 18 Jan 2023 11:38:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/common-scripts/</guid><description>工作時常使用到的指令與工具</description><tags><tag>GIT</tag><tag>Docker</tag><tag>VSCode</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/div></content></item><item><title>置頂 - 提高效率的必備指令：一份我的常用指令與工具清單</title><link>/p/common-scripts/</link><pubDate>Wed, 18 Jan 2023 11:38:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/common-scripts/</guid><description>工作時常使用到的指令與工具</description><tags><tag>GIT</tag><tag>Docker</tag><tag>VSCode</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>主要為存放工作中經常使用的指令、框架、套件。&lt;/p>
 &lt;p>若有任何建議或是覺得需要修改的地方還請不吝指教，謝謝！&lt;/p>
 &lt;p>如何聯繫我 ?&lt;/p>
@@ -294,7 +294,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network postgres:10
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>Docker 紀錄 03 - 經常使用的 docker 指令</title><link>https://chunyenc.github.io/p/docker-common-commands/</link><pubDate>Sat, 03 Sep 2022 12:55:54 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/docker-common-commands/</guid><description/><tags><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="正文">正文&lt;/h1>
+&lt;/div></content></item><item><title>Docker 紀錄 03 - 經常使用的 docker 指令</title><link>/p/docker-common-commands/</link><pubDate>Sat, 03 Sep 2022 12:55:54 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-common-commands/</guid><description/><tags><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="正文">正文&lt;/h1>
 &lt;h2 id="建立-image">建立 image&lt;/h2>
 &lt;p>提供複製的指令。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -460,7 +460,7 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h1 id="nginx">nginx&lt;/h1>
-&lt;p>待補&lt;/p></content></item><item><title>Docker 紀錄 02 - 使用 oracleinanutshell/oracle-xe-11g 紀錄</title><link>https://chunyenc.github.io/p/docker-oracle-xe-11g/</link><pubDate>Wed, 13 Jul 2022 10:36:26 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/docker-oracle-xe-11g/</guid><description/><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>待補&lt;/p></content></item><item><title>Docker 紀錄 02 - 使用 oracleinanutshell/oracle-xe-11g 紀錄</title><link>/p/docker-oracle-xe-11g/</link><pubDate>Wed, 13 Jul 2022 10:36:26 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-oracle-xe-11g/</guid><description/><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>主要紀錄建立 oracle-xe-11g 這個 image 的過程。&lt;/p>
 &lt;h1 id="容器大小">容器大小&lt;/h1>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -577,7 +577,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Grant succeeded.
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database</title><link>https://chunyenc.github.io/p/docker-pull-oracle-database-image/</link><pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/docker-pull-oracle-database-image/</guid><description>2021 去年使用的方式又跟今年(2022) 不一樣了 ..</description><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/div></content></item><item><title>Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database</title><link>/p/docker-pull-oracle-database-image/</link><pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-pull-oracle-database-image/</guid><description>2021 去年使用的方式又跟今年(2022) 不一樣了 ..</description><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>之前的我都是去 docker hub pull,&lt;/p>
 &lt;p>但是今天發現 docker pull 的方式不一樣了。&lt;/p>
 &lt;h1 id="直接寫解法">直接寫解法&lt;/h1>
@@ -585,12 +585,12 @@
 &lt;pre>&lt;code>https://container-registry.oracle.com
 &lt;/code>&lt;/pre>
 &lt;h2 id="登入完後點擊-database">登入完後，點擊 Database&lt;/h2>
-&lt;p>&lt;img src="https://chunyenc.github.io/images/20220629/oracle-01.png"
+&lt;p>&lt;img src="/images/20220629/oracle-01.png"
 loading="lazy"
 alt="2022/07/06 - Oracle UI"
 >&lt;/p>
 &lt;h2 id="同意授權">同意授權&lt;/h2>
-&lt;p>&lt;img src="https://chunyenc.github.io/images/20220629/oracle-02.png"
+&lt;p>&lt;img src="/images/20220629/oracle-02.png"
 loading="lazy"
 alt="2022/07/06 - Oracle 同意授權與未同意授權的畫面"
 >&lt;/p>
@@ -603,7 +603,7 @@ alt="2022/07/06 - Oracle 同意授權與未同意授權的畫面"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="授權">授權&lt;/h2>
-&lt;p>&lt;img src="https://chunyenc.github.io/images/20220629/oracle-01.png"
+&lt;p>&lt;img src="/images/20220629/oracle-01.png"
 loading="lazy"
 alt="2022/07/06 - Oracle 點擊同意授權"
 >&lt;/p>
@@ -665,7 +665,7 @@ alt="2022/07/06 - Oracle 點擊同意授權"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">..... 以下太多資訊 省略
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="完成">完成&lt;/h2></content></item><item><title>【Docker】Macbook Air M1 CPU 使用 Docker 建立 SQL Server</title><link>https://chunyenc.github.io/p/macbook-air-m1-install-sql-server/</link><pubDate>Sat, 07 Aug 2021 21:10:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/macbook-air-m1-install-sql-server/</guid><description/><tags><tag>SQLServer</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image><url>https://chunyenc.github.io/</url></image><content>&lt;p>圖片來源：&lt;a class="link" href="https://zh.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener"
+&lt;/div>&lt;h2 id="完成">完成&lt;/h2></content></item><item><title>【Docker】Macbook Air M1 CPU 使用 Docker 建立 SQL Server</title><link>/p/macbook-air-m1-install-sql-server/</link><pubDate>Sat, 07 Aug 2021 21:10:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/macbook-air-m1-install-sql-server/</guid><description/><tags><tag>SQLServer</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image><url>/</url></image><content>&lt;p>圖片來源：&lt;a class="link" href="https://zh.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener"
 >https://zh.wikipedia.org/wiki/Microsoft_SQL_Server&lt;/a>&lt;/p>
 &lt;h2 id="前言">前言&lt;/h2>
 &lt;p>說明一下為什麼會使用到 SQL Server + Macbook Air。&lt;/p>
@@ -692,7 +692,7 @@ alt="2022/07/06 - Oracle 點擊同意授權"
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">Docker -v
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/01.docker-version.png"
+&lt;/div>&lt;p>&lt;img src="/images/blogger/20210807_m1-sqlserver/01.docker-version.png"
 loading="lazy"
 alt="Docker 版本"
 >&lt;/p>
@@ -764,14 +764,14 @@ alt="Docker 版本"
 &lt;li>更改 &lt;code>MSSQL_SA_PASSWORD&lt;/code>：設定成自己想要的密碼&lt;/li>
 &lt;/ul>
 &lt;p>首次安裝他需要安裝 image，這邊我們等他一下。&lt;/p>
-&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
+&lt;p>&lt;img src="/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
 loading="lazy"
 alt="安裝 sql-server image"
 >&lt;/p>
 &lt;p>正在下載 image &amp;ldquo;mcr.microsoft.com/azure-sql-edge&amp;rdquo;&lt;/p>
 &lt;p>安裝完後，因為我們是直接 docker run，不是 docker pull。&lt;/p>
 &lt;p>Docker pull 的指令為下載 image，詳細可以 Google，這邊不介紹此指令。&lt;/p>
-&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
+&lt;p>&lt;img src="/images/blogger/20210807_m1-sqlserver/03.docker-install-image-finish.png"
 loading="lazy"
 alt="sql-server 安裝完成"
 >&lt;/p>
@@ -779,13 +779,13 @@ alt="sql-server 安裝完成"
 &lt;h3 id="使用-dbeaver-開源資料庫管理工具連線-sql-server-container">使用 dbeaver 開源資料庫管理工具連線 SQL Server Container&lt;/h3>
 &lt;p>這邊就不展示如何安裝 dbeaver。&lt;/p>
 &lt;p>首先我們先打開 dbeaver，如下圖進行新增連線&lt;/p>
-&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/04.dbeaver-connect-db.png"
+&lt;p>&lt;img src="/images/blogger/20210807_m1-sqlserver/04.dbeaver-connect-db.png"
 loading="lazy"
 alt="dbeaver 建立連線"
 >&lt;/p>
 &lt;p>dbeaver 建立連線&lt;/p>
 &lt;p>建立連線後點擊 Next，輸入連線資訊。&lt;/p>
-&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/05.dbeaver-setting-connect-information.png"
+&lt;p>&lt;img src="/images/blogger/20210807_m1-sqlserver/05.dbeaver-setting-connect-information.png"
 loading="lazy"
 alt="dbeaver 設定連線資訊"
 >&lt;/p>
@@ -809,7 +809,7 @@ alt="dbeaver 設定連線資訊"
 &lt;/li>
 &lt;/ul>
 &lt;p>接下來 dbeaver 就會連線到你在上面使用 Docker 建立的 SQL Server 囉！&lt;/p>
-&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20210807_m1-sqlserver/06.dbeaver-sql-server-schema.png"
+&lt;p>&lt;img src="/images/blogger/20210807_m1-sqlserver/06.dbeaver-sql-server-schema.png"
 loading="lazy"
 alt="使用 dbeaver 查看 sql-server schema"
 >&lt;/p>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GIT on CY | 程式小角落</title><link>https://chunyenc.github.io/tags/git/</link><description>Recent content in GIT on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 27 Jan 2023 15:53:22 +0800</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>https://chunyenc.github.io/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GIT on CY | 程式小角落</title><link>/tags/git/</link><description>Recent content in GIT on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 27 Jan 2023 15:53:22 +0800</lastBuildDate><atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;blockquote>
 &lt;p>祝大家新年快樂 !!!&lt;/p>
 &lt;/blockquote>
@@ -173,7 +173,7 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">./linebot.log:/app/scheduler.log&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>置頂 - 提高效率的必備指令：一份我的常用指令與工具清單</title><link>https://chunyenc.github.io/p/common-scripts/</link><pubDate>Wed, 18 Jan 2023 11:38:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/common-scripts/</guid><description>工作時常使用到的指令與工具</description><tags><tag>GIT</tag><tag>Docker</tag><tag>VSCode</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/div></content></item><item><title>置頂 - 提高效率的必備指令：一份我的常用指令與工具清單</title><link>/p/common-scripts/</link><pubDate>Wed, 18 Jan 2023 11:38:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/common-scripts/</guid><description>工作時常使用到的指令與工具</description><tags><tag>GIT</tag><tag>Docker</tag><tag>VSCode</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>主要為存放工作中經常使用的指令、框架、套件。&lt;/p>
 &lt;p>若有任何建議或是覺得需要修改的地方還請不吝指教，謝謝！&lt;/p>
 &lt;p>如何聯繫我 ?&lt;/p>
@@ -294,7 +294,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network postgres:10
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>GIT 小撇步 02 - 教你如何刪除 commit 過的大檔案, 超占空間 !</title><link>https://chunyenc.github.io/p/git-deleted-commit-big-files/</link><pubDate>Wed, 21 Dec 2022 13:36:01 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/git-deleted-commit-big-files/</guid><description>因為在準備 CI/CD 要減少每個步驟的耗費的時間，導致要整理 git ..</description><tags><tag>GIT</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/div></content></item><item><title>GIT 小撇步 02 - 教你如何刪除 commit 過的大檔案, 超占空間 !</title><link>/p/git-deleted-commit-big-files/</link><pubDate>Wed, 21 Dec 2022 13:36:01 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/git-deleted-commit-big-files/</guid><description>因為在準備 CI/CD 要減少每個步驟的耗費的時間，導致要整理 git ..</description><tags><tag>GIT</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>準備要幫自己手上的專案套上 CI/CD，但是發現過去的資料其實沒有使用 &lt;code>submodule&lt;/code> 的方式去管理 &lt;code>data&lt;/code>。&lt;/p>
 &lt;blockquote>
 &lt;p>此處的 &lt;code>data&lt;/code> 是一個資料夾，裡面放的是客戶系統的資料。會有 &lt;code>.csv&lt;/code> or &lt;code>.json&lt;/code> 的檔案。&lt;/p>
@@ -427,7 +427,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">du -sh *
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>GIT 小撇步 01 - 教你找回尚未 commit 且遺失的檔案</title><link>https://chunyenc.github.io/p/git-find-out-not-commit-files/</link><pubDate>Wed, 06 Jul 2022 17:59:19 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/git-find-out-not-commit-files/</guid><description>紀錄一下 git add 後 沒有 commit, 找回 add 的檔案.</description><tags><tag>GIT</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
+&lt;/div></content></item><item><title>GIT 小撇步 01 - 教你找回尚未 commit 且遺失的檔案</title><link>/p/git-find-out-not-commit-files/</link><pubDate>Wed, 06 Jul 2022 17:59:19 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/git-find-out-not-commit-files/</guid><description>紀錄一下 git add 後 沒有 commit, 找回 add 的檔案.</description><tags><tag>GIT</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
 &lt;p>有一天下午，把某項任務完成後，就下指令 &lt;code>git add&lt;/code>&lt;/p>
 &lt;p>然後沒有 &lt;code>git commit&lt;/code> &amp;hellip; (更不用說 &lt;code>git push&lt;/code>)&lt;/p>
 &lt;p>總之就在整理前後端版本對應的問題，然後就直接 &lt;code>git checkout -f master&lt;/code> 跳去 master，主要是覆蓋版本，因為主分支已經很久沒有上新版了。&lt;/p>

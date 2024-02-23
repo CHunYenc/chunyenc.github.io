@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Access-Point-Model on CY | 程式小角落</title><link>https://chunyenc.github.io/tags/access-point-model/</link><description>Recent content in Access-Point-Model on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 27 Nov 2021 14:22:00 +0000</lastBuildDate><atom:link href="https://chunyenc.github.io/tags/access-point-model/index.xml" rel="self" type="application/rss+xml"/><item><title>ZYXEL NBG6604 Access Point Model 使用基地台模式連接到管理員/設定頁面</title><link>https://chunyenc.github.io/p/zyxel-nbg6604-access-point-model-connect-to-admin-page/</link><pubDate>Sat, 27 Nov 2021 14:22:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>https://chunyenc.github.io/p/zyxel-nbg6604-access-point-model-connect-to-admin-page/</guid><description/><tags><tag>Network</tag><tag>ZYXEL</tag><tag>NBG6604</tag><tag>Access-Point-Model</tag><tag>AP-Model</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h2 id="說明">說明&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Access-Point-Model on CY | 程式小角落</title><link>/tags/access-point-model/</link><description>Recent content in Access-Point-Model on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 27 Nov 2021 14:22:00 +0000</lastBuildDate><atom:link href="/tags/access-point-model/index.xml" rel="self" type="application/rss+xml"/><item><title>ZYXEL NBG6604 Access Point Model 使用基地台模式連接到管理員/設定頁面</title><link>/p/zyxel-nbg6604-access-point-model-connect-to-admin-page/</link><pubDate>Sat, 27 Nov 2021 14:22:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/zyxel-nbg6604-access-point-model-connect-to-admin-page/</guid><description/><tags><tag>Network</tag><tag>ZYXEL</tag><tag>NBG6604</tag><tag>Access-Point-Model</tag><tag>AP-Model</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h2 id="說明">說明&lt;/h2>
 &lt;p>不廢話，先說明一下為什麼會碰到這個問題，實際原因不太了解。真的對網路只是微懂。&lt;/p>
 &lt;p>而本篇主要是記錄這問題是如何解決的，並從哪裡得到這些資訊及解決方式。&lt;/p>
 &lt;p>機型：ZYXEL NBG6604&lt;/p>
@@ -10,7 +10,7 @@
 &lt;p>我無法使用 &lt;a class="link" href="http://myrouter" target="_blank" rel="noopener"
 >http://myrouter&lt;/a> 進入管理員頁面。&lt;/p>
 &lt;p>這個時候只要用網路線/WIFI的方式連線上分享器，使用電腦更改連線IP，以下為我的設定&lt;/p>
-&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20211127_zyxel-ngb6604/01.setting-static-ip.png"
+&lt;p>&lt;img src="/images/blogger/20211127_zyxel-ngb6604/01.setting-static-ip.png"
 loading="lazy"
 alt="設定固定 IP"
 >&lt;/p>
@@ -20,7 +20,7 @@ alt="設定固定 IP"
 &lt;p>Gateway 的 IP 在更改 AP模式（Access Point Model） 時有跳出來，請記錄下來。&lt;/p>
 &lt;p>大致上這樣連線 &lt;a class="link" href="http://192.168.1.2" target="_blank" rel="noopener"
 >http://192.168.1.2&lt;/a> 既可以進入到設定頁面了！&lt;/p>
-&lt;p>&lt;img src="https://chunyenc.github.io/images/blogger/20211127_zyxel-ngb6604/02.connect-to-wifi-router.png"
+&lt;p>&lt;img src="/images/blogger/20211127_zyxel-ngb6604/02.connect-to-wifi-router.png"
 loading="lazy"
 alt="進入 WIFI Router 設定頁面"
 >&lt;/p>
