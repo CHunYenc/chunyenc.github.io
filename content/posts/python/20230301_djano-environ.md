@@ -26,14 +26,14 @@ draft: false
 
 > 針對 `資料庫連接字串`、`快取設定` 就是一大優點
 
-# 優勢 1 - 資料庫接字串
+# 資料庫接字串
 
 ## 使用前的設定
 
 筆者再使用 django-environ 前是使用 `python-dotenv`
 
 ```python
-# settings.py
+# 檔案 1 settings.py
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql", # 1- 設定 ENGINE
@@ -44,42 +44,53 @@ DATABASES = {
         "PORT": variables.POSTGRESQL_PORT, # 6- 資料庫 PORT
     }
 }
-# variables.py 管理環境變數
+
+# 檔案 2 variables.py 管理環境變數
 POSTGRESQL_PASSWORD = os.getenv("DB_PASSWORD", "DEFAULT_PASSWORD") # 如果沒有 DB_PASSWORD, 就是 DEFAULT_PASSWORD
 POSTGRESQL_HOST = os.getenv("DB_HOST", "localhost") # 如果沒有 DB_HOST, 就是 localhost
-....
-# .env
+
+# 檔案 3 .env
 DB_PASSWORD = postgres 
 POSTGRESQL_HOST = 192.168.1.1
-....
 ```
 
-通常我們使用 Django 去連接資料物的時候可能都會需要這些設定。
+通常我們使用 Django 去連接 DB 的時候可能都會需要這些設定。
 
 ## 使用後的設定
 
 筆者再使用 django-environ 後就直接縮短這個部分的參數
 
 ```python
-# settings.py
+# 檔案 1 settings.py
 DATABASES = {
     'default': variables.DATABASE
 }
-# variables.py
+
+# 檔案 2 variables.py
 DATABASE = env.db()  # default load .env DATABASE_URL
-# .env
+
+# 檔案 3 .env
 DATABASE_URL="postgres://postgres:postgres@192.168.1.1:5432/mydb"
-# 如果我要更換成 MYSQL
+
+# 檔案 3 - 如果我要更換成 MYSQL
+DATABASE_URL="mysql://root:root@192.168.1.1:3306/mydb"
+```
+
+甚至你也可以省去 variables.py 這個檔案，直接在 settings.py 裡面直接使用 env.db() 就好。
+
+```python
+# 檔案 1 settings.py
+DATABASES = {
+    'default': env.db()
+}
+
+# 檔案 2 .env
 DATABASE_URL="postgres://postgres:postgres@192.168.1.1:5432/mydb"
 ```
 
+省去 variables.py 這樣的設定反而比較直覺。
 
-
-# 優勢 2 - 快取設定
-
-```
-待補
-```
+感謝撥冗閱讀本篇文章。
 
 # Reference
 1. joke2k/django-environ: Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application. - GitHub. https://github.com/joke2k/django-environ 已存取 2023/3/1.
