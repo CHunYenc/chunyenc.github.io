@@ -137,7 +137,7 @@
 &lt;blockquote>
 &lt;p>針對 &lt;code>資料庫連接字串&lt;/code>、&lt;code>快取設定&lt;/code> 就是一大優點&lt;/p>
 &lt;/blockquote>
-&lt;h1 id="優勢-1---資料庫接字串">優勢 1 - 資料庫接字串&lt;/h1>
+&lt;h1 id="資料庫接字串">資料庫接字串&lt;/h1>
 &lt;h2 id="使用前的設定">使用前的設定&lt;/h2>
 &lt;p>筆者再使用 django-environ 前是使用 &lt;code>python-dotenv&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -163,7 +163,7 @@
 &lt;/span>&lt;span class="lnt">19
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># settings.py&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 檔案 1 settings.py&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASES&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;default&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;ENGINE&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;django.db.backends.postgresql&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># 1- 設定 ENGINE&lt;/span>
@@ -174,17 +174,17 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;PORT&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">variables&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">POSTGRESQL_PORT&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># 6- 資料庫 PORT&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># variables.py 管理環境變數&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 檔案 2 variables.py 管理環境變數&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">POSTGRESQL_PASSWORD&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getenv&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;DB_PASSWORD&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;DEFAULT_PASSWORD&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># 如果沒有 DB_PASSWORD, 就是 DEFAULT_PASSWORD&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">POSTGRESQL_HOST&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">os&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">getenv&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;DB_HOST&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;localhost&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># 如果沒有 DB_HOST, 就是 localhost&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">....&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># .env&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 檔案 3 .env&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DB_PASSWORD&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">postgres&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">POSTGRESQL_HOST&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mf">192.168.1.1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">....&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>通常我們使用 Django 去連接資料物的時候可能都會需要這些設定。&lt;/p>
+&lt;/div>&lt;p>通常我們使用 Django 去連接 DB 的時候可能都會需要這些設定。&lt;/p>
 &lt;h2 id="使用後的設定">使用後的設定&lt;/h2>
 &lt;p>筆者再使用 django-environ 後就直接縮短這個部分的參數&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -199,30 +199,50 @@
 &lt;/span>&lt;span class="lnt"> 8
 &lt;/span>&lt;span class="lnt"> 9
 &lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># settings.py&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 檔案 1 settings.py&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASES&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;default&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">variables&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">DATABASE&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># variables.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 檔案 2 variables.py&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASE&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">env&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">db&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="c1"># default load .env DATABASE_URL&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># .env&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 檔案 3 .env&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASE_URL&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;postgres://postgres:postgres@192.168.1.1:5432/mydb&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 如果我要更換成 MYSQL&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASE_URL&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;postgres://postgres:postgres@192.168.1.1:5432/mydb&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 檔案 3 - 如果我要更換成 MYSQL&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASE_URL&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;mysql://root:root@192.168.1.1:3306/mydb&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="優勢-2---快取設定">優勢 2 - 快取設定&lt;/h1>
+&lt;/div>&lt;p>甚至你也可以省去 variables.py 這個檔案，直接在 settings.py 裡面直接使用 env.db() 就好。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">待補
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 檔案 1 settings.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASES&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s1">&amp;#39;default&amp;#39;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">env&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">db&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 檔案 2 .env&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">DATABASE_URL&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;postgres://postgres:postgres@192.168.1.1:5432/mydb&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="reference">Reference&lt;/h1>
+&lt;/div>&lt;p>省去 variables.py 這樣的設定反而比較直覺。&lt;/p>
+&lt;p>感謝撥冗閱讀本篇文章。&lt;/p>
+&lt;h1 id="reference">Reference&lt;/h1>
 &lt;ol>
 &lt;li>joke2k/django-environ: Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application. - GitHub. &lt;a class="link" href="https://github.com/joke2k/django-environ" target="_blank" rel="noopener"
 >https://github.com/joke2k/django-environ&lt;/a> 已存取 2023/3/1.&lt;/li>
