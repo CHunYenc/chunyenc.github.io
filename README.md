@@ -1,29 +1,37 @@
-# chunyenc.github.io
+![act-logo](https://raw.githubusercontent.com/wiki/nektos/act/img/logo-150.png)
 
-[![Online](https://github.com/CHunYenc/chunyenc.github.io/actions/workflows/hugo.yml/badge.svg)](https://github.com/CHunYenc/chunyenc.github.io/actions/workflows/hugo.yml)
+# Overview [![push](https://github.com/nektos/act/workflows/push/badge.svg?branch=master&event=push)](https://github.com/nektos/act/actions) [![Join the chat at https://gitter.im/nektos/act](https://badges.gitter.im/nektos/act.svg)](https://gitter.im/nektos/act?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Go Report Card](https://goreportcard.com/badge/github.com/nektos/act)](https://goreportcard.com/report/github.com/nektos/act) [![awesome-runners](https://img.shields.io/badge/listed%20on-awesome--runners-blue.svg)](https://github.com/jonico/awesome-runners)
 
-歡迎來到我的累積經驗部落格，這是一個個人部落格，我在這裡分享自己對於技術、程式碼等各種主題的經驗和想法。
+> "Think globally, `act` locally"
 
-這個部落格使用 Hugo 作為靜態網站生成器，並托管於 GitHub Pages 上。
+Run your [GitHub Actions](https://developer.github.com/actions/) locally! Why would you want to do this? Two reasons:
 
-Welcome to My Accumulated Experience Blog, a personal blog where I share my experiences and thoughts on various topics, including technology and programming.
+- **Fast Feedback** - Rather than having to commit/push every time you want to test out the changes you are making to your `.github/workflows/` files (or for any changes to embedded GitHub actions), you can use `act` to run the actions locally. The [environment variables](https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables#default-environment-variables) and [filesystem](https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#filesystems-on-github-hosted-runners) are all configured to match what GitHub provides.
+- **Local Task Runner** - I love [make](<https://en.wikipedia.org/wiki/Make_(software)>). However, I also hate repeating myself. With `act`, you can use the GitHub Actions defined in your `.github/workflows/` to replace your `Makefile`!
 
-This blog is powered by Hugo, a fast and flexible static site generator, and hosted on GitHub Pages.
+# How Does It Work?
 
-## 主題
+When you run `act` it reads in your GitHub Actions from `.github/workflows/` and determines the set of actions that need to be run. It uses the Docker API to either pull or build the necessary images, as defined in your workflow files and finally determines the execution path based on the dependencies that were defined. Once it has the execution path, it then uses the Docker API to run containers for each action based on the images prepared earlier. The [environment variables](https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables#default-environment-variables) and [filesystem](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#file-systems) are all configured to match what GitHub provides.
 
-這個部落格使用 [Stack](https://themes.gohugo.io/themes/hugo-theme-stack/) 為主題。
+Let's see it in action with a [sample repo](https://github.com/cplee/github-actions-demo)!
 
-The theme used in this blog is [Stack](https://themes.gohugo.io/themes/hugo-theme-stack/).
+![Demo](https://raw.githubusercontent.com/wiki/nektos/act/quickstart/act-quickstart-2.gif)
 
-## 使用方法
+# Act User Guide
 
-要使用這個部落格，只需克隆這個存儲庫，然後在本地安裝 Hugo。接著，運行 `hugo server` 命令來啟動本地服務器並預覽部落格。您可以修改內容和配置文件，以定制化部落格。
+Please look at the [act user guide](https://nektosact.com) for more documentation.
 
-要發文章時，可以直接透過 `hugo new content/posts/....` 命令來建立一篇新文章。
+# Support
 
-# CC BY-NC-SA 4.0 許可證
+Need help? Ask on [Gitter](https://gitter.im/nektos/act)!
 
-本部落格的所有內容（包括文本、圖片、音頻、視頻等）均受到 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 許可證的保護。這意味著您可以自由地分享、複製、發布、翻譯、修改、展示和表演本部落格的內容，但需要標示原始作者和出處，並且不能用於商業目的。此外，任何修改或創建的作品必須採用相同的許可證進行發布，這被稱為 "共享同樣的方式"。# CC BY-NC-SA 4.0 License
+# Contributing
 
-All content on this blog, including text, images, audio, and video, is licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license. This means that you are free to share, copy, distribute, translate, modify, display, and perform the content of this blog, but you must attribute the original author and source, and you may not use it for commercial purposes. Additionally, any modifications or creations of work must be published under the same license, which is called "share alike."
+Want to contribute to act? Awesome! Check out the [contributing guidelines](CONTRIBUTING.md) to get involved.
+
+## Manually building from source
+
+- Install Go tools 1.20+ - (<https://golang.org/doc/install>)
+- Clone this repo `git clone git@github.com:nektos/act.git`
+- Run unit tests with `make test`
+- Build and install: `make install`
