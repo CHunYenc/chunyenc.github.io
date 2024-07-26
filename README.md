@@ -20,6 +20,8 @@ The theme used in this blog is [Stack](https://themes.gohugo.io/themes/hugo-them
 
 要使用這個部落格，只需克隆這個存儲庫，然後在本地安裝 Hugo。接著，運行 `hugo server` 命令來啟動本地服務器並預覽部落格。您可以修改內容和配置文件，以定制化部落格。
 
+要發文章時，可以直接透過 `hugo new content/posts/....` 命令來建立一篇新文章。
+
 # CC BY-NC-SA 4.0 許可證
 
 本部落格的所有內容（包括文本、圖片、音頻、視頻等）均受到 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 許可證的保護。這意味著您可以自由地分享、複製、發布、翻譯、修改、展示和表演本部落格的內容，但需要標示原始作者和出處，並且不能用於商業目的。此外，任何修改或創建的作品必須採用相同的許可證進行發布，這被稱為 "共享同樣的方式"。# CC BY-NC-SA 4.0 License
