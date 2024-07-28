@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Logtail on CY | 程式小角落</title><link>/tags/logtail/</link><description>Recent content in Logtail on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Thu, 13 Apr 2023 02:46:15 +0000</lastBuildDate><atom:link href="/tags/logtail/index.xml" rel="self" type="application/rss+xml"/><item><title>Logtail - 一個彙整免費 Paas 平台的日誌平台</title><link>/p/logtail-log-management/</link><pubDate>Thu, 13 Apr 2023 02:46:15 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/logtail-log-management/</guid><description>筆者從 papertrailapp 毫不猶豫直接跳到 logtail.</description><tags><tag>Logtail</tag><tag>Render.com</tag><tag>Heroku</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>因筆者有使用 Heroku、Render.com、Railway 的經驗，那他們都是 PaaS (Platform as a Service，平台及服務) 的服務平台。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Logtail on CY | 程式小角落</title><link>/tags/logtail/</link><description>Recent content in Logtail on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Thu, 13 Apr 2023 02:46:15 +0000</lastBuildDate><atom:link href="/tags/logtail/index.xml" rel="self" type="application/rss+xml"/><item><title>Logtail - 一個彙整免費 Paas 平台的日誌平台</title><link>/p/logtail-log-management/</link><pubDate>Thu, 13 Apr 2023 02:46:15 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/logtail-log-management/</guid><description>筆者從 papertrailapp 毫不猶豫直接跳到 logtail.</description><tags><tag>Logtail</tag><tag>Render.com</tag><tag>Heroku</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>因筆者有使用 Heroku、Render.com、Railway 的經驗，那他們都是 PaaS (Platform as a Service，平台及服務) 的服務平台。&lt;/p>
 &lt;blockquote>
 &lt;p>這些 PaaS 平台通常提供了開發工具、執行環境、資料庫、身份驗證、監控等服務，讓開發人員可以專注於應用程式的開發，而不必擔心基礎架構的建設。&lt;/p>
 &lt;/blockquote>
@@ -17,9 +17,9 @@
 &lt;/ul>
 &lt;p>那可以知道我在 PaaS 的部份用的非常兇猛，甚至 logging 非常分散，但是 &lt;code>機器不同源，日誌是類似&lt;/code>。所以我需要一個有效的方式來&lt;code>收集&lt;/code>、&lt;code>管理&lt;/code>和&lt;code>分析&lt;/code>這些日誌，以便進行&lt;code>錯誤排查&lt;/code>、&lt;code>性能優化&lt;/code>和&lt;code>安全監控&lt;/code>等。&lt;/p>
 &lt;p>接下來就是要來講比較實際的 Logtail 的 &lt;code>使用過程(串接)&lt;/code> 到 &lt;code>好處(優點)&lt;/code>。&lt;/p>
-&lt;h1 id="好處一無痛串接-paas-平台">好處一：無痛串接 Paas 平台&lt;/h1>
-&lt;h2 id="heroku">Heroku&lt;/h2>
-&lt;p>綁定 &lt;code>Heroku&lt;/code> 前，先到 &lt;code>Logtail&lt;/code> 申請後就可以直接來用了 .. (如下圖)&lt;/p>
+&lt;h1 id="好處一無痛串接-paas-平台">好處一：無痛串接 Paas 平台
+&lt;/h1>&lt;h2 id="heroku">Heroku
+&lt;/h2>&lt;p>綁定 &lt;code>Heroku&lt;/code> 前，先到 &lt;code>Logtail&lt;/code> 申請後就可以直接來用了 .. (如下圖)&lt;/p>
 &lt;p>&lt;img src="/images/20230413_logtail/01.png"
 loading="lazy"
 alt="綁定的過程"
@@ -31,8 +31,8 @@ alt="綁定的過程"
 &lt;li>然後你就不斷地在 &lt;code>1 步驟&lt;/code> 的應用程式不斷刷新頁面.&lt;/li>
 &lt;li>觀察 Logtail 有沒有新增加 logging.&lt;/li>
 &lt;/ol>
-&lt;h2 id="rendercom">Render.com&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h2 id="rendercom">Render.com
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -40,19 +40,19 @@ alt="綁定的過程"
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">待補，但基本上跟上面一樣 ..
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="好處二內建-grafana-視覺化平台">好處二：內建 Grafana 視覺化平台&lt;/h1>
-&lt;p>Grafana 是一個流行的開源數據視覺化和監控平台，它提供了&lt;code>強大的儀表板&lt;/code>和&lt;code>視覺化工具&lt;/code>。&lt;/p>
+&lt;/div>&lt;h1 id="好處二內建-grafana-視覺化平台">好處二：內建 Grafana 視覺化平台
+&lt;/h1>&lt;p>Grafana 是一個流行的開源數據視覺化和監控平台，它提供了&lt;code>強大的儀表板&lt;/code>和&lt;code>視覺化工具&lt;/code>。&lt;/p>
 &lt;p>我今天也主要不是探討這個平台，自己用的也不是非常熟。&lt;/p>
 &lt;blockquote>
 &lt;p>筆者使用 papertrailapp 只能串接到自己的視覺化平台，超貴。&lt;/p>
 &lt;/blockquote>
-&lt;h1 id="好處三異常通知">好處三：異常通知&lt;/h1>
-&lt;blockquote>
+&lt;h1 id="好處三異常通知">好處三：異常通知
+&lt;/h1>&lt;blockquote>
 &lt;p>papertrailapp 一樣有。&lt;/p>
 &lt;/blockquote>
-&lt;h1 id="好處三其他平台有的基本上都有-">好處三：其他平台有的基本上都有 ..&lt;/h1>
-&lt;h1 id="缺點錢">缺點：錢&lt;/h1>
-&lt;h1 id="建議還是自架">建議：還是自架&lt;/h1>
-&lt;p>主要還是回到錢的部分，一個月 24 USD 真的不便宜。&lt;/p>
+&lt;h1 id="好處三其他平台有的基本上都有-">好處三：其他平台有的基本上都有 ..
+&lt;/h1>&lt;h1 id="缺點錢">缺點：錢
+&lt;/h1>&lt;h1 id="建議還是自架">建議：還是自架
+&lt;/h1>&lt;p>主要還是回到錢的部分，一個月 24 USD 真的不便宜。&lt;/p>
 &lt;p>目前是有朝向 Graylog(&lt;code>ElasticSearch&lt;/code> or &lt;code>OpenSearch&lt;/code>) + Grafana 來建。&lt;/p>
 &lt;p>這邊之後再給大家講一下我的架構。&lt;/p></content></item></channel></rss>

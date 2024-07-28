@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo on CY | 程式小角落</title><link>/tags/hugo/</link><description>Recent content in Hugo on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 26 Mar 2022 20:46:00 +0800</lastBuildDate><atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>我的第一篇 HUGO 架設 BLOG 經驗分享</title><link>/p/hugo-blog-online/</link><pubDate>Sat, 26 Mar 2022 20:46:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/hugo-blog-online/</guid><description>沒什麼描述，就是講講這個部落格的產生原因</description><tags><tag>Hugo</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="更換成-hugo-的原因">更換成 Hugo 的原因&lt;/h1>
-&lt;p>自己本身是有使用 Blogger，主要認為有下面幾個問題。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hugo on CY | 程式小角落</title><link>/tags/hugo/</link><description>Recent content in Hugo on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 26 Mar 2022 20:46:00 +0800</lastBuildDate><atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml"/><item><title>我的第一篇 HUGO 架設 BLOG 經驗分享</title><link>/p/hugo-blog-online/</link><pubDate>Sat, 26 Mar 2022 20:46:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/hugo-blog-online/</guid><description>沒什麼描述，就是講講這個部落格的產生原因</description><tags><tag>Hugo</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="更換成-hugo-的原因">更換成 Hugo 的原因
+&lt;/h1>&lt;p>自己本身是有使用 Blogger，主要認為有下面幾個問題。&lt;/p>
 &lt;ol>
 &lt;li>垃圾留言&lt;/li>
 &lt;li>介面很醜&lt;/li>
@@ -11,8 +11,8 @@
 &lt;/li>
 &lt;li>不能使用 markdown 方式來撰寫你想要的文章 ***&lt;/li>
 &lt;/ol>
-&lt;h1 id="更換過程">更換過程&lt;/h1>
-&lt;p>我認為官方的文件講得很清楚，我也是照者下面的連結馬上建立一個 quickstart 資料夾。&lt;/p>
+&lt;h1 id="更換過程">更換過程
+&lt;/h1>&lt;p>我認為官方的文件講得很清楚，我也是照者下面的連結馬上建立一個 quickstart 資料夾。&lt;/p>
 &lt;p>&lt;a class="link" href="https://gohugo.io/getting-started/quick-start/" target="_blank" rel="noopener"
 >https://gohugo.io/getting-started/quick-start/&lt;/a>&lt;/p>
 &lt;p>然後使用一個官方預設的 Theme (佈景主題?)&lt;/p>
@@ -20,8 +20,8 @@
 &lt;p>所以現在看到的這個主題呢，是從官方(下面連結)找到的。&lt;/p>
 &lt;p>&lt;a class="link" href="https://themes.gohugo.io/" target="_blank" rel="noopener"
 >https://themes.gohugo.io/&lt;/a>&lt;/p>
-&lt;h1 id="我選的背景主題">我選的背景主題&lt;/h1>
-&lt;p>&lt;a class="link" href="https://themes.gohugo.io/themes/hugo-theme-stack/" target="_blank" rel="noopener"
+&lt;h1 id="我選的背景主題">我選的背景主題
+&lt;/h1>&lt;p>&lt;a class="link" href="https://themes.gohugo.io/themes/hugo-theme-stack/" target="_blank" rel="noopener"
 >https://themes.gohugo.io/themes/hugo-theme-stack/&lt;/a>&lt;/p>
 &lt;p>底下有中文文檔，不過我還是中英文互相看，英文的文件我認為比較新。&lt;/p>
 &lt;p>建議可以直接看英文啦，反正就看一下 &lt;code>config.yml&lt;/code> 怎麼設定。&lt;/p>
@@ -33,8 +33,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">config.yml 底下有檔案連結可以過去參考看看。
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="架設環境">架設環境&lt;/h1>
-&lt;p>主要有三個地方需要注意，以下是說明。&lt;/p>
+&lt;/div>&lt;h1 id="架設環境">架設環境
+&lt;/h1>&lt;p>主要有三個地方需要注意，以下是說明。&lt;/p>
 &lt;p>Reference 都有我參考的文章，關於 Reference 第 2 點的參考文章建立的 main.yml 是無法執行的。(我的 branch(gh-pages) 一直沒有建立出 HTML)&lt;/p>
 &lt;ol>
 &lt;li>
@@ -95,8 +95,8 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>這樣你等一下就可以在你的網頁上看到了！&lt;/p>
-&lt;h1 id="reference">Reference&lt;/h1>
-&lt;ol>
+&lt;h1 id="reference">Reference
+&lt;/h1>&lt;ol>
 &lt;li>&lt;a class="link" href="https://medium.com/@chswei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40" target="_blank" rel="noopener"
 >https://medium.com/@chswei/%E5%9C%A8-github-%E9%83%A8%E7%BD%B2-hugo-%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-9c40682dfe40&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://yurepo.tw/2021/03/%E5%A6%82%E4%BD%95%E5%B0%87hugo%E9%83%A8%E8%90%BD%E6%A0%BC%E9%83%A8%E7%BD%B2%E5%88%B0github%E4%B8%8A/" target="_blank" rel="noopener"

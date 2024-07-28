@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jenkins on CY | 程式小角落</title><link>/tags/jenkins/</link><description>Recent content in Jenkins on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sun, 10 Apr 2022 19:03:00 +0800</lastBuildDate><atom:link href="/tags/jenkins/index.xml" rel="self" type="application/rss+xml"/><item><title>JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用</title><link>/p/jenkins-01-deploy/</link><pubDate>Sun, 10 Apr 2022 19:03:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/jenkins-01-deploy/</guid><description>主要是指令與如何使用 Docker + Jenkins 並印出 「Hello Jenkins」</description><tags><tag>Jenkins</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="環境">環境&lt;/h1>
-&lt;p>趁這次假日架設了 Jenkins，但是目前為止 M1 處理器皆不支援。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jenkins on CY | 程式小角落</title><link>/tags/jenkins/</link><description>Recent content in Jenkins on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sun, 10 Apr 2022 19:03:00 +0800</lastBuildDate><atom:link href="/tags/jenkins/index.xml" rel="self" type="application/rss+xml"/><item><title>JenKins 架設紀錄 01 - 使用 Docker 架設 Jenkins 並第一次使用</title><link>/p/jenkins-01-deploy/</link><pubDate>Sun, 10 Apr 2022 19:03:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/jenkins-01-deploy/</guid><description>主要是指令與如何使用 Docker + Jenkins 並印出 「Hello Jenkins」</description><tags><tag>Jenkins</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="環境">環境
+&lt;/h1>&lt;p>趁這次假日架設了 Jenkins，但是目前為止 M1 處理器皆不支援。&lt;/p>
 &lt;p>所以用在學生時期使用的 Oracle Cloud 建立一台虛擬機，以下都可以適用在任何雲端平台來操作。&lt;/p>
-&lt;h2 id="ubuntu-版本">Ubuntu 版本&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h2 id="ubuntu-版本">Ubuntu 版本
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -22,8 +22,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Codename: bionic
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="docker-版本">Docker 版本&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="docker-版本">Docker 版本
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -33,12 +33,12 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Docker version 20.10.14, build a224086
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="操作">操作&lt;/h1>
-&lt;p>&lt;a class="link" href="https://github.com/jenkinsci/docker/blob/master/README.md" target="_blank" rel="noopener"
+&lt;/div>&lt;h1 id="操作">操作
+&lt;/h1>&lt;p>&lt;a class="link" href="https://github.com/jenkinsci/docker/blob/master/README.md" target="_blank" rel="noopener"
 >README 官方閱讀手冊&lt;/a>&lt;/p>
 &lt;p>以下皆是參考上面的連結，很重要&lt;/p>
-&lt;h2 id="開始">開始&lt;/h2>
-&lt;p>切記這邊不能使用 &lt;code>-d&lt;/code> 指令，否則會影響到第一次啟動密碼&lt;/p>
+&lt;h2 id="開始">開始
+&lt;/h2>&lt;p>切記這邊不能使用 &lt;code>-d&lt;/code> 指令，否則會影響到第一次啟動密碼&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -68,29 +68,29 @@
 &lt;/span>&lt;span class="lnt">16
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">... logging ...
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="o">...&lt;/span> &lt;span class="n">logging&lt;/span> &lt;span class="o">...&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*************************************************************
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*************************************************************
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*************************************************************
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">*************************************************************&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">*************************************************************&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">*************************************************************&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Jenkins initial setup is required. An admin user has been created and a password generated.
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Please use the following password to proceed to installation:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Jenkins&lt;/span> &lt;span class="n">initial&lt;/span> &lt;span class="n">setup&lt;/span> &lt;span class="n">is&lt;/span> &lt;span class="n">required&lt;/span>&lt;span class="o">.&lt;/span> &lt;span class="n">An&lt;/span> &lt;span class="n">admin&lt;/span> &lt;span class="n">user&lt;/span> &lt;span class="n">has&lt;/span> &lt;span class="n">been&lt;/span> &lt;span class="n">created&lt;/span> &lt;span class="ow">and&lt;/span> &lt;span class="n">a&lt;/span> &lt;span class="n">password&lt;/span> &lt;span class="n">generated&lt;/span>&lt;span class="o">.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Please&lt;/span> &lt;span class="n">use&lt;/span> &lt;span class="n">the&lt;/span> &lt;span class="n">following&lt;/span> &lt;span class="n">password&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">proceed&lt;/span> &lt;span class="n">to&lt;/span> &lt;span class="n">installation&lt;/span>&lt;span class="p">:&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">61e8c8cb00c0417bb4c4719ba8559060
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mf">61e8&lt;/span>&lt;span class="n">c8cb00c0417bb4c4719ba8559060&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">This&lt;/span> &lt;span class="n">may&lt;/span> &lt;span class="n">also&lt;/span> &lt;span class="n">be&lt;/span> &lt;span class="n">found&lt;/span> &lt;span class="n">at&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="k">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">jenkins_home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">secrets&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">initialAdminPassword&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*************************************************************
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*************************************************************
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*************************************************************
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">*************************************************************&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">*************************************************************&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">*************************************************************&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>先複製 &lt;code>61e8c8cb00c0417bb4c4719ba8559060&lt;/code>&lt;/p>
 &lt;p>如果不小心加上 &lt;code>-d&lt;/code> 後，該怎麼辦 ?&lt;/p>
 &lt;p>可以參考 &lt;a class="link" href="#%e5%82%99%e8%a8%bb" >備註&lt;/a>&lt;/p>
-&lt;h2 id="前往網頁">前往網頁&lt;/h2>
-&lt;p>&lt;img src="/images/20220410/00-wait.png"
+&lt;h2 id="前往網頁">前往網頁
+&lt;/h2>&lt;p>&lt;img src="/images/20220410/00-wait.png"
 loading="lazy"
 alt="等待 Jenkins 上工"
 >&lt;/p>
@@ -99,35 +99,35 @@ loading="lazy"
 alt="進入 JenKins 的第一個畫面"
 >&lt;/p>
 &lt;p>就把 &lt;code>61e8c8cb00c0417bb4c4719ba8559060&lt;/code> 貼進去裡面就完成啟用囉 !&lt;/p>
-&lt;h2 id="不安裝任何插件">不安裝任何插件&lt;/h2>
-&lt;p>直接點擊右上角 x, 到時候我們再一項一項安裝.&lt;/p>
+&lt;h2 id="不安裝任何插件">不安裝任何插件
+&lt;/h2>&lt;p>直接點擊右上角 x, 到時候我們再一項一項安裝.&lt;/p>
 &lt;p>&lt;img src="/images/20220410/02-plugin.png"
 loading="lazy"
 alt="點擊右上角 x 進行下一步"
 >&lt;/p>
-&lt;h2 id="進入首頁">進入首頁&lt;/h2>
-&lt;p>&lt;img src="/images/20220410/03-home.png"
+&lt;h2 id="進入首頁">進入首頁
+&lt;/h2>&lt;p>&lt;img src="/images/20220410/03-home.png"
 loading="lazy"
 alt="Jenkins 首頁"
 >&lt;/p>
-&lt;h2 id="更改-admin-密碼">更改 admin 密碼&lt;/h2>
-&lt;p>&lt;img src="/images/20220410/04-change_password.png"
+&lt;h2 id="更改-admin-密碼">更改 admin 密碼
+&lt;/h2>&lt;p>&lt;img src="/images/20220410/04-change_password.png"
 loading="lazy"
 alt="更改 admin 登入密碼"
 >&lt;/p>
-&lt;h2 id="建立一個-work">建立一個 work&lt;/h2>
-&lt;p>&lt;img src="/images/20220410/05-create-work.png"
+&lt;h2 id="建立一個-work">建立一個 work
+&lt;/h2>&lt;p>&lt;img src="/images/20220410/05-create-work.png"
 loading="lazy"
 alt="點擊左上角，新增作業"
 >&lt;/p>
-&lt;h2 id="hello-jenkins">Hello Jenkins&lt;/h2>
-&lt;p>&lt;img src="/images/20220410/06-create-hello-jenkins.png"
+&lt;h2 id="hello-jenkins">Hello Jenkins
+&lt;/h2>&lt;p>&lt;img src="/images/20220410/06-create-hello-jenkins.png"
 loading="lazy"
 alt="創建一個作業"
 >&lt;/p>
 &lt;p>這邊可以直接按「OK」。&lt;/p>
-&lt;h2 id="加入一個-echo-shell">加入一個 echo shell&lt;/h2>
-&lt;p>&lt;img src="/images/20220410/07-create-shell.jpeg"
+&lt;h2 id="加入一個-echo-shell">加入一個 echo shell
+&lt;/h2>&lt;p>&lt;img src="/images/20220410/07-create-shell.jpeg"
 loading="lazy"
 alt="選取 執行 Shell"
 >&lt;/p>
@@ -138,8 +138,8 @@ loading="lazy"
 alt="打上 echo Hello Jenkins"
 >&lt;/p>
 &lt;p>點擊儲存。&lt;/p>
-&lt;h2 id="執行我們建立的作業-hello-jenkins">執行我們建立的作業 Hello Jenkins&lt;/h2>
-&lt;p>&lt;img src="/images/20220410/09-dashboard.jpg"
+&lt;h2 id="執行我們建立的作業-hello-jenkins">執行我們建立的作業 Hello Jenkins
+&lt;/h2>&lt;p>&lt;img src="/images/20220410/09-dashboard.jpg"
 loading="lazy"
 alt="回到 Dashboard"
 >&lt;/p>
@@ -177,10 +177,10 @@ alt="建置的結果"
 >&lt;/p>
 &lt;p>這邊只是大致上介紹一下，Jenkins 可以協助你啟動任何的任務，不只是 Shell.&lt;/p>
 &lt;p>未來我還會再增加一些 Jenkins 的範例，希望這篇有幫助到你 !&lt;/p>
-&lt;h1 id="結束今天我們就將-jenkins-架設完成囉">結束，今天我們就將 Jenkins 架設完成囉&lt;/h1>
-&lt;h1 id="備註---沒有密碼時的步驟">備註 - 沒有密碼時的步驟&lt;/h1>
-&lt;h2 id="查看-docker-目前執行的-container">查看 docker 目前執行的 container&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="結束今天我們就將-jenkins-架設完成囉">結束，今天我們就將 Jenkins 架設完成囉
+&lt;/h1>&lt;h1 id="備註---沒有密碼時的步驟">備註 - 沒有密碼時的步驟
+&lt;/h1>&lt;h2 id="查看-docker-目前執行的-container">查看 docker 目前執行的 container
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -192,8 +192,8 @@ alt="建置的結果"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">d9146583cb09 jenkins/jenkins:lts-jdk11 &amp;#34;/sbin/tini -- /usr/…&amp;#34; 4 minutes ago Up 34 seconds 0.0.0.0:8080-&amp;gt;8080/tcp, :::8080-&amp;gt;8080/tcp, 0.0.0.0:50000-&amp;gt;50000/tcp, :::50000-&amp;gt;50000/tcp jenkins
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="進入-container">進入 container&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="進入-container">進入 container
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -201,10 +201,10 @@ alt="建置的結果"
 &lt;/span>&lt;span class="lnt">4
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># docker exec -it d9146583cb09 /bin/bash
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># docker exec -it d9146583cb09 /bin/bash&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">jenkins@d9146583cb09:/$ cat /var/jenkins_home/secrets/initialAdminPassword
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">61e8c8cb00c0417bb4c4719ba8559060
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">jenkins&lt;/span>&lt;span class="err">@&lt;/span>&lt;span class="n">d9146583cb09&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">/$&lt;/span> &lt;span class="n">cat&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="k">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">jenkins_home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">secrets&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">initialAdminPassword&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="mf">61e8&lt;/span>&lt;span class="n">c8cb00c0417bb4c4719ba8559060&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>接下來就可以看到密碼囉， &lt;code>61e8c8cb00c0417bb4c4719ba8559060&lt;/code>&lt;/p></content></item></channel></rss>

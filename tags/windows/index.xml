@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on CY | 程式小角落</title><link>/tags/windows/</link><description>Recent content in Windows on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 27 Jan 2024 17:00:00 +0800</lastBuildDate><atom:link href="/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>Win7 - 連線共享印表機時, 出現 0x00000709 錯誤</title><link>/p/win7-error-0x00000709/</link><pubDate>Sat, 27 Jan 2024 17:00:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/win7-error-0x00000709/</guid><description>花了很多時間, 分享電腦升級為 Win11, 結果其他電腦都可以連線, 唯獨這台 Win7 一直出現 0x00000709 錯誤.</description><tags><tag>Windows</tag><tag>Share</tag><tag>硬體障礙排除</tag></tags><categories><category>Experience</category><category>Windows</category></categories><image/><content>&lt;h2 id="詳細問題">詳細問題&lt;/h2>
-&lt;ul>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on CY | 程式小角落</title><link>/tags/windows/</link><description>Recent content in Windows on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 27 Jan 2024 17:00:00 +0800</lastBuildDate><atom:link href="/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>Win7 - 連線共享印表機時, 出現 0x00000709 錯誤</title><link>/p/win7-error-0x00000709/</link><pubDate>Sat, 27 Jan 2024 17:00:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/win7-error-0x00000709/</guid><description>花了很多時間, 分享電腦升級為 Win11, 結果其他電腦都可以連線, 唯獨這台 Win7 一直出現 0x00000709 錯誤.</description><tags><tag>Windows</tag><tag>Share</tag><tag>硬體障礙排除</tag></tags><categories><category>Experience</category><category>Windows</category></categories><image/><content>&lt;h2 id="詳細問題">詳細問題
+&lt;/h2>&lt;ul>
 &lt;li>分享的電腦為 Win11&lt;/li>
 &lt;li>連線的辦公室電腦有 Win7, Win10&lt;/li>
 &lt;li>連線共享印表機時, 出現 0x00000709 錯誤&lt;/li>
@@ -7,8 +7,8 @@
 &lt;li>&lt;code>其他台 Win7 可以正常連線&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;p>簡單來說就是這台電腦無法連線到共享印表機, 但是其他電腦都可以。&lt;/p>
-&lt;h2 id="解決方法">解決方法&lt;/h2>
-&lt;p>因為 Win7 現在的版本也不會再更新了, 所以就乾脆把它升級到 Win7 最後一個版本了。&lt;/p>
+&lt;h2 id="解決方法">解決方法
+&lt;/h2>&lt;p>因為 Win7 現在的版本也不會再更新了, 所以就乾脆把它升級到 Win7 最後一個版本了。&lt;/p>
 &lt;p>所以使用 UpdatePackage7R2 這個工具, 來升級 Win7 到最後一個版本。&lt;/p>
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://blog.simplix.info/update7/" target="_blank" rel="noopener"
@@ -16,17 +16,17 @@
 &lt;/ul>
 &lt;p>更新完就可以了, 很莫名其妙 ..&lt;/p>
 &lt;p>但可以成功的方案就是推, 你可以試試看 !&lt;/p>
-&lt;h2 id="參考資料">參考資料&lt;/h2>
-&lt;ul>
+&lt;h2 id="參考資料">參考資料
+&lt;/h2>&lt;ul>
 &lt;li>&lt;a class="link" href="https://www.gdaily.org/22156/updatepack7r2-windows-7-update" target="_blank" rel="noopener"
 >UpdatePack7R2 2022，Windows 7 更新包&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://www.far-beyound.com.tw/news/2/14" target="_blank" rel="noopener"
 >萬里資訊 - 解決辦法-無法使用共用印表機0x0000011b與0x00000709等錯誤&lt;/a>&lt;/li>
-&lt;/ul></content></item><item><title>WSL2 紀錄 01 - 將 WSL2 指定 PORT 從 Windows 轉發出來</title><link>/p/wsl2-port-forwarding/</link><pubDate>Tue, 26 Jul 2022 15:27:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/wsl2-port-forwarding/</guid><description/><tags><tag>Windows</tag><tag>Port</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>後端 Django 使用 WSL2 建立，但是要讓同事連時，該怎麼處理?&lt;/p>
-&lt;h1 id="處理方法">處理方法&lt;/h1>
-&lt;h2 id="到-wsl2-查詢-ip">到 WSL2 查詢 IP&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/ul></content></item><item><title>WSL2 紀錄 01 - 將 WSL2 指定 PORT 從 Windows 轉發出來</title><link>/p/wsl2-port-forwarding/</link><pubDate>Tue, 26 Jul 2022 15:27:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/wsl2-port-forwarding/</guid><description/><tags><tag>Windows</tag><tag>Port</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>後端 Django 使用 WSL2 建立，但是要讓同事連時，該怎麼處理?&lt;/p>
+&lt;h1 id="處理方法">處理方法
+&lt;/h1>&lt;h2 id="到-wsl2-查詢-ip">到 WSL2 查詢 IP
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -56,9 +56,9 @@
 &lt;/div>
 &lt;/div>&lt;p>關鍵是在 &lt;code>172.24.134.84&lt;/code>，要去記得 WSL2 的 IP 位置。&lt;/p>
 &lt;p>這邊要記得 HOST 為 &lt;code>172.24.134.84&lt;/code>、PORT 為 &lt;code>9000&lt;/code>。(你要分享的 PORT)&lt;/p>
-&lt;h2 id="到-windows">到 Windows&lt;/h2>
-&lt;h3 id="轉發-wsl2-的連線位置">轉發 WSL2 的連線位置&lt;/h3>
-&lt;p>以下是範例，進行複製的話，不要複製這個，去樣本複製：&lt;/p>
+&lt;h2 id="到-windows">到 Windows
+&lt;/h2>&lt;h3 id="轉發-wsl2-的連線位置">轉發 WSL2 的連線位置
+&lt;/h3>&lt;p>以下是範例，進行複製的話，不要複製這個，去樣本複製：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -99,9 +99,9 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">netsh interface portproxy add v4tov4 &lt;span class="nv">listenport&lt;/span>&lt;span class="o">=&lt;/span>xxxx &lt;span class="nv">listenaddress&lt;/span>&lt;span class="o">=&lt;/span>0.0.0.0 &lt;span class="nv">connectport&lt;/span>&lt;span class="o">=&lt;/span>xxxx &lt;span class="nv">connectaddress&lt;/span>&lt;span class="o">=&lt;/span>172.x.x.x
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="使用瀏覽器連線你的-ip">使用瀏覽器連線你的 IP&lt;/h2>
-&lt;h3 id="查看自己-windows-的-ip">查看自己 Windows 的 IP&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="使用瀏覽器連線你的-ip">使用瀏覽器連線你的 IP
+&lt;/h2>&lt;h3 id="查看自己-windows-的-ip">查看自己 Windows 的 IP
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -138,9 +138,9 @@
 &lt;/blockquote>
 &lt;p>連線到 &lt;a class="link" href="http://192.168.1.108:9000" target="_blank" rel="noopener"
 >http://192.168.1.108:9000&lt;/a>&lt;/p>
-&lt;h2 id="如何刪除剛剛新增的設定">如何刪除剛剛新增的設定&lt;/h2>
-&lt;h3 id="查詢新增的-portproxy">查詢新增的 portproxy&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h2 id="如何刪除剛剛新增的設定">如何刪除剛剛新增的設定
+&lt;/h2>&lt;h3 id="查詢新增的-portproxy">查詢新增的 portproxy
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -160,8 +160,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">0.0.0.0 &lt;span class="m">9000&lt;/span> 172.24.134.84 &lt;span class="m">9000&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="刪除-portproxy">刪除 portproxy&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h3 id="刪除-portproxy">刪除 portproxy
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -169,8 +169,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">C:&lt;span class="se">\U&lt;/span>sers&lt;span class="se">\x&lt;/span>xx&amp;gt; netsh interface portproxy delete v4tov4 &lt;span class="nv">listenport&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">9000&lt;/span> &lt;span class="nv">listenaddress&lt;/span>&lt;span class="o">=&lt;/span>0.0.0.0
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="確認-portproxy-是否刪除">確認 portproxy 是否刪除&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h3 id="確認-portproxy-是否刪除">確認 portproxy 是否刪除
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -186,6 +186,6 @@
 &lt;blockquote>
 &lt;p>記得如果有將後端或其他應用分享出去時，記得要重新啟動！&lt;/p>
 &lt;/blockquote>
-&lt;h1 id="reference">Reference&lt;/h1>
-&lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/61002681/connecting-to-wsl2-server-via-local-network" target="_blank" rel="noopener"
+&lt;h1 id="reference">Reference
+&lt;/h1>&lt;p>&lt;a class="link" href="https://stackoverflow.com/questions/61002681/connecting-to-wsl2-server-via-local-network" target="_blank" rel="noopener"
 >https://stackoverflow.com/questions/61002681/connecting-to-wsl2-server-via-local-network&lt;/a>&lt;/p></content></item></channel></rss>

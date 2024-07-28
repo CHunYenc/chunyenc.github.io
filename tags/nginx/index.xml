@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nginx on CY | 程式小角落</title><link>/tags/nginx/</link><description>Recent content in Nginx on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sun, 14 May 2023 10:42:02 +0000</lastBuildDate><atom:link href="/tags/nginx/index.xml" rel="self" type="application/rss+xml"/><item><title>Nginx - 將 HTTP 的網頁上線成 HTTPS.</title><link>/p/nginx-add-https/</link><pubDate>Sun, 14 May 2023 10:42:02 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/nginx-add-https/</guid><description>以前就上線過 HTTPS, 但這次設定被其他環境干擾, 害我花了超出預期的時間.</description><tags><tag>Django</tag><tag>Nginx</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>前陣子再協助朋友設定 NGINX 時, 發現手邊都沒有在做紀錄 HTTPS 的設定, 所以這次就來紀錄一下。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Nginx on CY | 程式小角落</title><link>/tags/nginx/</link><description>Recent content in Nginx on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sun, 14 May 2023 10:42:02 +0000</lastBuildDate><atom:link href="/tags/nginx/index.xml" rel="self" type="application/rss+xml"/><item><title>Nginx - 將 HTTP 的網頁上線成 HTTPS.</title><link>/p/nginx-add-https/</link><pubDate>Sun, 14 May 2023 10:42:02 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/nginx-add-https/</guid><description>以前就上線過 HTTPS, 但這次設定被其他環境干擾, 害我花了超出預期的時間.</description><tags><tag>Django</tag><tag>Nginx</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>前陣子再協助朋友設定 NGINX 時, 發現手邊都沒有在做紀錄 HTTPS 的設定, 所以這次就來紀錄一下。&lt;/p>
 &lt;p>其實不難，只是擔心朋友針對機器在做轉 Port 的設定 .. 這樣就會讓我很頭痛了。&lt;/p>
 &lt;p>當然後面有解決, 但是花了超出預期的時間。&lt;/p>
 &lt;blockquote>
 &lt;p>小提醒：下面的路徑都是絕對路徑，因為使用的是 Docker，所以路徑會有點不一樣。你可以依照自己的環境去做設定。&lt;/p>
 &lt;/blockquote>
 &lt;p>這邊就不特別說明 Docker 的設定及路徑怎麼查詢囉 !&lt;/p>
-&lt;h1 id="設定檔案">設定檔案&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="設定檔案">設定檔案
+&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -78,73 +78,73 @@
 &lt;/span>&lt;span class="lnt">67
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">server {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # port
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen 443 ssl;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen [::]:443 ssl;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_name www.example.com;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # ssl
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_certificate /home/example/example.crt;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_certificate_key /home/example/example.key;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_session_timeout 5m;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_prefer_server_ciphers on;
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="n">server&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># port&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">listen&lt;/span> &lt;span class="mi">443&lt;/span> &lt;span class="n">ssl&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">listen&lt;/span> &lt;span class="p">[::]:&lt;/span>&lt;span class="mi">443&lt;/span> &lt;span class="n">ssl&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">server_name&lt;/span> &lt;span class="n">www&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ssl&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_certificate&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">crt&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_certificate_key&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">key&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_session_timeout&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="n">m&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_ciphers&lt;/span> &lt;span class="n">ECDHE&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">RSA&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">AES128&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">GCM&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">SHA256&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">ECDHE&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">ECDH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">AES&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">HIGH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">NULL&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">aNULL&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">MD5&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">ADH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">RC4&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_protocols&lt;/span> &lt;span class="n">TLSv1&lt;/span> &lt;span class="n">TLSv1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">1&lt;/span> &lt;span class="n">TLSv1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_prefer_server_ciphers&lt;/span> &lt;span class="n">on&lt;/span>&lt;span class="p">;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> location / {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> root /var/www/html/;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> index index.html;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">location&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">root&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="k">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">www&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">html&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">index&lt;/span> &lt;span class="n">index&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">html&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> location /config {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> root /var/www/html/;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> index config.json;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">location&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">config&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">root&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="k">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">www&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">html&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">index&lt;/span> &lt;span class="n">config&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">json&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # error
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> error_page 500 502 503 504 /50x.html;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># error&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_page&lt;/span> &lt;span class="mi">500&lt;/span> &lt;span class="mi">502&lt;/span> &lt;span class="mi">503&lt;/span> &lt;span class="mi">504&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="mi">50&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">html&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">server {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # port
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen 5000 ssl;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen [::]:5000 ssl;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_name www.example.com;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # ssl
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_certificate /home/example/example.crt;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_certificate_key /home/example/example.key;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_session_timeout 5m;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_prefer_server_ciphers on;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">server&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># port&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">listen&lt;/span> &lt;span class="mi">5000&lt;/span> &lt;span class="n">ssl&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">listen&lt;/span> &lt;span class="p">[::]:&lt;/span>&lt;span class="mi">5000&lt;/span> &lt;span class="n">ssl&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">server_name&lt;/span> &lt;span class="n">www&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ssl&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_certificate&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">crt&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_certificate_key&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">key&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_session_timeout&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="n">m&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_ciphers&lt;/span> &lt;span class="n">ECDHE&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">RSA&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">AES128&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">GCM&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">SHA256&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">ECDHE&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">ECDH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">AES&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">HIGH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">NULL&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">aNULL&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">MD5&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">ADH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">RC4&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_protocols&lt;/span> &lt;span class="n">TLSv1&lt;/span> &lt;span class="n">TLSv1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">1&lt;/span> &lt;span class="n">TLSv1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_prefer_server_ciphers&lt;/span> &lt;span class="n">on&lt;/span>&lt;span class="p">;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # path
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> location / {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_pass http://myip.com:8080;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # proxy header
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_set_header X-Real-IP $remote_addr;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_connect_timeout 300;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_send_timeout 300;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_read_timeout 300;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> send_timeout 300;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> keepalive_timeout 300s;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> client_body_timeout 300s;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # error
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> error_page 500 502 503 504 /50x.html;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># path&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">location&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_pass&lt;/span> &lt;span class="n">http&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">myip&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">8080&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># proxy header&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_set_header&lt;/span> &lt;span class="n">X&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">Real&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="ne">IP&lt;/span> &lt;span class="o">$&lt;/span>&lt;span class="n">remote_addr&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_set_header&lt;/span> &lt;span class="n">X&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">Forwarded&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">For&lt;/span> &lt;span class="o">$&lt;/span>&lt;span class="n">proxy_add_x_forwarded_for&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_set_header&lt;/span> &lt;span class="n">X&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">Forwarded&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">Proto&lt;/span> &lt;span class="o">$&lt;/span>&lt;span class="n">http_x_forwarded_proto&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_connect_timeout&lt;/span> &lt;span class="mi">300&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_send_timeout&lt;/span> &lt;span class="mi">300&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_read_timeout&lt;/span> &lt;span class="mi">300&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">send_timeout&lt;/span> &lt;span class="mi">300&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">keepalive_timeout&lt;/span> &lt;span class="mi">300&lt;/span>&lt;span class="n">s&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">client_body_timeout&lt;/span> &lt;span class="mi">300&lt;/span>&lt;span class="n">s&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># error&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_page&lt;/span> &lt;span class="mi">500&lt;/span> &lt;span class="mi">502&lt;/span> &lt;span class="mi">503&lt;/span> &lt;span class="mi">504&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="mi">50&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">html&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">server {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen 80 default_server;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen [::]:80 default_server;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_name www.example.com;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> return 301 https://www.example.com$request_uri;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">server&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">listen&lt;/span> &lt;span class="mi">80&lt;/span> &lt;span class="n">default_server&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">listen&lt;/span> &lt;span class="p">[::]:&lt;/span>&lt;span class="mi">80&lt;/span> &lt;span class="n">default_server&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">server_name&lt;/span> &lt;span class="n">www&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="mi">301&lt;/span> &lt;span class="n">https&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">www&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="o">$&lt;/span>&lt;span class="n">request_uri&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div></content></item></channel></rss>

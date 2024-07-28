@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GIT on CY | 程式小角落</title><link>/tags/git/</link><description>Recent content in GIT on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 26 Jul 2024 17:45:14 +0000</lastBuildDate><atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker 紀錄 04 - 離線部署 Docker Image 時的指令</title><link>/p/docker-export-docker-image/</link><pubDate>Fri, 26 Jul 2024 17:45:14 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-export-docker-image/</guid><description>當網路不佳時，需要離線部署 Docker Image 時的指令。</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>因為公司網路系統上線的地方在中國，不管是 &lt;code>docker&lt;/code>, &lt;code>python&lt;/code> 套件都要更換下載源。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GIT on CY | 程式小角落</title><link>/tags/git/</link><description>Recent content in GIT on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 26 Jul 2024 17:45:14 +0000</lastBuildDate><atom:link href="/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker 紀錄 04 - 離線部署 Docker Image 時的指令</title><link>/p/docker-export-docker-image/</link><pubDate>Fri, 26 Jul 2024 17:45:14 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-export-docker-image/</guid><description>當網路不佳時，需要離線部署 Docker Image 時的指令。</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>因為公司網路系統上線的地方在中國，不管是 &lt;code>docker&lt;/code>, &lt;code>python&lt;/code> 套件都要更換下載源。&lt;/p>
 &lt;p>覺得麻煩，所以就下定決心使用離線部署。&lt;/p>
 &lt;p>以下使用 mysql 來做範例。&lt;/p>
-&lt;h1 id="輸出-image">輸出 image&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="輸出-image">輸出 image
+&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -12,8 +12,8 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>結束後會產生一個檔案，用來儲存 image，然後你就可以把 &lt;code>tar&lt;/code> 檔丟到系統上線的那台主機上。&lt;/p>
-&lt;h2 id="壓縮讓傳遞更快">壓縮，讓傳遞更快&lt;/h2>
-&lt;p>因為 VPN 速度不佳，所以我們透過壓縮來減少檔案大小，加快傳輸速度。&lt;/p>
+&lt;h2 id="壓縮讓傳遞更快">壓縮，讓傳遞更快
+&lt;/h2>&lt;p>因為 VPN 速度不佳，所以我們透過壓縮來減少檔案大小，加快傳輸速度。&lt;/p>
 &lt;p>我們使用 &lt;code>zstd&lt;/code> 解壓縮演算法來進行壓縮。 (這邊就不特別介紹 zstd)&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -24,10 +24,10 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>結束後會產生一個檔案，例如我的檔名會叫做 &lt;code>240726_mysql.tar.zst&lt;/code>。&lt;/p>
-&lt;h2 id="比較大小">比較大小&lt;/h2>
-&lt;p>這邊就用 &lt;code>du&lt;/code> 來比較大小。&lt;/p>
-&lt;h3 id="使用-zstd-解壓縮前">使用 zstd 解壓縮前&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h2 id="比較大小">比較大小
+&lt;/h2>&lt;p>這邊就用 &lt;code>du&lt;/code> 來比較大小。&lt;/p>
+&lt;h3 id="使用-zstd-解壓縮前">使用 zstd 解壓縮前
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -37,8 +37,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">440M 240726_mysql.tar
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用-zstd-解壓縮後">使用 zstd 解壓縮後&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h3 id="使用-zstd-解壓縮後">使用 zstd 解壓縮後
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -49,9 +49,9 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>差超多 .. 又幫我節省很多時間了 XD&lt;/p>
-&lt;h1 id="匯入-image">匯入 image&lt;/h1>
-&lt;h2 id="從-zstd-轉回-tar">從 zstd 轉回 tar&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="匯入-image">匯入 image
+&lt;/h1>&lt;h2 id="從-zstd-轉回-tar">從 zstd 轉回 tar
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -65,8 +65,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker load &amp;lt; 240726_mysql.tar
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="從-tar-匯入-image">從 tar 匯入 image&lt;/h2>
-&lt;p>這個是最基礎的方式，如果你沒有使用 zstd 解壓縮，就直接使用。&lt;/p>
+&lt;/div>&lt;h2 id="從-tar-匯入-image">從 tar 匯入 image
+&lt;/h2>&lt;p>這個是最基礎的方式，如果你沒有使用 zstd 解壓縮，就直接使用。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -75,8 +75,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">docker load &amp;lt; 240726_mysql.tar
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="查看-image">查看 image&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="查看-image">查看 image
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -84,8 +84,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">docker images
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="參考資料">參考資料&lt;/h1>
-&lt;ul>
+&lt;/div>&lt;h1 id="參考資料">參考資料
+&lt;/h1>&lt;ul>
 &lt;li>&lt;a class="link" href="https://docs.docker.com/engine/reference/commandline/save/" target="_blank" rel="noopener"
 >Docker 常用指令&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://docs.docker.com/engine/reference/commandline/load/" target="_blank" rel="noopener"
@@ -94,8 +94,8 @@
 >匯出/匯入 Docker image&lt;/a>&lt;/li>
 &lt;li>[zstd] (&lt;a class="link" href="https://github.com/facebook/zstd" target="_blank" rel="noopener"
 >https://github.com/facebook/zstd&lt;/a>)&lt;/li>
-&lt;/ul></content></item><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;blockquote>
+&lt;/ul></content></item><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;blockquote>
 &lt;p>祝大家新年快樂 !!!&lt;/p>
 &lt;/blockquote>
 &lt;p>今天是初六，也休息一陣子了，覺得有點廢。&lt;/p>
@@ -114,8 +114,8 @@
 &lt;p>所以會從 &lt;code>2.&lt;/code> 來教你怎麼做 !&lt;/p>
 &lt;!-- raw HTML omitted -->
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="利用-docker-來使用工具">利用 Docker 來使用工具&lt;/h1>
-&lt;p>&lt;code>工具只需要透過 Docker 就可以執行囉 !&lt;/code>&lt;/p>
+&lt;h1 id="利用-docker-來使用工具">利用 Docker 來使用工具
+&lt;/h1>&lt;p>&lt;code>工具只需要透過 Docker 就可以執行囉 !&lt;/code>&lt;/p>
 &lt;p>範例如下：&lt;code>範例下方還有部分說明唷 !&lt;/code>&lt;/p>
 &lt;p>&lt;code>**** 記得要先建立一個 schedule.log 檔案。&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -157,8 +157,8 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;h2 id="環境變數列表">環境變數列表&lt;/h2>
-&lt;table>
+&lt;h2 id="環境變數列表">環境變數列表
+&lt;/h2>&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th>環境變數&lt;/th>
@@ -220,8 +220,8 @@
 &lt;a class="link" href="https://apscheduler.readthedocs.io/en/3.x/modules/triggers/cron.html" target="_blank" rel="noopener"
 >https://apscheduler.readthedocs.io/en/3.x/modules/triggers/cron.html&lt;/a>&lt;/p>
 &lt;/blockquote>
-&lt;h1 id="如果是使用-docker-compose-">如果是使用 Docker Compose ..&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="如果是使用-docker-compose-">如果是使用 Docker Compose ..
+&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -269,15 +269,15 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">./linebot.log:/app/scheduler.log&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>置頂 - 提高效率的必備指令：一份我的常用指令與工具清單</title><link>/p/common-scripts/</link><pubDate>Wed, 18 Jan 2023 11:38:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/common-scripts/</guid><description>工作時常使用到的指令與工具</description><tags><tag>GIT</tag><tag>Docker</tag><tag>VSCode</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>主要為存放工作中經常使用的指令、框架、套件。&lt;/p>
+&lt;/div></content></item><item><title>置頂 - 提高效率的必備指令：一份我的常用指令與工具清單</title><link>/p/common-scripts/</link><pubDate>Wed, 18 Jan 2023 11:38:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/common-scripts/</guid><description>工作時常使用到的指令與工具</description><tags><tag>GIT</tag><tag>Docker</tag><tag>VSCode</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>主要為存放工作中經常使用的指令、框架、套件。&lt;/p>
 &lt;p>若有任何建議或是覺得需要修改的地方還請不吝指教，謝謝！&lt;/p>
 &lt;p>如何聯繫我 ?&lt;/p>
 &lt;blockquote>
 &lt;p>可以利用本篇文章下面留言，導航列也有提供我的社群平台 ~&lt;/p>
 &lt;/blockquote>
-&lt;h1 id="目錄">目錄&lt;/h1>
-&lt;p>電腦版右側有目錄，手機版沒有，這邊的目錄為了手機版而整理 !&lt;/p>
+&lt;h1 id="目錄">目錄
+&lt;/h1>&lt;p>電腦版右側有目錄，手機版沒有，這邊的目錄為了手機版而整理 !&lt;/p>
 &lt;ul>
 &lt;li>&lt;a class="link" href="#%e5%89%8d%e8%a8%80" >前言&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="#%e7%9b%ae%e9%8c%84" >目錄&lt;/a>&lt;/li>
@@ -312,31 +312,31 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;h1 id="套件框架區">套件框架區&lt;/h1>
-&lt;h2 id="vscode">VSCode&lt;/h2>
-&lt;h3 id="markdown">Markdown&lt;/h3>
-&lt;ul>
+&lt;h1 id="套件框架區">套件框架區
+&lt;/h1>&lt;h2 id="vscode">VSCode
+&lt;/h2>&lt;h3 id="markdown">Markdown
+&lt;/h3>&lt;ul>
 &lt;li>&lt;a class="link" href="https://github.com/yzhang-gh/vscode-markdown" target="_blank" rel="noopener"
 >https://github.com/yzhang-gh/vscode-markdown&lt;/a> &lt;code>自動生成 md 目錄&lt;/code>&lt;/li>
 &lt;/ul>
-&lt;h1 id="常用指令區">常用指令區&lt;/h1>
-&lt;h2 id="git">Git&lt;/h2>
-&lt;p>Git 是一個分散式版本控制系統，用於追蹤檔案變更並協助多人共同開發專案。&lt;/p>
-&lt;h3 id="下載子模組">下載子模組&lt;/h3>
-&lt;p>當你使用 git &lt;code>clone&lt;/code> 下載完儲存庫後，發現沒有下載 submodule, 使用下面的指令可以直接把子模組載入。&lt;/p>
+&lt;h1 id="常用指令區">常用指令區
+&lt;/h1>&lt;h2 id="git">Git
+&lt;/h2>&lt;p>Git 是一個分散式版本控制系統，用於追蹤檔案變更並協助多人共同開發專案。&lt;/p>
+&lt;h3 id="下載子模組">下載子模組
+&lt;/h3>&lt;p>當你使用 git &lt;code>clone&lt;/code> 下載完儲存庫後，發現沒有下載 submodule, 使用下面的指令可以直接把子模組載入。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-v" data-lang="v">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">git&lt;/span> &lt;span class="nv">submodule&lt;/span> &lt;span class="nv">update&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git submodule update
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="切換遠端分支">切換遠端分支&lt;/h3>
-&lt;p>&lt;code>待補&lt;/code>&lt;/p>
-&lt;h2 id="vue">Vue&lt;/h2>
-&lt;h3 id="更改-port">更改 Port&lt;/h3>
-&lt;p>&lt;code>cli-services&lt;/code> 版本為 &lt;code>@vue/cli-service&amp;quot;: &amp;quot;~5.0.0&lt;/code>，如果不是也可以試試看。&lt;/p>
+&lt;/div>&lt;h3 id="切換遠端分支">切換遠端分支
+&lt;/h3>&lt;p>&lt;code>待補&lt;/code>&lt;/p>
+&lt;h2 id="vue">Vue
+&lt;/h2>&lt;h3 id="更改-port">更改 Port
+&lt;/h3>&lt;p>&lt;code>cli-services&lt;/code> 版本為 &lt;code>@vue/cli-service&amp;quot;: &amp;quot;~5.0.0&lt;/code>，如果不是也可以試試看。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -347,9 +347,9 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">npm run serve -- --port &lt;span class="m">8000&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="docker">Docker&lt;/h2>
-&lt;h3 id="redis">Redis&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="docker">Docker
+&lt;/h2>&lt;h3 id="redis">Redis
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -369,8 +369,8 @@
 &lt;p>Q: 為什麼有 dev-network ?&lt;/p>
 &lt;p>A: 為了可以讓開發容器可以直接使用 &lt;code>dev-redis&lt;/code> 進行連線 ! 前提是開發容器也要使用 dev-network 建立 !&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="postgresql">PostgreSQL&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h3 id="postgresql">PostgreSQL
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -381,17 +381,17 @@
 &lt;/span>&lt;span class="lnt">7
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--restart always \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--name dev-postgres \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-p 5432:5432 \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-e POSTGRES_PASSWORD=postgres \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-v /home/user/dev-pg-data/pgdata:/var/lib/postgresql/data \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network postgres:10
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="n">docker&lt;/span> &lt;span class="n">run&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">d&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">--&lt;/span>&lt;span class="n">restart&lt;/span> &lt;span class="n">always&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">--&lt;/span>&lt;span class="n">name&lt;/span> &lt;span class="n">dev&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">postgres&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">-&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="mi">5432&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">5432&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">-&lt;/span>&lt;span class="n">e&lt;/span> &lt;span class="n">POSTGRES_PASSWORD&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">postgres&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">-&lt;/span>&lt;span class="n">v&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">pg&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">pgdata&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="k">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">lib&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">postgresql&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">data&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">--&lt;/span>&lt;span class="n">network&lt;/span> &lt;span class="n">dev&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">network&lt;/span> &lt;span class="n">postgres&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">10&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>GIT 小撇步 02 - 教你如何刪除 commit 過的大檔案, 超占空間 !</title><link>/p/git-deleted-commit-big-files/</link><pubDate>Wed, 21 Dec 2022 13:36:01 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/git-deleted-commit-big-files/</guid><description>因為在準備 CI/CD 要減少每個步驟的耗費的時間，導致要整理 git ..</description><tags><tag>GIT</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>準備要幫自己手上的專案套上 CI/CD，但是發現過去的資料其實沒有使用 &lt;code>submodule&lt;/code> 的方式去管理 &lt;code>data&lt;/code>。&lt;/p>
+&lt;/div></content></item><item><title>GIT 小撇步 02 - 教你如何刪除 commit 過的大檔案, 超占空間 !</title><link>/p/git-deleted-commit-big-files/</link><pubDate>Wed, 21 Dec 2022 13:36:01 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/git-deleted-commit-big-files/</guid><description>因為在準備 CI/CD 要減少每個步驟的耗費的時間，導致要整理 git ..</description><tags><tag>GIT</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>準備要幫自己手上的專案套上 CI/CD，但是發現過去的資料其實沒有使用 &lt;code>submodule&lt;/code> 的方式去管理 &lt;code>data&lt;/code>。&lt;/p>
 &lt;blockquote>
 &lt;p>此處的 &lt;code>data&lt;/code> 是一個資料夾，裡面放的是客戶系統的資料。會有 &lt;code>.csv&lt;/code> or &lt;code>.json&lt;/code> 的檔案。&lt;/p>
 &lt;/blockquote>
@@ -399,22 +399,22 @@
 &lt;blockquote>
 &lt;p>最新的 commit 已經把所謂 &lt;code>data&lt;/code> 的資料夾刪除了，但是 git 其實還會幫你存在 &lt;code>.git&lt;/code> 資料夾&lt;/p>
 &lt;/blockquote>
-&lt;h1 id="參考文章">參考文章&lt;/h1>
-&lt;blockquote>
+&lt;h1 id="參考文章">參考文章
+&lt;/h1>&lt;blockquote>
 &lt;p>感謝這邊的文章，雖然我還是卡一陣子，導致這篇文的產生 XD&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="csdn---彻底删除git中的较大文件包括历史提交记录httpsblogcsdnnethappyrockingarticledetails89313501">&lt;a class="link" href="https://blog.csdn.net/HappyRocking/article/details/89313501" target="_blank" rel="noopener"
->CSDN - 彻底删除git中的较大文件（包括历史提交记录）&lt;/a>&lt;/h2>
-&lt;h2 id="高見龍---為你自己學-githttpsgitbooktwchaptersfaqremove-sensitive-data">&lt;a class="link" href="https://gitbook.tw/chapters/faq/remove-sensitive-data" target="_blank" rel="noopener"
->高見龍 - 為你自己學 Git&lt;/a>&lt;/h2>
-&lt;h2 id="nils-jonsson---rebasing-tags-in-git-repositorieshttpsblognilsjonssoncompost4421450571rebasing-tags-in-git-repositories">&lt;a class="link" href="https://blog.nilsjonsson.com/post/4421450571/rebasing-tags-in-git-repositories" target="_blank" rel="noopener"
->Nils Jonsson - Rebasing tags in Git repositories&lt;/a>&lt;/h2>
-&lt;h1 id="先說結論">先說結論&lt;/h1>
-&lt;p>尚未優化前，佔 &lt;code>1.2G&lt;/code>&lt;/p>
+>CSDN - 彻底删除git中的较大文件（包括历史提交记录）&lt;/a>
+&lt;/h2>&lt;h2 id="高見龍---為你自己學-githttpsgitbooktwchaptersfaqremove-sensitive-data">&lt;a class="link" href="https://gitbook.tw/chapters/faq/remove-sensitive-data" target="_blank" rel="noopener"
+>高見龍 - 為你自己學 Git&lt;/a>
+&lt;/h2>&lt;h2 id="nils-jonsson---rebasing-tags-in-git-repositorieshttpsblognilsjonssoncompost4421450571rebasing-tags-in-git-repositories">&lt;a class="link" href="https://blog.nilsjonsson.com/post/4421450571/rebasing-tags-in-git-repositories" target="_blank" rel="noopener"
+>Nils Jonsson - Rebasing tags in Git repositories&lt;/a>
+&lt;/h2>&lt;h1 id="先說結論">先說結論
+&lt;/h1>&lt;p>尚未優化前，佔 &lt;code>1.2G&lt;/code>&lt;/p>
 &lt;p>優化後，佔 &lt;code>121MiB&lt;/code>&lt;/p>
-&lt;h1 id="步驟">步驟&lt;/h1>
-&lt;h2 id="建議執行前-fork-一份">建議執行前 fork 一份&lt;/h2>
-&lt;p>可以在本地端或伺服器端。&lt;/p>
+&lt;h1 id="步驟">步驟
+&lt;/h1>&lt;h2 id="建議執行前-fork-一份">建議執行前 fork 一份
+&lt;/h2>&lt;p>可以在本地端或伺服器端。&lt;/p>
 &lt;p>local 端&lt;/p>
 &lt;ul>
 &lt;li>做錯的話你可以直接 copy 重新&lt;/li>
@@ -427,8 +427,8 @@
 &lt;blockquote>
 &lt;p>請確實做好備份。&lt;/p>
 &lt;/blockquote>
-&lt;h2 id="重新-clone-一次-重新下載你的程式碼">重新 clone 一次 (重新下載你的程式碼)&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h2 id="重新-clone-一次-重新下載你的程式碼">重新 clone 一次 (重新下載你的程式碼)
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -441,8 +441,8 @@
 &lt;blockquote>
 &lt;p>因為我們主要要解決儲存庫的　&lt;code>.git&lt;/code>　資料夾。&lt;/p>
 &lt;/blockquote>
-&lt;h2 id="查看-10-個在-git-裡面最大的檔案">查看 10 個在 Git 裡面最大的檔案&lt;/h2>
-&lt;p>先假設 10 個檔案就可以找到我們心目中想要刪掉的檔案名稱，那為什麼我都使用 &lt;code>git rm&lt;/code>　的指令，&lt;/p>
+&lt;h2 id="查看-10-個在-git-裡面最大的檔案">查看 10 個在 Git 裡面最大的檔案
+&lt;/h2>&lt;p>先假設 10 個檔案就可以找到我們心目中想要刪掉的檔案名稱，那為什麼我都使用 &lt;code>git rm&lt;/code>　的指令，&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -451,8 +451,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">git rev-list --all &lt;span class="p">|&lt;/span> xargs -rL1 git ls-tree -r --long &lt;span class="p">|&lt;/span> sort -uk3 &lt;span class="p">|&lt;/span> sort -rnk4 &lt;span class="p">|&lt;/span> head -10
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="刪除-git-檔案">刪除 Git 檔案&lt;/h2>
-&lt;p>提供你複製，複製後將 &lt;code>檔案名稱&lt;/code> 更改掉，因為他要打上你想要刪除的檔案 or 資料夾。&lt;/p>
+&lt;/div>&lt;h2 id="刪除-git-檔案">刪除 Git 檔案
+&lt;/h2>&lt;p>提供你複製，複製後將 &lt;code>檔案名稱&lt;/code> 更改掉，因為他要打上你想要刪除的檔案 or 資料夾。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -481,8 +481,8 @@
 &lt;/ul>
 &lt;p>Git 官方網站：&lt;a class="link" href="https://git-scm.com/docs/git-filter-branch" target="_blank" rel="noopener"
 >filter-branch&lt;/a>&lt;/p>
-&lt;h1 id="清理-git-資料夾">清理 .git 資料夾&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="清理-git-資料夾">清理 .git 資料夾
+&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -523,14 +523,14 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">du -sh *
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>GIT 小撇步 01 - 教你找回尚未 commit 且遺失的檔案</title><link>/p/git-find-out-not-commit-files/</link><pubDate>Wed, 06 Jul 2022 17:59:19 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/git-find-out-not-commit-files/</guid><description>紀錄一下 git add 後 沒有 commit, 找回 add 的檔案.</description><tags><tag>GIT</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>有一天下午，把某項任務完成後，就下指令 &lt;code>git add&lt;/code>&lt;/p>
+&lt;/div></content></item><item><title>GIT 小撇步 01 - 教你找回尚未 commit 且遺失的檔案</title><link>/p/git-find-out-not-commit-files/</link><pubDate>Wed, 06 Jul 2022 17:59:19 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/git-find-out-not-commit-files/</guid><description>紀錄一下 git add 後 沒有 commit, 找回 add 的檔案.</description><tags><tag>GIT</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>有一天下午，把某項任務完成後，就下指令 &lt;code>git add&lt;/code>&lt;/p>
 &lt;p>然後沒有 &lt;code>git commit&lt;/code> &amp;hellip; (更不用說 &lt;code>git push&lt;/code>)&lt;/p>
 &lt;p>總之就在整理前後端版本對應的問題，然後就直接 &lt;code>git checkout -f master&lt;/code> 跳去 master，主要是覆蓋版本，因為主分支已經很久沒有上新版了。&lt;/p>
 &lt;p>最後 &amp;hellip; 前端的程式碼被我弄丟了 !&lt;/p>
-&lt;h1 id="解法">解法&lt;/h1>
-&lt;h2 id="git-fsck">git fsck&lt;/h2>
-&lt;p>有看到一個 十年前的文章 (今天是 2022/07/07)&lt;/p>
+&lt;h1 id="解法">解法
+&lt;/h1>&lt;h2 id="git-fsck">git fsck
+&lt;/h2>&lt;p>有看到一個 十年前的文章 (今天是 2022/07/07)&lt;/p>
 &lt;p>連結：&lt;a class="link" href="http://blog.hsatac.net/2012/07/git-restore-removed-files/" target="_blank" rel="noopener"
 >http://blog.hsatac.net/2012/07/git-restore-removed-files/&lt;/a>&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -554,8 +554,8 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>接下來每行 &lt;code>blob 7fc292a549c604ee4219b2e0db9383b32f3ce152&lt;/code> 都是你之前尚未 commit 的檔案。(不是很確定&lt;/p>
-&lt;h2 id="git-show">git show&lt;/h2>
-&lt;p>接下來就是每一行的看檔案了 &amp;hellip;&lt;/p>
+&lt;h2 id="git-show">git show
+&lt;/h2>&lt;p>接下來就是每一行的看檔案了 &amp;hellip;&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -568,4 +568,5 @@
 &lt;p>就會看到有一個 &lt;code>temp.txt&lt;/code>&lt;/p>
 &lt;p>基本上就是檔案回來囉 !&lt;/p>
 &lt;p>希望對您有幫助 !&lt;/p>
-&lt;h1 id="完成">完成&lt;/h1></content></item></channel></rss>
+&lt;h1 id="完成">完成
+&lt;/h1></content></item></channel></rss>

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tutorial on CY | 程式小角落</title><link>/categories/tutorial/</link><description>Recent content in Tutorial on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 26 Jul 2024 17:45:14 +0000</lastBuildDate><atom:link href="/categories/tutorial/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker 紀錄 04 - 離線部署 Docker Image 時的指令</title><link>/p/docker-export-docker-image/</link><pubDate>Fri, 26 Jul 2024 17:45:14 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-export-docker-image/</guid><description>當網路不佳時，需要離線部署 Docker Image 時的指令。</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>因為公司網路系統上線的地方在中國，不管是 &lt;code>docker&lt;/code>, &lt;code>python&lt;/code> 套件都要更換下載源。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tutorial on CY | 程式小角落</title><link>/categories/tutorial/</link><description>Recent content in Tutorial on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 26 Jul 2024 17:45:14 +0000</lastBuildDate><atom:link href="/categories/tutorial/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker 紀錄 04 - 離線部署 Docker Image 時的指令</title><link>/p/docker-export-docker-image/</link><pubDate>Fri, 26 Jul 2024 17:45:14 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-export-docker-image/</guid><description>當網路不佳時，需要離線部署 Docker Image 時的指令。</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>因為公司網路系統上線的地方在中國，不管是 &lt;code>docker&lt;/code>, &lt;code>python&lt;/code> 套件都要更換下載源。&lt;/p>
 &lt;p>覺得麻煩，所以就下定決心使用離線部署。&lt;/p>
 &lt;p>以下使用 mysql 來做範例。&lt;/p>
-&lt;h1 id="輸出-image">輸出 image&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="輸出-image">輸出 image
+&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -12,8 +12,8 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>結束後會產生一個檔案，用來儲存 image，然後你就可以把 &lt;code>tar&lt;/code> 檔丟到系統上線的那台主機上。&lt;/p>
-&lt;h2 id="壓縮讓傳遞更快">壓縮，讓傳遞更快&lt;/h2>
-&lt;p>因為 VPN 速度不佳，所以我們透過壓縮來減少檔案大小，加快傳輸速度。&lt;/p>
+&lt;h2 id="壓縮讓傳遞更快">壓縮，讓傳遞更快
+&lt;/h2>&lt;p>因為 VPN 速度不佳，所以我們透過壓縮來減少檔案大小，加快傳輸速度。&lt;/p>
 &lt;p>我們使用 &lt;code>zstd&lt;/code> 解壓縮演算法來進行壓縮。 (這邊就不特別介紹 zstd)&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -24,10 +24,10 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>結束後會產生一個檔案，例如我的檔名會叫做 &lt;code>240726_mysql.tar.zst&lt;/code>。&lt;/p>
-&lt;h2 id="比較大小">比較大小&lt;/h2>
-&lt;p>這邊就用 &lt;code>du&lt;/code> 來比較大小。&lt;/p>
-&lt;h3 id="使用-zstd-解壓縮前">使用 zstd 解壓縮前&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h2 id="比較大小">比較大小
+&lt;/h2>&lt;p>這邊就用 &lt;code>du&lt;/code> 來比較大小。&lt;/p>
+&lt;h3 id="使用-zstd-解壓縮前">使用 zstd 解壓縮前
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -37,8 +37,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">440M 240726_mysql.tar
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用-zstd-解壓縮後">使用 zstd 解壓縮後&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h3 id="使用-zstd-解壓縮後">使用 zstd 解壓縮後
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -49,9 +49,9 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>差超多 .. 又幫我節省很多時間了 XD&lt;/p>
-&lt;h1 id="匯入-image">匯入 image&lt;/h1>
-&lt;h2 id="從-zstd-轉回-tar">從 zstd 轉回 tar&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="匯入-image">匯入 image
+&lt;/h1>&lt;h2 id="從-zstd-轉回-tar">從 zstd 轉回 tar
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -65,8 +65,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker load &amp;lt; 240726_mysql.tar
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="從-tar-匯入-image">從 tar 匯入 image&lt;/h2>
-&lt;p>這個是最基礎的方式，如果你沒有使用 zstd 解壓縮，就直接使用。&lt;/p>
+&lt;/div>&lt;h2 id="從-tar-匯入-image">從 tar 匯入 image
+&lt;/h2>&lt;p>這個是最基礎的方式，如果你沒有使用 zstd 解壓縮，就直接使用。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -75,8 +75,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">docker load &amp;lt; 240726_mysql.tar
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="查看-image">查看 image&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="查看-image">查看 image
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -84,8 +84,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">docker images
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="參考資料">參考資料&lt;/h1>
-&lt;ul>
+&lt;/div>&lt;h1 id="參考資料">參考資料
+&lt;/h1>&lt;ul>
 &lt;li>&lt;a class="link" href="https://docs.docker.com/engine/reference/commandline/save/" target="_blank" rel="noopener"
 >Docker 常用指令&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://docs.docker.com/engine/reference/commandline/load/" target="_blank" rel="noopener"
@@ -94,8 +94,8 @@
 >匯出/匯入 Docker image&lt;/a>&lt;/li>
 &lt;li>[zstd] (&lt;a class="link" href="https://github.com/facebook/zstd" target="_blank" rel="noopener"
 >https://github.com/facebook/zstd&lt;/a>)&lt;/li>
-&lt;/ul></content></item><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;blockquote>
+&lt;/ul></content></item><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;blockquote>
 &lt;p>祝大家新年快樂 !!!&lt;/p>
 &lt;/blockquote>
 &lt;p>今天是初六，也休息一陣子了，覺得有點廢。&lt;/p>
@@ -114,8 +114,8 @@
 &lt;p>所以會從 &lt;code>2.&lt;/code> 來教你怎麼做 !&lt;/p>
 &lt;!-- raw HTML omitted -->
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="利用-docker-來使用工具">利用 Docker 來使用工具&lt;/h1>
-&lt;p>&lt;code>工具只需要透過 Docker 就可以執行囉 !&lt;/code>&lt;/p>
+&lt;h1 id="利用-docker-來使用工具">利用 Docker 來使用工具
+&lt;/h1>&lt;p>&lt;code>工具只需要透過 Docker 就可以執行囉 !&lt;/code>&lt;/p>
 &lt;p>範例如下：&lt;code>範例下方還有部分說明唷 !&lt;/code>&lt;/p>
 &lt;p>&lt;code>**** 記得要先建立一個 schedule.log 檔案。&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -157,8 +157,8 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;h2 id="環境變數列表">環境變數列表&lt;/h2>
-&lt;table>
+&lt;h2 id="環境變數列表">環境變數列表
+&lt;/h2>&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th>環境變數&lt;/th>
@@ -220,8 +220,8 @@
 &lt;a class="link" href="https://apscheduler.readthedocs.io/en/3.x/modules/triggers/cron.html" target="_blank" rel="noopener"
 >https://apscheduler.readthedocs.io/en/3.x/modules/triggers/cron.html&lt;/a>&lt;/p>
 &lt;/blockquote>
-&lt;h1 id="如果是使用-docker-compose-">如果是使用 Docker Compose ..&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="如果是使用-docker-compose-">如果是使用 Docker Compose ..
+&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SQLServer on CY | 程式小角落</title><link>/tags/sqlserver/</link><description>Recent content in SQLServer on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 07 Aug 2021 21:10:00 +0000</lastBuildDate><atom:link href="/tags/sqlserver/index.xml" rel="self" type="application/rss+xml"/><item><title>【Docker】Macbook Air M1 CPU 使用 Docker 建立 SQL Server</title><link>/p/macbook-air-m1-install-sql-server/</link><pubDate>Sat, 07 Aug 2021 21:10:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/macbook-air-m1-install-sql-server/</guid><description/><tags><tag>SQLServer</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image><url>/</url></image><content>&lt;p>圖片來源：&lt;a class="link" href="https://zh.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener"
 >https://zh.wikipedia.org/wiki/Microsoft_SQL_Server&lt;/a>&lt;/p>
-&lt;h2 id="前言">前言&lt;/h2>
-&lt;p>說明一下為什麼會使用到 SQL Server + Macbook Air。&lt;/p>
+&lt;h2 id="前言">前言
+&lt;/h2>&lt;p>說明一下為什麼會使用到 SQL Server + Macbook Air。&lt;/p>
 &lt;p>主要是在今年 (2021) 年初買了 Macbook Air M1。&lt;/p>
 &lt;p>那過了近半年，在目前工作的專案下，對方有提出一個需求就是需要導入 SQL Server，&lt;/p>
 &lt;p>就想說試試看 M1 是否可以建立 SQL Server 的環境。&lt;/p>
-&lt;h2 id="本文章分為四段">本文章分為四段&lt;/h2>
-&lt;ul>
+&lt;h2 id="本文章分為四段">本文章分為四段
+&lt;/h2>&lt;ul>
 &lt;li>檢查您的電腦是否有安裝 Docker&lt;/li>
 &lt;li>Docker run&lt;/li>
 &lt;li>使用 dbeaver 開源資料庫管理工具連線 SQL Server Container&lt;/li>
 &lt;li>結束&lt;/li>
 &lt;/ul>
-&lt;h2 id="本文開始">本文開始&lt;/h2>
-&lt;h3 id="檢查是否安裝-docker">檢查是否安裝 Docker&lt;/h3>
-&lt;p>合理來說 Macbook Pro 一樣可以參考下面範例，若不行，希望你能留言告訴大家&lt;/p>
+&lt;h2 id="本文開始">本文開始
+&lt;/h2>&lt;h3 id="檢查是否安裝-docker">檢查是否安裝 Docker
+&lt;/h3>&lt;p>合理來說 Macbook Pro 一樣可以參考下面範例，若不行，希望你能留言告訴大家&lt;/p>
 &lt;p>首先當然先確認電腦是否有安裝 Docker，這邊顯示一下我目前 Docker 的版本&lt;/p>
 &lt;p>指令：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -33,8 +33,8 @@ alt="Docker 版本"
 &lt;p>&lt;a class="link" href="https://docs.docker.com/docker-for-mac/install/" target="_blank" rel="noopener"
 >https://docs.docker.com/docker-for-mac/install/&lt;/a>&lt;/p>
 &lt;p>暫時不提供安裝教學，官方也寫得非常清楚。&lt;/p>
-&lt;h3 id="docker-run">Docker run&lt;/h3>
-&lt;p>這邊其實當初也找了非常多，最後在&lt;/p>
+&lt;h3 id="docker-run">Docker run
+&lt;/h3>&lt;p>這邊其實當初也找了非常多，最後在&lt;/p>
 &lt;p>&lt;a class="link" href="https://medium.com/geekculture/docker-express-running-a-local-sql-server-on-your-m1-mac-8bbc22c49dc9" target="_blank" rel="noopener"
 >https://medium.com/geekculture/docker-express-running-a-local-sql-server-on-your-m1-mac-8bbc22c49dc9&lt;/a>&lt;/p>
 &lt;p>這篇有發現如何在 M1 安裝 SQL Server，其中他有 Highlight 這一段：&lt;/p>
@@ -109,8 +109,8 @@ loading="lazy"
 alt="sql-server 安裝完成"
 >&lt;/p>
 &lt;p>接下來出現這個畫面後，沒有跑出任何 Error，我們就可以打開 &lt;code>dbeaver&lt;/code> (開源資料庫管理工具)&lt;/p>
-&lt;h3 id="使用-dbeaver-開源資料庫管理工具連線-sql-server-container">使用 dbeaver 開源資料庫管理工具連線 SQL Server Container&lt;/h3>
-&lt;p>這邊就不展示如何安裝 dbeaver。&lt;/p>
+&lt;h3 id="使用-dbeaver-開源資料庫管理工具連線-sql-server-container">使用 dbeaver 開源資料庫管理工具連線 SQL Server Container
+&lt;/h3>&lt;p>這邊就不展示如何安裝 dbeaver。&lt;/p>
 &lt;p>首先我們先打開 dbeaver，如下圖進行新增連線&lt;/p>
 &lt;p>&lt;img src="/images/blogger/20210807_m1-sqlserver/04.dbeaver-connect-db.png"
 loading="lazy"
@@ -146,8 +146,8 @@ alt="dbeaver 設定連線資訊"
 loading="lazy"
 alt="使用 dbeaver 查看 sql-server schema"
 >&lt;/p>
-&lt;h2 id="結束">結束&lt;/h2>
-&lt;p>本篇結束，已經連到 SQL Server !!!&lt;/p>
+&lt;h2 id="結束">結束
+&lt;/h2>&lt;p>本篇結束，已經連到 SQL Server !!!&lt;/p>
 &lt;p>可以連線後，就可以繼續做工作的事情囉！&lt;/p>
 &lt;p>祝福讀完文章的你，一路順風 XD&lt;/p>
 &lt;p>如果你有碰到任何問題，歡迎你在下面留言！&lt;/p></content></item></channel></rss>

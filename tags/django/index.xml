@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Django on CY | 程式小角落</title><link>/tags/django/</link><description>Recent content in Django on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sun, 14 May 2023 10:42:02 +0000</lastBuildDate><atom:link href="/tags/django/index.xml" rel="self" type="application/rss+xml"/><item><title>Nginx - 將 HTTP 的網頁上線成 HTTPS.</title><link>/p/nginx-add-https/</link><pubDate>Sun, 14 May 2023 10:42:02 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/nginx-add-https/</guid><description>以前就上線過 HTTPS, 但這次設定被其他環境干擾, 害我花了超出預期的時間.</description><tags><tag>Django</tag><tag>Nginx</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>前陣子再協助朋友設定 NGINX 時, 發現手邊都沒有在做紀錄 HTTPS 的設定, 所以這次就來紀錄一下。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Django on CY | 程式小角落</title><link>/tags/django/</link><description>Recent content in Django on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sun, 14 May 2023 10:42:02 +0000</lastBuildDate><atom:link href="/tags/django/index.xml" rel="self" type="application/rss+xml"/><item><title>Nginx - 將 HTTP 的網頁上線成 HTTPS.</title><link>/p/nginx-add-https/</link><pubDate>Sun, 14 May 2023 10:42:02 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/nginx-add-https/</guid><description>以前就上線過 HTTPS, 但這次設定被其他環境干擾, 害我花了超出預期的時間.</description><tags><tag>Django</tag><tag>Nginx</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>前陣子再協助朋友設定 NGINX 時, 發現手邊都沒有在做紀錄 HTTPS 的設定, 所以這次就來紀錄一下。&lt;/p>
 &lt;p>其實不難，只是擔心朋友針對機器在做轉 Port 的設定 .. 這樣就會讓我很頭痛了。&lt;/p>
 &lt;p>當然後面有解決, 但是花了超出預期的時間。&lt;/p>
 &lt;blockquote>
 &lt;p>小提醒：下面的路徑都是絕對路徑，因為使用的是 Docker，所以路徑會有點不一樣。你可以依照自己的環境去做設定。&lt;/p>
 &lt;/blockquote>
 &lt;p>這邊就不特別說明 Docker 的設定及路徑怎麼查詢囉 !&lt;/p>
-&lt;h1 id="設定檔案">設定檔案&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="設定檔案">設定檔案
+&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -78,77 +78,77 @@
 &lt;/span>&lt;span class="lnt">67
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">server {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # port
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen 443 ssl;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen [::]:443 ssl;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_name www.example.com;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # ssl
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_certificate /home/example/example.crt;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_certificate_key /home/example/example.key;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_session_timeout 5m;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_prefer_server_ciphers on;
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="n">server&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># port&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">listen&lt;/span> &lt;span class="mi">443&lt;/span> &lt;span class="n">ssl&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">listen&lt;/span> &lt;span class="p">[::]:&lt;/span>&lt;span class="mi">443&lt;/span> &lt;span class="n">ssl&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">server_name&lt;/span> &lt;span class="n">www&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ssl&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_certificate&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">crt&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_certificate_key&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">key&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_session_timeout&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="n">m&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_ciphers&lt;/span> &lt;span class="n">ECDHE&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">RSA&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">AES128&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">GCM&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">SHA256&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">ECDHE&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">ECDH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">AES&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">HIGH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">NULL&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">aNULL&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">MD5&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">ADH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">RC4&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_protocols&lt;/span> &lt;span class="n">TLSv1&lt;/span> &lt;span class="n">TLSv1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">1&lt;/span> &lt;span class="n">TLSv1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_prefer_server_ciphers&lt;/span> &lt;span class="n">on&lt;/span>&lt;span class="p">;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> location / {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> root /var/www/html/;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> index index.html;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">location&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">root&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="k">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">www&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">html&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">index&lt;/span> &lt;span class="n">index&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">html&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> location /config {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> root /var/www/html/;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> index config.json;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">location&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">config&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">root&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="k">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">www&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">html&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">index&lt;/span> &lt;span class="n">config&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">json&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # error
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> error_page 500 502 503 504 /50x.html;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># error&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_page&lt;/span> &lt;span class="mi">500&lt;/span> &lt;span class="mi">502&lt;/span> &lt;span class="mi">503&lt;/span> &lt;span class="mi">504&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="mi">50&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">html&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">server {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # port
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen 5000 ssl;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen [::]:5000 ssl;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_name www.example.com;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # ssl
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_certificate /home/example/example.crt;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_certificate_key /home/example/example.key;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_session_timeout 5m;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ssl_prefer_server_ciphers on;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">server&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># port&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">listen&lt;/span> &lt;span class="mi">5000&lt;/span> &lt;span class="n">ssl&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">listen&lt;/span> &lt;span class="p">[::]:&lt;/span>&lt;span class="mi">5000&lt;/span> &lt;span class="n">ssl&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">server_name&lt;/span> &lt;span class="n">www&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ssl&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_certificate&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">crt&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_certificate_key&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">key&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_session_timeout&lt;/span> &lt;span class="mi">5&lt;/span>&lt;span class="n">m&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_ciphers&lt;/span> &lt;span class="n">ECDHE&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">RSA&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">AES128&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">GCM&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">SHA256&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">ECDHE&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">ECDH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">AES&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="n">HIGH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">NULL&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">aNULL&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">MD5&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">ADH&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">RC4&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_protocols&lt;/span> &lt;span class="n">TLSv1&lt;/span> &lt;span class="n">TLSv1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">1&lt;/span> &lt;span class="n">TLSv1&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ssl_prefer_server_ciphers&lt;/span> &lt;span class="n">on&lt;/span>&lt;span class="p">;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # path
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> location / {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_pass http://myip.com:8080;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # proxy header
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_set_header X-Real-IP $remote_addr;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_set_header X-Forwarded-Proto $http_x_forwarded_proto;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> #
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_connect_timeout 300;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_send_timeout 300;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> proxy_read_timeout 300;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> send_timeout 300;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> keepalive_timeout 300s;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> client_body_timeout 300s;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> }
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> # error
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> error_page 500 502 503 504 /50x.html;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># path&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">location&lt;/span> &lt;span class="o">/&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_pass&lt;/span> &lt;span class="n">http&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">myip&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">8080&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># proxy header&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_set_header&lt;/span> &lt;span class="n">X&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">Real&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="ne">IP&lt;/span> &lt;span class="o">$&lt;/span>&lt;span class="n">remote_addr&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_set_header&lt;/span> &lt;span class="n">X&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">Forwarded&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">For&lt;/span> &lt;span class="o">$&lt;/span>&lt;span class="n">proxy_add_x_forwarded_for&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_set_header&lt;/span> &lt;span class="n">X&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">Forwarded&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">Proto&lt;/span> &lt;span class="o">$&lt;/span>&lt;span class="n">http_x_forwarded_proto&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">#&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_connect_timeout&lt;/span> &lt;span class="mi">300&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_send_timeout&lt;/span> &lt;span class="mi">300&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">proxy_read_timeout&lt;/span> &lt;span class="mi">300&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">send_timeout&lt;/span> &lt;span class="mi">300&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">keepalive_timeout&lt;/span> &lt;span class="mi">300&lt;/span>&lt;span class="n">s&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">client_body_timeout&lt;/span> &lt;span class="mi">300&lt;/span>&lt;span class="n">s&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># error&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">error_page&lt;/span> &lt;span class="mi">500&lt;/span> &lt;span class="mi">502&lt;/span> &lt;span class="mi">503&lt;/span> &lt;span class="mi">504&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="mi">50&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">html&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">server {
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen 80 default_server;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> listen [::]:80 default_server;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> server_name www.example.com;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> return 301 https://www.example.com$request_uri;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">server&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">listen&lt;/span> &lt;span class="mi">80&lt;/span> &lt;span class="n">default_server&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">listen&lt;/span> &lt;span class="p">[::]:&lt;/span>&lt;span class="mi">80&lt;/span> &lt;span class="n">default_server&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">server_name&lt;/span> &lt;span class="n">www&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="mi">301&lt;/span> &lt;span class="n">https&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">www&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">example&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="o">$&lt;/span>&lt;span class="n">request_uri&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>PSQL 01 - 踢掉指定的 PostgreSQL Session.</title><link>/p/psql-deleted-session/</link><pubDate>Fri, 03 Mar 2023 06:11:52 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/psql-deleted-session/</guid><description>強制取消後端測試時, 導致無法刪除已經建立的測試資料庫。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>主要是在撰寫 Django 測試時，有時候會因為某些原因導致測試過程強制中斷，例如程式出錯或手動中斷執行等。&lt;/p>
+&lt;/div></content></item><item><title>PSQL 01 - 踢掉指定的 PostgreSQL Session.</title><link>/p/psql-deleted-session/</link><pubDate>Fri, 03 Mar 2023 06:11:52 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/psql-deleted-session/</guid><description>強制取消後端測試時, 導致無法刪除已經建立的測試資料庫。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>主要是在撰寫 Django 測試時，有時候會因為某些原因導致測試過程強制中斷，例如程式出錯或手動中斷執行等。&lt;/p>
 &lt;p>當發生這種情況時，測試資料庫可能會佔有一些 session 無法正確刪除，進而影響測試的正確性。&lt;/p>
 &lt;p>以下是發生的一些關鍵字或 &amp;hellip;. 問題&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -175,9 +175,9 @@
 &lt;/div>
 &lt;/div>&lt;p>可以看到最後有出現一行關於 database session 的問題。&lt;/p>
 &lt;p>&lt;code>DETAIL: There is 1 other session using the database.&lt;/code>&lt;/p>
-&lt;h1 id="如何解決">如何解決&lt;/h1>
-&lt;h2 id="查詢目前在-postgresql-中的-session-有幾個-">查詢目前在 PostgreSQL 中的 Session 有幾個 ?&lt;/h2>
-&lt;p>當 PostgreSQL 資料庫中發現有用戶端連線時，就會產生一個會話或連線的記錄。&lt;/p>
+&lt;h1 id="如何解決">如何解決
+&lt;/h1>&lt;h2 id="查詢目前在-postgresql-中的-session-有幾個-">查詢目前在 PostgreSQL 中的 Session 有幾個 ?
+&lt;/h2>&lt;p>當 PostgreSQL 資料庫中發現有用戶端連線時，就會產生一個會話或連線的記錄。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -190,8 +190,8 @@
 &lt;/div>
 &lt;/div>&lt;p>使用此命令可以查詢正在執行的所有 SQL 語句、會話的狀態、用戶名、資料庫名、主機名、客戶端應用程式等資訊。&lt;/p>
 &lt;p>可用於診斷資料庫中的問題，例如瞭解目前資料庫是否被其他用戶連線、哪些查詢正在執行，以及為什麼某些查詢會長時間運行等。&lt;/p>
-&lt;h3 id="範例">範例&lt;/h3>
-&lt;table>
+&lt;h3 id="範例">範例
+&lt;/h3>&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th>datid&lt;/th>
@@ -233,8 +233,8 @@
 &lt;blockquote>
 &lt;p>範例就是 pg_stat_activity 這張表會呈現的內容，資訊量非常豐富。&lt;/p>
 &lt;/blockquote>
-&lt;h2 id="如何踢出指定的-session-">如何踢出指定的 Session ?&lt;/h2>
-&lt;p>今天假設我要踢掉範例中的 pid 為 2191385 的 Session.　這時候只要打上下方的指令&lt;/p>
+&lt;h2 id="如何踢出指定的-session-">如何踢出指定的 Session ?
+&lt;/h2>&lt;p>今天假設我要踢掉範例中的 pid 為 2191385 的 Session.　這時候只要打上下方的指令&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -244,8 +244,8 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>這時候你查詢 &lt;code>SELECT * FROM pg_stat_activity;&lt;/code> 一次，你看一下你打上的 pid 對應的 session 是不是已經被你刪除了 !&lt;/p>
-&lt;h2 id="那我要怎麼清楚某個指定-user-下的所有-session-">那我要怎麼清楚某個指定 user 下的所有 session ?&lt;/h2>
-&lt;p>這個查詢會返回所有用戶名等於 &lt;code>username&lt;/code> 的 PostgreSQL Session。&lt;/p>
+&lt;h2 id="那我要怎麼清楚某個指定-user-下的所有-session-">那我要怎麼清楚某個指定 user 下的所有 session ?
+&lt;/h2>&lt;p>這個查詢會返回所有用戶名等於 &lt;code>username&lt;/code> 的 PostgreSQL Session。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -254,9 +254,9 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-sql" data-lang="sql">&lt;span class="line">&lt;span class="cl">&lt;span class="k">SELECT&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">FROM&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">pg_stat_activity&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">WHERE&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">usename&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;&amp;lt;username&amp;gt;&amp;#39;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="完成">完成&lt;/h1>
-&lt;p>今天是一個 PostgreSQL 的使用知識，正好在寫測時時出現，就把這個過程記錄一下。&lt;/p></content></item><item><title>Django 紀錄 03 - 使用套件 django-environ 管理環境參數 !! 超方便 !!</title><link>/p/django-environ/</link><pubDate>Wed, 01 Mar 2023 17:43:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/django-environ/</guid><description>在工作時發現同事使用 .. 發現很好用 !! 所以有花時間研究一下。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>當今年二月不斷的補班的時候 &amp;hellip;　發現團隊內部有人使用 &lt;code>django-environ&lt;/code> 套件。&lt;/p>
+&lt;/div>&lt;h1 id="完成">完成
+&lt;/h1>&lt;p>今天是一個 PostgreSQL 的使用知識，正好在寫測時時出現，就把這個過程記錄一下。&lt;/p></content></item><item><title>Django 紀錄 03 - 使用套件 django-environ 管理環境參數 !! 超方便 !!</title><link>/p/django-environ/</link><pubDate>Wed, 01 Mar 2023 17:43:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/django-environ/</guid><description>在工作時發現同事使用 .. 發現很好用 !! 所以有花時間研究一下。</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>當今年二月不斷的補班的時候 &amp;hellip;　發現團隊內部有人使用 &lt;code>django-environ&lt;/code> 套件。&lt;/p>
 &lt;p>筆者過去是使用 &lt;code>python-dotenv&lt;/code>。但是發現 &lt;code>django-environ&lt;/code> 有提供更多針對 &lt;code>django&lt;/code> 框架的框架設定 !&lt;/p>
 &lt;ul>
 &lt;li>讀取和解析環境檔案 (.env) 中的變數&lt;/li>
@@ -267,9 +267,9 @@
 &lt;blockquote>
 &lt;p>針對 &lt;code>資料庫連接字串&lt;/code>、&lt;code>快取設定&lt;/code> 就是一大優點&lt;/p>
 &lt;/blockquote>
-&lt;h1 id="資料庫接字串">資料庫接字串&lt;/h1>
-&lt;h2 id="使用前的設定">使用前的設定&lt;/h2>
-&lt;p>筆者再使用 django-environ 前是使用 &lt;code>python-dotenv&lt;/code>&lt;/p>
+&lt;h1 id="資料庫接字串">資料庫接字串
+&lt;/h1>&lt;h2 id="使用前的設定">使用前的設定
+&lt;/h2>&lt;p>筆者再使用 django-environ 前是使用 &lt;code>python-dotenv&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -315,8 +315,8 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>通常我們使用 Django 去連接 DB 的時候可能都會需要這些設定。&lt;/p>
-&lt;h2 id="使用後的設定">使用後的設定&lt;/h2>
-&lt;p>筆者再使用 django-environ 後就直接縮短這個部分的參數&lt;/p>
+&lt;h2 id="使用後的設定">使用後的設定
+&lt;/h2>&lt;p>筆者再使用 django-environ 後就直接縮短這個部分的參數&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -372,8 +372,8 @@
 &lt;/div>
 &lt;/div>&lt;p>省去 variables.py 這樣的設定反而比較直覺。&lt;/p>
 &lt;p>感謝撥冗閱讀本篇文章。&lt;/p>
-&lt;h1 id="reference">Reference&lt;/h1>
-&lt;ol>
+&lt;h1 id="reference">Reference
+&lt;/h1>&lt;ol>
 &lt;li>joke2k/django-environ: Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application. - GitHub. &lt;a class="link" href="https://github.com/joke2k/django-environ" target="_blank" rel="noopener"
 >https://github.com/joke2k/django-environ&lt;/a> 已存取 2023/3/1.&lt;/li>
 &lt;li>django-environ - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天. &lt;a class="link" href="https://ithelp.ithome.com.tw/articles/10233649" target="_blank" rel="noopener"
@@ -382,16 +382,16 @@
 >https://django-environ.readthedocs.io/&lt;/a> 已存取 2023/3/1.&lt;/li>
 &lt;li>Django-environd的使用(管理配置文件敏感参数和环境变量)_想学废更多东西的猿的博客-CSDN博客_django environ. &lt;a class="link" href="https://blog.csdn.net/zscccccc/article/details/121630824" target="_blank" rel="noopener"
 >https://blog.csdn.net/zscccccc/article/details/121630824&lt;/a> 已存取 2023/3/1.&lt;/li>
-&lt;/ol></content></item><item><title>Django 紀錄 02 - 如何在 Django 應用使用 Celery 進行系統任務管理</title><link>/p/django-celery-beat/</link><pubDate>Wed, 22 Feb 2023 22:17:10 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/django-celery-beat/</guid><description>雖然 Djang 也有其他的任務套件, 但 Celery 用起來還是問題最少 ..</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>最近在使用 &lt;code>django-celery-beat&lt;/code>，發現網路上的參數基本上都舊了。&lt;/p>
+&lt;/ol></content></item><item><title>Django 紀錄 02 - 如何在 Django 應用使用 Celery 進行系統任務管理</title><link>/p/django-celery-beat/</link><pubDate>Wed, 22 Feb 2023 22:17:10 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/django-celery-beat/</guid><description>雖然 Djang 也有其他的任務套件, 但 Celery 用起來還是問題最少 ..</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>最近在使用 &lt;code>django-celery-beat&lt;/code>，發現網路上的參數基本上都舊了。&lt;/p>
 &lt;p>所以安裝的方式這邊幫大家梳理一下，有時候網路上的安裝方式可能會導致自己花非常多時間。&lt;/p>
 &lt;blockquote>
 &lt;p>如果你是老手，可以直接到 Github 查看程式碼。&lt;/p>
 &lt;/blockquote>
 &lt;p>&lt;a class="link" href="https://github.com/CHunYenc/django-celery-beat-example" target="_blank" rel="noopener"
 >https://github.com/CHunYenc/django-celery-beat-example&lt;/a>&lt;/p>
-&lt;h1 id="版本">版本&lt;/h1>
-&lt;table>
+&lt;h1 id="版本">版本
+&lt;/h1>&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th>name&lt;/th>
@@ -417,14 +417,14 @@
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h1 id="步驟">步驟&lt;/h1>
-&lt;h2 id="建立虛擬環境">建立虛擬環境&lt;/h2>
-&lt;p>當使用 Python 時會使用到大量套件或不同版本的 Python 時，建立虛擬環境可以幫助隔離 Python 的不同版本和套件，以避免版本衝突。&lt;/p>
+&lt;h1 id="步驟">步驟
+&lt;/h1>&lt;h2 id="建立虛擬環境">建立虛擬環境
+&lt;/h2>&lt;p>當使用 Python 時會使用到大量套件或不同版本的 Python 時，建立虛擬環境可以幫助隔離 Python 的不同版本和套件，以避免版本衝突。&lt;/p>
 &lt;blockquote>
 &lt;p>為了讓有乾淨的環境, 必須建立虛擬環境 !!&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="linux--mac">Linux / Mac&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h3 id="linux--mac">Linux / Mac
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -432,8 +432,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">python -m venv .venv
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="windows">Windows&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h3 id="windows">Windows
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -441,10 +441,10 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">py -3.10 -m venv .venv
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="進入虛擬環境">進入虛擬環境&lt;/h2>
-&lt;p>接下來啟動 Python 虛擬環境，執行後你的 shell 會切換到虛擬環境中。&lt;/p>
-&lt;h3 id="linux--mac-1">Linux / Mac&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="進入虛擬環境">進入虛擬環境
+&lt;/h2>&lt;p>接下來啟動 Python 虛擬環境，執行後你的 shell 會切換到虛擬環境中。&lt;/p>
+&lt;h3 id="linux--mac-1">Linux / Mac
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -456,8 +456,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>.venv&lt;span class="o">)&lt;/span> path % ...
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="windows-1">Windows&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h3 id="windows-1">Windows
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -472,8 +472,8 @@
 &lt;/div>&lt;blockquote>
 &lt;p>下面我就僅使用 (.venv) 表示虛擬環境。後面會直接接指令。&lt;/p>
 &lt;/blockquote>
-&lt;h2 id="安裝套件">安裝套件&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h2 id="安裝套件">安裝套件
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -481,8 +481,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">(.venv) pip install django celery[redis] django-celery-beat
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="建立-django-project">建立 Django Project&lt;/h2>
-&lt;p>這邊筆者的路徑是已經在 &lt;code>/Users/yen/code/django-celery-beat-example&lt;/code>，&lt;/p>
+&lt;/div>&lt;h2 id="建立-django-project">建立 Django Project
+&lt;/h2>&lt;p>這邊筆者的路徑是已經在 &lt;code>/Users/yen/code/django-celery-beat-example&lt;/code>，&lt;/p>
 &lt;p>所以當你使用下列指令時，你的 &lt;code>core&lt;/code> 資料夾位置應該會是 &lt;code>/Users/yen/code/django-celery-beat-example/core&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -492,9 +492,9 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>.venv&lt;span class="o">)&lt;/span> django-admin startproject core .
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="安裝-django-celery-beat">安裝 Django-Celery-beat&lt;/h2>
-&lt;h3 id="coresettingspy-的-installed_apps">core/settings.py 的 INSTALLED_APPS&lt;/h3>
-&lt;p>安裝 &lt;code>django-celery-beat&lt;/code> 在 &lt;code>INSTALLED_APPS&lt;/code>。&lt;/p>
+&lt;/div>&lt;h2 id="安裝-django-celery-beat">安裝 Django-Celery-beat
+&lt;/h2>&lt;h3 id="coresettingspy-的-installed_apps">core/settings.py 的 INSTALLED_APPS
+&lt;/h3>&lt;p>安裝 &lt;code>django-celery-beat&lt;/code> 在 &lt;code>INSTALLED_APPS&lt;/code>。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -524,8 +524,8 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>安裝上去會發現，&lt;code>django-celery-beat&lt;/code> 有預設的資料表來控制任務喔 !!!&lt;/p>
-&lt;h3 id="corecelerypy">core/celery.py&lt;/h3>
-&lt;p>在這個檔案中設定 Celery 的 instance。一般會設定 broker 和 backend 的位置，以及指定 task 檔案的位置等等。有了這個設定之後，Django 就能夠將要執行的 task 發送到 Celery，由 Celery 負責執行。&lt;/p>
+&lt;h3 id="corecelerypy">core/celery.py
+&lt;/h3>&lt;p>在這個檔案中設定 Celery 的 instance。一般會設定 broker 和 backend 的位置，以及指定 task 檔案的位置等等。有了這個設定之後，Django 就能夠將要執行的 task 發送到 Celery，由 Celery 負責執行。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -594,7 +594,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 設置定時任務&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">app&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">conf&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">beat_schedule&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;system-task&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>&lt;span class="err">　&lt;/span>&lt;span class="c1"># Celery 任務名稱&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;system-task&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>　&lt;span class="c1"># Celery 任務名稱&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;task&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;system-hello-celery&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="c1"># Celery 任務執行的函示名稱&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;schedule&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mf">2.0&lt;/span> &lt;span class="c1"># 每兩秒執行一次&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
@@ -620,8 +620,8 @@
 &lt;p>其他我沒提到的設定參數可以到下面連結查看。&lt;/p>
 &lt;p>&lt;a class="link" href="https://docs.celeryproject.org/en/stable/userguide/configuration.html#configuration-reference" target="_blank" rel="noopener"
 >https://docs.celeryproject.org/en/stable/userguide/configuration.html#configuration-reference&lt;/a>&lt;/p>
-&lt;h3 id="core__init__py">core/&lt;strong>init&lt;/strong>.py&lt;/h3>
-&lt;p>在 &lt;code>__init__.py&lt;/code> 主要是要讓 Django 項目中使用 &lt;code>celery_app&lt;/code> 與 &lt;code>celery_logger&lt;/code> 物件。&lt;/p>
+&lt;h3 id="core__init__py">core/&lt;strong>init&lt;/strong>.py
+&lt;/h3>&lt;p>在 &lt;code>__init__.py&lt;/code> 主要是要讓 Django 項目中使用 &lt;code>celery_app&lt;/code> 與 &lt;code>celery_logger&lt;/code> 物件。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -638,8 +638,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">__all__&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;celery_app&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;celery_logger&amp;#39;&lt;/span>&lt;span class="p">,)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="coretaskspy">core/tasks.py&lt;/h3>
-&lt;p>主要將 Celery 要執行的程式寫在此處。而 Celery 就會登入該檔案的函式。&lt;/p>
+&lt;/div>&lt;h3 id="coretaskspy">core/tasks.py
+&lt;/h3>&lt;p>主要將 Celery 要執行的程式寫在此處。而 Celery 就會登入該檔案的函式。&lt;/p>
 &lt;p>例如這邊有一個 Celery 函示叫 &lt;code>system-hello-celery&lt;/code>, 就是對應 &lt;code>core/celery.py&lt;/code> 中的 &lt;code>beat_schedule&lt;/code> 內的 task。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -661,9 +661,9 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">celery_logger&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">info&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;HELLO Celery&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="執行-celery">執行 Celery&lt;/h2>
-&lt;h3 id="使用-docker-建立-redis">使用 Docker 建立 redis&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="執行-celery">執行 Celery
+&lt;/h2>&lt;h3 id="使用-docker-建立-redis">使用 Docker 建立 redis
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -674,8 +674,8 @@
 &lt;/div>&lt;blockquote>
 &lt;p>如果在本機執行 docker, 那麼 IP 就是 &lt;code>localhost:6379&lt;/code>。&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="migrate-database">migrate database&lt;/h3>
-&lt;p>當您在 Django 中更改模型之後，例如添加、修改或刪除模型，您需要將這些變更反映到資料庫中。&lt;/p>
+&lt;h3 id="migrate-database">migrate database
+&lt;/h3>&lt;p>當您在 Django 中更改模型之後，例如添加、修改或刪除模型，您需要將這些變更反映到資料庫中。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -684,9 +684,9 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">(.venv) python manage.py migrate
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="run-celery">run celery&lt;/h3>
-&lt;h4 id="開發用">開發用&lt;/h4>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h3 id="run-celery">run celery
+&lt;/h3>&lt;h4 id="開發用">開發用
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -694,10 +694,10 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>.venv&lt;span class="o">)&lt;/span> celery -A core.celery worker -l info -B
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="上線時-production">上線時 (production)&lt;/h4>
-&lt;p>在正式環境中，不建議在同一個應用程序中運行 worker 和 beat scheduler，因為會影響應用程序的性能和穩定性。&lt;/p>
-&lt;h5 id="第一個-terminal">第一個 terminal&lt;/h5>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h4 id="上線時-production">上線時 (production)
+&lt;/h4>&lt;p>在正式環境中，不建議在同一個應用程序中運行 worker 和 beat scheduler，因為會影響應用程序的性能和穩定性。&lt;/p>
+&lt;h5 id="第一個-terminal">第一個 terminal
+&lt;/h5>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -705,8 +705,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>.venv&lt;span class="o">)&lt;/span> celery -A core.celery worker --loglevel&lt;span class="o">=&lt;/span>info
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h5 id="第二個-terminal">第二個 terminal&lt;/h5>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h5 id="第二個-terminal">第二個 terminal
+&lt;/h5>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -717,8 +717,8 @@
 &lt;/div>&lt;blockquote>
 &lt;p>你也可以使用 docker-compose 執行個別一個 services。&lt;/p>
 &lt;/blockquote>
-&lt;h1 id="完成">完成&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="完成">完成
+&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -736,17 +736,17 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>2023-02-24 09:47:46,381: INFO/ForkPoolWorker-2&lt;span class="o">]&lt;/span> Task system-hello-celery&lt;span class="o">[&lt;/span>409aa851-639d-4183-92eb-662715a55b41&lt;span class="o">]&lt;/span> succeeded in 0.02016970000022411s: None
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="後續">後續&lt;/h1>
-&lt;p>你還可以透過 &lt;code>django-environ&lt;/code> 套件來優化你的 &lt;code>settings.py&lt;/code> 或 &lt;code>celery.py&lt;/code>，將環境設定的資訊都隱藏。&lt;/p>
-&lt;p>那也是我後續要來新增的文章 XD&lt;/p></content></item><item><title>Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼</title><link>/p/django-cython/</link><pubDate>Mon, 11 Jul 2022 17:31:45 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/django-cython/</guid><description>程式碼就不會脫光光給別人看 XD</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>主要就是將原始程式碼轉成暗碼，雖然能夠不讓自己的程式碼直接裸奔。&lt;/p>
+&lt;/div>&lt;h1 id="後續">後續
+&lt;/h1>&lt;p>你還可以透過 &lt;code>django-environ&lt;/code> 套件來優化你的 &lt;code>settings.py&lt;/code> 或 &lt;code>celery.py&lt;/code>，將環境設定的資訊都隱藏。&lt;/p>
+&lt;p>那也是我後續要來新增的文章 XD&lt;/p></content></item><item><title>Django 紀錄 01 - 將 Django App 程式碼轉成 Cython 來保護程式碼</title><link>/p/django-cython/</link><pubDate>Mon, 11 Jul 2022 17:31:45 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/django-cython/</guid><description>程式碼就不會脫光光給別人看 XD</description><tags><tag>Django</tag><tag>Python</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>主要就是將原始程式碼轉成暗碼，雖然能夠不讓自己的程式碼直接裸奔。&lt;/p>
 &lt;p>但是若碰到有心人士也是一樣可以透過逆向工程把你的程式碼還原。&lt;/p>
 &lt;p>提到明碼轉成暗碼，優先選擇 Cython 來執行，速度甚至可能變快(?)，實際上當然還沒測試，只是看到非常多人透過 Cython 讓自己 Python 程式碼變快 XD&lt;/p>
 &lt;p>真是期待，但今天並不是來測試效能，而是優先將 Django-app 轉換成 so 檔執行 !!&lt;/p>
-&lt;h1 id="操作">操作&lt;/h1>
-&lt;p>可以參考 Reference 第一篇文章的程式碼來執行，但是我這邊主要也是整理一下我自己實作的部分提供參考。&lt;/p>
-&lt;h2 id="操作環境">操作環境&lt;/h2>
-&lt;p>使用 WSL2，要注意如果使用 Windows 進行 Cython，&lt;/p>
+&lt;h1 id="操作">操作
+&lt;/h1>&lt;p>可以參考 Reference 第一篇文章的程式碼來執行，但是我這邊主要也是整理一下我自己實作的部分提供參考。&lt;/p>
+&lt;h2 id="操作環境">操作環境
+&lt;/h2>&lt;p>使用 WSL2，要注意如果使用 Windows 進行 Cython，&lt;/p>
 &lt;p>在執行上面有跑出問題，所以我是放棄了。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -766,8 +766,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Codename: bionic
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="資料夾架構">資料夾架構&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="資料夾架構">資料夾架構
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -863,10 +863,10 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;h2 id="如何將-app-從-py-轉為-cython">如何將 APP 從 py 轉為 cython&lt;/h2>
-&lt;h3 id="build_py_to_sopy">build_py_to_so.py&lt;/h3>
-&lt;h3 id="導入套件">導入套件&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h2 id="如何將-app-從-py-轉為-cython">如何將 APP 從 py 轉為 cython
+&lt;/h2>&lt;h3 id="build_py_to_sopy">build_py_to_so.py
+&lt;/h3>&lt;h3 id="導入套件">導入套件
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -885,8 +885,8 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>上面是使用到的套件，非常簡單，大部分都是 import Cython 套件。&lt;/p>
-&lt;h3 id="取得-app-路徑">取得 app 路徑&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h3 id="取得-app-路徑">取得 app 路徑
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -922,8 +922,8 @@
 &lt;blockquote>
 &lt;p>若你解決了，可以再留言跟我分享，你的方式。&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="主要程式碼">主要程式碼&lt;/h3>
-&lt;p>這邊如果你是參考 Reference 第一篇文章的話，他是沒有第 3 行迴圈的部分，&lt;/p>
+&lt;h3 id="主要程式碼">主要程式碼
+&lt;/h3>&lt;p>這邊如果你是參考 Reference 第一篇文章的話，他是沒有第 3 行迴圈的部分，&lt;/p>
 &lt;p>這邊我主要是忽略 &lt;code>app1/migrations/&lt;/code> 資料夾產生的錯誤。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -1116,8 +1116,8 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>改成上面只剩下 &lt;code>app1&lt;/code> 的資料夾底下只有 &lt;code>.so&lt;/code> 檔的方式，沒意外的話也要能夠執行喔 !!&lt;/p>
-&lt;h3 id="執行結果">執行結果&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h3 id="執行結果">執行結果
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -1175,8 +1175,8 @@
 loading="lazy"
 alt="執行結果, 我的 index XD"
 >&lt;/p>
-&lt;h1 id="reference">Reference&lt;/h1>
-&lt;ol>
+&lt;h1 id="reference">Reference
+&lt;/h1>&lt;ol>
 &lt;li>&lt;a class="link" href="https://imshanks.com/2019/08/03/converting-django-project-py-file-to-so-file.html" target="_blank" rel="noopener"
 >https://imshanks.com/2019/08/03/converting-django-project-py-file-to-so-file.html&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://cython.readthedocs.io/en/latest/" target="_blank" rel="noopener"

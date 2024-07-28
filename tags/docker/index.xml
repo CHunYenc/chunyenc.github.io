@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on CY | 程式小角落</title><link>/tags/docker/</link><description>Recent content in Docker on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 26 Jul 2024 17:45:14 +0000</lastBuildDate><atom:link href="/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker 紀錄 04 - 離線部署 Docker Image 時的指令</title><link>/p/docker-export-docker-image/</link><pubDate>Fri, 26 Jul 2024 17:45:14 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-export-docker-image/</guid><description>當網路不佳時，需要離線部署 Docker Image 時的指令。</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>因為公司網路系統上線的地方在中國，不管是 &lt;code>docker&lt;/code>, &lt;code>python&lt;/code> 套件都要更換下載源。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on CY | 程式小角落</title><link>/tags/docker/</link><description>Recent content in Docker on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 26 Jul 2024 17:45:14 +0000</lastBuildDate><atom:link href="/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker 紀錄 04 - 離線部署 Docker Image 時的指令</title><link>/p/docker-export-docker-image/</link><pubDate>Fri, 26 Jul 2024 17:45:14 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-export-docker-image/</guid><description>當網路不佳時，需要離線部署 Docker Image 時的指令。</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>因為公司網路系統上線的地方在中國，不管是 &lt;code>docker&lt;/code>, &lt;code>python&lt;/code> 套件都要更換下載源。&lt;/p>
 &lt;p>覺得麻煩，所以就下定決心使用離線部署。&lt;/p>
 &lt;p>以下使用 mysql 來做範例。&lt;/p>
-&lt;h1 id="輸出-image">輸出 image&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="輸出-image">輸出 image
+&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -12,8 +12,8 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>結束後會產生一個檔案，用來儲存 image，然後你就可以把 &lt;code>tar&lt;/code> 檔丟到系統上線的那台主機上。&lt;/p>
-&lt;h2 id="壓縮讓傳遞更快">壓縮，讓傳遞更快&lt;/h2>
-&lt;p>因為 VPN 速度不佳，所以我們透過壓縮來減少檔案大小，加快傳輸速度。&lt;/p>
+&lt;h2 id="壓縮讓傳遞更快">壓縮，讓傳遞更快
+&lt;/h2>&lt;p>因為 VPN 速度不佳，所以我們透過壓縮來減少檔案大小，加快傳輸速度。&lt;/p>
 &lt;p>我們使用 &lt;code>zstd&lt;/code> 解壓縮演算法來進行壓縮。 (這邊就不特別介紹 zstd)&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -24,10 +24,10 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>結束後會產生一個檔案，例如我的檔名會叫做 &lt;code>240726_mysql.tar.zst&lt;/code>。&lt;/p>
-&lt;h2 id="比較大小">比較大小&lt;/h2>
-&lt;p>這邊就用 &lt;code>du&lt;/code> 來比較大小。&lt;/p>
-&lt;h3 id="使用-zstd-解壓縮前">使用 zstd 解壓縮前&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h2 id="比較大小">比較大小
+&lt;/h2>&lt;p>這邊就用 &lt;code>du&lt;/code> 來比較大小。&lt;/p>
+&lt;h3 id="使用-zstd-解壓縮前">使用 zstd 解壓縮前
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -37,8 +37,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">440M 240726_mysql.tar
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用-zstd-解壓縮後">使用 zstd 解壓縮後&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h3 id="使用-zstd-解壓縮後">使用 zstd 解壓縮後
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -49,9 +49,9 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>差超多 .. 又幫我節省很多時間了 XD&lt;/p>
-&lt;h1 id="匯入-image">匯入 image&lt;/h1>
-&lt;h2 id="從-zstd-轉回-tar">從 zstd 轉回 tar&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="匯入-image">匯入 image
+&lt;/h1>&lt;h2 id="從-zstd-轉回-tar">從 zstd 轉回 tar
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -65,8 +65,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker load &amp;lt; 240726_mysql.tar
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="從-tar-匯入-image">從 tar 匯入 image&lt;/h2>
-&lt;p>這個是最基礎的方式，如果你沒有使用 zstd 解壓縮，就直接使用。&lt;/p>
+&lt;/div>&lt;h2 id="從-tar-匯入-image">從 tar 匯入 image
+&lt;/h2>&lt;p>這個是最基礎的方式，如果你沒有使用 zstd 解壓縮，就直接使用。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -75,8 +75,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">docker load &amp;lt; 240726_mysql.tar
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="查看-image">查看 image&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="查看-image">查看 image
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -84,8 +84,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">docker images
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="參考資料">參考資料&lt;/h1>
-&lt;ul>
+&lt;/div>&lt;h1 id="參考資料">參考資料
+&lt;/h1>&lt;ul>
 &lt;li>&lt;a class="link" href="https://docs.docker.com/engine/reference/commandline/save/" target="_blank" rel="noopener"
 >Docker 常用指令&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://docs.docker.com/engine/reference/commandline/load/" target="_blank" rel="noopener"
@@ -94,8 +94,8 @@
 >匯出/匯入 Docker image&lt;/a>&lt;/li>
 &lt;li>[zstd] (&lt;a class="link" href="https://github.com/facebook/zstd" target="_blank" rel="noopener"
 >https://github.com/facebook/zstd&lt;/a>)&lt;/li>
-&lt;/ul></content></item><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;blockquote>
+&lt;/ul></content></item><item><title>教學 01 - 如何讓 render.com 提供的機器不睡眠</title><link>/p/wakup-machine/</link><pubDate>Fri, 27 Jan 2023 15:53:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/wakup-machine/</guid><description>使用 heroku、render.com 等平台的免費機器，基本上都會自動睡眠.</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;blockquote>
 &lt;p>祝大家新年快樂 !!!&lt;/p>
 &lt;/blockquote>
 &lt;p>今天是初六，也休息一陣子了，覺得有點廢。&lt;/p>
@@ -114,8 +114,8 @@
 &lt;p>所以會從 &lt;code>2.&lt;/code> 來教你怎麼做 !&lt;/p>
 &lt;!-- raw HTML omitted -->
 &lt;!-- raw HTML omitted -->
-&lt;h1 id="利用-docker-來使用工具">利用 Docker 來使用工具&lt;/h1>
-&lt;p>&lt;code>工具只需要透過 Docker 就可以執行囉 !&lt;/code>&lt;/p>
+&lt;h1 id="利用-docker-來使用工具">利用 Docker 來使用工具
+&lt;/h1>&lt;p>&lt;code>工具只需要透過 Docker 就可以執行囉 !&lt;/code>&lt;/p>
 &lt;p>範例如下：&lt;code>範例下方還有部分說明唷 !&lt;/code>&lt;/p>
 &lt;p>&lt;code>**** 記得要先建立一個 schedule.log 檔案。&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -157,8 +157,8 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;h2 id="環境變數列表">環境變數列表&lt;/h2>
-&lt;table>
+&lt;h2 id="環境變數列表">環境變數列表
+&lt;/h2>&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th>環境變數&lt;/th>
@@ -220,8 +220,8 @@
 &lt;a class="link" href="https://apscheduler.readthedocs.io/en/3.x/modules/triggers/cron.html" target="_blank" rel="noopener"
 >https://apscheduler.readthedocs.io/en/3.x/modules/triggers/cron.html&lt;/a>&lt;/p>
 &lt;/blockquote>
-&lt;h1 id="如果是使用-docker-compose-">如果是使用 Docker Compose ..&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h1 id="如果是使用-docker-compose-">如果是使用 Docker Compose ..
+&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -269,15 +269,15 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="l">./linebot.log:/app/scheduler.log&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>置頂 - 提高效率的必備指令：一份我的常用指令與工具清單</title><link>/p/common-scripts/</link><pubDate>Wed, 18 Jan 2023 11:38:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/common-scripts/</guid><description>工作時常使用到的指令與工具</description><tags><tag>GIT</tag><tag>Docker</tag><tag>VSCode</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>主要為存放工作中經常使用的指令、框架、套件。&lt;/p>
+&lt;/div></content></item><item><title>置頂 - 提高效率的必備指令：一份我的常用指令與工具清單</title><link>/p/common-scripts/</link><pubDate>Wed, 18 Jan 2023 11:38:22 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/common-scripts/</guid><description>工作時常使用到的指令與工具</description><tags><tag>GIT</tag><tag>Docker</tag><tag>VSCode</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>主要為存放工作中經常使用的指令、框架、套件。&lt;/p>
 &lt;p>若有任何建議或是覺得需要修改的地方還請不吝指教，謝謝！&lt;/p>
 &lt;p>如何聯繫我 ?&lt;/p>
 &lt;blockquote>
 &lt;p>可以利用本篇文章下面留言，導航列也有提供我的社群平台 ~&lt;/p>
 &lt;/blockquote>
-&lt;h1 id="目錄">目錄&lt;/h1>
-&lt;p>電腦版右側有目錄，手機版沒有，這邊的目錄為了手機版而整理 !&lt;/p>
+&lt;h1 id="目錄">目錄
+&lt;/h1>&lt;p>電腦版右側有目錄，手機版沒有，這邊的目錄為了手機版而整理 !&lt;/p>
 &lt;ul>
 &lt;li>&lt;a class="link" href="#%e5%89%8d%e8%a8%80" >前言&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="#%e7%9b%ae%e9%8c%84" >目錄&lt;/a>&lt;/li>
@@ -312,31 +312,31 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;h1 id="套件框架區">套件框架區&lt;/h1>
-&lt;h2 id="vscode">VSCode&lt;/h2>
-&lt;h3 id="markdown">Markdown&lt;/h3>
-&lt;ul>
+&lt;h1 id="套件框架區">套件框架區
+&lt;/h1>&lt;h2 id="vscode">VSCode
+&lt;/h2>&lt;h3 id="markdown">Markdown
+&lt;/h3>&lt;ul>
 &lt;li>&lt;a class="link" href="https://github.com/yzhang-gh/vscode-markdown" target="_blank" rel="noopener"
 >https://github.com/yzhang-gh/vscode-markdown&lt;/a> &lt;code>自動生成 md 目錄&lt;/code>&lt;/li>
 &lt;/ul>
-&lt;h1 id="常用指令區">常用指令區&lt;/h1>
-&lt;h2 id="git">Git&lt;/h2>
-&lt;p>Git 是一個分散式版本控制系統，用於追蹤檔案變更並協助多人共同開發專案。&lt;/p>
-&lt;h3 id="下載子模組">下載子模組&lt;/h3>
-&lt;p>當你使用 git &lt;code>clone&lt;/code> 下載完儲存庫後，發現沒有下載 submodule, 使用下面的指令可以直接把子模組載入。&lt;/p>
+&lt;h1 id="常用指令區">常用指令區
+&lt;/h1>&lt;h2 id="git">Git
+&lt;/h2>&lt;p>Git 是一個分散式版本控制系統，用於追蹤檔案變更並協助多人共同開發專案。&lt;/p>
+&lt;h3 id="下載子模組">下載子模組
+&lt;/h3>&lt;p>當你使用 git &lt;code>clone&lt;/code> 下載完儲存庫後，發現沒有下載 submodule, 使用下面的指令可以直接把子模組載入。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-v" data-lang="v">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">git&lt;/span> &lt;span class="nv">submodule&lt;/span> &lt;span class="nv">update&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">git submodule update
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="切換遠端分支">切換遠端分支&lt;/h3>
-&lt;p>&lt;code>待補&lt;/code>&lt;/p>
-&lt;h2 id="vue">Vue&lt;/h2>
-&lt;h3 id="更改-port">更改 Port&lt;/h3>
-&lt;p>&lt;code>cli-services&lt;/code> 版本為 &lt;code>@vue/cli-service&amp;quot;: &amp;quot;~5.0.0&lt;/code>，如果不是也可以試試看。&lt;/p>
+&lt;/div>&lt;h3 id="切換遠端分支">切換遠端分支
+&lt;/h3>&lt;p>&lt;code>待補&lt;/code>&lt;/p>
+&lt;h2 id="vue">Vue
+&lt;/h2>&lt;h3 id="更改-port">更改 Port
+&lt;/h3>&lt;p>&lt;code>cli-services&lt;/code> 版本為 &lt;code>@vue/cli-service&amp;quot;: &amp;quot;~5.0.0&lt;/code>，如果不是也可以試試看。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -347,9 +347,9 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">npm run serve -- --port &lt;span class="m">8000&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="docker">Docker&lt;/h2>
-&lt;h3 id="redis">Redis&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="docker">Docker
+&lt;/h2>&lt;h3 id="redis">Redis
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -369,8 +369,8 @@
 &lt;p>Q: 為什麼有 dev-network ?&lt;/p>
 &lt;p>A: 為了可以讓開發容器可以直接使用 &lt;code>dev-redis&lt;/code> 進行連線 ! 前提是開發容器也要使用 dev-network 建立 !&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="postgresql">PostgreSQL&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h3 id="postgresql">PostgreSQL
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -381,18 +381,18 @@
 &lt;/span>&lt;span class="lnt">7
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--restart always \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--name dev-postgres \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-p 5432:5432 \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-e POSTGRES_PASSWORD=postgres \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-v /home/user/dev-pg-data/pgdata:/var/lib/postgresql/data \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network postgres:10
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="n">docker&lt;/span> &lt;span class="n">run&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">d&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">--&lt;/span>&lt;span class="n">restart&lt;/span> &lt;span class="n">always&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">--&lt;/span>&lt;span class="n">name&lt;/span> &lt;span class="n">dev&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">postgres&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">-&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="mi">5432&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">5432&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">-&lt;/span>&lt;span class="n">e&lt;/span> &lt;span class="n">POSTGRES_PASSWORD&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">postgres&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">-&lt;/span>&lt;span class="n">v&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">pg&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">pgdata&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="k">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">lib&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">postgresql&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">data&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">--&lt;/span>&lt;span class="n">network&lt;/span> &lt;span class="n">dev&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">network&lt;/span> &lt;span class="n">postgres&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">10&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>Docker 紀錄 03 - 經常使用的 docker 指令</title><link>/p/docker-common-commands/</link><pubDate>Sat, 03 Sep 2022 12:55:54 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-common-commands/</guid><description/><tags><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="正文">正文&lt;/h1>
-&lt;h2 id="建立-image">建立 image&lt;/h2>
-&lt;p>提供複製的指令。&lt;/p>
+&lt;/div></content></item><item><title>Docker 紀錄 03 - 經常使用的 docker 指令</title><link>/p/docker-common-commands/</link><pubDate>Sat, 03 Sep 2022 12:55:54 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-common-commands/</guid><description/><tags><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="正文">正文
+&lt;/h1>&lt;h2 id="建立-image">建立 image
+&lt;/h2>&lt;p>提供複製的指令。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -433,8 +433,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mydocker latest 0a045e9f442f 19 minutes ago 568MB
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="執行-image">執行 image&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="執行-image">執行 image
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -442,8 +442,8 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker run &amp;lt;image-name&amp;gt;
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="刪除-image">刪除 image&lt;/h2>
-&lt;p>如何先查看本機上已經建立的 image 清單.&lt;/p>
+&lt;/div>&lt;h2 id="刪除-image">刪除 image
+&lt;/h2>&lt;p>如何先查看本機上已經建立的 image 清單.&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -468,11 +468,11 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker rmi 0a045e9f442f
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="範例">範例&lt;/h1>
-&lt;p>經常使用的 docker run 範本，所以導致本篇會持續更新的原因。&lt;/p>
-&lt;h1 id="postgres">postgres&lt;/h1>
-&lt;h2 id="好看版本">好看版本&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h1 id="範例">範例
+&lt;/h1>&lt;p>經常使用的 docker run 範本，所以導致本篇會持續更新的原因。&lt;/p>
+&lt;h1 id="postgres">postgres
+&lt;/h1>&lt;h2 id="好看版本">好看版本
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -483,27 +483,27 @@
 &lt;/span>&lt;span class="lnt">7
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--restart always \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--name dev-postgres \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-p 5432:5432 \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-e POSTGRES_PASSWORD=postgres \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-v /home/user/dev-pg-data/pgdata:/var/lib/postgresql/data \
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network postgres:10
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="n">docker&lt;/span> &lt;span class="n">run&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">d&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">--&lt;/span>&lt;span class="n">restart&lt;/span> &lt;span class="n">always&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">--&lt;/span>&lt;span class="n">name&lt;/span> &lt;span class="n">dev&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">postgres&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">-&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="mi">5432&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">5432&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">-&lt;/span>&lt;span class="n">e&lt;/span> &lt;span class="n">POSTGRES_PASSWORD&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">postgres&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">-&lt;/span>&lt;span class="n">v&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">pg&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">pgdata&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="k">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">lib&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">postgresql&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">data&lt;/span> \
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">--&lt;/span>&lt;span class="n">network&lt;/span> &lt;span class="n">dev&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">network&lt;/span> &lt;span class="n">postgres&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">10&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="複製版本">複製版本&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="複製版本">複製版本
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d --restart always --name dev-postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -v /home/user/dev-pg-data/pgdata:/var/lib/postgresql/data --network dev-network postgres:10
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="n">docker&lt;/span> &lt;span class="n">run&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">d&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">restart&lt;/span> &lt;span class="n">always&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">name&lt;/span> &lt;span class="n">dev&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">postgres&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">p&lt;/span> &lt;span class="mi">5432&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">5432&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">e&lt;/span> &lt;span class="n">POSTGRES_PASSWORD&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">postgres&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">v&lt;/span> &lt;span class="o">/&lt;/span>&lt;span class="n">home&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">user&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">dev&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">pg&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">data&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">pgdata&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="k">var&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">lib&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">postgresql&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">data&lt;/span> &lt;span class="o">--&lt;/span>&lt;span class="n">network&lt;/span> &lt;span class="n">dev&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">network&lt;/span> &lt;span class="n">postgres&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="mi">10&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="redis">redis&lt;/h1>
-&lt;h2 id="好看版本-1">好看版本&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h1 id="redis">redis
+&lt;/h1>&lt;h2 id="好看版本-1">好看版本
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -519,8 +519,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--network dev-network redis
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="複製版本-1">複製版本&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="複製版本-1">複製版本
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -528,9 +528,9 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d --restart always -p 6379:6379 --name dev-redis --network dev-network redis
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="oracle-xe">oracle-xe&lt;/h1>
-&lt;h2 id="好看版本-2">好看版本&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h1 id="oracle-xe">oracle-xe
+&lt;/h1>&lt;h2 id="好看版本-2">好看版本
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -546,8 +546,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-v oracle-volume:/u01/app/oracle/oradata gvenzl/oracle-xe:11
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="複製版本-2">複製版本&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="複製版本-2">複製版本
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -555,11 +555,11 @@
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">docker run -d --restart always --name dev-oracle -p 1521:1521 -e ORACLE_PASSWORD=&amp;lt;your password&amp;gt; -v oracle-volume:/u01/app/oracle/oradata gvenzl/oracle-xe:11
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="nginx">nginx&lt;/h1>
-&lt;p>待補&lt;/p></content></item><item><title>Docker 紀錄 02 - 使用 oracleinanutshell/oracle-xe-11g 紀錄</title><link>/p/docker-oracle-xe-11g/</link><pubDate>Wed, 13 Jul 2022 10:36:26 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-oracle-xe-11g/</guid><description/><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>主要紀錄建立 oracle-xe-11g 這個 image 的過程。&lt;/p>
-&lt;h1 id="容器大小">容器大小&lt;/h1>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h1 id="nginx">nginx
+&lt;/h1>&lt;p>待補&lt;/p></content></item><item><title>Docker 紀錄 02 - 使用 oracleinanutshell/oracle-xe-11g 紀錄</title><link>/p/docker-oracle-xe-11g/</link><pubDate>Wed, 13 Jul 2022 10:36:26 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-oracle-xe-11g/</guid><description/><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>主要紀錄建立 oracle-xe-11g 這個 image 的過程。&lt;/p>
+&lt;h1 id="容器大小">容器大小
+&lt;/h1>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -571,10 +571,10 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">oracleinanutshell/oracle-xe-11g latest ad13c30ec346 &lt;span class="m">3&lt;/span> years ago 2.13GB
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h1 id="操作">操作&lt;/h1>
-&lt;h2 id="docker">docker&lt;/h2>
-&lt;h3 id="docker-run">docker run&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h1 id="操作">操作
+&lt;/h1>&lt;h2 id="docker">docker
+&lt;/h2>&lt;h3 id="docker-run">docker run
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
@@ -601,9 +601,9 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ol>
-&lt;h2 id="oracle">oracle&lt;/h2>
-&lt;h3 id="docker-exec">docker exec&lt;/h3>
-&lt;p>執行之前，我們要先查看我們 oracle-db 的 CONTAINER ID&lt;/p>
+&lt;h2 id="oracle">oracle
+&lt;/h2>&lt;h3 id="docker-exec">docker exec
+&lt;/h3>&lt;p>執行之前，我們要先查看我們 oracle-db 的 CONTAINER ID&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -627,8 +627,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">root@18681d31f0ec:/#
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="建立-oracle-user">建立 oracle user&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="建立-oracle-user">建立 oracle user
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -662,8 +662,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">SQL&amp;gt;
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="授予-oracle-user-權限">授予 oracle user 權限&lt;/h2>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;h2 id="授予-oracle-user-權限">授予 oracle user 權限
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -673,20 +673,20 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Grant succeeded.
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content></item><item><title>Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database</title><link>/p/docker-pull-oracle-database-image/</link><pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-pull-oracle-database-image/</guid><description>2021 去年使用的方式又跟今年(2022) 不一樣了 ..</description><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言&lt;/h1>
-&lt;p>之前的我都是去 docker hub pull,&lt;/p>
+&lt;/div></content></item><item><title>Docker 紀錄 01 - 2022 使用 Docker 建立 Oracle Database</title><link>/p/docker-pull-oracle-database-image/</link><pubDate>Wed, 29 Jun 2022 13:31:59 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-pull-oracle-database-image/</guid><description>2021 去年使用的方式又跟今年(2022) 不一樣了 ..</description><tags><tag>Oracle</tag><tag>Database</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
+&lt;/h1>&lt;p>之前的我都是去 docker hub pull,&lt;/p>
 &lt;p>但是今天發現 docker pull 的方式不一樣了。&lt;/p>
-&lt;h1 id="直接寫解法">直接寫解法&lt;/h1>
-&lt;h2 id="前往-oracle-container-註冊">前往 oracle container 註冊&lt;/h2>
-&lt;pre>&lt;code>https://container-registry.oracle.com
+&lt;h1 id="直接寫解法">直接寫解法
+&lt;/h1>&lt;h2 id="前往-oracle-container-註冊">前往 oracle container 註冊
+&lt;/h2>&lt;pre>&lt;code>https://container-registry.oracle.com
 &lt;/code>&lt;/pre>
-&lt;h2 id="登入完後點擊-database">登入完後，點擊 Database&lt;/h2>
-&lt;p>&lt;img src="/images/20220629/oracle-01.png"
+&lt;h2 id="登入完後點擊-database">登入完後，點擊 Database
+&lt;/h2>&lt;p>&lt;img src="/images/20220629/oracle-01.png"
 loading="lazy"
 alt="2022/07/06 - Oracle UI"
 >&lt;/p>
-&lt;h2 id="同意授權">同意授權&lt;/h2>
-&lt;p>&lt;img src="/images/20220629/oracle-02.png"
+&lt;h2 id="同意授權">同意授權
+&lt;/h2>&lt;p>&lt;img src="/images/20220629/oracle-02.png"
 loading="lazy"
 alt="2022/07/06 - Oracle 同意授權與未同意授權的畫面"
 >&lt;/p>
@@ -698,8 +698,8 @@ alt="2022/07/06 - Oracle 同意授權與未同意授權的畫面"
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">請記得要點擊 Continue.
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="授權">授權&lt;/h2>
-&lt;p>&lt;img src="/images/20220629/oracle-01.png"
+&lt;/div>&lt;h2 id="授權">授權
+&lt;/h2>&lt;p>&lt;img src="/images/20220629/oracle-01.png"
 loading="lazy"
 alt="2022/07/06 - Oracle 點擊同意授權"
 >&lt;/p>
@@ -711,8 +711,8 @@ alt="2022/07/06 - Oracle 點擊同意授權"
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">顯示打勾之後，再繼續下面的操作。
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="docker-login">docker login&lt;/h2>
-&lt;p>看你的環境是什麼，我今天使用的公司電腦，所以以下使用 Windows 的 PowerShell。&lt;/p>
+&lt;/div>&lt;h2 id="docker-login">docker login
+&lt;/h2>&lt;p>看你的環境是什麼，我今天使用的公司電腦，所以以下使用 Windows 的 PowerShell。&lt;/p>
 &lt;p>注意：這邊的話會叫你輸入登入資訊，但是因為我已經登入過了。&lt;/p>
 &lt;p>注意：這邊的話會叫你輸入登入資訊，但是因為我已經登入過了。&lt;/p>
 &lt;p>注意：這邊的話會叫你輸入登入資訊，但是因為我已經登入過了。&lt;/p>
@@ -761,23 +761,24 @@ alt="2022/07/06 - Oracle 點擊同意授權"
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">..... 以下太多資訊 省略
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="完成">完成&lt;/h2></content></item><item><title>【Docker】Macbook Air M1 CPU 使用 Docker 建立 SQL Server</title><link>/p/macbook-air-m1-install-sql-server/</link><pubDate>Sat, 07 Aug 2021 21:10:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/macbook-air-m1-install-sql-server/</guid><description/><tags><tag>SQLServer</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image><url>/</url></image><content>&lt;p>圖片來源：&lt;a class="link" href="https://zh.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener"
+&lt;/div>&lt;h2 id="完成">完成
+&lt;/h2></content></item><item><title>【Docker】Macbook Air M1 CPU 使用 Docker 建立 SQL Server</title><link>/p/macbook-air-m1-install-sql-server/</link><pubDate>Sat, 07 Aug 2021 21:10:00 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/macbook-air-m1-install-sql-server/</guid><description/><tags><tag>SQLServer</tag><tag>Docker</tag></tags><categories><category>Experience</category></categories><image><url>/</url></image><content>&lt;p>圖片來源：&lt;a class="link" href="https://zh.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener"
 >https://zh.wikipedia.org/wiki/Microsoft_SQL_Server&lt;/a>&lt;/p>
-&lt;h2 id="前言">前言&lt;/h2>
-&lt;p>說明一下為什麼會使用到 SQL Server + Macbook Air。&lt;/p>
+&lt;h2 id="前言">前言
+&lt;/h2>&lt;p>說明一下為什麼會使用到 SQL Server + Macbook Air。&lt;/p>
 &lt;p>主要是在今年 (2021) 年初買了 Macbook Air M1。&lt;/p>
 &lt;p>那過了近半年，在目前工作的專案下，對方有提出一個需求就是需要導入 SQL Server，&lt;/p>
 &lt;p>就想說試試看 M1 是否可以建立 SQL Server 的環境。&lt;/p>
-&lt;h2 id="本文章分為四段">本文章分為四段&lt;/h2>
-&lt;ul>
+&lt;h2 id="本文章分為四段">本文章分為四段
+&lt;/h2>&lt;ul>
 &lt;li>檢查您的電腦是否有安裝 Docker&lt;/li>
 &lt;li>Docker run&lt;/li>
 &lt;li>使用 dbeaver 開源資料庫管理工具連線 SQL Server Container&lt;/li>
 &lt;li>結束&lt;/li>
 &lt;/ul>
-&lt;h2 id="本文開始">本文開始&lt;/h2>
-&lt;h3 id="檢查是否安裝-docker">檢查是否安裝 Docker&lt;/h3>
-&lt;p>合理來說 Macbook Pro 一樣可以參考下面範例，若不行，希望你能留言告訴大家&lt;/p>
+&lt;h2 id="本文開始">本文開始
+&lt;/h2>&lt;h3 id="檢查是否安裝-docker">檢查是否安裝 Docker
+&lt;/h3>&lt;p>合理來說 Macbook Pro 一樣可以參考下面範例，若不行，希望你能留言告訴大家&lt;/p>
 &lt;p>首先當然先確認電腦是否有安裝 Docker，這邊顯示一下我目前 Docker 的版本&lt;/p>
 &lt;p>指令：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -796,8 +797,8 @@ alt="Docker 版本"
 &lt;p>&lt;a class="link" href="https://docs.docker.com/docker-for-mac/install/" target="_blank" rel="noopener"
 >https://docs.docker.com/docker-for-mac/install/&lt;/a>&lt;/p>
 &lt;p>暫時不提供安裝教學，官方也寫得非常清楚。&lt;/p>
-&lt;h3 id="docker-run">Docker run&lt;/h3>
-&lt;p>這邊其實當初也找了非常多，最後在&lt;/p>
+&lt;h3 id="docker-run">Docker run
+&lt;/h3>&lt;p>這邊其實當初也找了非常多，最後在&lt;/p>
 &lt;p>&lt;a class="link" href="https://medium.com/geekculture/docker-express-running-a-local-sql-server-on-your-m1-mac-8bbc22c49dc9" target="_blank" rel="noopener"
 >https://medium.com/geekculture/docker-express-running-a-local-sql-server-on-your-m1-mac-8bbc22c49dc9&lt;/a>&lt;/p>
 &lt;p>這篇有發現如何在 M1 安裝 SQL Server，其中他有 Highlight 這一段：&lt;/p>
@@ -872,8 +873,8 @@ loading="lazy"
 alt="sql-server 安裝完成"
 >&lt;/p>
 &lt;p>接下來出現這個畫面後，沒有跑出任何 Error，我們就可以打開 &lt;code>dbeaver&lt;/code> (開源資料庫管理工具)&lt;/p>
-&lt;h3 id="使用-dbeaver-開源資料庫管理工具連線-sql-server-container">使用 dbeaver 開源資料庫管理工具連線 SQL Server Container&lt;/h3>
-&lt;p>這邊就不展示如何安裝 dbeaver。&lt;/p>
+&lt;h3 id="使用-dbeaver-開源資料庫管理工具連線-sql-server-container">使用 dbeaver 開源資料庫管理工具連線 SQL Server Container
+&lt;/h3>&lt;p>這邊就不展示如何安裝 dbeaver。&lt;/p>
 &lt;p>首先我們先打開 dbeaver，如下圖進行新增連線&lt;/p>
 &lt;p>&lt;img src="/images/blogger/20210807_m1-sqlserver/04.dbeaver-connect-db.png"
 loading="lazy"
@@ -909,8 +910,8 @@ alt="dbeaver 設定連線資訊"
 loading="lazy"
 alt="使用 dbeaver 查看 sql-server schema"
 >&lt;/p>
-&lt;h2 id="結束">結束&lt;/h2>
-&lt;p>本篇結束，已經連到 SQL Server !!!&lt;/p>
+&lt;h2 id="結束">結束
+&lt;/h2>&lt;p>本篇結束，已經連到 SQL Server !!!&lt;/p>
 &lt;p>可以連線後，就可以繼續做工作的事情囉！&lt;/p>
 &lt;p>祝福讀完文章的你，一路順風 XD&lt;/p>
 &lt;p>如果你有碰到任何問題，歡迎你在下面留言！&lt;/p></content></item></channel></rss>

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on CY | 程式小角落</title><link>/categories/windows/</link><description>Recent content in Windows on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 27 Jan 2024 17:00:00 +0800</lastBuildDate><atom:link href="/categories/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>Win7 - 連線共享印表機時, 出現 0x00000709 錯誤</title><link>/p/win7-error-0x00000709/</link><pubDate>Sat, 27 Jan 2024 17:00:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/win7-error-0x00000709/</guid><description>花了很多時間, 分享電腦升級為 Win11, 結果其他電腦都可以連線, 唯獨這台 Win7 一直出現 0x00000709 錯誤.</description><tags><tag>Windows</tag><tag>Share</tag><tag>硬體障礙排除</tag></tags><categories><category>Experience</category><category>Windows</category></categories><image/><content>&lt;h2 id="詳細問題">詳細問題&lt;/h2>
-&lt;ul>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on CY | 程式小角落</title><link>/categories/windows/</link><description>Recent content in Windows on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Sat, 27 Jan 2024 17:00:00 +0800</lastBuildDate><atom:link href="/categories/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>Win7 - 連線共享印表機時, 出現 0x00000709 錯誤</title><link>/p/win7-error-0x00000709/</link><pubDate>Sat, 27 Jan 2024 17:00:00 +0800</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/win7-error-0x00000709/</guid><description>花了很多時間, 分享電腦升級為 Win11, 結果其他電腦都可以連線, 唯獨這台 Win7 一直出現 0x00000709 錯誤.</description><tags><tag>Windows</tag><tag>Share</tag><tag>硬體障礙排除</tag></tags><categories><category>Experience</category><category>Windows</category></categories><image/><content>&lt;h2 id="詳細問題">詳細問題
+&lt;/h2>&lt;ul>
 &lt;li>分享的電腦為 Win11&lt;/li>
 &lt;li>連線的辦公室電腦有 Win7, Win10&lt;/li>
 &lt;li>連線共享印表機時, 出現 0x00000709 錯誤&lt;/li>
@@ -7,8 +7,8 @@
 &lt;li>&lt;code>其他台 Win7 可以正常連線&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;p>簡單來說就是這台電腦無法連線到共享印表機, 但是其他電腦都可以。&lt;/p>
-&lt;h2 id="解決方法">解決方法&lt;/h2>
-&lt;p>因為 Win7 現在的版本也不會再更新了, 所以就乾脆把它升級到 Win7 最後一個版本了。&lt;/p>
+&lt;h2 id="解決方法">解決方法
+&lt;/h2>&lt;p>因為 Win7 現在的版本也不會再更新了, 所以就乾脆把它升級到 Win7 最後一個版本了。&lt;/p>
 &lt;p>所以使用 UpdatePackage7R2 這個工具, 來升級 Win7 到最後一個版本。&lt;/p>
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://blog.simplix.info/update7/" target="_blank" rel="noopener"
@@ -16,8 +16,8 @@
 &lt;/ul>
 &lt;p>更新完就可以了, 很莫名其妙 ..&lt;/p>
 &lt;p>但可以成功的方案就是推, 你可以試試看 !&lt;/p>
-&lt;h2 id="參考資料">參考資料&lt;/h2>
-&lt;ul>
+&lt;h2 id="參考資料">參考資料
+&lt;/h2>&lt;ul>
 &lt;li>&lt;a class="link" href="https://www.gdaily.org/22156/updatepack7r2-windows-7-update" target="_blank" rel="noopener"
 >UpdatePack7R2 2022，Windows 7 更新包&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://www.far-beyound.com.tw/news/2/14" target="_blank" rel="noopener"
