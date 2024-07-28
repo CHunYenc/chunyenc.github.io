@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on CY | 程式小角落</title><link>/posts/</link><description>Recent content in Posts on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 26 Jul 2024 17:45:14 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker 紀錄 04 - 離線部署 Docker Image 時的指令</title><link>/p/docker-export-docker-image/</link><pubDate>Fri, 26 Jul 2024 17:45:14 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-export-docker-image/</guid><description>當網路不佳時，需要離線部署 Docker Image 時的指令。</description><tags><tag>GIT</tag><tag>Docker</tag><tag>Heroku</tag><tag>render</tag></tags><categories><category>Experience</category><category>Tutorial</category></categories><image/><content>&lt;h1 id="前言">前言
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on CY | 程式小角落</title><link>/posts/</link><description>Recent content in Posts on CY | 程式小角落</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><managingEditor>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</managingEditor><webMaster>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</webMaster><lastBuildDate>Fri, 26 Jul 2024 17:45:14 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker 紀錄 04 - 離線部署 Docker Image 時的指令</title><link>/p/docker-export-docker-image/</link><pubDate>Fri, 26 Jul 2024 17:45:14 +0000</pubDate><author>admin@chunyen.xyz (陳雋諺, Chun-Yen Chen)</author><guid>/p/docker-export-docker-image/</guid><description>當網路不佳時，需要離線部署 Docker Image 時的指令。</description><tags><tag>Docker</tag></tags><categories><category>Experience</category></categories><image/><content>&lt;h1 id="前言">前言
 &lt;/h1>&lt;p>因為公司網路系統上線的地方在中國，不管是 &lt;code>docker&lt;/code>, &lt;code>python&lt;/code> 套件都要更換下載源。&lt;/p>
 &lt;p>覺得麻煩，所以就下定決心使用離線部署。&lt;/p>
 &lt;p>以下使用 mysql 來做範例。&lt;/p>
@@ -61,7 +61,7 @@
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用 zstd 解壓縮成 tar&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zstd -d 240726_python3.12-slim.tar.zst
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用 tar 匯入 docker &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用 tar 匯入 docker&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker load &amp;lt; 240726_mysql.tar
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
