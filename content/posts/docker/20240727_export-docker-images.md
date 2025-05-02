@@ -2,18 +2,14 @@
 title: "Docker 紀錄 04 - 離線部署 Docker Image 時的指令"
 description: "當網路不佳時，需要離線部署 Docker Image 時的指令。"
 date: 2024-07-26T17:45:14Z
-image: 
+image:
 slug: "docker-export-docker-image"
 categories:
-    - Experience
-    - Tutorial
+  - Experience
 tags:
-    - GIT
-    - Docker
-    - Heroku
-    - render
-math: 
-license: 
+  - Docker
+math:
+license:
 hidden: false
 comments: true
 draft: false
@@ -74,8 +70,8 @@ ubuntu@ubuntu70:/system/mes$ du -sh 240726_mysql.tar.zst
 ```sh
 # 使用 zstd 解壓縮成 tar
 zstd -d 240726_python3.12-slim.tar.zst
-# 使用 tar 匯入 docker 
-docker load < 240726_mysql.tar 
+# 使用 tar 匯入 docker
+docker load < 240726_mysql.tar
 ```
 
 ## 從 tar 匯入 image
