@@ -1,0 +1,8 @@
+{
+    "framework": "hugo",
+    "buildCommand": "hugo",
+    "outputDirectory": "public",
+    "env": {
+        "HUGO_VERSION": "0.126.1"
+    }
+}
