@@ -1,0 +1,76 @@
+name: Generate AI Article
+
+on:
+  # 每月 1 號和 15 號的 UTC 09:00 (台灣時間 17:00) 自動執行
+  schedule:
+    - cron: "0 9 1,15 * *"
+  # 支援手動觸發
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate article with Gemini API
+        id: generate
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/generate_article.py
+
+      - name: Create PR with generated article
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ARTICLE_PATH: ${{ steps.generate.outputs.article_path }}
+          ARTICLE_TITLE: ${{ steps.generate.outputs.article_title }}
+        run: |
+          DATE_TAG=$(date +'%Y%m%d-%H%M%S')
+          BRANCH_NAME="ai-article/${DATE_TAG}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # 建立新分支
+          git checkout -b "${BRANCH_NAME}"
+
+          # 提交文章
+          git add content/posts/ai/
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "feat: add AI generated article - ${ARTICLE_TITLE}"
+          git push -u origin "${BRANCH_NAME}"
+
+          # 確保 label 存在（如果不存在就建立）
+          gh label create "ai-generated" --description "由 AI 自動生成的文章" --color "7057ff" 2>/dev/null || true
+
+          # 建立 PR
+          gh pr create \
+            --title "📝 AI 文章: ${ARTICLE_TITLE}" \
+            --body "## AI 自動生成文章
+
+          此 PR 由 GitHub Actions 自動建立，包含一篇由 Gemini API 生成的科技趨勢文章。
+
+          **文章標題：** ${ARTICLE_TITLE}
+          **文章路徑：** \`${ARTICLE_PATH}\`
+          **生成時間：** $(date +'%Y-%m-%d %H:%M:%S') UTC
+
+          ### 審核清單
+
+          - [ ] 文章內容品質是否合格
+          - [ ] 標題與描述是否恰當
+          - [ ] 程式碼範例是否正確（如有）
+
+          > 請審核文章後決定是否合併。如品質不佳可直接關閉此 PR。" \
+            --label "ai-generated" \
+            --base master
