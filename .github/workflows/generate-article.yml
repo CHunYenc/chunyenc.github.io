@@ -1,0 +1,39 @@
+name: Generate AI Article
+
+on:
+  # 每月 1 號和 15 號的 UTC 09:00 (台灣時間 17:00) 自動執行
+  schedule:
+    - cron: "0 9 1,15 * *"
+  # 支援手動觸發
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate article with Gemini API
+        id: generate
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/generate_article.py
+
+      - name: Commit and push article
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/posts/ai/
+          git diff --cached --quiet && echo "No changes to commit" && exit 0
+          git commit -m "feat: add AI generated article - $(date +'%Y-%m-%d')"
+          git push
