@@ -205,7 +205,7 @@ def call_gemini_api(api_key: str, prompt: str) -> str:
             }
         ],
         "generationConfig": {
-            "temperature": 0.85,
+            "temperature": 0.4,
             "topP": 0.95,
             "maxOutputTokens": 8192,
         },
